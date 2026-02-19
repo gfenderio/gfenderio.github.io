@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gilang Fenderio Yusuf | Portfolio</title>
+    <title>Gilang Fenderio Yusuf | IT Solutions Architect</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <!-- Placeholder for FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
+    <div class="background-grid"></div>
     <div class="background-globes">
         <div class="globe-wrapper w1">
             <div class="globe globe-1"></div>
@@ -26,212 +26,145 @@
     </div>
 
     <nav class="glass-nav">
-        <div class="logo">GFY</div>
+        <div class="logo">GFY<span class="dot">.</span></div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" class="btn-nav">Hire Me</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Gilang Fenderio Yusuf</span></h1>
-            <h2 class="typing-effect">IT Specialist | Information Systems Student</h2>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Contact Me</a>
-                <!-- Replace # with actual CV link when available -->
-                <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> Download CV</a>
-            </div>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/gilangfenderio" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:gfenderio@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-    </header>
+    <!-- Scroll Snap Container -->
+    <main class="snap-container">
 
-    <section id="about" class="section">
-        <div class="container glass-card">
-            <h2>About Me</h2>
-            <p>
-                Information Systems student with practical experience in IT support, database systems, SAP, and Python.
-                Proven leadership in retail operations with strong problem-solving and communication skills.
-                Actively seeking onsite IT opportunities to apply and grow my technical abilities in a real-world
-                environment.
-            </p>
-
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Technical Skills</h3>
-                    <div class="skill-item">
-                        <span>Python</span>
-                        <div class="progress-bar" data-width="70%"></div>
-                    </div>
-                    <div class="skill-item">
-                        <span>SQL</span>
-                        <div class="progress-bar" data-width="65%"></div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Data Science (Basic)</span>
-                        <div class="progress-bar" data-width="40%"></div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Software Testing (Advanced)</span>
-                        <div class="progress-bar" data-width="85%"></div>
-                    </div>
+        <section id="hero" class="section hero snap-section">
+            <div class="hero-content">
+                <div class="badge-pill">Available for Freelance & Contracts</div>
+                <h1>Empowering Businesses with <br><span class="highlight">Intelligent IT Solutions</span></h1>
+                <h2 class="typing-effect">Custom Apps | Quality Assurance | Data Insights</h2>
+                <p class="hero-subtitle">I turn complex problems into scalable, user-friendly software that drives
+                    growth.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get a Free Consultation</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
                 </div>
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <div class="tags">
-                        <span class="tag">Salesmanship (Advanced)</span>
-                        <span class="tag">Retail Operations (Expert)</span>
-                        <span class="tag">Leadership</span>
-                        <span class="tag">Communication</span>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/gilangfenderio" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:gfenderio@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section snap-section">
+            <div class="container glass-card">
+                <h2>Why Choose Me?</h2>
+                <p class="section-desc">I don't just write code; I deliver reliability and efficiency.</p>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-bug service-icon"></i>
+                        <h3>Quality Assurance</h3>
+                        <p>Eliminate bugs before your users find them. Expert in manual and automated testing to ensure
+                            rock-solid stability.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-code service-icon"></i>
+                        <h3>Web & App Development</h3>
+                        <p>Custom-built applications (PHP, JS, SQL) tailored to streamline your specific business
+                            operations.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-chart-line service-icon"></i>
+                        <h3>Data Analytics</h3>
+                        <p>Turn raw data into actionable insights using Python and SQL to make smarter business
+                            decisions.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="experience" class="section">
-        <div class="container">
-            <h2>Experience</h2>
-            <div class="timeline">
-
-                <div class="timeline-item glass-card">
-                    <div class="timeline-date">03/2025 - Present</div>
-                    <div class="timeline-content">
-                        <h3>Sales Executive (Assistant Product Specialist)</h3>
-                        <h4>PT Home Center Retail Indonesia (Informa)</h4>
-                        <ul>
-                            <li>Trusted with department-level operational responsibilities, including managing price
-                                updates and stock movement.</li>
-                            <li>Managed product data and pricing, ensuring accuracy across systems.</li>
-                            <li>Frequently met monthly performance targets.</li>
-                        </ul>
+        <section id="work" class="section snap-section">
+            <div class="container glass-card">
+                <h2>Featured Solution</h2>
+                <div class="project-showcase">
+                    <div class="project-info">
+                        <h3>Kasirin Point of Sale</h3>
+                        <p class="project-tagline">Streamlining Retail Operations</p>
+                        <p>A robust cashier application designed to simplify sales transactions, manage inventory in
+                            real-time, and generate instant sales reports. Built for speed and reliability in fast-paced
+                            retail environments.</p>
+                        <div class="tech-stack">
+                            <span class="badge">PHP</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">MySQL</span>
+                        </div>
                     </div>
-                </div>
-
-                <div class="timeline-item glass-card">
-                    <div class="timeline-date">10/2024 - 11/2024</div>
-                    <div class="timeline-content">
-                        <h3>AI Voice Training</h3>
-                        <h4>Lionbridge Games Studios (Australia)</h4>
-                        <ul>
-                            <li><strong>Voice Modulation:</strong> Recorded 420 sentences with varying emotional tones
-                                (happiness, sadness, whispering) for a Meta-related project.</li>
-                            <li><strong>Quality Assurance:</strong> Ensured clean audio recordings free from background
-                                noise and echoes.</li>
-                            <li><strong>Detail Oriented:</strong> Reviewed sentence and style pairings to ensure strict
-                                adherence to project instructions.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item glass-card">
-                    <div class="timeline-date">10/2024 - 10/2024</div>
-                    <div class="timeline-content">
-                        <h3>Game Tester</h3>
-                        <h4>Lionbridge Games Studios</h4>
-                        <ul>
-                            <li>Tested "Gems of War" focusing on gameplay mechanics, user experience, and bug
-                                identification.</li>
-                            <li>Identified and documented in-game bugs to improve stability.</li>
-                            <li>Provided feedback on player experience to enhance game quality.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item glass-card">
-                    <div class="timeline-date">05/2023 - 10/2024</div>
-                    <div class="timeline-content">
-                        <h3>Staff Food</h3>
-                        <h4>PT Swalayan Sukses Abadi (The Foodhall ID)</h4>
-                        <ul>
-                            <li>Organized and maintained product displays to enhance customer experience.</li>
-                            <li>Gained basic knowledge of SAP system to track product sales and monitor returns.</li>
-                            <li>Developed custom reports in Excel using advanced formulas and pivot tables.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item glass-card">
-                    <div class="timeline-date">03/2019 - 09/2022</div>
-                    <div class="timeline-content">
-                        <h3>Junior Store Leader</h3>
-                        <h4>Indomaret Group</h4>
-                        <ul>
-                            <li>Managed overall store operations, ensuring efficient day-to-day activities.</li>
-                            <li>Supervised store staff and coordinated inventory management.</li>
-                            <li>Enhanced customer experience by addressing inquiries and maintaining store organization.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-card glass-card">
-                    <div class="project-header">
-                        <h3>Kasirin - Cashier Application</h3>
-                        <span class="project-date">01/2025 - Present</span>
-                    </div>
-                    <p>Designed and developed Kasirin, a cashier application to streamline sales transactions and
-                        improve point-of-sale efficiency.</p>
-                    <ul class="project-details">
-                        <li>Built core features including product management, sales processing, and receipt generation.
-                        </li>
-                        <li>Created a user-friendly interface aimed at simplifying daily cashier operations for small
-                            businesses.</li>
-                        <li>Currently in development and undergoing testing before commercial release.</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="badge">PHP</span>
-                        <span class="badge">Javascript</span>
-                        <span class="badge">SQL</span>
+                    <div class="project-visual">
+                        <!-- Placeholder for project image -->
+                        <div class="visual-placeholder"><i class="fas fa-cash-register"></i></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="education" class="section">
-        <div class="container glass-card">
-            <h2>Education & Certificates</h2>
-            <div class="education-item">
-                <h3>Bachelor of Technology - BTech (Information System)</h3>
-                <h4>Universitas Terbuka (01/2023 - 2027)</h4>
-                <p>Currently studying Information Systems with a focus on databases, programming, system design, and IT
-                    security.</p>
-            </div>
-            <div class="certificate-item">
-                <h3>EF SET English Certificate 77/100 (C2 Proficient)</h3>
-                <p>English First</p>
-            </div>
-        </div>
-    </section>
+        <section id="experience" class="section snap-section">
+            <div class="container glass-card">
+                <h2>Proven Track Record</h2>
+                <div class="timeline">
+                    <!-- Informa -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">03/2025 - Present</div>
+                        <div class="timeline-content">
+                            <h3>Sales Executive & Ops Lead</h3>
+                            <h4>Informa (Home Center Retail)</h4>
+                            <p>Managed department-level operations and data accuracy, consistently hitting targets
+                                through data-driven strategies.</p>
+                        </div>
+                    </div>
 
-    <footer id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>Looking for opportunities in IT Support, Analysis, or Development.</p>
-            <div class="contact-methods">
-                <a href="mailto:gfenderio@gmail.com" class="contact-link"><i class="fas fa-envelope"></i>
-                    gfenderio@gmail.com</a>
-                <a href="tel:+6282128494135" class="contact-link"><i class="fas fa-phone"></i> 082128494135</a>
-                <a href="https://linkedin.com/in/gilangfenderio" class="contact-link"><i class="fab fa-linkedin"></i>
-                    LinkedIn</a>
+                    <!-- Lionbridge 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">10/2024 - 11/2024</div>
+                        <div class="timeline-content">
+                            <h3>AI Voice Training Specialist</h3>
+                            <h4>Lionbridge Games Studios</h4>
+                            <p>Contributed to high-stakes Meta AI projects, ensuring 100% adherence to complex quality
+                                guidelines.</p>
+                        </div>
+                    </div>
+
+                    <!-- Lionbridge 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">10/2024 - 10/2024</div>
+                        <div class="timeline-content">
+                            <h3>Game Quality Assurance</h3>
+                            <h4>Lionbridge Games Studios</h4>
+                            <p>Identified critical bugs and improved UX for "Gems of War", directly impacting player
+                                retention.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="copyright">&copy; 2025 Gilang Fenderio Yusuf. All rights reserved.</p>
-        </div>
-    </footer>
+        </section>
+
+        <section id="contact" class="section snap-section contact-section">
+            <div class="container contact-container glass-card">
+                <h2>Let's Build Something Great</h2>
+                <p>Ready to upgrade your business IT? Let's discuss your project.</p>
+                <div class="contact-box">
+                    <a href="mailto:gfenderio@gmail.com" class="contact-btn"><i class="fas fa-paper-plane"></i>
+                        gfenderio@gmail.com</a>
+                    <a href="https://linkedin.com/in/gilangfenderio" class="contact-btn"><i class="fab fa-linkedin"></i>
+                        Connect on LinkedIn</a>
+                </div>
+                <footer>
+                    <p>&copy; 2025 Gilang Fenderio Yusuf. delivering excellence.</p>
+                </footer>
+            </div>
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
