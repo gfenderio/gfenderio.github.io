@@ -542,65 +542,67 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Services Intro */
-.center-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* Services Intro (Merged) */
+.services-header {
     text-align: center;
-    height: 100%;
-}
-
-.big-desc {
-    font-size: 1.5rem;
-    max-width: 700px;
     margin-bottom: 3rem;
-    line-height: 1.6;
 }
 
-.btn-large {
+.compact-desc {
     font-size: 1.1rem;
-    padding: 1.2rem 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #94a3b8;
 }
 
-/* Testimonials */
-.testimonials {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+/* Testimonials (Standalone) */
+.testimonials-grid {
     display: grid;
-    gap: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .testimonial-item {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 16px;
     font-style: italic;
-    border-left: 3px solid var(--accent-color);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-color);
 }
 
 .testimonial-item p {
     color: #e2e8f0;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .testimonial-item span {
     display: block;
     color: var(--secondary-accent);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
     text-align: right;
+    margin-top: 1rem;
 }
 
-/* Contact Form */
+/* Contact Form (Premium Glass) */
 .contact-form {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: left;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .form-group {
@@ -611,14 +613,15 @@ footer {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    padding: 1.2rem;
+    background: rgba(10, 15, 30, 0.6);
+    border: 1px solid rgba(157, 78, 221, 0.3);
+    border-radius: 12px;
     color: #fff;
     font-family: var(--font-body);
     font-size: 1rem;
     transition: all 0.3s;
+    backdrop-filter: blur(5px);
 }
 
 .form-group input:focus,
@@ -626,20 +629,24 @@ footer {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--secondary-accent);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+    background: rgba(10, 15, 30, 0.8);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+    transform: scale(1.01);
 }
 
 .form-group select option {
     background: var(--bg-color);
-    /* Fix dropdown bg color */
     color: #fff;
+    padding: 1rem;
 }
 
 .btn-block {
     width: 100%;
     display: block;
     text-align: center;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
 }
 
 /* Responsive */
