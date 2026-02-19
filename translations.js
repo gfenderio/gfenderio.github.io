@@ -36,12 +36,12 @@ const translations = {
 
         // Testimonials
         "testimonials.header": "What Clients Say",
-        "testimonials.budi.text": "\"Sales increased by 30% since using Kasirin. The reports are very neat.\"",
-        "testimonials.budi.name": "- Budi Santoso, Owner Kopi Senja",
-        "testimonials.siti.text": "\"Checking stock is easy now, no more headaches when shopping.\"",
+        "testimonials.budi.text": "\"I love the receipt printing feature; it's neat and makes transactions hassle-free. When it's busy, Kasirin really helps prevent queues from piling up. The interface is clean, so my staff understood how to use it in just 5 minutes of training.\"",
+        "testimonials.budi.name": "- Budi Santoso, Owner Warmindo",
+        "testimonials.siti.text": "\"I was hesitant to use a cashier app because I'm not tech-savvy, but Kasirin turned out to be very easy to learn. Now I don't need to be confused about calculating sales anymore. Stock is automatically deducted, so I know exactly when to restock. Very helpful for a small shop like mine!\"",
         "testimonials.siti.name": "- Siti Aminah, Toko Berkah",
-        "testimonials.rizky.text": "\"The system is stable, never errors even when it's crowded.\"",
-        "testimonials.rizky.name": "- Rizky Pratama, Distro Keren",
+        "testimonials.rizky.text": "\"The most lightweight cashier app I've ever tried. It doesn't consume much memory but the features are powerful. For those just starting a business and needing a reliable POS system without expensive subscription fees, Kasirin is the solution. Highly recommended!\"",
+        "testimonials.rizky.name": "- Rizky Pratama, Distro Gaya Kini",
 
         // Experience
         "exp.header": "Proven Track Record",
@@ -135,12 +135,12 @@ const translations = {
 
         // Testimonials
         "testimonials.header": "Kata Klien Kami",
-        "testimonials.budi.text": "\"Omset naik 30% sejak pakai Kasirin. Laporannya rapi banget.\"",
-        "testimonials.budi.name": "- Budi Santoso, Pemilik Kopi Senja",
-        "testimonials.siti.text": "\"Stok barang jadi gampang dicek, gak pusing lagi kalau belanja.\"",
+        "testimonials.budi.text": "\"Paling suka sama fitur cetak struknya yang rapi dan proses transaksinya jadi nggak ribet. Pas lagi ramai, KasirIn ngebantu banget biar antrean nggak numpuk. Tampilannya bersih, jadi karyawan saya langsung paham cara pakainya cuma dalam 5 menit training..\"",
+        "testimonials.budi.name": "- Budi Santoso, Owner Warmindo",
+        "testimonials.siti.text": "\"Awalnya ragu mau pakai aplikasi kasir karena gaptek, tapi Kasirin ternyata gampang banget dipelajari. Sekarang nggak perlu lagi bingung ngitung penjualan. Stok barang juga otomatis terpotong, jadi saya tahu kapan harus belanja lagi. Sangat membantu buat warung kecil seperti saya!\"",
         "testimonials.siti.name": "- Siti Aminah, Toko Berkah",
-        "testimonials.rizky.text": "\"Sistemnya stabil, gak pernah error pas lagi ramai pembeli.\"",
-        "testimonials.rizky.name": "- Rizky Pratama, Distro Keren",
+        "testimonials.rizky.text": "\"Aplikasi kasir paling lightweight yang pernah saya coba. Nggak makan banyak memori tapi fiturnya powerful. Buat yang baru mulai usaha dan butuh sistem POS yang handal tanpa biaya langganan yang mahal, Kasirin ini solusinya. Highly recommended!\"",
+        "testimonials.rizky.name": "- Rizky Pratama, Pengelola Distro Gaya Kini",
 
         // Experience
         "exp.header": "Rekam Jejak Profesional",
