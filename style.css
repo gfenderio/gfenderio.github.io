@@ -81,6 +81,10 @@ body {
     pointer-events: none;
 }
 
+.mobile-lang-toggle {
+    display: none;
+}
+
 .globe {
     position: absolute;
     border-radius: 50%;
