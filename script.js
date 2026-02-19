@@ -22,20 +22,32 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(type, 500); // Start delay
     }
 
-    // Parallax Effect on Scroll
-    const snapContainer = document.querySelector('.snap-container'); // Scroll listener on container now
+    // Parallax Effect function
+    function handleParallax(scrollTop) {
+        const wrapper1 = document.querySelector('.globe-wrapper.w1');
+        const wrapper2 = document.querySelector('.globe-wrapper.w2');
 
+        // Move wrappers at different speeds
+        if (wrapper1) wrapper1.style.transform = `translateY(${scrollTop * 0.3}px)`;
+        if (wrapper2) wrapper2.style.transform = `translateY(${-scrollTop * 0.2}px)`;
+    }
+
+    const snapContainer = document.querySelector('.snap-container');
+
+    // Desktop: Scroll Snap Container
     if (snapContainer) {
         snapContainer.addEventListener('scroll', () => {
-            const scrolled = snapContainer.scrollTop; // Use scrollTop of container
-            const wrapper1 = document.querySelector('.globe-wrapper.w1');
-            const wrapper2 = document.querySelector('.globe-wrapper.w2');
-
-            // Move wrappers at different speeds
-            if (wrapper1) wrapper1.style.transform = `translateY(${scrolled * 0.3}px)`;
-            if (wrapper2) wrapper2.style.transform = `translateY(${-scrolled * 0.2}px)`;
+            handleParallax(snapContainer.scrollTop);
         });
     }
+
+    // Mobile: Window Scroll (when snap is disabled)
+    window.addEventListener('scroll', () => {
+        // Only trigger if the window is actually scrolling (mobile behavior)
+        if (window.scrollY > 0) {
+            handleParallax(window.scrollY);
+        }
+    });
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

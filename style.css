@@ -346,7 +346,8 @@ body {
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    /* Responsive heading size to prevent overflow */
     margin-bottom: 1rem;
     color: #fff;
     text-align: center;
@@ -361,8 +362,17 @@ h2 {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    /* Force 2 columns */
+    gap: 1.5rem;
+    /* Slightly reduced gap */
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+    }
 }
 
 .service-card {
@@ -530,6 +540,106 @@ footer {
     margin-top: 3rem;
     color: #64748b;
     font-size: 0.9rem;
+}
+
+/* Services Intro */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.big-desc {
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.btn-large {
+    font-size: 1.1rem;
+    padding: 1.2rem 3rem;
+}
+
+/* Testimonials */
+.testimonials {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: grid;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+}
+
+.testimonial-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    font-style: italic;
+    border-left: 3px solid var(--accent-color);
+}
+
+.testimonial-item p {
+    color: #e2e8f0;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.testimonial-item span {
+    display: block;
+    color: var(--secondary-accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-accent);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+}
+
+.form-group select option {
+    background: var(--bg-color);
+    /* Fix dropdown bg color */
+    color: #fff;
+}
+
+.btn-block {
+    width: 100%;
+    display: block;
+    text-align: center;
 }
 
 /* Responsive */

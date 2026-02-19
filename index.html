@@ -56,39 +56,41 @@
             </div>
         </section>
 
-        <section id="services" class="section snap-section">
-            <div class="container glass-card">
+        <!-- Services Intro Page -->
+        <section id="services-intro" class="section snap-section">
+            <div class="container glass-card center-content">
                 <h2>Stop Losing Customers to Buggy Software.</h2>
-                <p class="section-desc">I build systems that save you time and make you money. Reliability is my code.
-                </p>
+                <p class="section-desc big-desc">I build systems that save you time and make you money. Reliability is
+                    my code.</p>
+                <a href="#contact" class="btn btn-primary btn-large">Start Your Project</a>
+            </div>
+        </section>
 
+        <!-- Services Grid Page -->
+        <section id="services-list" class="section snap-section">
+            <div class="container glass-card">
+                <h2>My Expertise</h2>
                 <div class="services-grid">
                     <div class="service-card">
                         <i class="fas fa-bug service-icon"></i>
                         <h3>Quality Assurance</h3>
-                        <p>Eliminate bugs before your users find them. Expert in manual and automated testing to ensure
-                            rock-solid stability.</p>
+                        <p>Eliminate bugs before your users find them. Expert in manual and automated testing.</p>
                     </div>
                     <div class="service-card">
                         <i class="fas fa-code service-icon"></i>
-                        <h3>Web & App Development</h3>
-                        <p>Custom-built applications (PHP, JS, SQL) tailored to streamline your specific business
-                            operations.</p>
+                        <h3>Web & App Dev</h3>
+                        <p>Custom-built applications (PHP, JS, SQL) tailored to streamline your business.</p>
                     </div>
                     <div class="service-card">
                         <i class="fas fa-chart-line service-icon"></i>
                         <h3>Data Analytics</h3>
-                        <p>Turn raw data into actionable insights using Python and SQL to make smarter business
-                            decisions.</p>
+                        <p>Turn raw data into actionable insights using Python and SQL.</p>
                     </div>
                     <div class="service-card">
                         <i class="fas fa-pen-nib service-icon"></i>
                         <h3>Copywriting</h3>
-                        <p>Persuasive technical writing and sales copy that converts visitors into loyal buyers.</p>
+                        <p>Persuasive technical writing and sales copy that converts visitors into buyers.</p>
                     </div>
-                </div>
-                <div class="cta-container" style="text-align: center; margin-top: 3rem;">
-                    <a href="#contact" class="btn btn-primary">Start Your Project</a>
                 </div>
             </div>
         </section>
@@ -101,8 +103,24 @@
                         <h3>Kasirin Point of Sale</h3>
                         <p class="project-tagline">Streamlining Retail Operations</p>
                         <p>A robust cashier application designed to simplify sales transactions, manage inventory in
-                            real-time, and generate instant sales reports. Built for speed and reliability in fast-paced
-                            retail environments.</p>
+                            real-time, and generate instant sales reports.</p>
+
+                        <!-- Testimonials for Kasirin -->
+                        <div class="testimonials">
+                            <div class="testimonial-item">
+                                <p>"Omset naik 30% sejak pakai Kasirin. Laporannya rapi banget."</p>
+                                <span>- Budi Santoso, Owner Kopi Senja</span>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Stok barang jadi gampang dicek, gak pusing lagi kalau belanja."</p>
+                                <span>- Siti Aminah, Toko Berkah</span>
+                            </div>
+                            <div class="testimonial-item">
+                                <p>"Sistemnya stabil, gak pernah error pas lagi ramai pembeli."</p>
+                                <span>- Rizky Pratama, Distro Keren</span>
+                            </div>
+                        </div>
+
                         <div class="tech-stack">
                             <span class="badge">PHP</span>
                             <span class="badge">JavaScript</span>
@@ -119,7 +137,8 @@
             </div>
         </section>
 
-        <section id="experience" class="section snap-section">
+        <!-- Experience Recent -->
+        <section id="experience-recent" class="section snap-section">
             <div class="container glass-card">
                 <h2>Proven Track Record</h2>
                 <div class="timeline">
@@ -144,7 +163,15 @@
                                 guidelines.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Experience Early/Game Testing -->
+        <section id="experience-early" class="section snap-section">
+            <div class="container glass-card">
+                <h2>Game Testing & QA</h2>
+                <div class="timeline">
                     <!-- Edge Of Chaos -->
                     <div class="timeline-item">
                         <div class="timeline-date">03/2024</div>
@@ -152,7 +179,7 @@
                             <h3>Volunteer Game Tester</h3>
                             <h4>Edge Of Chaos (HyperScale Alpha)</h4>
                             <p>Tested new gameplay features for a Web3 MMO. Provided feedback on AI integrations and
-                                supported community growth for early adopters.</p>
+                                community growth.</p>
                         </div>
                     </div>
 
@@ -163,7 +190,7 @@
                             <h3>Beta Tester</h3>
                             <h4>Rematch (Online Multiplayer Football)</h4>
                             <p>Tested 5v5 multiplayer logic and gameplay mechanics. Identified bugs in fast-paced
-                                competitive matches to improve game balance.</p>
+                                competitive matches.</p>
                         </div>
                     </div>
 
@@ -173,8 +200,8 @@
                         <div class="timeline-content">
                             <h3>Game Quality Assurance</h3>
                             <h4>Lionbridge Games Studios</h4>
-                            <p>Identified critical bugs and improved UX for "Gems of War", directly impacting player
-                                retention.</p>
+                            <p>Identified critical bugs and improved UX for "Gems of War", impacting player retention.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -184,12 +211,35 @@
         <section id="contact" class="section snap-section contact-section">
             <div class="container contact-container glass-card">
                 <h2>Let's Build Something Great</h2>
-                <p>Ready to upgrade your business IT? Let's discuss your project.</p>
+                <p>Ready to upgrade your business IT? Send me a message.</p>
+
+                <form action="https://formspree.io/f/xwvnqjjl" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="service" required>
+                            <option value="" disabled selected>Service Needed</option>
+                            <option value="QA Testing">Quality Assurance Testing</option>
+                            <option value="App Development">Web/App Development</option>
+                            <option value="Data Analytics">Data Analytics</option>
+                            <option value="Copywriting">Copywriting</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="Tell me about your project..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                </form>
+
                 <div class="contact-box">
-                    <a href="mailto:gfenderio@gmail.com" class="contact-btn"><i class="fas fa-paper-plane"></i>
-                        gfenderio@gmail.com</a>
-                    <a href="https://linkedin.com/in/gilangfenderio" class="contact-btn"><i class="fab fa-linkedin"></i>
-                        Connect on LinkedIn</a>
+                    <a href="https://linkedin.com/in/gilangfenderio" class="contact-link"><i
+                            class="fab fa-linkedin"></i> Connect on LinkedIn</a>
                 </div>
                 <footer>
                     <p>&copy; 2025 Gilang Fenderio Yusuf. delivering excellence.</p>
