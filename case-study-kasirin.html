@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Case Study: Kasirin - Gilang Fenderio Yusuf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cs-hero {
+            padding-top: 120px;
+            text-align: center;
+        }
+
+        .cs-section {
+            padding: 4rem 1rem;
+        }
+
+        .cs-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            color: var(--secondary-accent);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .cs-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-grid"></div>
+    <div class="background-globes">
+        <div class="globe-wrapper w1">
+            <div class="globe globe-1"></div>
+        </div>
+        <div class="globe-wrapper w2">
+            <div class="globe globe-2"></div>
+        </div>
+    </div>
+
+    <nav class="glass-nav">
+        <div class="logo">GFY<span class="dot">.</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="cs.nav.home"><i class="fas fa-arrow-left"></i> Back to Home</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="cs-section cs-hero">
+            <div class="container glass-card cs-container">
+                <div class="badge-pill">Case Study</div>
+                <h1 data-i18n="cs.hero.title">Kasirin: From "Gaptek" to Tech-Savvy</h1>
+                <p class="hero-subtitle" data-i18n="cs.hero.subtitle">How a simple Point of Sale system transformed
+                    local businesses.</p>
+                <div class="cs-image">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="cs-section">
+            <div class="container glass-card cs-container">
+                <h2 data-i18n="cs.challenge.title">The Challenge</h2>
+                <p class="section-desc" data-i18n="cs.challenge.desc">Small business owners like Ibu Siti were losing
+                    control of their inventory. Manual notebooks were messy, and they were terrified of complex
+                    technology.</p>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;">
+
+                <h2 data-i18n="cs.solution.title">The Solution</h2>
+                <p class="section-desc" data-i18n="cs.solution.desc">Kasirin was built with the "3-Click Rule". No
+                    complex menus. Just big buttons and clear workflows.</p>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;">
+
+                <h2 data-i18n="cs.result.title">The Results</h2>
+                <p class="section-desc" data-i18n="cs.result.desc">Ibu Siti mastered it in 5 minutes.</p>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <span class="metric-number" data-i18n="cs.result.metric1">30%</span>
+                        <span>Revenue Uplift</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number" data-i18n="cs.result.metric2">0</span>
+                        <span>Errors</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number" data-i18n="cs.result.metric3">100%</span>
+                        <span>Stress Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cs-section" style="text-align: center;">
+            <div class="container glass-card cs-container">
+                <h2 data-i18n="cs.cta.title">Need a User-Friendly Solution?</h2>
+                <a href="index.html#contact" class="btn btn-primary" data-i18n="cs.cta.btn">Contact Me Now</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Language Modal (Hidden by default) -->
+    <div id="lang-modal" class="lang-modal-overlay">
+        <div class="glass-card lang-modal">
+            <h2 data-i18n="modal.title">Choose Language / Pilih Bahasa</h2>
+            <div class="lang-options">
+                <button class="btn btn-primary" onclick="setLanguage('en')">English 🇬🇧</button>
+                <button class="btn btn-secondary" onclick="setLanguage('id')">Indonesia 🇮🇩</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
