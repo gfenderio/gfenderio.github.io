@@ -131,8 +131,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // Use Flex to center it, as defined in CSS
             modal.style.display = 'flex';
         }
-    } else {
         // If language saved, apply it immediately
         updateContent(savedLang);
     }
 });
+
+// Expose to global scope for the Navbar toggler
+window.showLangModal = function () {
+    const modal = document.getElementById('lang-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        modal.style.animation = 'none'; // Reset logic
+        setTimeout(() => modal.style.animation = 'slideUp 0.5s ease-out', 10);
+    }
+};
