@@ -1,36 +1,3 @@
-// Set progress bar widths based on data attribute
-document.addEventListener('DOMContentLoaded', () => {
-
-    // Typing Effect
-    const typingElement = document.querySelector('.typing-effect');
-    const textToType = "Full-Stack Developer | QA Specialist | Data Analyst"; // Updated Text
-
-    if (typingElement) {
-        typingElement.textContent = ''; // Clear initial text
-        let charIndex = 0;
-
-        function type() {
-            if (charIndex < textToType.length) {
-                typingElement.textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(type, 50); // Faster typing speed
-            } else {
-                typingElement.classList.add('finished'); // Optional: stop cursor blink
-                // Smooth scrolling for navigation links
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        const target = document.querySelector(targetId);
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                });
-            });
-
 // Parallax Effect
 const snapContainer = document.querySelector('.snap-container');
 
@@ -75,12 +42,45 @@ function type() {
 }
 
 // Start typing when page loads
-document.addEventListener('DOMContentLoaded', type);
+document.addEventListener('DOMContentLoaded', () => {
+    type();
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Check Language on Load
+    const savedLang = localStorage.getItem('preferredLang');
+    const modal = document.getElementById('lang-modal');
+
+    // If no language saved, show modal
+    if (!savedLang) {
+        if (modal) {
+            // Use Flex to center it, as defined in CSS
+            modal.style.display = 'flex';
+        }
+    } else {
+        // If language saved, apply it immediately
+        if (typeof updateContent === 'function') {
+            updateContent(savedLang);
+        }
+    }
+});
 
 
-// --- Language Support ---
+// --- Language Support (Global Functions) ---
 
-function setLanguage(lang) {
+window.setLanguage = function (lang) {
     console.log("Setting language to:", lang);
 
     // Save preference
@@ -93,10 +93,31 @@ function setLanguage(lang) {
     }
 
     // Apply translations
-    updateContent(lang);
+    if (typeof updateContent === 'function') {
+        updateContent(lang);
+    }
 }
 
+window.showLangModal = function () {
+    console.log("Showing Language Modal");
+    const modal = document.getElementById('lang-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        modal.style.animation = 'none'; // Reset logic
+        // Trigger reflow
+        void modal.offsetWidth;
+        modal.style.animation = 'slideUp 0.5s ease-out';
+    } else {
+        console.error("Language Modal ID 'lang-modal' not found!");
+    }
+};
+
 function updateContent(lang) {
+    if (typeof translations === 'undefined') {
+        console.error("Translations object not found!");
+        return;
+    }
+
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -119,29 +140,3 @@ function updateContent(lang) {
         }
     });
 }
-
-// Check on Load
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLang');
-    const modal = document.getElementById('lang-modal');
-
-    // If no language saved, show modal
-    if (!savedLang) {
-        if (modal) {
-            // Use Flex to center it, as defined in CSS
-            modal.style.display = 'flex';
-        }
-        // If language saved, apply it immediately
-        updateContent(savedLang);
-    }
-});
-
-// Expose to global scope for the Navbar toggler
-window.showLangModal = function () {
-    const modal = document.getElementById('lang-modal');
-    if (modal) {
-        modal.style.display = 'flex';
-        modal.style.animation = 'none'; // Reset logic
-        setTimeout(() => modal.style.animation = 'slideUp 0.5s ease-out', 10);
-    }
-};
