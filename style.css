@@ -687,4 +687,19 @@ footer {
         font-size: 2.5rem;
         /* Adjust hero size for mobile */
     }
+
+    /* Fix Typing Effect on Mobile */
+    .typing-effect {
+        white-space: normal;
+        /* Allow wrapping */
+        overflow: visible;
+        border-right: none;
+        /* Remove cursor */
+        animation: none;
+        /* Remove blinking animation */
+        font-size: 1.2rem;
+        /* Smaller font */
+        height: auto;
+        margin-bottom: 1rem;
+    }
 }
