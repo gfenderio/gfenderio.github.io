@@ -32,6 +32,12 @@ let charIndex = 0;
 
 function type() {
     if (!typingElement) return;
+
+    // Clear text ONLY on the very first character to avoid duplication
+    if (charIndex === 0) {
+        typingElement.textContent = '';
+    }
+
     if (charIndex < textToType.length) {
         typingElement.textContent += textToType.charAt(charIndex);
         charIndex++;
