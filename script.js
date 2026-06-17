@@ -132,22 +132,51 @@
 })();
 
 // ---------------------------------------------------------
-// Decorative contribution grids (GitHub fallback + GitLab)
+// Real GitHub contribution calendar (public API, no token)
+// Source: github-contributions-api.jogruber.de (CORS enabled)
 // ---------------------------------------------------------
 (function () {
     "use strict";
-    var shades = ["#ebedf0", "#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
-    document.querySelectorAll(".contrib-grid").forEach(function (grid) {
-        var n = parseInt(grid.getAttribute("data-cells"), 10) || 156;
+    var cal = document.getElementById("gh-cal");
+    if (!cal) return;
+    var totalEl = document.getElementById("gh-total");
+    var shades = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
+
+    function cell(level) {
+        var s = document.createElement("span");
+        s.style.background = shades[level] || shades[0];
+        return s;
+    }
+
+    function fill(levels) {
         var frag = document.createDocumentFragment();
-        for (var i = 0; i < n; i++) {
-            var s = document.createElement("span");
-            // weighted toward empty/low for a realistic look
-            var r = Math.random();
-            var lvl = r > 0.82 ? 5 : r > 0.68 ? 4 : r > 0.5 ? 3 : r > 0.34 ? 2 : 0;
-            s.style.background = shades[lvl];
-            frag.appendChild(s);
-        }
-        grid.appendChild(frag);
-    });
+        levels.forEach(function (lvl) { frag.appendChild(cell(lvl)); });
+        cal.innerHTML = "";
+        cal.appendChild(frag);
+    }
+
+    function setTotal(n) {
+        if (!totalEl || n == null) return;
+        var id = document.documentElement.lang === "id";
+        totalEl.textContent = id
+            ? n + " kontribusi dalam setahun terakhir"
+            : n + " contributions in the last year";
+    }
+
+    fetch("https://github-contributions-api.jogruber.de/v4/gfenderio?y=last")
+        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .then(function (d) {
+            var c = d.contributions || [];
+            fill(c.map(function (x) { return x.level; }));
+            setTotal(d.total ? d.total.lastYear : null);
+        })
+        .catch(function () {
+            // Soft fallback so the panel never looks broken offline
+            var list = [];
+            for (var i = 0; i < 371; i++) {
+                var r = Math.random();
+                list.push(r > 0.85 ? 4 : r > 0.7 ? 3 : r > 0.52 ? 2 : r > 0.36 ? 1 : 0);
+            }
+            fill(list);
+        });
 })();

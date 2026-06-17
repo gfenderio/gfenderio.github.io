@@ -42,9 +42,11 @@ const translations = {
         "about.edu_degree": "B.Tech, Management Information Systems · 2023–2027",
 
         "act.title": "Code &amp; activity.",
-        "act.intro": "I build in the open. Most of my projects live on GitHub; client and internal work lives on GitLab.",
-        "act.github": "View GitHub",
-        "act.gitlab": "View GitLab",
+        "act.intro": "A live look at my GitHub activity. Public work lives there; client and internal projects live on GitLab (private).",
+        "act.cal": "GitHub contributions",
+        "act.less": "Less",
+        "act.more": "More",
+        "act.gl_handle": "@gfenderio · private",
 
         "exp.title": "Experience.",
         "exp.present": "Present",
@@ -107,9 +109,11 @@ const translations = {
         "about.edu_degree": "S.Tr Sistem Informasi Manajemen · 2023–2027",
 
         "act.title": "Kode &amp; aktivitas.",
-        "act.intro": "Saya terbiasa membangun secara terbuka. Sebagian besar proyek saya ada di GitHub; pekerjaan klien dan internal ada di GitLab.",
-        "act.github": "Buka GitHub",
-        "act.gitlab": "Buka GitLab",
+        "act.intro": "Cuplikan langsung aktivitas GitHub saya. Karya publik ada di sana; proyek klien dan internal ada di GitLab (private).",
+        "act.cal": "Kontribusi GitHub",
+        "act.less": "Sedikit",
+        "act.more": "Banyak",
+        "act.gl_handle": "@gfenderio · private",
 
         "exp.title": "Pengalaman.",
         "exp.present": "Sekarang",
