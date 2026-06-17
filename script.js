@@ -70,3 +70,84 @@
         targets.forEach(function (el) { el.classList.add("in"); });
     }
 })();
+
+// ---------------------------------------------------------
+// Screenshot lightbox (project galleries)
+// ---------------------------------------------------------
+(function () {
+    "use strict";
+
+    var triggers = document.querySelectorAll(".project-visual[data-shots]");
+    if (!triggers.length) return;
+
+    // Build the overlay once
+    var box = document.createElement("div");
+    box.className = "lightbox";
+    box.innerHTML =
+        '<div class="lightbox-backdrop" data-close></div>' +
+        '<div class="lightbox-inner" role="dialog" aria-modal="true">' +
+        '<button class="lightbox-close" type="button" aria-label="Close" data-close>&times;</button>' +
+        '<p class="lightbox-title"></p>' +
+        '<div class="lightbox-shots"></div>' +
+        '</div>';
+    document.body.appendChild(box);
+
+    var titleEl = box.querySelector(".lightbox-title");
+    var shotsEl = box.querySelector(".lightbox-shots");
+
+    function open(name, shots, portrait) {
+        titleEl.textContent = name;
+        box.classList.toggle("is-portrait", !!portrait);
+        shotsEl.innerHTML = "";
+        shots.forEach(function (src) {
+            var img = document.createElement("img");
+            img.src = src.trim();
+            img.alt = name + " screenshot";
+            img.loading = "lazy";
+            shotsEl.appendChild(img);
+        });
+        box.classList.add("open");
+        document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+        box.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
+    triggers.forEach(function (t) {
+        t.addEventListener("click", function () {
+            var shots = (t.getAttribute("data-shots") || "").split(",").filter(Boolean);
+            if (!shots.length) return;
+            open(t.getAttribute("data-name") || "", shots, t.hasAttribute("data-portrait"));
+        });
+    });
+
+    box.addEventListener("click", function (e) {
+        if (e.target.hasAttribute("data-close")) close();
+    });
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && box.classList.contains("open")) close();
+    });
+})();
+
+// ---------------------------------------------------------
+// Decorative contribution grids (GitHub fallback + GitLab)
+// ---------------------------------------------------------
+(function () {
+    "use strict";
+    var shades = ["#ebedf0", "#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
+    document.querySelectorAll(".contrib-grid").forEach(function (grid) {
+        var n = parseInt(grid.getAttribute("data-cells"), 10) || 156;
+        var frag = document.createDocumentFragment();
+        for (var i = 0; i < n; i++) {
+            var s = document.createElement("span");
+            // weighted toward empty/low for a realistic look
+            var r = Math.random();
+            var lvl = r > 0.82 ? 5 : r > 0.68 ? 4 : r > 0.5 ? 3 : r > 0.34 ? 2 : 0;
+            s.style.background = shades[lvl];
+            frag.appendChild(s);
+        }
+        grid.appendChild(frag);
+    });
+})();

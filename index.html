@@ -42,16 +42,14 @@
 
         <!-- Hero -->
         <section class="hero">
-            <p class="eyebrow">
-                <span class="status-dot"></span>
-                <span data-i18n="hero.status">Automation Engineer @ Kyou · open to remote · Indonesia</span>
+            <p class="eyebrow" data-i18n="hero.status">Operations Automation Engineer @ Kyou — open to remote — Indonesia
             </p>
             <h1 class="hero-title" data-i18n="hero.title">I automate business operations,<br>and build the apps that
                 run them.</h1>
             <p class="hero-lead" data-i18n="hero.lead">
                 I&rsquo;m Gilang, an Operations Automation Engineer at Kyou. I take messy warehouse, logistics, and
-                e-commerce workflows and rebuild them as automated systems — and outside work I design and ship my own
-                products, like <a href="https://stzn-green.vercel.app/" target="_blank" rel="noopener">STZN</a>.
+                e-commerce workflows and rebuild them as automated systems. Building software is also the thing I do for
+                the love of it — I take on freelance work and ship my own products on the side.
             </p>
             <div class="hero-actions">
                 <a href="#work" class="btn btn-primary" data-i18n="hero.cta_work">See my work</a>
@@ -60,7 +58,7 @@
             <ul class="hero-socials">
                 <li><a href="https://linkedin.com/in/gilangfenderio" target="_blank" rel="noopener">LinkedIn ↗</a></li>
                 <li><a href="https://github.com/gfenderio" target="_blank" rel="noopener">GitHub ↗</a></li>
-                <li><a href="mailto:gfenderio@gmail.com">Email ↗</a></li>
+                <li><a href="mailto:gilang@fenderio.com">Email ↗</a></li>
             </ul>
         </section>
 
@@ -68,12 +66,14 @@
         <section id="work" class="section">
             <div class="section-head">
                 <span class="section-no">01</span>
-                <h2 class="section-title" data-i18n="work.title">Things I&rsquo;ve built.</h2>
+                <h2 class="section-title" data-i18n="work.title">What I can build.</h2>
             </div>
+            <p class="section-intro" data-i18n="work.intro">A few things I&rsquo;ve designed and shipped — and a sense of
+                what I can build for you.</p>
 
             <div class="projects">
 
-                <!-- STZN — landscape / live -->
+                <!-- STZN — landscape / live concept -->
                 <article class="project landscape">
                     <a class="project-visual" href="https://stzn-green.vercel.app/" target="_blank" rel="noopener"
                         aria-label="Open STZN live site">
@@ -84,12 +84,12 @@
                     <div class="project-body">
                         <div class="project-meta">
                             <span class="project-name">STZN</span>
-                            <span class="project-tag live" data-i18n="work.live_tag">Live</span>
+                            <span class="project-tag live" data-i18n="work.live_tag">Live demo</span>
                         </div>
                         <p class="project-desc" data-i18n="work.stzn.desc">
-                            Designed and shipped a drop-based streetwear storefront on Next.js. Sells in limited
-                            seasonal drops rather than open stock, with subscriber early access and a bilingual
-                            interface tuned for a slow, premium feel.
+                            A drop-based streetwear storefront I designed and built on Next.js — live today as a
+                            front-end concept. I can take it the rest of the way: a real checkout backed by a Midtrans
+                            payment gateway, including QRIS payments.
                         </p>
                         <ul class="project-stack">
                             <li>Next.js</li>
@@ -102,14 +102,14 @@
                     </div>
                 </article>
 
-                <!-- Kasirin — landscape -->
+                <!-- Kasirin — landscape, gallery -->
                 <article class="project landscape">
-                    <a class="project-visual" href="https://github.com/gfenderio/POS-Kasirin" target="_blank"
-                        rel="noopener" aria-label="Kasirin on GitHub">
-                        <img src="assets/kasirin-preview.jpg" alt="Kasirin POS dashboard"
-                            onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
-                        <span class="project-visual-fallback">Kasirin</span>
-                    </a>
+                    <button type="button" class="project-visual" data-name="Kasirin"
+                        data-shots="assets/kasirin-1.jpg,assets/kasirin-2.jpg,assets/kasirin-3.jpg"
+                        aria-label="View Kasirin screenshots">
+                        <img src="assets/kasirin-preview.jpg" alt="Kasirin POS terminal">
+                        <span class="visual-hint" data-i18n="work.gallery">View screenshots</span>
+                    </button>
                     <div class="project-body">
                         <div class="project-meta">
                             <span class="project-name">Kasirin</span>
@@ -127,19 +127,17 @@
                             <li>PostgreSQL</li>
                             <li>Brain.js</li>
                         </ul>
-                        <a href="https://github.com/gfenderio/POS-Kasirin" target="_blank" rel="noopener"
-                            class="link-arrow" data-i18n="work.code">View code</a>
                     </div>
                 </article>
 
-                <!-- Itungin — portrait mobile -->
+                <!-- Itungin — portrait mobile, gallery -->
                 <article class="project portrait">
-                    <a class="project-visual" href="https://github.com/gfenderio/ItungIn-Financial-Tracker"
-                        target="_blank" rel="noopener" aria-label="Itungin on GitHub">
-                        <img src="assets/itungin-preview.jpg" alt="Itungin finance app"
-                            onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
-                        <span class="project-visual-fallback">Itungin</span>
-                    </a>
+                    <button type="button" class="project-visual" data-name="Itungin" data-portrait="1"
+                        data-shots="assets/itungin-1.jpg,assets/itungin-2.jpg,assets/itungin-3.jpg"
+                        aria-label="View Itungin screenshots">
+                        <img src="assets/itungin-preview.jpg" alt="Itungin finance app">
+                        <span class="visual-hint" data-i18n="work.gallery">View screenshots</span>
+                    </button>
                     <div class="project-body">
                         <div class="project-meta">
                             <span class="project-name">Itungin</span>
@@ -157,8 +155,6 @@
                             <li>Tailwind CSS</li>
                             <li>Capacitor</li>
                         </ul>
-                        <a href="https://github.com/gfenderio/ItungIn-Financial-Tracker" target="_blank" rel="noopener"
-                            class="link-arrow" data-i18n="work.code">View code</a>
                     </div>
                 </article>
 
@@ -181,8 +177,8 @@
                     <p data-i18n="about.p2">
                         Now I build that software. At Kyou I map warehouse, logistics, and e-commerce workflows and
                         rebuild them as automated systems, pairing AI engineering with solid fundamentals to cut manual
-                        work and human error. I ship full-stack products end to end — from the data model to the
-                        interface.
+                        work and human error. I ship full-stack products end to end, and I build the web by hand —
+                        clean, production-grade code, not throwaway output.
                     </p>
                     <p data-i18n="about.p3">
                         I&rsquo;m an Information Systems student who learns by shipping. The work is real and running in
@@ -216,10 +212,43 @@
             </div>
         </section>
 
+        <!-- Activity -->
+        <section id="activity" class="section">
+            <div class="section-head">
+                <span class="section-no">03</span>
+                <h2 class="section-title" data-i18n="act.title">Code &amp; activity.</h2>
+            </div>
+            <p class="section-intro" data-i18n="act.intro">I build in the open. Most of my projects live on GitHub;
+                client and internal work lives on GitLab.</p>
+
+            <div class="activity-grid">
+                <a class="activity-card" href="https://github.com/gfenderio" target="_blank" rel="noopener">
+                    <div class="activity-head">
+                        <span class="activity-name">GitHub</span>
+                        <span class="activity-handle">@gfenderio</span>
+                    </div>
+                    <div class="contrib-wrap contrib-fallback">
+                        <div class="contrib-grid" data-cells="180"></div>
+                    </div>
+                    <span class="link-arrow" data-i18n="act.github">View GitHub</span>
+                </a>
+                <a class="activity-card" href="https://gitlab.com/gfenderio" target="_blank" rel="noopener">
+                    <div class="activity-head">
+                        <span class="activity-name">GitLab</span>
+                        <span class="activity-handle">@gfenderio</span>
+                    </div>
+                    <div class="contrib-wrap contrib-fallback">
+                        <div class="contrib-grid" data-cells="180"></div>
+                    </div>
+                    <span class="link-arrow" data-i18n="act.gitlab">View GitLab</span>
+                </a>
+            </div>
+        </section>
+
         <!-- Experience -->
         <section id="experience" class="section">
             <div class="section-head">
-                <span class="section-no">03</span>
+                <span class="section-no">04</span>
                 <h2 class="section-title" data-i18n="exp.title">Experience.</h2>
             </div>
             <ol class="timeline">
@@ -230,8 +259,8 @@
                         <p class="tl-org"><a href="https://kyou.id" target="_blank" rel="noopener">Kyou</a></p>
                         <p class="tl-desc" data-i18n="exp.kyou.desc">Map and automate warehouse, logistics, and
                             e-commerce workflows, integrating AI tooling and modern frameworks to remove manual
-                            bottlenecks. Shipped Machitan, an internal Android app that runs on the warehouse team&rsquo;s
-                            rugged PDA handhelds.</p>
+                            bottlenecks. Built an internal app the operations team now uses every day — it replaced a
+                            heavily manual process and made their work noticeably faster and more accurate.</p>
                     </div>
                 </li>
                 <li class="tl-item">
@@ -248,12 +277,13 @@
                 <li class="tl-item">
                     <span class="tl-date">2025 — 2026</span>
                     <div class="tl-body">
-                        <h3 data-i18n="exp.informa.role">Sales Executive &amp; Assistant Product Specialist</h3>
+                        <h3 data-i18n="exp.informa.role">Assistant Product Specialist</h3>
                         <p class="tl-org"><a href="https://www.informa.co.id" target="_blank" rel="noopener">Informa
                                 Furnishing</a></p>
-                        <p class="tl-desc" data-i18n="exp.informa.desc">Hit 100% of sales targets within the first three
-                            months and was promoted to oversee department-level operations — pricing accuracy, campaign
-                            alignment, inventory workflows, and visual merchandising.</p>
+                        <p class="tl-desc" data-i18n="exp.informa.desc">Oversaw department-level operations — pricing
+                            accuracy, campaign alignment, inventory workflows, and visual merchandising — and hit 100%
+                            of sales targets in the first three months through strong product knowledge and customer
+                            service.</p>
                     </div>
                 </li>
                 <li class="tl-item">
@@ -271,8 +301,8 @@
                     <span class="tl-date">2023 — 2024</span>
                     <div class="tl-body">
                         <h3 data-i18n="exp.foodhall.role">Staff — Operations &amp; Reporting</h3>
-                        <p class="tl-org"><a href="https://thefoodhall.com" target="_blank" rel="noopener">The
-                                Foodhall</a></p>
+                        <p class="tl-org"><a href="https://www.mapclub.com/shop/foodhall" target="_blank"
+                                rel="noopener">The Foodhall</a></p>
                         <p class="tl-desc" data-i18n="exp.foodhall.desc">Built operational reports with advanced Excel
                             (pivot tables, complex formulas) and tracked sales, returns, and inventory in SAP to support
                             store decisions.</p>
@@ -281,12 +311,12 @@
                 <li class="tl-item">
                     <span class="tl-date">2019 — 2022</span>
                     <div class="tl-body">
-                        <h3 data-i18n="exp.indomaret.role">Junior Store Leader → Store Clerk</h3>
+                        <h3 data-i18n="exp.indomaret.role">Junior Store Leader</h3>
                         <p class="tl-org"><a href="https://www.indomaret.co.id" target="_blank"
                                 rel="noopener">Indomaret Group</a></p>
-                        <p class="tl-desc" data-i18n="exp.indomaret.desc">Ran daily store operations, supervised staff,
-                            handled high-volume POS transactions, and consistently beat promotional targets over 3+
-                            years.</p>
+                        <p class="tl-desc" data-i18n="exp.indomaret.desc">Led daily store operations and the team, and
+                            hit sales targets on several occasions through strong product display and attentive
+                            customer service.</p>
                     </div>
                 </li>
             </ol>
@@ -295,7 +325,7 @@
         <!-- Contact -->
         <section id="contact" class="section">
             <div class="section-head">
-                <span class="section-no">04</span>
+                <span class="section-no">05</span>
                 <h2 class="section-title" data-i18n="contact.title">Let&rsquo;s talk.</h2>
             </div>
             <p class="contact-lead" data-i18n="contact.lead">
@@ -314,7 +344,7 @@
             </form>
 
             <div class="contact-direct">
-                <a href="mailto:gfenderio@gmail.com">gfenderio@gmail.com</a>
+                <a href="mailto:gilang@fenderio.com">gilang@fenderio.com</a>
                 <a href="https://linkedin.com/in/gilangfenderio" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="https://github.com/gfenderio" target="_blank" rel="noopener">GitHub</a>
             </div>

@@ -725,3 +725,214 @@ a:hover {
         scroll-behavior: auto;
     }
 }
+
+/* ---------- Section intro ---------- */
+.section-intro {
+    margin-top: -1.6rem;
+    margin-bottom: 2.6rem;
+    max-width: 62ch;
+    font-size: 15px;
+    color: var(--mute);
+}
+
+/* ---------- Project visual as gallery button ---------- */
+button.project-visual {
+    -webkit-appearance: none;
+    appearance: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+}
+
+.project.landscape button.project-visual {
+    padding: 0;
+}
+
+.visual-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%) translateY(6px);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: rgba(23, 21, 15, 0.85);
+    color: #fff;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+}
+
+.project-visual:hover .visual-hint,
+.project-visual:focus-visible .visual-hint {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 12, 12, 0.84);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.lightbox-inner {
+    position: relative;
+    margin: auto;
+    max-width: min(1100px, 92vw);
+    max-height: 94vh;
+    padding: 3rem 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    overflow: auto;
+}
+
+.lightbox-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    text-align: center;
+}
+
+.lightbox-shots {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.lightbox-shots img {
+    max-height: 74vh;
+    max-width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 12px 44px rgba(0, 0, 0, 0.45);
+    background: #fff;
+}
+
+.lightbox.is-portrait .lightbox-shots img {
+    max-height: 80vh;
+    width: auto;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Activity (GitHub / GitLab) ---------- */
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.activity-card {
+    display: block;
+    background: var(--canvas);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    box-shadow: var(--shadow-2);
+    padding: 1.3rem;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.activity-card:hover {
+    box-shadow: var(--shadow-4);
+    transform: translateY(-3px);
+}
+
+.activity-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.activity-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+.activity-handle {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--mute);
+}
+
+.contrib-wrap {
+    margin-bottom: 1rem;
+}
+
+.contrib-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.contrib-wrap .contrib-grid {
+    display: none;
+}
+
+.contrib-wrap.contrib-fallback .contrib-img {
+    display: none;
+}
+
+.contrib-wrap.contrib-fallback .contrib-grid {
+    display: grid;
+}
+
+.contrib-grid {
+    grid-template-columns: repeat(26, 1fr);
+    gap: 3px;
+}
+
+.contrib-grid span {
+    aspect-ratio: 1 / 1;
+    border-radius: 2px;
+    background: #ebedf0;
+}
+
+@media (max-width: 760px) {
+    .activity-grid {
+        grid-template-columns: 1fr;
+    }
+}
