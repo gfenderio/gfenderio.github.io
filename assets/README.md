@@ -1,11 +1,10 @@
 # assets
 
-Put images here.
+Project preview images used on the portfolio (optimized JPG, ~1200px wide):
 
-## Needed now
+- `stzn-preview.jpg` — STZN homepage hero (stzn-green.vercel.app)
+- `kasirin-preview.jpg` — Kasirin POS dashboard
+- `itungin-preview.jpg` — Itungin finance dashboard
 
-- **`stzn-preview.jpg`** — a screenshot of the STZN site (https://stzn-green.vercel.app/).
-  Recommended: ~1200×900px, landscape, JPG or WebP, under ~300 KB.
-  Until you add it, the project card shows a clean "STZN" placeholder automatically.
-
-Tip: take a clean full-bleed screenshot of the STZN homepage hero, crop to 4:3.
+To refresh one, screenshot the app at ~1280px wide and re-export as JPG
+(quality ~82, progressive) keeping the same filename.
