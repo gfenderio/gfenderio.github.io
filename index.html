@@ -4,308 +4,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no"> <!-- Disable auto-phone linking -->
-    <title>Gilang Fenderio Yusuf | IT Solutions Architect</title>
+    <meta name="format-detection" content="telephone=no">
+
+    <title>Gilang Fenderio — Operations Automation Engineer</title>
+    <meta name="description"
+        content="Gilang Fenderio — Operations Automation Engineer at Kyou. I map messy business workflows and rebuild them with AI-assisted automation, and ship my own products: STZN, Kasirin, Itungin.">
+    <meta name="author" content="Gilang Fenderio Yusuf">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fenderio.com/">
+    <meta property="og:title" content="Gilang Fenderio — Operations Automation Engineer">
+    <meta property="og:description"
+        content="I automate business operations and build the apps that run them. Creator of STZN, Kasirin, and Itungin.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&family=Geist:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
-    <div class="background-grid"></div>
-    <div class="background-globes">
-        <div class="globe-wrapper w1">
-            <div class="globe globe-1"></div>
-        </div>
-        <div class="globe-wrapper w2">
-            <div class="globe globe-2"></div>
-        </div>
-    </div>
+    <header class="nav">
+        <a href="#top" class="brand">Gilang Fenderio<span class="brand-dot">.</span></a>
+        <nav class="nav-links">
+            <a href="#work" data-i18n="nav.work">Work</a>
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="#experience" data-i18n="nav.experience">Experience</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+            <button class="lang-btn" id="lang-btn" type="button" aria-label="Toggle language">EN / ID</button>
+        </nav>
+    </header>
 
-    <nav class="glass-nav">
-        <div class="logo">GFY<span class="dot">.</span></div>
-        <ul class="nav-links">
-            <li><a href="#services" data-i18n="nav.services">Services</a></li>
-            <li><a href="#work" data-i18n="nav.work">Work</a></li>
-            <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
-            <li><a href="#contact" class="btn-nav" data-i18n="nav.contact">Hire Me</a></li>
-            <li class="lang-toggle" onclick="showLangModal()" style="cursor: pointer; margin-left: 1rem;"><i
-                    class="fas fa-globe"></i></li>
-        </ul>
-    </nav>
+    <main id="top">
 
-    <!-- Scroll Snap Container -->
-    <main class="snap-container">
+        <!-- Hero -->
+        <section class="hero">
+            <p class="eyebrow">
+                <span class="status-dot"></span>
+                <span data-i18n="hero.status">Automation Engineer @ Kyou · open to remote · Indonesia</span>
+            </p>
+            <h1 class="hero-title" data-i18n="hero.title">I automate business operations,<br>and build the apps that
+                run them.</h1>
+            <p class="hero-lead" data-i18n="hero.lead">
+                I&rsquo;m Gilang — an Operations Automation Engineer at Kyou. I map messy warehouse, logistics, and
+                e-commerce workflows and rebuild them with AI-assisted automation. On the side I ship my own products,
+                including <a href="https://stzn-green.vercel.app/" target="_blank" rel="noopener">STZN</a>.
+            </p>
+            <div class="hero-actions">
+                <a href="#work" class="btn btn-primary" data-i18n="hero.cta_work">See my work</a>
+                <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta_contact">Get in touch</a>
+            </div>
+            <ul class="hero-socials">
+                <li><a href="https://linkedin.com/in/gilangfenderio" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+                <li><a href="https://github.com/gfenderio" target="_blank" rel="noopener">GitHub ↗</a></li>
+                <li><a href="mailto:gfenderio@gmail.com">Email ↗</a></li>
+            </ul>
+        </section>
 
-        <section id="hero" class="section hero snap-section">
-            <div class="hero-content">
-                <div class="badge-pill" data-i18n="hero.badge">Available for Freelance & Contracts</div>
-                <h1 data-i18n="hero.title">Empowering Businesses with <br><span class="highlight">Intelligent IT
-                        Solutions</span></h1>
-                <!-- Removed data-i18n to prevent conflict with typing script -->
-                <h2 class="typing-effect">Full-Stack Developer | QA Specialist | Data Analyst</h2>
-                <p class="hero-subtitle" data-i18n="hero.subtitle">I turn complex problems into scalable, user-friendly
-                    software that drives
-                    growth.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_primary">Get a Free Consultation</a>
-                    <a href="#services" class="btn btn-secondary" data-i18n="hero.cta_secondary">Explore Services</a>
-                </div>
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/gilangfenderio" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:gfenderio@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
+        <!-- Work -->
+        <section id="work" class="section">
+            <div class="section-head">
+                <span class="section-no">01</span>
+                <h2 class="section-title" data-i18n="work.title">Things I&rsquo;ve built.</h2>
+            </div>
+
+            <div class="project-grid">
+
+                <!-- STZN — featured / live -->
+                <article class="project is-featured">
+                    <a class="project-visual" href="https://stzn-green.vercel.app/" target="_blank" rel="noopener"
+                        aria-label="Open STZN live site">
+                        <img src="assets/stzn-preview.jpg" alt="STZN streetwear store"
+                            onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
+                        <span class="project-visual-fallback">STZN
+                            <small>add a screenshot at assets/stzn-preview.jpg</small></span>
+                    </a>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name">STZN</span>
+                            <span class="project-tag live" data-i18n="work.live_tag">Live</span>
+                        </div>
+                        <p class="project-desc" data-i18n="work.stzn.desc">
+                            A drop-based streetwear brand and storefront — designed and built from scratch on Next.js.
+                            Limited seasonal &ldquo;drops&rdquo; instead of endless stock, early access for
+                            subscribers, and a clean bilingual interface with a deliberately slow, premium feel.
+                        </p>
+                        <ul class="project-stack">
+                            <li>Next.js</li>
+                            <li>React</li>
+                            <li>Vercel</li>
+                            <li>UI / UX</li>
+                        </ul>
+                        <a href="https://stzn-green.vercel.app/" target="_blank" rel="noopener"
+                            class="link-arrow" data-i18n="work.stzn.live">Visit live site</a>
+                    </div>
+                </article>
+
+                <!-- Kasirin -->
+                <article class="project">
+                    <div class="project-visual no-img">
+                        <span class="project-visual-fallback">Kasirin</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name">Kasirin</span>
+                            <span class="project-tag wip" data-i18n="work.wip_tag">In progress</span>
+                        </div>
+                        <p class="project-desc" data-i18n="work.kasirin.desc">
+                            A point-of-sale system to streamline retail transactions — built straight from my years
+                            running stores. Sales, inventory, and reporting in one place, designed to be learned in
+                            minutes.
+                        </p>
+                        <ul class="project-stack">
+                            <li>PHP</li>
+                            <li>JavaScript</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Itungin -->
+                <article class="project">
+                    <div class="project-visual no-img">
+                        <span class="project-visual-fallback">Itungin</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name">Itungin</span>
+                            <span class="project-tag wip" data-i18n="work.wip_tag">In progress</span>
+                        </div>
+                        <p class="project-desc" data-i18n="work.itungin.desc">
+                            A financial tracking tool for accurate budgeting and expense management — focused on clear
+                            numbers and calculations you can actually trust.
+                        </p>
+                        <ul class="project-stack">
+                            <li>JavaScript</li>
+                            <li>SQL</li>
+                            <li data-i18n="work.itungin.stack">AI-assisted</li>
+                        </ul>
+                    </div>
+                </article>
+
             </div>
         </section>
 
-        <!-- Services Section (Merged) -->
-        <section id="services" class="section snap-section">
-            <div class="container glass-card">
-                <div class="services-header">
-                    <h2 data-i18n="services.header">Stop Losing Customers to Buggy Software.</h2>
-                    <p class="section-desc compact-desc" data-i18n="services.desc">I build systems that save you time
-                        and make you money.</p>
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="section-head">
+                <span class="section-no">02</span>
+                <h2 class="section-title" data-i18n="about.title">About.</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p data-i18n="about.p1">
+                        I spent years leading store and department operations in retail — hitting sales targets,
+                        keeping inventory and pricing accurate, and training teams. That taught me exactly where a
+                        business loses time, and where software actually helps instead of getting in the way.
+                    </p>
+                    <p data-i18n="about.p2">
+                        Now at Kyou I do that for a living: mapping warehouse, logistics, and e-commerce workflows and
+                        rebuilding them with AI-assisted automation to cut manual bottlenecks and human error. I&rsquo;m
+                        a proud &ldquo;vibe coder&rdquo; — I lean on AI dev tools to prototype fast, structure backend
+                        logic, and ship working products.
+                    </p>
+                    <p data-i18n="about.p3">
+                        I&rsquo;m honest about where I am: an Information Systems student still early in the craft, but
+                        with real things shipped and an operator&rsquo;s sense of what matters. If that mix is useful to
+                        you — for a role, a project, or remote work — let&rsquo;s talk.
+                    </p>
                 </div>
+                <aside class="about-side">
+                    <h3 data-i18n="about.skills_title">What I work with</h3>
+                    <ul class="kv-list">
+                        <li data-i18n="about.skill_auto">Process automation</li>
+                        <li data-i18n="about.skill_ai">AI-assisted development</li>
+                        <li data-i18n="about.skill_bpi">Business process improvement</li>
+                        <li>JavaScript · PHP · SQL</li>
+                        <li>Next.js · React</li>
+                        <li data-i18n="about.skill_qa">QA &amp; testing</li>
+                        <li>Excel · SAP</li>
+                        <li data-i18n="about.skill_copy">Copywriting (EN / ID)</li>
+                    </ul>
 
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-bug service-icon"></i>
-                        <h3 data-i18n="services.qa.title">Quality Assurance</h3>
-                        <p data-i18n="services.qa.desc">Eliminate bugs before your users find them.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-code service-icon"></i>
-                        <h3 data-i18n="services.dev.title">Web & App Dev</h3>
-                        <p data-i18n="services.dev.desc">Custom applications tailored to your business.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-chart-line service-icon"></i>
-                        <h3 data-i18n="services.data.title">Data Analytics</h3>
-                        <p data-i18n="services.data.desc">Turn raw data into actionable insights.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-pen-nib service-icon"></i>
-                        <h3 data-i18n="services.copy.title">Copywriting</h3>
-                        <p data-i18n="services.copy.desc">Persuasive copy that converts visitors into buyers.</p>
-                    </div>
-                </div>
-                <div class="cta-container center-content" style="margin-top: 2rem;">
-                    <a href="#contact" class="btn btn-primary" data-i18n="services.cta">Start Your Project</a>
-                </div>
+                    <h3 data-i18n="about.edu_title">Education &amp; credentials</h3>
+                    <ul class="kv-list">
+                        <li>Universitas Terbuka
+                            <span class="sub" data-i18n="about.edu_degree">B.Tech, Management Information Systems · 2023–2027</span>
+                        </li>
+                        <li>EF SET English — C2 Proficient
+                            <span class="sub">Score 77/100</span>
+                        </li>
+                    </ul>
+                </aside>
             </div>
         </section>
 
-        <section id="work" class="section snap-section">
-            <div class="container glass-card">
-                <h2 data-i18n="work.header">Featured Solution</h2>
-                <div class="project-showcase">
-                    <div class="project-info">
-                        <h3 data-i18n="work.project.title">Kasirin Point of Sale</h3>
-                        <p class="project-tagline" data-i18n="work.project.tagline">Streamlining Retail Operations</p>
-                        <p data-i18n="work.project.desc">A robust cashier application designed to simplify sales
-                            transactions, manage inventory in
-                            real-time, and generate instant sales reports.</p>
-
-                        <div class="tech-stack">
-                            <span class="badge">PHP</span>
-                            <span class="badge">JavaScript</span>
-                            <span class="badge">MySQL</span>
-                        </div>
-                        <br>
-                        <a href="case-study-kasirin.html" class="btn btn-secondary" style="font-size: 0.8rem;"
-                            data-i18n="work.view_case_study">View Case Study</a>
-                    </div>
-                    <div class="project-visual">
-                        <!-- REPLACE THIS COMMENT WITH YOUR IMAGE LATER: 
-                             <img src="images/kasirin-screenshot.jpg" alt="Kasirin App" style="width:100%; border-radius:12px;"> 
-                        -->
-                        <div class="visual-placeholder"><i class="fas fa-cash-register"></i></div>
-                    </div>
-                </div>
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="section-head">
+                <span class="section-no">03</span>
+                <h2 class="section-title" data-i18n="exp.title">Experience.</h2>
             </div>
+            <ol class="timeline">
+                <li class="tl-item">
+                    <span class="tl-date">2026 — <span data-i18n="exp.present">Present</span></span>
+                    <div class="tl-body">
+                        <h3 data-i18n="exp.kyou.role">Operations Automation Engineer</h3>
+                        <p class="tl-org">Kyou — Bekasi, Indonesia</p>
+                        <p class="tl-desc" data-i18n="exp.kyou.desc">Map and automate warehouse, logistics, and
+                            e-commerce workflows. Integrate AI tools and modern frameworks to remove manual
+                            bottlenecks, and streamline internal platforms for better team productivity and data
+                            accuracy.</p>
+                    </div>
+                </li>
+                <li class="tl-item">
+                    <span class="tl-date">2025 — <span data-i18n="exp.present">Present</span></span>
+                    <div class="tl-body">
+                        <h3 data-i18n="exp.indie.role">Independent Developer</h3>
+                        <p class="tl-org">fenderio.com</p>
+                        <p class="tl-desc" data-i18n="exp.indie.desc">Conceptualized and built my own applications —
+                            Kasirin (POS) and Itungin (finance tracker) — using AI-assisted development to prototype,
+                            structure backend logic (PHP, JavaScript, SQL), and test for stability and accuracy.</p>
+                    </div>
+                </li>
+                <li class="tl-item">
+                    <span class="tl-date">2025 — 2026</span>
+                    <div class="tl-body">
+                        <h3 data-i18n="exp.informa.role">Sales Executive &amp; Assistant Product Specialist</h3>
+                        <p class="tl-org">Informa Furnishing — Depok</p>
+                        <p class="tl-desc" data-i18n="exp.informa.desc">Hit 100% of sales targets within the first three
+                            months and was promoted to oversee department-level operations — pricing accuracy, campaign
+                            alignment, inventory workflows, and visual merchandising.</p>
+                    </div>
+                </li>
+                <li class="tl-item">
+                    <span class="tl-date">2024</span>
+                    <div class="tl-body">
+                        <h3 data-i18n="exp.lion.role">Game Tester &amp; Indonesian Voice Specialist</h3>
+                        <p class="tl-org">Lionbridge Games Studios</p>
+                        <p class="tl-desc" data-i18n="exp.lion.desc">Tested &ldquo;Gems of War&rdquo;, documenting
+                            mechanics bugs and UI/UX issues, and was selected for a Meta-related project delivering
+                            precise Indonesian voice recordings.</p>
+                    </div>
+                </li>
+                <li class="tl-item">
+                    <span class="tl-date">2023 — 2024</span>
+                    <div class="tl-body">
+                        <h3 data-i18n="exp.foodhall.role">Staff — Operations &amp; Reporting</h3>
+                        <p class="tl-org">The Foodhall (PT Swalayan Sukses Abadi) — Jakarta</p>
+                        <p class="tl-desc" data-i18n="exp.foodhall.desc">Built operational reports with advanced Excel
+                            (pivot tables, complex formulas) and tracked sales, returns, and inventory in SAP to support
+                            store decisions.</p>
+                    </div>
+                </li>
+                <li class="tl-item">
+                    <span class="tl-date">2019 — 2022</span>
+                    <div class="tl-body">
+                        <h3 data-i18n="exp.indomaret.role">Junior Store Leader → Store Clerk</h3>
+                        <p class="tl-org">Indomaret Group — Bogor</p>
+                        <p class="tl-desc" data-i18n="exp.indomaret.desc">Ran daily store operations, supervised staff,
+                            handled high-volume POS transactions, and consistently beat promotional targets over 3+
+                            years.</p>
+                    </div>
+                </li>
+            </ol>
         </section>
 
-        <!-- Testimonials Section (Standalone) -->
-        <section id="testimonials" class="section snap-section">
-            <div class="container glass-card">
-                <h2 data-i18n="testimonials.header">What Clients Say</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial-item">
-                        <p data-i18n="testimonials.budi.text">"Paling suka sama fitur cetak struknya yang rapi dan
-                            proses transaksinya jadi nggak ribet. Pas lagi ramai, KasirIn ngebantu banget biar antrean
-                            nggak numpuk. Tampilannya bersih, jadi karyawan saya langsung paham cara pakainya cuma dalam
-                            5 menit training.."</p>
-                        <span data-i18n="testimonials.budi.name">- Budi Santoso, Owner Warmindo</span>
-                    </div>
-                    <div class="testimonial-item">
-                        <p data-i18n="testimonials.siti.text">"Awalnya ragu mau pakai aplikasi kasir karena gaptek, tapi
-                            Kasirin ternyata gampang banget dipelajari. Sekarang nggak perlu lagi bingung ngitung
-                            penjualan. Stok barang juga otomatis terpotong, jadi saya tahu kapan harus belanja lagi.
-                            Sangat membantu buat warung kecil seperti saya!"</p>
-                        <span data-i18n="testimonials.siti.name">- Siti Aminah, Toko Berkah</span>
-                    </div>
-                    <div class="testimonial-item">
-                        <p data-i18n="testimonials.rizky.text">"Aplikasi kasir paling lightweight yang pernah saya coba.
-                            Nggak makan banyak memori tapi fiturnya powerful. Buat yang baru mulai usaha dan butuh
-                            sistem POS yang handal tanpa biaya langganan yang mahal, Kasirin ini solusinya. Highly
-                            recommended!"</p>
-                        <span data-i18n="testimonials.rizky.name">- Rizky Pratama, Distro Keren</span>
-                    </div>
-                </div>
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <div class="section-head">
+                <span class="section-no">04</span>
+                <h2 class="section-title" data-i18n="contact.title">Let&rsquo;s talk.</h2>
             </div>
-        </section>
+            <p class="contact-lead" data-i18n="contact.lead">
+                Have a role, a workflow worth automating, or a product to build? Send a message — I read everything.
+            </p>
 
-        <!-- Experience Recent -->
-        <section id="experience-recent" class="section snap-section">
-            <div class="container glass-card">
-                <h2 data-i18n="exp.header">Proven Track Record</h2>
-                <div class="timeline">
-                    <!-- Informa -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">03/2025 - Present</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.informa.role">Sales Executive & Ops Lead</h3>
-                            <h4>Informa (Home Center Retail)</h4>
-                            <p data-i18n="exp.informa.desc">Managed department-level operations and data accuracy,
-                                consistently hitting targets
-                                through data-driven strategies.</p>
-                        </div>
-                    </div>
-
-                    <!-- Indomaret (New Entry) -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">2021 - 2023</div> <!-- Estimated dates, adjust if known -->
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.indomaret.role">Store Operations Leader</h3>
-                            <h4>Indomaret</h4>
-                            <p data-i18n="exp.indomaret.desc">Led daily store operations, managed inventory accuracy,
-                                and supervised staff performance
-                                to ensure operational excellence.</p>
-                        </div>
-                    </div>
-
-                    <!-- Lionbridge 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">10/2024 - 11/2024</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.lion1.role">AI Voice Training Specialist</h3>
-                            <h4>Lionbridge Games Studios</h4>
-                            <p data-i18n="exp.lion1.desc">Contributed to high-stakes Meta AI projects, ensuring 100%
-                                adherence to complex quality
-                                guidelines.</p>
-                        </div>
-                    </div>
+            <form action="https://formspree.io/f/xwvnqjjl" method="POST" class="contact-form">
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Name" data-i18n-placeholder="contact.name" required>
+                    <input type="email" name="email" placeholder="Email" data-i18n-placeholder="contact.email"
+                        required>
                 </div>
-            </div>
-        </section>
+                <textarea name="message" rows="5" placeholder="Tell me a bit about it…"
+                    data-i18n-placeholder="contact.message" required></textarea>
+                <button type="submit" class="btn btn-primary" data-i18n="contact.send">Send message</button>
+            </form>
 
-        <!-- Experience Early/Game Testing -->
-        <section id="experience-early" class="section snap-section">
-            <div class="container glass-card">
-                <h2 data-i18n="exp.early.header">Game Testing & QA</h2>
-                <div class="timeline">
-                    <!-- Edge Of Chaos -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">03/2024</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.edge.role">Volunteer Game Tester</h3>
-                            <h4>Edge Of Chaos (HyperScale Alpha)</h4>
-                            <p data-i18n="exp.edge.desc">Tested new gameplay features for a Web3 MMO. Provided feedback
-                                on AI integrations and
-                                community growth.</p>
-                        </div>
-                    </div>
-
-                    <!-- Rematch -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.rematch.role">Beta Tester</h3>
-                            <h4>Rematch (Online Multiplayer Football)</h4>
-                            <p data-i18n="exp.rematch.desc">Tested 5v5 multiplayer logic and gameplay mechanics.
-                                Identified bugs in fast-paced
-                                competitive matches.</p>
-                        </div>
-                    </div>
-
-                    <!-- Lionbridge 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">10/2024 - 10/2024</div>
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.lion2.role">Game Quality Assurance</h3>
-                            <h4>Lionbridge Games Studios</h4>
-                            <p data-i18n="exp.lion2.desc">Identified critical bugs and improved UX for "Gems of War",
-                                impacting player retention.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section snap-section contact-section">
-            <div class="container contact-container glass-card">
-                <h2 data-i18n="contact.header">Let's Build Something Great</h2>
-                <p data-i18n="contact.desc">Ready to upgrade your business IT? Send me a message.</p>
-
-                <form action="https://formspree.io/f/xwvnqjjl" method="POST" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name"
-                            data-i18n-placeholder="contact.name_placeholder" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email"
-                            data-i18n-placeholder="contact.email_placeholder" required>
-                    </div>
-                    <div class="form-group">
-                        <select name="service" required>
-                            <option value="" disabled selected data-i18n="contact.service_default">Service Needed
-                            </option>
-                            <option value="QA Testing" data-i18n="contact.service.qa">Quality Assurance Testing</option>
-                            <option value="App Development" data-i18n="contact.service.dev">Web/App Development</option>
-                            <option value="Data Analytics" data-i18n="contact.service.data">Data Analytics</option>
-                            <option value="Copywriting" data-i18n="contact.service.copy">Copywriting</option>
-                            <option value="Other" data-i18n="contact.service.other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="4" placeholder="Tell me about your project..."
-                            data-i18n-placeholder="contact.msg_placeholder" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" data-i18n="contact.btn">Send
-                        Message</button>
-                </form>
-
-                <div class="contact-box">
-                    <a href="https://linkedin.com/in/gilangfenderio" class="contact-link"><i
-                            class="fab fa-linkedin"></i> <span data-i18n="contact.linkedin">Connect on
-                            LinkedIn</span></a>
-                </div>
-                <footer>
-                    <p data-i18n="contact.footer">&copy; 2025 Gilang Fenderio Yusuf. delivering excellence.</p>
-                </footer>
+            <div class="contact-direct">
+                <a href="mailto:gfenderio@gmail.com">gfenderio@gmail.com</a>
+                <a href="https://linkedin.com/in/gilangfenderio" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/gfenderio" target="_blank" rel="noopener">GitHub</a>
             </div>
         </section>
 
     </main>
 
-    <!-- Language Modal (Hidden by default) -->
-    <div id="lang-modal" class="lang-modal-overlay">
-        <div class="glass-card lang-modal">
-            <h2 data-i18n="modal.title">Choose Language / Pilih Bahasa</h2>
-            <div class="lang-options">
-                <button class="btn btn-primary" onclick="setLanguage('en')" data-i18n="modal.en">English 🇬🇧</button>
-                <button class="btn btn-secondary" onclick="setLanguage('id')" data-i18n="modal.id">Indonesia
-                    🇮🇩</button>
-            </div>
-        </div>
-    </div>
+    <footer class="footer">
+        <span>© <span id="year">2026</span> Gilang Fenderio Yusuf</span>
+        <a href="#top" data-i18n="footer.top">Back to top ↑</a>
+    </footer>
 
-    <!-- Translations Script MUST Load Before Main Script if Main Script Uses It Immediately -->
     <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>

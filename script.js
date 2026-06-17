@@ -1,148 +1,72 @@
-// Parallax Effect
-const snapContainer = document.querySelector('.snap-container');
+// ---------------------------------------------------------
+// Gilang Fenderio — portfolio interactions
+// Language toggle (EN/ID) + scroll reveal. Kept intentionally small.
+// ---------------------------------------------------------
 
-function handleParallax(scrollTop) {
-    const wrapper1 = document.querySelector('.globe-wrapper.w1');
-    const wrapper2 = document.querySelector('.globe-wrapper.w2');
+(function () {
+    "use strict";
 
-    // Move wrappers at different speeds
-    if (wrapper1) wrapper1.style.transform = `translateY(${scrollTop * 0.3}px)`;
-    if (wrapper2) wrapper2.style.transform = `translateY(${-scrollTop * 0.2}px)`;
-}
+    // Current year in footer
+    var yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Desktop: Scroll Snap Container
-if (snapContainer) {
-    snapContainer.addEventListener('scroll', () => {
-        handleParallax(snapContainer.scrollTop);
-    });
-}
+    // ---- Language ----
+    function applyLanguage(lang) {
+        if (typeof translations === "undefined" || !translations[lang]) return;
+        var dict = translations[lang];
 
-// Mobile: Window Scroll (when snap is disabled)
-window.addEventListener('scroll', () => {
-    // Only trigger if the window is actually scrolling (mobile behavior)
-    if (window.scrollY > 0) {
-        handleParallax(window.scrollY);
-    }
-});
-
-// Typing Effect
-const textToType = "Full-Stack Developer | QA Specialist | Data Analyst";
-const typingElement = document.querySelector('.typing-effect');
-let charIndex = 0;
-
-function type() {
-    if (!typingElement) return;
-
-    // Clear text ONLY on the very first character to avoid duplication
-    if (charIndex === 0) {
-        typingElement.textContent = '';
-    }
-
-    if (charIndex < textToType.length) {
-        typingElement.textContent += textToType.charAt(charIndex);
-        charIndex++;
-        setTimeout(type, 80); // Normal typing speed
-    } else {
-        typingElement.classList.add('finished');
-    }
-}
-
-// Start typing when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    type();
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const target = document.querySelector(targetId);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+            var val = dict[el.getAttribute("data-i18n")];
+            if (val == null) return;
+            // Values are our own trusted strings and may contain HTML / entities.
+            el.innerHTML = val;
         });
-    });
 
-    // Check Language on Load
-    const savedLang = localStorage.getItem('preferredLang');
-    const modal = document.getElementById('lang-modal');
+        document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+            var val = dict[el.getAttribute("data-i18n-placeholder")];
+            if (val != null) el.placeholder = val;
+        });
 
-    // If no language saved, show modal
-    if (!savedLang) {
-        if (modal) {
-            // Use Flex to center it, as defined in CSS
-            modal.style.display = 'flex';
-        }
+        document.documentElement.lang = lang;
+        try { localStorage.setItem("lang", lang); } catch (e) { }
+        updateLangButton(lang);
+    }
+
+    function updateLangButton(lang) {
+        var btn = document.getElementById("lang-btn");
+        if (!btn) return;
+        var enCls = lang === "en" ? "on" : "off";
+        var idCls = lang === "id" ? "on" : "off";
+        btn.innerHTML = '<span class="' + enCls + '">EN</span> / <span class="' + idCls + '">ID</span>';
+    }
+
+    var saved = "en";
+    try { saved = localStorage.getItem("lang") || "en"; } catch (e) { }
+    applyLanguage(saved);
+
+    var langBtn = document.getElementById("lang-btn");
+    if (langBtn) {
+        langBtn.addEventListener("click", function () {
+            var next = (document.documentElement.lang === "id") ? "en" : "id";
+            applyLanguage(next);
+        });
+    }
+
+    // ---- Scroll reveal ----
+    var targets = document.querySelectorAll(".section, .hero-actions, .project, .work-note");
+    targets.forEach(function (el) { el.classList.add("reveal"); });
+
+    if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in");
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        targets.forEach(function (el) { io.observe(el); });
     } else {
-        // If language saved, apply it immediately
-        if (typeof updateContent === 'function') {
-            updateContent(savedLang);
-        }
+        targets.forEach(function (el) { el.classList.add("in"); });
     }
-});
-
-
-// --- Language Support (Global Functions) ---
-
-window.setLanguage = function (lang) {
-    console.log("Setting language to:", lang);
-
-    // Save preference
-    localStorage.setItem('preferredLang', lang);
-
-    // Hide modal
-    const modal = document.getElementById('lang-modal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
-
-    // Apply translations
-    if (typeof updateContent === 'function') {
-        updateContent(lang);
-    }
-}
-
-window.showLangModal = function () {
-    console.log("Showing Language Modal");
-    const modal = document.getElementById('lang-modal');
-    if (modal) {
-        modal.style.display = 'flex';
-        modal.style.animation = 'none'; // Reset logic
-        // Trigger reflow
-        void modal.offsetWidth;
-        modal.style.animation = 'slideUp 0.5s ease-out';
-    } else {
-        console.error("Language Modal ID 'lang-modal' not found!");
-    }
-};
-
-function updateContent(lang) {
-    if (typeof translations === 'undefined') {
-        console.error("Translations object not found!");
-        return;
-    }
-
-    const elements = document.querySelectorAll('[data-i18n]');
-    elements.forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            // Keep HTML tags if present in translation (innerHTML) or just text
-            if (translations[lang][key].includes('<')) {
-                el.innerHTML = translations[lang][key];
-            } else {
-                el.innerText = translations[lang][key];
-            }
-        }
-    });
-
-    // Update placeholder attributes for form inputs
-    const inputs = document.querySelectorAll('[data-i18n-placeholder]');
-    inputs.forEach(input => {
-        const key = input.getAttribute('data-i18n-placeholder');
-        if (translations[lang] && translations[lang][key]) {
-            input.placeholder = translations[lang][key];
-        }
-    });
-}
+})();
