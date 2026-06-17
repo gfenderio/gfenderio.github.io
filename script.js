@@ -30,6 +30,16 @@
         document.documentElement.lang = lang;
         try { localStorage.setItem("lang", lang); } catch (e) { }
         updateLangButton(lang);
+
+        document.querySelectorAll("[data-i18n-gh]").forEach(function (el) {
+            var n = el.getAttribute("data-gh-total");
+            if (!n) return;
+            var enStr = n + " contributions in the last 6 months";
+            var idStr = n + " kontribusi dalam 6 bulan terakhir";
+            el.textContent = lang === "id" ? idStr : enStr;
+        });
+
+        document.dispatchEvent(new CustomEvent("langToggled", { detail: lang }));
     }
 
     function updateLangButton(lang) {
@@ -157,26 +167,76 @@
 
     function setTotal(n) {
         if (!totalEl || n == null) return;
-        var id = document.documentElement.lang === "id";
-        totalEl.textContent = id
-            ? n + " kontribusi dalam setahun terakhir"
-            : n + " contributions in the last year";
+        totalEl.setAttribute("data-gh-total", n);
+        totalEl.setAttribute("data-i18n-gh", "true");
+        var lang = document.documentElement.lang || "en";
+        var enStr = n + " contributions in the last 6 months";
+        var idStr = n + " kontribusi dalam 6 bulan terakhir";
+        totalEl.textContent = lang === "id" ? idStr : enStr;
     }
 
     fetch("https://github-contributions-api.jogruber.de/v4/gfenderio?y=last")
         .then(function (r) { if (!r.ok) throw 0; return r.json(); })
         .then(function (d) {
             var c = d.contributions || [];
-            fill(c.map(function (x) { return x.level; }));
-            setTotal(d.total ? d.total.lastYear : null);
+            var half = c.slice(-182);
+            fill(half.map(function (x) { return x.level; }));
+            var halfTotal = half.reduce(function(sum, x) { return sum + (x.count || 0); }, 0);
+            setTotal(halfTotal);
         })
         .catch(function () {
             // Soft fallback so the panel never looks broken offline
             var list = [];
-            for (var i = 0; i < 371; i++) {
+            for (var i = 0; i < 182; i++) {
                 var r = Math.random();
                 list.push(r > 0.85 ? 4 : r > 0.7 ? 3 : r > 0.52 ? 2 : r > 0.36 ? 1 : 0);
             }
             fill(list);
         });
+})();
+
+// ---------------------------------------------------------
+// Rotating Impact Metrics
+// ---------------------------------------------------------
+(function () {
+    "use strict";
+    var numEl = document.getElementById("impact-num");
+    var labelEl = document.getElementById("impact-label");
+    if (!numEl || !labelEl) return;
+
+    var index = 0;
+    var totalMetrics = 3;
+
+    function updateMetric(langOverride) {
+        if (typeof translations === "undefined") return;
+        var lang = langOverride || document.documentElement.lang || "en";
+        var dict = translations[lang] || translations["en"];
+        
+        var numKey = "act.impact_" + index + "_num";
+        var labelKey = "act.impact_" + index + "_label";
+        
+        numEl.style.opacity = 0;
+        labelEl.style.opacity = 0;
+        
+        setTimeout(function() {
+            numEl.textContent = dict[numKey];
+            labelEl.textContent = dict[labelKey];
+            numEl.style.opacity = 1;
+            labelEl.style.opacity = 1;
+        }, 300);
+    }
+
+    // Set initial text
+    setTimeout(function() { updateMetric(); }, 100);
+
+    // Rotate every 5 seconds
+    setInterval(function () {
+        index = (index + 1) % totalMetrics;
+        updateMetric();
+    }, 5000);
+
+    // Listen for language changes
+    document.addEventListener("langToggled", function(e) {
+        updateMetric(e.detail);
+    });
 })();

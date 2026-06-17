@@ -218,37 +218,40 @@
                 <span class="section-no">03</span>
                 <h2 class="section-title" data-i18n="act.title">Code &amp; activity.</h2>
             </div>
-            <p class="section-intro" data-i18n="act.intro">A live look at my GitHub activity. Public work lives there;
-                client and internal projects live on GitLab (private).</p>
+            <p class="section-intro" data-i18n="act.intro">A live look at my GitHub activity. Public work lives there; client and internal projects live on GitLab (private).</p>
 
-            <div class="cal-card">
-                <div class="cal-head">
-                    <span class="cal-label" data-i18n="act.cal">GitHub contributions</span>
-                    <span class="cal-total" id="gh-total"></span>
-                </div>
-                <div class="cal" id="gh-cal" aria-hidden="true"></div>
-                <div class="cal-legend">
-                    <span data-i18n="act.less">Less</span>
-                    <i style="background:#ebedf0"></i>
-                    <i style="background:#9be9a8"></i>
-                    <i style="background:#40c463"></i>
-                    <i style="background:#30a14e"></i>
-                    <i style="background:#216e39"></i>
-                    <span data-i18n="act.more">More</span>
-                </div>
-            </div>
-
-            <div class="activity-links">
-                <a class="activity-link" href="https://github.com/gfenderio" target="_blank" rel="noopener">
-                    <span class="al-name">GitHub</span>
-                    <span class="al-handle">@gfenderio</span>
-                    <span class="al-arrow">↗</span>
+            <div class="activity-grid">
+                <a class="activity-card" href="https://github.com/gfenderio" target="_blank" rel="noopener">
+                    <div class="activity-head">
+                        <span class="activity-name">GitHub</span>
+                        <span class="activity-handle">@gfenderio</span>
+                    </div>
+                    <div class="cal-card">
+                        <div class="cal-head">
+                            <span class="cal-label" data-i18n="act.cal">GitHub contributions</span>
+                            <span class="cal-total" id="gh-total"></span>
+                        </div>
+                        <div class="cal-scroll">
+                            <div class="cal" id="gh-cal" aria-hidden="true"></div>
+                        </div>
+                        <div class="cal-legend">
+                            <span data-i18n="act.less">Less</span>
+                            <i style="background:#ebedf0"></i>
+                            <i style="background:#9be9a8"></i>
+                            <i style="background:#40c463"></i>
+                            <i style="background:#30a14e"></i>
+                            <i style="background:#216e39"></i>
+                            <span data-i18n="act.more">More</span>
+                        </div>
+                    </div>
+                    <span class="link-arrow">View GitHub ↗</span>
                 </a>
-                <a class="activity-link" href="https://gitlab.com/gfenderio" target="_blank" rel="noopener">
-                    <span class="al-name">GitLab</span>
-                    <span class="al-handle" data-i18n="act.gl_handle">@gfenderio · private</span>
-                    <span class="al-arrow">↗</span>
-                </a>
+                <div class="activity-card impact-card">
+                    <div class="impact-content">
+                        <span class="impact-number" id="impact-num"></span>
+                        <span class="impact-label" id="impact-label"></span>
+                    </div>
+                </div>
             </div>
         </section>
 

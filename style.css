@@ -977,10 +977,10 @@ button.project-visual {
 .cal {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(7, 1fr);
-    grid-auto-columns: 1fr;
+    grid-template-rows: repeat(7, 10px);
+    grid-auto-columns: 10px;
     gap: 3px;
-    height: clamp(78px, 11vw, 112px);
+    width: max-content;
 }
 
 .cal span {
@@ -1051,4 +1051,99 @@ button.project-visual {
     .activity-links {
         grid-template-columns: 1fr;
     }
+}
+
+/* ---------- GitHub activity strip (below hero) ---------- */
+.gh-activity {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.gh-panel {
+    background: var(--canvas);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    box-shadow: var(--shadow-2);
+    padding: 1.15rem 1.3rem;
+}
+
+.gh-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.gh-row-top {
+    margin-bottom: 0.85rem;
+}
+
+.gh-row-bottom {
+    margin-top: 0.85rem;
+}
+
+.gh-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.cal-scroll {
+    overflow-x: auto;
+    padding-bottom: 2px;
+}
+
+.gh-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--body);
+}
+
+.gh-link:hover {
+    color: var(--ink);
+}
+
+/* ---------- Impact Metric Card ---------- */
+.impact-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--canvas);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    cursor: default;
+    height: 100%;
+}
+.impact-card:hover {
+    box-shadow: var(--shadow-2);
+    transform: none;
+}
+.impact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.impact-number {
+    font-size: clamp(3rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--ink) 0%, #666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-sans);
+    transition: opacity 0.3s ease;
+}
+.impact-label {
+    font-size: 0.95rem;
+    color: var(--mute);
+    line-height: 1.4;
+    max-width: 220px;
+    margin: 0 auto;
+    transition: opacity 0.3s ease;
 }
