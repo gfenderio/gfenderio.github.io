@@ -150,11 +150,20 @@ a:hover {
     color: var(--mute);
 }
 
-@media (max-width: 620px) {
-    .nav-links a:not(.lang-btn) {
-        display: none;
-    }
-}
+  @media (max-width: 620px) {
+      .nav {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.25rem;
+          padding-top: 2rem;
+      }
+      .nav-links {
+          width: 100%;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          gap: 1.25rem;
+      }
+  }
 
 /* ---------- Layout ---------- */
 .hero,
@@ -1146,4 +1155,10 @@ button.project-visual {
     max-width: 220px;
     margin: 0 auto;
     transition: opacity 0.3s ease;
+}
+
+@media (max-width: 540px) {
+    .impact-card {
+        padding: 1.8rem 1rem;
+    }
 }
