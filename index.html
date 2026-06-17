@@ -8,7 +8,7 @@
 
     <title>Gilang Fenderio — Operations Automation Engineer</title>
     <meta name="description"
-        content="Gilang Fenderio — Operations Automation Engineer at Kyou. I map messy business workflows and rebuild them with AI-assisted automation, and ship my own products: STZN, Kasirin, Itungin.">
+        content="Gilang Fenderio — Operations Automation Engineer at Kyou. I rebuild messy business workflows as automated systems and ship my own products: STZN, Kasirin, and Itungin.">
     <meta name="author" content="Gilang Fenderio Yusuf">
 
     <meta property="og:type" content="website">
@@ -49,9 +49,9 @@
             <h1 class="hero-title" data-i18n="hero.title">I automate business operations,<br>and build the apps that
                 run them.</h1>
             <p class="hero-lead" data-i18n="hero.lead">
-                I&rsquo;m Gilang — an Operations Automation Engineer at Kyou. I map messy warehouse, logistics, and
-                e-commerce workflows and rebuild them with AI-assisted automation. On the side I ship my own products,
-                including <a href="https://stzn-green.vercel.app/" target="_blank" rel="noopener">STZN</a>.
+                I&rsquo;m Gilang, an Operations Automation Engineer at Kyou. I take messy warehouse, logistics, and
+                e-commerce workflows and rebuild them as automated systems — and outside work I design and ship my own
+                products, like <a href="https://stzn-green.vercel.app/" target="_blank" rel="noopener">STZN</a>.
             </p>
             <div class="hero-actions">
                 <a href="#work" class="btn btn-primary" data-i18n="hero.cta_work">See my work</a>
@@ -71,16 +71,15 @@
                 <h2 class="section-title" data-i18n="work.title">Things I&rsquo;ve built.</h2>
             </div>
 
-            <div class="project-grid">
+            <div class="projects">
 
-                <!-- STZN — featured / live -->
-                <article class="project is-featured">
+                <!-- STZN — landscape / live -->
+                <article class="project landscape">
                     <a class="project-visual" href="https://stzn-green.vercel.app/" target="_blank" rel="noopener"
                         aria-label="Open STZN live site">
                         <img src="assets/stzn-preview.jpg" alt="STZN streetwear store"
                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
-                        <span class="project-visual-fallback">STZN
-                            <small>add a screenshot at assets/stzn-preview.jpg</small></span>
+                        <span class="project-visual-fallback">STZN</span>
                     </a>
                     <div class="project-body">
                         <div class="project-meta">
@@ -88,9 +87,9 @@
                             <span class="project-tag live" data-i18n="work.live_tag">Live</span>
                         </div>
                         <p class="project-desc" data-i18n="work.stzn.desc">
-                            A drop-based streetwear brand and storefront — designed and built from scratch on Next.js.
-                            Limited seasonal &ldquo;drops&rdquo; instead of endless stock, early access for
-                            subscribers, and a clean bilingual interface with a deliberately slow, premium feel.
+                            Designed and shipped a drop-based streetwear storefront on Next.js. Sells in limited
+                            seasonal drops rather than open stock, with subscriber early access and a bilingual
+                            interface tuned for a slow, premium feel.
                         </p>
                         <ul class="project-stack">
                             <li>Next.js</li>
@@ -98,13 +97,13 @@
                             <li>Vercel</li>
                             <li>UI / UX</li>
                         </ul>
-                        <a href="https://stzn-green.vercel.app/" target="_blank" rel="noopener"
-                            class="link-arrow" data-i18n="work.stzn.live">Visit live site</a>
+                        <a href="https://stzn-green.vercel.app/" target="_blank" rel="noopener" class="link-arrow"
+                            data-i18n="work.stzn.live">Visit live site</a>
                     </div>
                 </article>
 
-                <!-- Kasirin -->
-                <article class="project">
+                <!-- Kasirin — landscape -->
+                <article class="project landscape">
                     <a class="project-visual" href="https://github.com/gfenderio/POS-Kasirin" target="_blank"
                         rel="noopener" aria-label="Kasirin on GitHub">
                         <img src="assets/kasirin-preview.jpg" alt="Kasirin POS dashboard"
@@ -117,9 +116,9 @@
                             <span class="project-tag wip" data-i18n="work.wip_tag">In progress</span>
                         </div>
                         <p class="project-desc" data-i18n="work.kasirin.desc">
-                            An enterprise-grade POS for high-traffic minimarkets (50k+ SKUs). Offline-first so checkout
-                            never stops when the WiFi drops, real-time inventory over SSE, atomic transactions that
-                            prevent overselling, and AI restock alerts from a Brain.js neural network.
+                            An offline-first POS engineered for high-traffic minimarkets (50k+ SKUs). Checkout keeps
+                            running when the connection drops, inventory streams in real time over SSE, and atomic
+                            transactions block overselling. A Brain.js model flags restocks before stock runs out.
                         </p>
                         <ul class="project-stack">
                             <li>Next.js</li>
@@ -133,11 +132,11 @@
                     </div>
                 </article>
 
-                <!-- Itungin -->
-                <article class="project">
+                <!-- Itungin — portrait mobile -->
+                <article class="project portrait">
                     <a class="project-visual" href="https://github.com/gfenderio/ItungIn-Financial-Tracker"
                         target="_blank" rel="noopener" aria-label="Itungin on GitHub">
-                        <img src="assets/itungin-preview.jpg" alt="Itungin finance dashboard"
+                        <img src="assets/itungin-preview.jpg" alt="Itungin finance app"
                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
                         <span class="project-visual-fallback">Itungin</span>
                     </a>
@@ -147,9 +146,10 @@
                             <span class="project-tag wip" data-i18n="work.wip_tag">In progress</span>
                         </div>
                         <p class="project-desc" data-i18n="work.itungin.desc">
-                            A mobile-first personal finance app: a smart dashboard with cash-flow charts, debt tracking
-                            with a debt-to-income health score, category budgets with live warnings, and recurring-bill
-                            reminders — wrapped with Capacitor for a native Android build.
+                            A mobile-first personal finance app, built React-first and shipped to Android with
+                            Capacitor. Tracks cash flow with live charts, scores debt health with a debt-to-income
+                            indicator, enforces category budgets with real-time warnings, and reminds you of recurring
+                            bills.
                         </p>
                         <ul class="project-stack">
                             <li>React</li>
@@ -174,27 +174,27 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p data-i18n="about.p1">
-                        I spent years leading store and department operations in retail — hitting sales targets,
-                        keeping inventory and pricing accurate, and training teams. That taught me exactly where a
-                        business loses time, and where software actually helps instead of getting in the way.
+                        For years I ran retail floors — leading store and department operations, hitting sales targets,
+                        and keeping inventory and pricing accurate. That work showed me exactly where a business loses
+                        time, and where the right software pays for itself.
                     </p>
                     <p data-i18n="about.p2">
-                        Now at Kyou I do that for a living: mapping warehouse, logistics, and e-commerce workflows and
-                        rebuilding them with AI-assisted automation to cut manual bottlenecks and human error. I&rsquo;m
-                        a proud &ldquo;vibe coder&rdquo; — I lean on AI dev tools to prototype fast, structure backend
-                        logic, and ship working products.
+                        Now I build that software. At Kyou I map warehouse, logistics, and e-commerce workflows and
+                        rebuild them as automated systems, pairing AI engineering with solid fundamentals to cut manual
+                        work and human error. I ship full-stack products end to end — from the data model to the
+                        interface.
                     </p>
                     <p data-i18n="about.p3">
-                        I&rsquo;m honest about where I am: an Information Systems student still early in the craft, but
-                        with real things shipped and an operator&rsquo;s sense of what matters. If that mix is useful to
-                        you — for a role, a project, or remote work — let&rsquo;s talk.
+                        I&rsquo;m an Information Systems student who learns by shipping. The work is real and running in
+                        production; the goal is to keep raising the bar. If you need someone who reads both the shop
+                        floor and the codebase, let&rsquo;s talk.
                     </p>
                 </div>
                 <aside class="about-side">
                     <h3 data-i18n="about.skills_title">What I work with</h3>
                     <ul class="kv-list">
                         <li data-i18n="about.skill_auto">Process automation</li>
-                        <li data-i18n="about.skill_ai">AI-assisted development</li>
+                        <li data-i18n="about.skill_ai">AI engineering &amp; automation</li>
                         <li data-i18n="about.skill_bpi">Business process improvement</li>
                         <li>TypeScript · JavaScript · SQL</li>
                         <li>Next.js · React · Vite</li>
@@ -227,28 +227,30 @@
                     <span class="tl-date">2026 — <span data-i18n="exp.present">Present</span></span>
                     <div class="tl-body">
                         <h3 data-i18n="exp.kyou.role">Operations Automation Engineer</h3>
-                        <p class="tl-org">Kyou — Bekasi, Indonesia</p>
+                        <p class="tl-org"><a href="https://kyou.id" target="_blank" rel="noopener">Kyou</a></p>
                         <p class="tl-desc" data-i18n="exp.kyou.desc">Map and automate warehouse, logistics, and
-                            e-commerce workflows. Integrate AI tools and modern frameworks to remove manual
-                            bottlenecks, and streamline internal platforms for better team productivity and data
-                            accuracy.</p>
+                            e-commerce workflows, integrating AI tooling and modern frameworks to remove manual
+                            bottlenecks. Shipped Machitan, an internal Android app that runs on the warehouse team&rsquo;s
+                            rugged PDA handhelds.</p>
                     </div>
                 </li>
                 <li class="tl-item">
                     <span class="tl-date">2025 — <span data-i18n="exp.present">Present</span></span>
                     <div class="tl-body">
-                        <h3 data-i18n="exp.indie.role">Independent Developer</h3>
-                        <p class="tl-org">fenderio.com</p>
-                        <p class="tl-desc" data-i18n="exp.indie.desc">Conceptualized and built my own applications —
-                            Kasirin (POS) and Itungin (finance tracker) — using AI-assisted development to prototype,
-                            structure backend logic (PHP, JavaScript, SQL), and test for stability and accuracy.</p>
+                        <h3 data-i18n="exp.indie.role">Freelance Developer &amp; Builder</h3>
+                        <p class="tl-org"><a href="https://fenderio.com" target="_blank" rel="noopener">Fenderio</a></p>
+                        <p class="tl-desc" data-i18n="exp.indie.desc">My own practice — I design and ship web apps,
+                            mobile apps, and automation for clients, and I take on new builds end to end. Self-initiated
+                            products so far include Kasirin and Itungin, built with Next.js, React, and TypeScript.
+                            Available for new work.</p>
                     </div>
                 </li>
                 <li class="tl-item">
                     <span class="tl-date">2025 — 2026</span>
                     <div class="tl-body">
                         <h3 data-i18n="exp.informa.role">Sales Executive &amp; Assistant Product Specialist</h3>
-                        <p class="tl-org">Informa Furnishing — Depok</p>
+                        <p class="tl-org"><a href="https://www.informa.co.id" target="_blank" rel="noopener">Informa
+                                Furnishing</a></p>
                         <p class="tl-desc" data-i18n="exp.informa.desc">Hit 100% of sales targets within the first three
                             months and was promoted to oversee department-level operations — pricing accuracy, campaign
                             alignment, inventory workflows, and visual merchandising.</p>
@@ -258,7 +260,8 @@
                     <span class="tl-date">2024</span>
                     <div class="tl-body">
                         <h3 data-i18n="exp.lion.role">Game Tester &amp; Indonesian Voice Specialist</h3>
-                        <p class="tl-org">Lionbridge Games Studios</p>
+                        <p class="tl-org"><a href="https://www.lionbridge.com" target="_blank" rel="noopener">Lionbridge
+                                Games Studios</a></p>
                         <p class="tl-desc" data-i18n="exp.lion.desc">Tested &ldquo;Gems of War&rdquo;, documenting
                             mechanics bugs and UI/UX issues, and was selected for a Meta-related project delivering
                             precise Indonesian voice recordings.</p>
@@ -268,7 +271,8 @@
                     <span class="tl-date">2023 — 2024</span>
                     <div class="tl-body">
                         <h3 data-i18n="exp.foodhall.role">Staff — Operations &amp; Reporting</h3>
-                        <p class="tl-org">The Foodhall (PT Swalayan Sukses Abadi) — Jakarta</p>
+                        <p class="tl-org"><a href="https://thefoodhall.com" target="_blank" rel="noopener">The
+                                Foodhall</a></p>
                         <p class="tl-desc" data-i18n="exp.foodhall.desc">Built operational reports with advanced Excel
                             (pivot tables, complex formulas) and tracked sales, returns, and inventory in SAP to support
                             store decisions.</p>
@@ -278,7 +282,8 @@
                     <span class="tl-date">2019 — 2022</span>
                     <div class="tl-body">
                         <h3 data-i18n="exp.indomaret.role">Junior Store Leader → Store Clerk</h3>
-                        <p class="tl-org">Indomaret Group — Bogor</p>
+                        <p class="tl-org"><a href="https://www.indomaret.co.id" target="_blank"
+                                rel="noopener">Indomaret Group</a></p>
                         <p class="tl-desc" data-i18n="exp.indomaret.desc">Ran daily store operations, supervised staff,
                             handled high-volume POS transactions, and consistently beat promotional targets over 3+
                             years.</p>
