@@ -217,7 +217,10 @@
         var raw = String(str).replace(/[^0-9.,]/g, "");
         var sep = raw.indexOf(",") > -1 ? "," : (raw.indexOf(".") > -1 ? "." : "");
         var num = parseInt(raw.replace(/[.,]/g, ""), 10);
-        return { num: isNaN(num) ? 0 : num, sep: sep, full: str };
+        // A "less than" value (e.g. "<1%") reads better counting DOWN —
+        // it tells the "error rate dropped to under 1%" story.
+        var down = /^\s*</.test(String(str));
+        return { num: isNaN(num) ? 0 : num, sep: sep, full: str, down: down };
     }
 
     function group(n, sep) {
@@ -225,10 +228,12 @@
         return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
     }
 
-    // Count up to the target, then settle on the exact authored string.
-    function countUp(target, sep, full) {
+    // Roll the number toward its target, then settle on the exact authored
+    // string. Up-counts start at 0; "<" values count down from ~30.
+    function countTo(target, sep, full, down) {
         if (raf) cancelAnimationFrame(raf);
-        if (reduceMotion || target <= 0) { numEl.textContent = full; return; }
+        var from = down ? Math.max(target + 25, 30) : 0;
+        if (reduceMotion || (!down && target <= 0)) { numEl.textContent = full; return; }
 
         var dur = 1000, start = 0;
         function tick(now) {
@@ -236,7 +241,8 @@
             var t = Math.min(1, (now - start) / dur);
             var eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
             if (t < 1) {
-                numEl.textContent = group(Math.round(eased * target), sep);
+                var v = Math.round(from + (target - from) * eased);
+                numEl.textContent = group(v, sep);
                 raf = requestAnimationFrame(tick);
             } else {
                 numEl.textContent = full; // exact prefix/suffix/format
@@ -265,7 +271,7 @@
             labelEl.classList.add("swap-in");
         }, 200);
 
-        countUp(meta.num, meta.sep, meta.full);
+        countTo(meta.num, meta.sep, meta.full, meta.down);
     }
 
     function updateMetric(langOverride, animate) {
