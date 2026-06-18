@@ -207,33 +207,49 @@
     var index = 0;
     var totalMetrics = 3;
 
-    function updateMetric(langOverride) {
+    function setText(dict) {
+        var numKey = "act.impact_" + index + "_num";
+        var labelKey = "act.impact_" + index + "_label";
+        numEl.textContent = dict[numKey];
+        labelEl.textContent = dict[labelKey];
+    }
+
+    // animate: false on first paint (just set the text, no transition)
+    function updateMetric(langOverride, animate) {
         if (typeof translations === "undefined") return;
         var lang = langOverride || document.documentElement.lang || "en";
         var dict = translations[lang] || translations["en"];
-        
-        var numKey = "act.impact_" + index + "_num";
-        var labelKey = "act.impact_" + index + "_label";
-        
-        numEl.style.opacity = 0;
-        labelEl.style.opacity = 0;
-        
-        setTimeout(function() {
-            numEl.textContent = dict[numKey];
-            labelEl.textContent = dict[labelKey];
-            numEl.style.opacity = 1;
-            labelEl.style.opacity = 1;
-        }, 300);
+
+        if (animate === false) {
+            setText(dict);
+            return;
+        }
+
+        // Phase 1: ease the current value out (up + blur + fade)
+        numEl.classList.remove("swap-in");
+        labelEl.classList.remove("swap-in");
+        numEl.classList.add("swap-out");
+        labelEl.classList.add("swap-out");
+
+        setTimeout(function () {
+            // Phase 2: swap the text while hidden, then ease the new value in
+            setText(dict);
+            numEl.classList.remove("swap-out");
+            labelEl.classList.remove("swap-out");
+            void numEl.offsetWidth; // force reflow so the in-animation restarts
+            numEl.classList.add("swap-in");
+            labelEl.classList.add("swap-in");
+        }, 320);
     }
 
-    // Set initial text
-    setTimeout(function() { updateMetric(); }, 100);
+    // Set initial text without animating
+    setTimeout(function () { updateMetric(undefined, false); }, 100);
 
-    // Rotate every 5 seconds
+    // Rotate — long enough to read, short enough to feel alive
     setInterval(function () {
         index = (index + 1) % totalMetrics;
         updateMetric();
-    }, 5000);
+    }, 4000);
 
     // Listen for language changes
     document.addEventListener("langToggled", function(e) {

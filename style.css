@@ -1073,13 +1073,20 @@ button.project-visual {
 .cal {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(7, 10px);
-    grid-auto-columns: 10px;
+    grid-template-rows: repeat(7, 1fr);
+    grid-auto-columns: 1fr;
     gap: 3px;
-    width: max-content;
+    width: 100%;
+    /* keeps cells a sensible size on desktop; shrinks to fit on mobile */
+    max-width: 440px;
+    /* 182 days = 26 weeks × 7 days — ratio gives the grid its height,
+       so it fills the width and never overflows on mobile */
+    aspect-ratio: 26 / 7;
 }
 
 .cal span {
+    min-width: 0;
+    min-height: 0;
     border-radius: 2px;
     background: #ebedf0;
 }
@@ -1188,7 +1195,6 @@ button.project-visual {
 }
 
 .cal-scroll {
-    overflow-x: auto;
     padding-bottom: 2px;
 }
 
@@ -1233,7 +1239,6 @@ button.project-visual {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: var(--font-sans);
-    transition: opacity 0.3s ease;
 }
 .impact-label {
     font-size: 0.95rem;
@@ -1241,7 +1246,30 @@ button.project-visual {
     line-height: 1.4;
     max-width: 220px;
     margin: 0 auto;
-    transition: opacity 0.3s ease;
+}
+
+/* Rotating impact metric — elegant crossfade with a soft slide + blur */
+.impact-number,
+.impact-label {
+    transition: opacity 0.32s ease, transform 0.32s ease, filter 0.32s ease;
+    will-change: opacity, transform, filter;
+}
+
+.impact-number.swap-out,
+.impact-label.swap-out {
+    opacity: 0;
+    transform: translateY(-10px);
+    filter: blur(5px);
+}
+
+.impact-number.swap-in,
+.impact-label.swap-in {
+    animation: impact-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes impact-in {
+    from { opacity: 0; transform: translateY(12px); filter: blur(6px); }
+    to   { opacity: 1; transform: none; filter: blur(0); }
 }
 
 @media (max-width: 540px) {
