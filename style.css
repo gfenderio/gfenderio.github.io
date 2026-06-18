@@ -803,19 +803,23 @@ button.project-visual {
     position: fixed;
     inset: 0;
     z-index: 2000;
-    display: none;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
 }
 
 .lightbox.open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
 }
 
 .lightbox-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(12, 12, 12, 0.84);
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
+    background: rgba(10, 10, 12, 0.72);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    backdrop-filter: saturate(140%) blur(14px);
 }
 
 .lightbox-inner {
@@ -823,11 +827,19 @@ button.project-visual {
     margin: auto;
     max-width: min(1100px, 92vw);
     max-height: 94vh;
-    padding: 3rem 1rem 1.5rem;
+    padding: 3.2rem 1rem 1.6rem;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.3rem;
     overflow: auto;
+    transform: translateY(16px) scale(0.985);
+    opacity: 0;
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.34s ease;
+}
+
+.lightbox.open .lightbox-inner {
+    transform: none;
+    opacity: 1;
 }
 
 .lightbox-title {
@@ -840,21 +852,43 @@ button.project-visual {
 
 .lightbox-shots {
     display: flex;
-    gap: 1rem;
+    gap: 1.1rem;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .lightbox-shots img {
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow: 0 12px 44px rgba(0, 0, 0, 0.45);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
     background: #fff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (hover: hover) {
+    .lightbox-shots img:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* Staggered reveal of each screenshot */
+.lightbox.open .lightbox-shots img {
+    animation: lb-shot-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.lightbox-shots img:nth-child(1) { animation-delay: 0.06s; }
+.lightbox-shots img:nth-child(2) { animation-delay: 0.14s; }
+.lightbox-shots img:nth-child(3) { animation-delay: 0.22s; }
+
+@keyframes lb-shot-in {
+    from { opacity: 0; transform: translateY(18px) scale(0.95); }
+    to   { opacity: 1; transform: none; }
 }
 
 /* landscape: two neat columns, left & right */
 .lightbox:not(.is-portrait) .lightbox-shots img {
-    width: calc(50% - 0.5rem);
+    width: calc(50% - 0.55rem);
     max-width: 560px;
     height: auto;
 }
@@ -872,17 +906,54 @@ button.project-visual {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: none;
-    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     color: #fff;
     font-size: 1.3rem;
     line-height: 1;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
 }
 
 .lightbox-close:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: rotate(90deg);
+}
+
+/* Mobile: full-width landscape shots; portrait phones become a swipe carousel */
+@media (max-width: 760px) {
+    .lightbox-inner {
+        max-width: 96vw;
+        padding: 3.2rem 0.5rem 1.2rem;
+    }
+
+    .lightbox:not(.is-portrait) .lightbox-shots img {
+        width: 100%;
+        max-width: none;
+    }
+
+    .lightbox.is-portrait .lightbox-shots {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0.25rem 0.5rem 0.6rem;
+        scrollbar-width: none;
+    }
+
+    .lightbox.is-portrait .lightbox-shots::-webkit-scrollbar {
+        display: none;
+    }
+
+    .lightbox.is-portrait .lightbox-shots img {
+        flex: 0 0 auto;
+        height: 66vh;
+        scroll-snap-align: center;
+    }
 }
 
 /* ---------- Activity (GitHub / GitLab) ---------- */
