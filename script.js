@@ -206,43 +206,76 @@
 
     var index = 0;
     var totalMetrics = 3;
+    var raf = 0;
+    var reduceMotion = window.matchMedia
+        && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function setText(dict) {
-        var numKey = "act.impact_" + index + "_num";
-        var labelKey = "act.impact_" + index + "_label";
-        numEl.textContent = dict[numKey];
-        labelEl.textContent = dict[labelKey];
+    // Parse an authored value like "1,000+", "1.000+", "100%", "<1%" into
+    // its numeric target and locale separator, so we can roll the number up
+    // and then snap back to the exact authored string (prefix/suffix intact).
+    function parse(str) {
+        var raw = String(str).replace(/[^0-9.,]/g, "");
+        var sep = raw.indexOf(",") > -1 ? "," : (raw.indexOf(".") > -1 ? "." : "");
+        var num = parseInt(raw.replace(/[.,]/g, ""), 10);
+        return { num: isNaN(num) ? 0 : num, sep: sep, full: str };
     }
 
-    // animate: false on first paint (just set the text, no transition)
+    function group(n, sep) {
+        if (!sep) return String(n);
+        return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+    }
+
+    // Count up to the target, then settle on the exact authored string.
+    function countUp(target, sep, full) {
+        if (raf) cancelAnimationFrame(raf);
+        if (reduceMotion || target <= 0) { numEl.textContent = full; return; }
+
+        var dur = 1000, start = 0;
+        function tick(now) {
+            if (!start) start = now;
+            var t = Math.min(1, (now - start) / dur);
+            var eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+            if (t < 1) {
+                numEl.textContent = group(Math.round(eased * target), sep);
+                raf = requestAnimationFrame(tick);
+            } else {
+                numEl.textContent = full; // exact prefix/suffix/format
+            }
+        }
+        raf = requestAnimationFrame(tick);
+    }
+
+    function render(dict, animate) {
+        var meta = parse(dict["act.impact_" + index + "_num"]);
+        var label = dict["act.impact_" + index + "_label"];
+
+        if (animate === false) {
+            numEl.textContent = meta.full;
+            labelEl.textContent = label;
+            return;
+        }
+
+        // Label cross-fades; number rolls up.
+        labelEl.classList.remove("swap-in");
+        labelEl.classList.add("swap-out");
+        setTimeout(function () {
+            labelEl.textContent = label;
+            labelEl.classList.remove("swap-out");
+            void labelEl.offsetWidth;
+            labelEl.classList.add("swap-in");
+        }, 200);
+
+        countUp(meta.num, meta.sep, meta.full);
+    }
+
     function updateMetric(langOverride, animate) {
         if (typeof translations === "undefined") return;
         var lang = langOverride || document.documentElement.lang || "en";
         var dict = translations[lang] || translations["en"];
-
-        if (animate === false) {
-            setText(dict);
-            return;
-        }
-
-        // Phase 1: ease the current value out (up + blur + fade)
-        numEl.classList.remove("swap-in");
-        labelEl.classList.remove("swap-in");
-        numEl.classList.add("swap-out");
-        labelEl.classList.add("swap-out");
-
-        setTimeout(function () {
-            // Phase 2: swap the text while hidden, then ease the new value in
-            setText(dict);
-            numEl.classList.remove("swap-out");
-            labelEl.classList.remove("swap-out");
-            void numEl.offsetWidth; // force reflow so the in-animation restarts
-            numEl.classList.add("swap-in");
-            labelEl.classList.add("swap-in");
-        }, 320);
+        render(dict, animate);
     }
 
-    // Set initial text without animating
+    // First paint without animating
     setTimeout(function () { updateMetric(undefined, false); }, 100);
 
     // Rotate — long enough to read, short enough to feel alive
@@ -251,8 +284,8 @@
         updateMetric();
     }, 4000);
 
-    // Listen for language changes
-    document.addEventListener("langToggled", function(e) {
-        updateMetric(e.detail);
+    // Re-render current metric in the new language (keeps separator correct)
+    document.addEventListener("langToggled", function (e) {
+        updateMetric(e.detail, false);
     });
 })();
