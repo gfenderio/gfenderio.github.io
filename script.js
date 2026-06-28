@@ -82,7 +82,8 @@
 })();
 
 // ---------------------------------------------------------
-// Screenshot lightbox (project galleries)
+// Screenshot lightbox — carousel (project galleries)
+// One shot at a time; prev/next + dots + swipe + keyboard.
 // ---------------------------------------------------------
 (function () {
     "use strict";
@@ -90,7 +91,6 @@
     var triggers = document.querySelectorAll(".project-visual[data-shots]");
     if (!triggers.length) return;
 
-    // Build the overlay once
     var box = document.createElement("div");
     box.className = "lightbox";
     box.innerHTML =
@@ -98,24 +98,78 @@
         '<div class="lightbox-inner" role="dialog" aria-modal="true">' +
         '<button class="lightbox-close" type="button" aria-label="Close" data-close>&times;</button>' +
         '<p class="lightbox-title"></p>' +
-        '<div class="lightbox-shots"></div>' +
+        '<div class="lightbox-carousel">' +
+        '<button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous screenshot">' +
+        '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>' +
+        '</button>' +
+        '<div class="lightbox-viewport"><div class="lightbox-track"></div></div>' +
+        '<button class="lightbox-nav lightbox-next" type="button" aria-label="Next screenshot">' +
+        '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+        '</button>' +
+        '</div>' +
+        '<div class="lightbox-meta">' +
+        '<div class="lightbox-dots" role="tablist"></div>' +
+        '<span class="lightbox-counter" aria-live="polite"></span>' +
+        '</div>' +
         '</div>';
     document.body.appendChild(box);
 
     var titleEl = box.querySelector(".lightbox-title");
-    var shotsEl = box.querySelector(".lightbox-shots");
+    var trackEl = box.querySelector(".lightbox-track");
+    var viewportEl = box.querySelector(".lightbox-viewport");
+    var dotsEl = box.querySelector(".lightbox-dots");
+    var counterEl = box.querySelector(".lightbox-counter");
+    var prevBtn = box.querySelector(".lightbox-prev");
+    var nextBtn = box.querySelector(".lightbox-next");
+
+    var index = 0;
+    var total = 0;
+
+    function render() {
+        trackEl.style.transform = "translateX(-" + (index * 100) + "%)";
+        var dots = dotsEl.children;
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].classList.toggle("is-active", i === index);
+            dots[i].setAttribute("aria-selected", i === index ? "true" : "false");
+        }
+        if (counterEl) counterEl.textContent = total ? (index + 1) + " / " + total : "";
+    }
+
+    function goTo(i) {
+        if (total < 1) return;
+        index = (i + total) % total;
+        render();
+    }
 
     function open(name, shots, portrait) {
         titleEl.textContent = name;
         box.classList.toggle("is-portrait", !!portrait);
-        shotsEl.innerHTML = "";
-        shots.forEach(function (src) {
+        trackEl.innerHTML = "";
+        dotsEl.innerHTML = "";
+        total = shots.length;
+        index = 0;
+
+        shots.forEach(function (src, i) {
+            var slide = document.createElement("div");
+            slide.className = "lightbox-slide";
             var img = document.createElement("img");
             img.src = src.trim();
-            img.alt = name + " screenshot";
-            img.loading = "lazy";
-            shotsEl.appendChild(img);
+            img.alt = name + " screenshot " + (i + 1);
+            img.loading = i === 0 ? "eager" : "lazy";
+            slide.appendChild(img);
+            trackEl.appendChild(slide);
+
+            var dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "lightbox-dot";
+            dot.setAttribute("role", "tab");
+            dot.setAttribute("aria-label", "Go to screenshot " + (i + 1));
+            (function (j) { dot.addEventListener("click", function () { goTo(j); }); })(i);
+            dotsEl.appendChild(dot);
         });
+
+        box.classList.toggle("is-single", total < 2);
+        render();
         box.classList.add("open");
         document.body.style.overflow = "hidden";
     }
@@ -133,11 +187,36 @@
         });
     });
 
+    prevBtn.addEventListener("click", function () { goTo(index - 1); });
+    nextBtn.addEventListener("click", function () { goTo(index + 1); });
+
     box.addEventListener("click", function (e) {
         if (e.target.hasAttribute("data-close")) close();
     });
     document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && box.classList.contains("open")) close();
+        if (!box.classList.contains("open")) return;
+        if (e.key === "Escape") close();
+        else if (e.key === "ArrowLeft") goTo(index - 1);
+        else if (e.key === "ArrowRight") goTo(index + 1);
+    });
+
+    // Touch swipe
+    var startX = 0;
+    var deltaX = 0;
+    var swiping = false;
+    viewportEl.addEventListener("touchstart", function (e) {
+        startX = e.touches[0].clientX;
+        deltaX = 0;
+        swiping = true;
+    }, { passive: true });
+    viewportEl.addEventListener("touchmove", function (e) {
+        if (!swiping) return;
+        deltaX = e.touches[0].clientX - startX;
+    }, { passive: true });
+    viewportEl.addEventListener("touchend", function () {
+        if (!swiping) return;
+        swiping = false;
+        if (Math.abs(deltaX) > 40) goTo(deltaX < 0 ? index + 1 : index - 1);
     });
 })();
 

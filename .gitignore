@@ -1,0 +1,6 @@
+
+# taste-skill tooling (local only)
+.agents/
+.claude/
+skills-lock.json
+skills.md

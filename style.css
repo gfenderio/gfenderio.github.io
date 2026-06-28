@@ -850,53 +850,152 @@ button.project-visual {
     text-align: center;
 }
 
-.lightbox-shots {
-    display: flex;
-    gap: 1.1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+/* Carousel: viewport + track + side nav */
+.lightbox-carousel {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(0.4rem, 1.5vw, 1rem);
+    width: 100%;
 }
 
-.lightbox-shots img {
+.lightbox-viewport {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    width: 100%;
+}
+
+.lightbox-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.lightbox-slide {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.lightbox-slide img {
+    display: block;
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
     background: #fff;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-@media (hover: hover) {
-    .lightbox-shots img:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.6);
-    }
-}
-
-/* Staggered reveal of each screenshot */
-.lightbox.open .lightbox-shots img {
-    animation: lb-shot-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.lightbox-shots img:nth-child(1) { animation-delay: 0.06s; }
-.lightbox-shots img:nth-child(2) { animation-delay: 0.14s; }
-.lightbox-shots img:nth-child(3) { animation-delay: 0.22s; }
-
-@keyframes lb-shot-in {
-    from { opacity: 0; transform: translateY(18px) scale(0.95); }
-    to   { opacity: 1; transform: none; }
-}
-
-/* landscape: two neat columns, left & right */
-.lightbox:not(.is-portrait) .lightbox-shots img {
-    width: calc(50% - 0.55rem);
-    max-width: 560px;
+    max-width: 100%;
     height: auto;
 }
 
-/* portrait: phones lined up side by side */
-.lightbox.is-portrait .lightbox-shots img {
-    height: min(70vh, 600px);
+/* landscape: a single wide screenshot, capped height */
+.lightbox:not(.is-portrait) .lightbox-slide img {
+    width: 100%;
+    max-width: 980px;
+    max-height: 72vh;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* portrait: a phone-sized slot, image fits inside */
+.lightbox.is-portrait .lightbox-viewport {
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.lightbox.is-portrait .lightbox-slide img {
     width: auto;
+    max-height: min(72vh, 620px);
+    margin: 0 auto;
+}
+
+/* Reveal animation on the active slide */
+.lightbox.open .lightbox-track > .lightbox-slide img {
+    animation: lb-shot-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes lb-shot-in {
+    from { opacity: 0; transform: translateY(14px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* Side nav arrows */
+.lightbox-nav {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(20, 20, 24, 0.55);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.42);
+    transform: scale(1.06);
+}
+
+.lightbox-nav:active {
+    transform: scale(0.96);
+}
+
+/* Meta row: dots + counter */
+.lightbox-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.lightbox-dots {
+    display: flex;
+    gap: 0.45rem;
+}
+
+.lightbox-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background 0.2s, width 0.25s ease, border-radius 0.25s ease;
+}
+
+.lightbox-dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.lightbox-dot.is-active {
+    background: #fff;
+    width: 22px;
+    border-radius: 4px;
+}
+
+.lightbox-counter {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+}
+
+/* Single-shot mode: hide carousel chrome entirely */
+.lightbox.is-single .lightbox-nav,
+.lightbox.is-single .lightbox-meta {
+    display: none;
 }
 
 .lightbox-close {
@@ -923,36 +1022,28 @@ button.project-visual {
     transform: rotate(90deg);
 }
 
-/* Mobile: full-width landscape shots; portrait phones become a swipe carousel */
+/* Mobile carousel tweaks */
 @media (max-width: 760px) {
     .lightbox-inner {
         max-width: 96vw;
         padding: 3.2rem 0.5rem 1.2rem;
     }
 
-    .lightbox:not(.is-portrait) .lightbox-shots img {
-        width: 100%;
-        max-width: none;
+    .lightbox-carousel {
+        gap: 0.3rem;
     }
 
-    .lightbox.is-portrait .lightbox-shots {
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 0.25rem 0.5rem 0.6rem;
-        scrollbar-width: none;
+    .lightbox-nav {
+        width: 36px;
+        height: 36px;
     }
 
-    .lightbox.is-portrait .lightbox-shots::-webkit-scrollbar {
-        display: none;
+    .lightbox:not(.is-portrait) .lightbox-slide img {
+        max-height: 60vh;
     }
 
-    .lightbox.is-portrait .lightbox-shots img {
-        flex: 0 0 auto;
-        height: 66vh;
-        scroll-snap-align: center;
+    .lightbox.is-portrait .lightbox-slide img {
+        max-height: 64vh;
     }
 }
 
