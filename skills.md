@@ -23,6 +23,33 @@ Localize, don't translate word-for-word.
 
 ### Indonesian (ID)
 - **Style:** Professional but modern (*semi-formal*). Use "Saya/Kami"; avoid "Aku/Gue" and textbook stiffness.
+- **Address the reader as "kamu."** Not "Anda" — the site should sound like a person, not a bank letter.
+
+#### Testable limits
+"Localise, don't translate" is true but unenforceable, and English sentence
+rhythm slips through wearing Indonesian words. These are the same rule with
+numbers on it. Reference: Midtrans runs about 8-15 words a sentence, Mekari
+12-18, and both barely use an em dash.
+
+- **Sentence length:** 20 words maximum, 16 average across the page. Run
+  `node tools/check-id-copy.js` — it fails the build of your patience if not.
+- **No em dashes.** Use a comma, a full stop, or a colon. The em dash is an
+  English habit and it is what makes a paragraph feel translated.
+- **Never call software "dia."** Not "dia bersuara", "dia menampung",
+  "dia mengejar". State the action directly: "Foto bukti masuk sendiri."
+- **Vary sentence openings.** No more than 60% of sentences in a paragraph
+  may start with "Saya".
+
+#### Calques to avoid (banned)
+These read as Indonesian but are English underneath:
+
+| Wrong | Why | Instead |
+|---|---|---|
+| berjalan di atas | literal "ran on" | bergantung pada, dijalankan pakai |
+| sepotong demi sepotong | literal "piece by piece" | bertahap, satu per satu |
+| duduk di antara | literal "sits between" | menjembatani, menghubungkan |
+| uzur (for software) | "uzur" describes people | tua, warisan, lama |
+| di penghujung hari | literal "at the end of the day" | pada akhirnya |
 - **Technical terms:** Keep standard tech terms in English when an Indonesian translation sounds awkward.
   - Correct: "Saya mengoptimalkan *database queries*…", "Membangun *scalable architecture*…"
   - Wrong: "Saya mengoptimalkan kueri basis data…", "arsitektur yang dapat diskalakan…"
