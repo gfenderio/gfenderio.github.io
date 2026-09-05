@@ -55,8 +55,8 @@ const translations = {
         "work.label.desc": "When a delivery arrives, some of it belongs on the shop shelves and some of it has already been bought by a customer. Both turn up in the same box, and mixing them up means somebody loses the thing they paid for. This desktop app reads what came in and prints a small sticker for each item that keeps the two apart — anything already sold gets its own mark and the buyer&rsquo;s reference, so it can&rsquo;t end up on a shelf by mistake. It only ever reads: it cannot change stock or orders, by design.",
         "work.label.metric": "25 releases, and it updates itself",
 
-        "work.ops.name": "The Team&rsquo;s Automatic Assistant",
-        "work.ops.desc": "The team coordinates its day in a group chat, so I put a helper in there. It sits between the chat and everything else the company already runs, and it speaks up when something needs a person: an order stuck halfway through picking gets raised with whoever can unstick it, right in the channel. It also collects proof photos from the warehouse app, chases up a delivery booking when no driver takes it, and remembers the recurring things nobody should have to remember.",
+        "work.ops.name": "The Team&rsquo;s Ops Bot",
+        "work.ops.desc": "A bot that keeps the team&rsquo;s day moving. An order stuck halfway through picking gets raised with whoever can unstick it, the moment it stalls. Proof photos from the warehouse app arrive on their own. A delivery booking nobody has picked up gets retried automatically. The recurring jobs run to schedule, without anyone having to remember them.",
         "work.ops.metric": "Running every day since May",
 
         "work.stzn.desc": "An online streetwear shop I designed and built from scratch. It is open and complete — you can browse it, put things in a basket, and pay, including by QRIS.",
@@ -68,7 +68,7 @@ const translations = {
         "work.agency.desc": "A company website for a digital agency: eleven pages covering services, past work, the team, and how to get in touch, with a WhatsApp shortcut for people who would rather not fill in a form. Built so that whatever a prospective client wants to know is never more than three clicks from the front page. This is the shape of website I build for clients, ready to be rebranded for one.",
 
         "about.title": "About.",
-        "about.p1": "I build software other people depend on to get through their working day. At Kyou that means four different systems: the platform the office works in, the Android app the warehouse carries, a desktop tool for goods coming in, and the helper that ties them together. The pattern is nearly always the same — find the job someone is still doing by hand, and replace it with something that holds up on a busy day.",
+        "about.p1": "I build software other people depend on to get through their working day. At Kyou that means four different systems: the platform the office works in, the Android app the warehouse carries, a desktop tool for goods coming in, and the bot that ties them together. The pattern is nearly always the same — find the job someone is still doing by hand, and replace it with something that holds up on a busy day.",
         "about.p2": "Before any of this I spent years on shop floors, running stores and departments, chasing sales targets, keeping stock and prices straight. That is not a detour on the way here — it is the reason the software works. I already knew where a business quietly loses hours, which numbers people have stopped trusting, and why a screen that is technically correct can still be useless at seven in the morning with a queue building.",
         "about.p3": "I&rsquo;m an Information Systems student, and I learn by building things that get used. If you want someone who understands the shop floor as well as the code, let&rsquo;s talk.",
         "about.skills_title": "What I work with",
@@ -83,7 +83,7 @@ const translations = {
         "act.less": "Less",
         "act.more": "More",
         "act.private_title": "What this chart leaves out",
-        "act.private_body": "Most of what I build belongs to the company I work for, so it lives in private repositories and never shows up here: the warehouse Android app, the platform the office runs on, a desktop tool, and the assistant that connects them. Four systems, in daily use, none of them green squares.",
+        "act.private_body": "Most of what I build belongs to the company I work for, so it lives in private repositories and never shows up here: the warehouse Android app, the platform the office runs on, a desktop tool, and the bot that connects them. Four systems, in daily use, none of them green squares.",
 
         "exp.title": "Experience.",
         "exp.present": "Present",
@@ -143,8 +143,8 @@ const translations = {
         "work.label.desc": "Waktu barang datang, sebagian masuk rak toko dan sebagian sudah dibeli pelanggan. Keduanya tiba di kardus yang sama. Kalau tertukar, ada orang kehilangan barang yang sudah dibayar. Aplikasi desktop ini membaca isi kiriman, lalu mencetak stiker untuk tiap barang. Barang yang sudah laku dapat tanda sendiri berikut nomor pesanannya. Jadi tidak mungkin nyasar ke rak. Aplikasi ini hanya bisa membaca. Dari awal memang tidak diberi kemampuan mengubah stok atau pesanan.",
         "work.label.metric": "25 kali rilis, dan bisa memperbarui dirinya sendiri",
 
-        "work.ops.name": "Asisten Otomatis Tim",
-        "work.ops.desc": "Tim Kyou mengatur pekerjaan hariannya lewat grup chat. Saya bangun asisten otomatis di sana. Pesanan yang tersangkut langsung ditanyakan ke orang yang bisa membereskannya. Foto bukti dari aplikasi gudang masuk sendiri. Pesanan kurir yang tak kunjung dapat driver dicoba ulang otomatis. Tugas rutin berjalan sesuai jadwal, tanpa perlu ada yang mengingatkan.",
+        "work.ops.name": "Bot Operasional Tim",
+        "work.ops.desc": "Bot yang menjaga pekerjaan harian tim tetap jalan. Pesanan yang tersangkut langsung ditanyakan ke orang yang bisa membereskannya. Foto bukti dari aplikasi gudang masuk sendiri. Pesanan kurir yang tak kunjung dapat driver dicoba ulang otomatis. Tugas rutin berjalan sesuai jadwal, tanpa perlu ada yang mengingatkan.",
         "work.ops.metric": "Jalan setiap hari sejak Mei",
 
         "work.stzn.desc": "Toko streetwear online yang saya rancang dan bangun dari nol. Sudah tayang dan lengkap. Barang bisa dilihat, dimasukkan ke keranjang, lalu dibayar. Termasuk lewat QRIS.",
@@ -156,7 +156,7 @@ const translations = {
         "work.agency.desc": "Situs company profile untuk agensi digital. Sebelas halaman: layanan, karya, profil tim, dan cara menghubungi. Ada jalur pintas lewat WhatsApp buat yang malas mengisi form. Apa pun yang ingin diketahui calon klien tidak pernah lebih dari tiga klik dari halaman depan. Beginilah bentuk situs yang saya buat untuk klien.",
 
         "about.title": "Tentang.",
-        "about.p1": "Saya membuat software yang diandalkan orang lain untuk bekerja. Di Kyou itu berarti empat sistem berbeda. Platform untuk tim kantor, aplikasi Android untuk gudang, alat desktop untuk barang datang, dan asisten yang menyambungkan semuanya. Polanya hampir selalu sama. Cari pekerjaan yang masih dikerjakan dengan tangan, lalu ganti dengan sesuatu yang kuat dipakai di hari sibuk.",
+        "about.p1": "Saya membuat software yang diandalkan orang lain untuk bekerja. Di Kyou itu berarti empat sistem berbeda. Platform untuk tim kantor, aplikasi Android untuk gudang, alat desktop untuk barang datang, dan bot yang menyambungkan semuanya. Polanya hampir selalu sama. Cari pekerjaan yang masih dikerjakan dengan tangan, lalu ganti dengan sesuatu yang kuat dipakai di hari sibuk.",
         "about.p2": "Sebelum ini saya bertahun-tahun di lapangan. Memimpin toko dan departemen, mengejar target penjualan, menjaga stok dan harga tetap benar. Itu bukan jalan memutar. Justru itu alasan software-nya bekerja. Saya sudah lebih dulu tahu di mana bisnis kehilangan waktu. Saya juga tahu angka mana yang diam-diam tidak dipercaya orang. Dan kenapa layar yang secara teknis benar bisa tetap tidak berguna jam tujuh pagi, saat antrean mulai mengular.",
         "about.p3": "Saya mahasiswa Sistem Informasi. Saya belajar dengan membuat hal yang benar-benar dipakai. Kalau kamu butuh orang yang paham lapangan sekaligus paham kodenya, mari mengobrol.",
         "about.skills_title": "Yang saya pakai",
@@ -171,7 +171,7 @@ const translations = {
         "act.less": "Sedikit",
         "act.more": "Banyak",
         "act.private_title": "Yang tidak muncul di grafik ini",
-        "act.private_body": "Sebagian besar yang saya buat milik perusahaan tempat saya bekerja. Kodenya tersimpan tertutup dan tidak pernah muncul di sini. Aplikasi Android untuk gudang, platform untuk tim kantor, satu alat desktop, dan asisten yang menyambungkan semuanya. Empat sistem, dipakai tiap hari, tidak satu pun jadi kotak hijau.",
+        "act.private_body": "Sebagian besar yang saya buat milik perusahaan tempat saya bekerja. Kodenya tersimpan tertutup dan tidak pernah muncul di sini. Aplikasi Android untuk gudang, platform untuk tim kantor, satu alat desktop, dan bot yang menyambungkan semuanya. Empat sistem, dipakai tiap hari, tidak satu pun jadi kotak hijau.",
 
         "exp.title": "Pengalaman.",
         "exp.present": "Sekarang",
