@@ -202,29 +202,86 @@ a:hover {
     padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
 
-/* A soft gradient panel behind the hero. It gives the opening screen a
-   surface to sit on instead of bare canvas, and the hairline edge ties it to
-   the rest of the page's borders. Sits under the text, never over it. */
+/* The hero panel.
+   A plain rounded rectangle read as a default. This one is built from three
+   layers instead: a mesh of very low-opacity tints so the surface shifts
+   colour across its width, a fine grid that echoes the backdrop, and small
+   crosshairs at the corners — the marks of a technical drawing, which is
+   closer to what the page is about than a card ever was.
+   All of it sits under the text and takes no clicks. */
 .hero::before {
     content: "";
     position: absolute;
     z-index: -1;
-    inset: clamp(2rem, 6vw, 4rem) calc(var(--gutter) * -0.6) clamp(1rem, 4vw, 2.5rem);
+    /* The bleed only has room to go once the viewport is wider than the
+       container plus its gutters; below that it pushes the page sideways. */
+    inset: clamp(2rem, 6vw, 4rem) 0 clamp(1rem, 4vw, 2.5rem);
     border-radius: 28px;
     border: 1px solid var(--hairline);
     background:
-        radial-gradient(120% 90% at 8% 0%, #ffffff 0%, rgba(255, 255, 255, 0) 55%),
-        radial-gradient(90% 120% at 95% 15%, #f2f4f7 0%, rgba(242, 244, 247, 0) 60%),
-        linear-gradient(160deg, #fdfdfd 0%, #f7f8fa 48%, #fafafa 100%);
+        /* Tints: a cool cast top-left, a warmer one lower right. Kept under
+           4% so it reads as light on a surface, not as a coloured box. */
+        radial-gradient(80% 60% at 12% 8%, rgba(0, 112, 243, 0.055) 0%, rgba(0, 112, 243, 0) 60%),
+        radial-gradient(70% 70% at 88% 20%, rgba(255, 138, 76, 0.038) 0%, rgba(255, 138, 76, 0) 62%),
+        radial-gradient(90% 80% at 70% 100%, rgba(120, 90, 220, 0.035) 0%, rgba(120, 90, 220, 0) 60%),
+        /* Grid: 44px squares, barely there. */
+        repeating-linear-gradient(to right, rgba(23, 23, 23, 0.028) 0 1px, transparent 1px 44px),
+        repeating-linear-gradient(to bottom, rgba(23, 23, 23, 0.028) 0 1px, transparent 1px 44px),
+        linear-gradient(155deg, #ffffff 0%, #fbfbfc 45%, #f7f8fa 100%);
     box-shadow: var(--shadow-3);
     pointer-events: none;
 }
 
+/* Crosshairs, one per corner, drawn as four pairs of thin bars. */
+.hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: clamp(2rem, 6vw, 4rem) 0 clamp(1rem, 4vw, 2.5rem);
+    margin: 14px;
+    pointer-events: none;
+    --mark: rgba(23, 23, 23, 0.22);
+    --len: 11px;
+    --thick: 1px;
+    background-image:
+        linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
+        linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
+        linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
+        linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark));
+    background-size:
+        var(--len) var(--thick), var(--thick) var(--len),
+        var(--len) var(--thick), var(--thick) var(--len),
+        var(--len) var(--thick), var(--thick) var(--len),
+        var(--len) var(--thick), var(--thick) var(--len);
+    background-position:
+        left top, left top,
+        right top, right top,
+        left bottom, left bottom,
+        right bottom, right bottom;
+    background-repeat: no-repeat;
+}
+
+/* Wide enough for the panel to bleed past the text column. */
+@media (min-width: 1200px) {
+    .hero::before,
+    .hero::after {
+        inset: clamp(2rem, 6vw, 4rem) calc(var(--gutter) * -0.6) clamp(1rem, 4vw, 2.5rem);
+    }
+}
+
 @media (max-width: 760px) {
-    /* On a phone the panel's inset would crowd the text against its edge. */
+    .hero::before,
+    .hero::after {
+        inset: clamp(1rem, 4vw, 2rem) 0 1rem;
+    }
+
     .hero::before {
-        inset: clamp(1rem, 4vw, 2rem) calc(var(--gutter) * -0.35) 1rem;
         border-radius: 20px;
+    }
+
+    /* Corner marks are a desktop detail; at this size they only add noise. */
+    .hero::after {
+        display: none;
     }
 }
 

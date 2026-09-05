@@ -55,8 +55,8 @@ const translations = {
         "work.label.desc": "When a delivery arrives, some of it belongs on the shop shelves and some of it has already been bought by a customer. Both turn up in the same box, and mixing them up means somebody loses the thing they paid for. This desktop app reads what came in and prints a small sticker for each item that keeps the two apart — anything already sold gets its own mark and the buyer&rsquo;s reference, so it can&rsquo;t end up on a shelf by mistake. It only ever reads: it cannot change stock or orders, by design.",
         "work.label.metric": "25 releases, and it updates itself",
 
-        "work.ops.name": "The Team&rsquo;s Ops Bot",
-        "work.ops.desc": "A bot that keeps the team&rsquo;s day moving. An order stuck halfway through picking gets raised with whoever can unstick it, the moment it stalls. Proof photos from the warehouse app arrive on their own. A delivery booking nobody has picked up gets retried automatically. The recurring jobs run to schedule, without anyone having to remember them.",
+        "work.ops.name": "The Fulfilment Bot",
+        "work.ops.desc": "A bot that carries fulfilment between the warehouse and the people running it. Proof photos follow every order through picking, packing, and handover, and file themselves where they belong. Split shipments are worked out and sent to print without anyone chasing the paperwork. An order stuck halfway through picking is raised with whoever can unstick it, the moment it stalls. The recurring jobs run to schedule, without anyone having to remember them.",
         "work.ops.metric": "Running every day since May",
 
         "work.stzn.desc": "An online streetwear shop I designed and built from scratch. It is open and complete — you can browse it, put things in a basket, and pay, including by QRIS.",
@@ -149,8 +149,8 @@ const translations = {
         "work.label.desc": "Waktu barang datang, sebagian masuk rak toko dan sebagian sudah dibeli pelanggan. Keduanya tiba di kardus yang sama. Kalau tertukar, ada orang kehilangan barang yang sudah dibayar. Aplikasi desktop ini membaca isi kiriman, lalu mencetak stiker untuk tiap barang. Barang yang sudah laku dapat tanda sendiri berikut nomor pesanannya. Jadi tidak mungkin nyasar ke rak. Aplikasi ini hanya bisa membaca. Dari awal memang tidak diberi kemampuan mengubah stok atau pesanan.",
         "work.label.metric": "25 kali rilis, dan bisa memperbarui dirinya sendiri",
 
-        "work.ops.name": "Bot Operasional Tim",
-        "work.ops.desc": "Bot yang menjaga pekerjaan harian tim tetap jalan. Pesanan yang tersangkut langsung ditanyakan ke orang yang bisa membereskannya. Foto bukti dari aplikasi gudang masuk sendiri. Pesanan kurir yang tak kunjung dapat driver dicoba ulang otomatis. Tugas rutin berjalan sesuai jadwal, tanpa perlu ada yang mengingatkan.",
+        "work.ops.name": "Bot Fulfillment",
+        "work.ops.desc": "Bot yang mengantar data fulfillment antara gudang dan orang yang menjalankannya. Foto bukti mengikuti tiap pesanan: saat diambil, dikemas, sampai diserahkan. Semuanya masuk dan tersimpan sendiri di tempatnya. Pisah kirim dihitung lalu dikirim ke cetak, tanpa perlu ada yang mengejar berkasnya. Pesanan yang tersangkut di tengah jalan langsung ditanyakan ke orang yang bisa membereskannya. Tugas rutin berjalan sesuai jadwal.",
         "work.ops.metric": "Jalan setiap hari sejak Mei",
 
         "work.stzn.desc": "Toko streetwear online yang saya rancang dan bangun dari nol. Sudah tayang dan lengkap. Barang bisa dilihat, dimasukkan ke keranjang, lalu dibayar. Termasuk lewat QRIS.",
