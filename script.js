@@ -264,13 +264,24 @@
             setTotal(halfTotal);
         })
         .catch(function () {
-            // Soft fallback so the panel never looks broken offline
-            var list = [];
-            for (var i = 0; i < 182; i++) {
-                var r = Math.random();
-                list.push(r > 0.85 ? 4 : r > 0.7 ? 3 : r > 0.52 ? 2 : r > 0.36 ? 1 : 0);
+            // The API is down, rate-limited, or blocked. Draw an empty grid and
+            // say so.
+            //
+            // This previously filled the calendar with Math.random() levels so
+            // the panel "never looks broken" — which meant a visitor could be
+            // shown invented activity presented as a real GitHub history. A
+            // blank week is honest; a fabricated one is not.
+            var empty = [];
+            for (var i = 0; i < 182; i++) empty.push(0);
+            fill(empty);
+
+            if (totalEl) {
+                var lang = document.documentElement.lang || "en";
+                totalEl.removeAttribute("data-gh-total");
+                totalEl.textContent = lang === "id"
+                    ? "Data kontribusi tidak bisa dimuat"
+                    : "Contribution data unavailable";
             }
-            fill(list);
         });
 })();
 

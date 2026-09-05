@@ -425,7 +425,10 @@ a:hover {
 .project-meta {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    /* On narrow screens the title wraps; let the status badge drop to its own
+       line rather than being squeezed into a two-line pill beside it. */
+    flex-wrap: wrap;
+    gap: 0.5rem 0.6rem;
     margin-bottom: 0.7rem;
 }
 
@@ -440,6 +443,7 @@ a:hover {
     font-family: var(--font-mono);
     font-size: 11px;
     text-transform: uppercase;
+    white-space: nowrap;
     color: var(--mute);
     border: 1px solid var(--hairline);
     border-radius: 6px;
