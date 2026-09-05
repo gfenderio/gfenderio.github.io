@@ -813,21 +813,89 @@ a:hover {
 }
 
 /* ---------- Reveal on scroll ---------- */
-.reveal {
+/* Each element carries its own delay, set in motion.js, so the children of a
+   section arrive in sequence instead of the whole slab moving at once. The
+   curve is expo-out: quick to start, long to settle. The settle is the part
+   that reads as considered rather than templated. */
+.rv {
     opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(18px);
+    transition:
+        opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms),
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--rv-delay, 0ms);
+    will-change: opacity, transform;
 }
 
-.reveal.in {
+.rv-in {
     opacity: 1;
     transform: none;
+}
+
+/* Once it has arrived, stop advertising the change to the compositor. */
+.rv-in {
+    will-change: auto;
+}
+
+/* ---------- Scroll progress ---------- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 100;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    pointer-events: none;
+}
+
+/* ---------- Nav on scroll ---------- */
+/* Sits flush at rest; gains a frosted backing once the page moves under it. */
+.nav {
+    transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.nav.is-scrolled {
+    background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    box-shadow: var(--shadow-2);
+}
+
+/* ---------- Hero parallax ---------- */
+/* --hero-out runs 0 to 1 across the first viewport of scrolling. The panel
+   settles back and dims as it leaves, so the page reads as layered rather
+   than one flat plane sliding past. */
+.hero::before,
+.hero::after {
+    transform: translateY(calc(var(--hero-out, 0) * -26px))
+               scale(calc(1 - var(--hero-out, 0) * 0.018));
+    opacity: calc(1 - var(--hero-out, 0) * 0.55);
+    transform-origin: 50% 0;
+}
+
+/* Project imagery drifts slower than its text. Native scroll-timeline where
+   it exists; where it does not, nothing moves and nothing breaks. */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) and (min-width: 900px) {
+        .project-visual img {
+            animation: drift linear both;
+            animation-timeline: view();
+            animation-range: entry 0% exit 100%;
+        }
+    }
+}
+
+@keyframes drift {
+    from { transform: translateY(-14px) scale(1.05); }
+    to   { transform: translateY(14px) scale(1.05); }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
     *,
-    .reveal {
+    .rv {
         animation: none !important;
         transition: none !important;
         opacity: 1 !important;

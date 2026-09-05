@@ -62,23 +62,8 @@
         });
     }
 
-    // ---- Scroll reveal ----
-    var targets = document.querySelectorAll(".section, .hero-actions, .project, .work-note");
-    targets.forEach(function (el) { el.classList.add("reveal"); });
-
-    if ("IntersectionObserver" in window) {
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("in");
-                    io.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        targets.forEach(function (el) { io.observe(el); });
-    } else {
-        targets.forEach(function (el) { el.classList.add("in"); });
-    }
+    // Scroll reveal now lives in motion.js, which staggers each child rather
+    // than moving a whole section as one block.
 })();
 
 // ---------------------------------------------------------
@@ -172,11 +157,14 @@
         render();
         box.classList.add("open");
         document.body.style.overflow = "hidden";
+        // Momentum scrolling ignores body overflow, so it has to be told.
+        if (window.__lenis) window.__lenis.stop();
     }
 
     function close() {
         box.classList.remove("open");
         document.body.style.overflow = "";
+        if (window.__lenis) window.__lenis.start();
     }
 
     triggers.forEach(function (t) {
