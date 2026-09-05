@@ -197,8 +197,35 @@ a:hover {
 
 /* ---------- Hero ---------- */
 .hero {
+    position: relative;
     padding-top: clamp(4.5rem, 12vw, 8rem);
     padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* A soft gradient panel behind the hero. It gives the opening screen a
+   surface to sit on instead of bare canvas, and the hairline edge ties it to
+   the rest of the page's borders. Sits under the text, never over it. */
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: clamp(2rem, 6vw, 4rem) calc(var(--gutter) * -0.6) clamp(1rem, 4vw, 2.5rem);
+    border-radius: 28px;
+    border: 1px solid var(--hairline);
+    background:
+        radial-gradient(120% 90% at 8% 0%, #ffffff 0%, rgba(255, 255, 255, 0) 55%),
+        radial-gradient(90% 120% at 95% 15%, #f2f4f7 0%, rgba(242, 244, 247, 0) 60%),
+        linear-gradient(160deg, #fdfdfd 0%, #f7f8fa 48%, #fafafa 100%);
+    box-shadow: var(--shadow-3);
+    pointer-events: none;
+}
+
+@media (max-width: 760px) {
+    /* On a phone the panel's inset would crowd the text against its edge. */
+    .hero::before {
+        inset: clamp(1rem, 4vw, 2rem) calc(var(--gutter) * -0.35) 1rem;
+        border-radius: 20px;
+    }
 }
 
 .eyebrow {

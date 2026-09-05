@@ -37,11 +37,12 @@
     var GAP = 28;          // px between dots
     var RADIUS = 210;      // how far the cursor's influence reaches
     var BASE_R = 1.0;      // dot radius at rest
-    var PEAK_R = 2.9;      // dot radius directly under the cursor
-    // The grid has to be visible before anyone moves the mouse, or the page
-    // looks blank on arrival and the whole effect is a secret.
-    var BASE_A = 0.11;
-    var PEAK_A = 0.5;
+    var PEAK_R = 2.5;      // dot radius directly under the cursor
+    // Visible before anyone moves the mouse, or the effect stays a secret and
+    // the first impression is as blank as before. But text sits on top of this
+    // grid, so reading wins over texture: keep both values low.
+    var BASE_A = 0.055;
+    var PEAK_A = 0.26;
     // A soft light under the cursor, drawn behind the dots. It is what makes
     // the surface feel lit rather than merely dotted.
     var GLOW = 260;
@@ -73,8 +74,8 @@
 
         if (eased.x > -9000) {
             var g = ctx.createRadialGradient(eased.x, eased.y, 0, eased.x, eased.y, GLOW);
-            g.addColorStop(0, "rgba(0,0,0,0.045)");
-            g.addColorStop(0.55, "rgba(0,0,0,0.018)");
+            g.addColorStop(0, "rgba(0,0,0,0.028)");
+            g.addColorStop(0.55, "rgba(0,0,0,0.012)");
             g.addColorStop(1, "rgba(0,0,0,0)");
             ctx.fillStyle = g;
             ctx.fillRect(eased.x - GLOW, eased.y - GLOW, GLOW * 2, GLOW * 2);

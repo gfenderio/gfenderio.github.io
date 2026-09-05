@@ -36,7 +36,7 @@ const translations = {
         "work.intro": "Software people use every day, and products I designed and shipped on my own.",
         "work.gallery": "View screenshots",
         "work.live_tag": "Live",
-        "work.wip_tag": "Still building",
+        "work.wip_tag": "Live",
         "work.prod_tag": "Used daily",
 
         "work.tier1": "Built at work · Kyou",
@@ -130,7 +130,7 @@ const translations = {
         "work.intro": "Software yang dipakai orang setiap hari, dan produk yang saya rilis sendiri.",
         "work.gallery": "Lihat tampilannya",
         "work.live_tag": "Sudah tayang",
-        "work.wip_tag": "Masih digarap",
+        "work.wip_tag": "Sudah tayang",
         "work.prod_tag": "Dipakai tiap hari",
 
         "work.tier1": "Dibuat di kantor · Kyou",
