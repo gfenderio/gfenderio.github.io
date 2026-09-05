@@ -67,6 +67,8 @@ const translations = {
         "work.agency.name": "A Digital Agency Website",
         "work.agency.desc": "A company website for a digital agency: eleven pages covering services, past work, the team, and how to get in touch, with a WhatsApp shortcut for people who would rather not fill in a form. Built so that whatever a prospective client wants to know is never more than three clicks from the front page. This is the shape of website I build for clients, ready to be rebranded for one.",
 
+        "work.agency.live": "Visit live site",
+
         "about.title": "About.",
         "about.p1": "I build software other people depend on to get through their working day. At Kyou that means four different systems: the platform the office works in, the Android app the warehouse carries, a desktop tool for goods coming in, and the bot that ties them together. The pattern is nearly always the same — find the job someone is still doing by hand, and replace it with something that holds up on a busy day.",
         "about.p2": "Before any of this I spent years on shop floors, running stores and departments, chasing sales targets, keeping stock and prices straight. That is not a detour on the way here — it is the reason the software works. I already knew where a business quietly loses hours, which numbers people have stopped trusting, and why a screen that is technically correct can still be useless at seven in the morning with a queue building.",
@@ -154,6 +156,8 @@ const translations = {
 
         "work.agency.name": "Situs Agensi Digital",
         "work.agency.desc": "Situs company profile untuk agensi digital. Sebelas halaman: layanan, karya, profil tim, dan cara menghubungi. Ada jalur pintas lewat WhatsApp buat yang malas mengisi form. Apa pun yang ingin diketahui calon klien tidak pernah lebih dari tiga klik dari halaman depan. Beginilah bentuk situs yang saya buat untuk klien.",
+
+        "work.agency.live": "Buka situsnya",
 
         "about.title": "Tentang.",
         "about.p1": "Saya membuat software yang diandalkan orang lain untuk bekerja. Di Kyou itu berarti empat sistem berbeda. Platform untuk tim kantor, aplikasi Android untuk gudang, alat desktop untuk barang datang, dan bot yang menyambungkan semuanya. Polanya hampir selalu sama. Cari pekerjaan yang masih dikerjakan dengan tangan, lalu ganti dengan sesuatu yang kuat dipakai di hari sibuk.",
