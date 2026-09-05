@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
 
-    <title>Gilang Fenderio — Operations Automation Engineer</title>
+    <title>Gilang Fenderio — Full Stack Developer</title>
     <meta name="description"
-        content="Gilang Fenderio — Operations Automation Engineer at Kyou. I rebuild messy business workflows as automated systems and ship my own products: STZN, Kasirin, and Itungin.">
+        content="Gilang Fenderio — Full Stack Developer at Kyou. I build the platform, Android app, and desktop client its warehouse and e-commerce teams run on — Go, Kotlin, TypeScript — and ship my own products: STZN, Kasirin, and Itungin.">
     <meta name="author" content="Gilang Fenderio Yusuf">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fenderio.com/">
-    <meta property="og:title" content="Gilang Fenderio — Operations Automation Engineer">
+    <meta property="og:title" content="Gilang Fenderio — Full Stack Developer">
     <meta property="og:description"
-        content="I automate business operations and build the apps that run them. Creator of STZN, Kasirin, and Itungin.">
+        content="I build full-stack systems that replace manual work — Go and React on the server, Kotlin on the warehouse floor.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,14 +42,13 @@
 
         <!-- Hero -->
         <section class="hero">
-            <p class="eyebrow" data-i18n="hero.status">Operations Automation Engineer @ Kyou — open to remote — Indonesia
-            </p>
-            <h1 class="hero-title" data-i18n="hero.title">I automate business operations,<br>and build the apps that
-                run them.</h1>
+            <p class="eyebrow" data-i18n="hero.status">Full Stack Developer @ Kyou — open to remote — Indonesia</p>
+            <h1 class="hero-title" data-i18n="hero.title">I build full-stack systems<br>that replace manual work.</h1>
             <p class="hero-lead" data-i18n="hero.lead">
-                I&rsquo;m Gilang, an Operations Automation Engineer at Kyou. I take messy warehouse, logistics, and
-                e-commerce workflows and rebuild them as automated systems. Building software is also the thing I do for
-                the love of it — I take on freelance work and ship my own products on the side.
+                I&rsquo;m Gilang, a full-stack developer at Kyou. I build the platform, the Android app, and the
+                desktop client that its warehouse and e-commerce teams use every day — Go and React on the server,
+                Kotlin on the warehouse floor. Most of what I ship replaces something manual: a spreadsheet, a legacy
+                admin panel, a job somebody used to do by hand.
             </p>
             <div class="hero-actions">
                 <a href="#work" class="btn btn-primary" data-i18n="hero.cta_work">See my work</a>
@@ -66,36 +65,174 @@
         <section id="work" class="section">
             <div class="section-head">
                 <span class="section-no">01</span>
-                <h2 class="section-title" data-i18n="work.title">What I can build.</h2>
+                <h2 class="section-title" data-i18n="work.title">Selected work.</h2>
             </div>
-            <p class="section-intro" data-i18n="work.intro">A few things I&rsquo;ve designed and shipped — and a sense of
-                what I can build for you.</p>
+            <p class="section-intro" data-i18n="work.intro">Systems running in production, and products I designed and
+                shipped on my own.</p>
+
+            <!-- Tier 1 — production systems at Kyou -->
+            <div class="tier-head">
+                <h3 class="tier-title" data-i18n="work.tier1">Production systems · Kyou</h3>
+                <p class="tier-note" data-i18n="work.tier1_note">Internal systems used daily by warehouse,
+                    fulfillment, and e-commerce teams. Named by function — internal codenames and source stay private.
+                    Contribution figures come from git.</p>
+            </div>
 
             <div class="projects">
 
-                <!-- STZN — landscape / live concept -->
+                <!-- Team Operations Platform -->
+                <article class="project landscape">
+                    <div class="project-visual no-img">
+                        <span class="project-visual-fallback" data-i18n="work.platform.name">Team Operations
+                            Platform</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name" data-i18n="work.platform.name">Team Operations Platform</span>
+                            <span class="project-tag prod" data-i18n="work.prod_tag">In production</span>
+                        </div>
+                        <p class="project-metric" data-i18n="work.platform.metric">1,012 commits · top contributor of
+                            nine</p>
+                        <p class="project-desc" data-i18n="work.platform.desc">
+                            The company ran on a legacy admin panel and a wall of spreadsheets. I moved it onto one
+                            platform, piece by piece — stock management, price changes, stock rotation that used to
+                            live across three separate sheets, courier tariffs, payment confirmation. I work across the
+                            whole stack here: Go services, the React front end, and the Postgres migrations underneath.
+                            I also built the GOLD reporting layer behind the sales dashboard, a B2B invoice generator
+                            that turns an order ID into a printable PDF, and the daily worklog module the engineering
+                            team files into.
+                        </p>
+                        <ul class="project-stack">
+                            <li>Go</li>
+                            <li>React 19</li>
+                            <li>PostgreSQL</li>
+                            <li>Supabase</li>
+                            <li>Docker</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Warehouse PDA App -->
+                <article class="project portrait">
+                    <div class="project-visual no-img">
+                        <span class="project-visual-fallback" data-i18n="work.pda.name">Warehouse PDA App</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name" data-i18n="work.pda.name">Warehouse PDA App</span>
+                            <span class="project-tag prod" data-i18n="work.prod_tag">In production</span>
+                        </div>
+                        <p class="project-metric" data-i18n="work.pda.metric">267 of 425 commits · 51k lines of Kotlin
+                        </p>
+                        <p class="project-desc" data-i18n="work.pda.desc">
+                            A native Android app the warehouse floor runs on all day: stock-taking, picking, packing,
+                            and goods-in. I built the camera barcode scanning, a rack-first stock-take flow with photo
+                            proof, and an arrival roll-call where several staff can work one batch at once — item-level
+                            locking and 7-second polling keep them from colliding. The event-stock screen works with no
+                            signal at all, because the warehouse has corners where nothing does. Item lookup
+                            deliberately withholds cost price: floor staff get everything they need and nothing they
+                            shouldn&rsquo;t see.
+                        </p>
+                        <ul class="project-stack">
+                            <li>Kotlin</li>
+                            <li>Jetpack Compose</li>
+                            <li>Room</li>
+                            <li>Hilt</li>
+                            <li>Android</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Arrival Label Client -->
+                <article class="project landscape">
+                    <div class="project-visual no-img">
+                        <span class="project-visual-fallback" data-i18n="work.label.name">Arrival Label Client</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name" data-i18n="work.label.name">Arrival Label Client</span>
+                            <span class="project-tag prod" data-i18n="work.prod_tag">In production</span>
+                        </div>
+                        <p class="project-metric" data-i18n="work.label.metric">25 tagged releases · auto-updating in
+                            the field</p>
+                        <p class="project-desc" data-i18n="work.label.desc">
+                            When stock arrives, some units belong on shelves and some belong to orders a customer
+                            already paid for. They arrive in the same box, and mixing them up costs somebody their
+                            order. This Windows client reads arrival logs and prints 33&times;19mm thermal labels that
+                            keep the two apart — pre-sold units carry their own tag and buyer reference so allocation
+                            can&rsquo;t confuse them. It is read-only by design: it never writes to stock, orders, or
+                            allocation. The same roll-call I built for the phones, moved to a PC with a USB scanner,
+                            because bulk work is faster on a keyboard.
+                        </p>
+                        <ul class="project-stack">
+                            <li>Electron</li>
+                            <li>React 19</li>
+                            <li>TypeScript</li>
+                            <li>Vite</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Ops Automation Service -->
+                <article class="project landscape">
+                    <div class="project-visual no-img">
+                        <span class="project-visual-fallback" data-i18n="work.ops.name">Ops Automation Service</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name" data-i18n="work.ops.name">Ops Automation Service</span>
+                            <span class="project-tag prod" data-i18n="work.prod_tag">In production</span>
+                        </div>
+                        <p class="project-metric" data-i18n="work.ops.metric">~16,600 lines · Node.js &amp; TypeScript
+                        </p>
+                        <p class="project-desc" data-i18n="work.ops.desc">
+                            The layer between the systems the team already runs — admin panel, warehouse handhelds,
+                            spreadsheets, Metabase, Notion — and Discord, where the work actually gets coordinated. It
+                            notices orders stuck in picking and asks the person who can unstick them, right in the
+                            channel. It takes photo proof and item batches straight from the handhelds. A browser
+                            extension watches driver bookings and retries when none is found. Schedulers handle the
+                            recurring things nobody should have to remember.
+                        </p>
+                        <ul class="project-stack">
+                            <li>Node.js</li>
+                            <li>TypeScript</li>
+                            <li>discord.js</li>
+                            <li>Docker</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Tier 2 — own products and client work -->
+            <div class="tier-head">
+                <h3 class="tier-title" data-i18n="work.tier2">Products &amp; client work</h3>
+            </div>
+
+            <div class="projects">
+
+                <!-- STZN — landscape, live -->
                 <article class="project landscape">
                     <a class="project-visual" href="https://stzn-green.vercel.app/" target="_blank" rel="noopener"
                         aria-label="Open STZN live site">
-                        <img src="assets/stzn-preview.jpg" alt="STZN streetwear store"
+                        <img src="assets/stzn-preview.jpg" alt="STZN streetwear store" loading="lazy"
                             onerror="this.style.display='none';this.parentElement.classList.add('no-img')">
                         <span class="project-visual-fallback">STZN</span>
                     </a>
                     <div class="project-body">
                         <div class="project-meta">
                             <span class="project-name">STZN</span>
-                            <span class="project-tag live" data-i18n="work.live_tag">Live demo</span>
+                            <span class="project-tag live" data-i18n="work.live_tag">Live</span>
                         </div>
                         <p class="project-desc" data-i18n="work.stzn.desc">
-                            A drop-based streetwear storefront I designed and built on Next.js — live today as a
-                            front-end concept. I can take it the rest of the way: a real checkout backed by a Midtrans
-                            payment gateway, including QRIS payments.
+                            A drop-based streetwear storefront I designed and built on Next.js, live and complete —
+                            including checkout through a Midtrans payment gateway with QRIS support.
                         </p>
                         <ul class="project-stack">
                             <li>Next.js</li>
                             <li>React</li>
+                            <li>Midtrans</li>
                             <li>Vercel</li>
-                            <li>UI / UX</li>
                         </ul>
                         <a href="https://stzn-green.vercel.app/" target="_blank" rel="noopener" class="link-arrow"
                             data-i18n="work.stzn.live">Visit live site</a>
@@ -107,7 +244,7 @@
                     <button type="button" class="project-visual" data-name="Kasirin"
                         data-shots="assets/kasirin-1.jpg,assets/kasirin-2.jpg,assets/kasirin-3.jpg"
                         aria-label="View Kasirin screenshots">
-                        <img src="assets/kasirin-preview.jpg" alt="Kasirin POS terminal">
+                        <img src="assets/kasirin-preview.jpg" alt="Kasirin POS terminal" loading="lazy">
                         <span class="visual-hint" data-i18n="work.gallery">View screenshots</span>
                     </button>
                     <div class="project-body">
@@ -135,7 +272,7 @@
                     <button type="button" class="project-visual" data-name="Itungin" data-portrait="1"
                         data-shots="assets/itungin-1.jpg,assets/itungin-2.jpg,assets/itungin-3.jpg"
                         aria-label="View Itungin screenshots">
-                        <img src="assets/itungin-preview.jpg" alt="Itungin finance app">
+                        <img src="assets/itungin-preview.jpg" alt="Itungin finance app" loading="lazy">
                         <span class="visual-hint" data-i18n="work.gallery">View screenshots</span>
                     </button>
                     <div class="project-body">
@@ -158,6 +295,33 @@
                     </div>
                 </article>
 
+                <!-- Agency company profile — landscape -->
+                <article class="project landscape">
+                    <div class="project-visual no-img">
+                        <span class="project-visual-fallback" data-i18n="work.agency.name">Agency Company
+                            Profile</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name" data-i18n="work.agency.name">Agency Company Profile</span>
+                            <span class="project-tag wip" data-i18n="work.wip_tag">In progress</span>
+                        </div>
+                        <p class="project-desc" data-i18n="work.agency.desc">
+                            A company profile site for a digital agency: eleven pages covering services, case studies,
+                            team, and contact, with scroll animations and a WhatsApp enquiry route for clients who
+                            would rather not fill in a form. Built around a three-click rule — any question a prospect
+                            might have is at most three clicks from the homepage. This is the shape of marketing site I
+                            build for clients, and it is ready to be rebranded for one.
+                        </p>
+                        <ul class="project-stack">
+                            <li>Next.js</li>
+                            <li>React</li>
+                            <li>TypeScript</li>
+                            <li>Framer Motion</li>
+                        </ul>
+                    </div>
+                </article>
+
             </div>
         </section>
 
@@ -170,39 +334,43 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p data-i18n="about.p1">
-                        For years I ran retail floors — leading store and department operations, hitting sales targets,
-                        and keeping inventory and pricing accurate. That work showed me exactly where a business loses
-                        time, and where the right software pays for itself.
+                        I build software that other people depend on to get through their working day. At Kyou that
+                        means four codebases and four languages: a Go and React platform, a Kotlin Android app for the
+                        warehouse floor, an Electron desktop client, and a Node service that ties them together. The
+                        pattern behind most of it is the same — find the job someone is still doing by hand, and
+                        replace it with something that holds up under a real workload.
                     </p>
                     <p data-i18n="about.p2">
-                        Now I build that software. At Kyou I map warehouse, logistics, and e-commerce workflows and
-                        rebuild them as automated systems, pairing AI engineering with solid fundamentals to cut manual
-                        work and human error. I ship full-stack products end to end, and I build the web by hand —
-                        clean, production-grade code, not throwaway output.
+                        Before any of that, I spent years running retail floors: store and department operations, sales
+                        targets, inventory and pricing accuracy. That is not a detour on the way here — it is the
+                        reason the software works. I already knew where a business bleeds time, which numbers people
+                        quietly distrust, and why a screen that is technically correct can still be useless at 7am with
+                        a queue forming.
                     </p>
                     <p data-i18n="about.p3">
-                        I&rsquo;m an Information Systems student who learns by shipping. The work is real and running in
-                        production; the goal is to keep raising the bar. If you need someone who reads both the shop
-                        floor and the codebase, let&rsquo;s talk.
+                        I&rsquo;m an Information Systems student who learns by shipping, and the work is real and
+                        running in production. If you need someone who reads both the shop floor and the codebase,
+                        let&rsquo;s talk.
                     </p>
                 </div>
                 <aside class="about-side">
                     <h3 data-i18n="about.skills_title">What I work with</h3>
                     <ul class="kv-list">
-                        <li data-i18n="about.skill_auto">Process automation</li>
+                        <li>Kotlin · Go · SQL · TypeScript</li>
+                        <li>Android · Jetpack Compose · Room · Hilt</li>
+                        <li>Electron · Node.js</li>
+                        <li>PostgreSQL · Supabase</li>
+                        <li>Docker · Git · GitLab CI</li>
+                        <li>React 19 · Next.js</li>
                         <li data-i18n="about.skill_ai">AI engineering &amp; automation</li>
-                        <li data-i18n="about.skill_bpi">Business process improvement</li>
-                        <li>TypeScript · JavaScript · SQL</li>
-                        <li>Next.js · React · Vite</li>
                         <li data-i18n="about.skill_qa">QA &amp; testing</li>
-                        <li>Excel · SAP</li>
-                        <li data-i18n="about.skill_copy">Copywriting (EN / ID)</li>
                     </ul>
 
                     <h3 data-i18n="about.edu_title">Education &amp; credentials</h3>
                     <ul class="kv-list">
                         <li>Universitas Terbuka
-                            <span class="sub" data-i18n="about.edu_degree">B.Tech, Management Information Systems · 2023–2027</span>
+                            <span class="sub" data-i18n="about.edu_degree">B.Tech, Management Information Systems ·
+                                2023–2027</span>
                         </li>
                         <li>EF SET English — C2 Proficient
                             <span class="sub">Score 77/100</span>
@@ -218,7 +386,8 @@
                 <span class="section-no">03</span>
                 <h2 class="section-title" data-i18n="act.title">Code &amp; activity.</h2>
             </div>
-            <p class="section-intro" data-i18n="act.intro">A live look at my GitHub contributions over the last 6 months.</p>
+            <p class="section-intro" data-i18n="act.intro">A live look at my GitHub contributions over the last 6
+                months. Most of my day job lives on a private GitLab, so this is only part of the picture.</p>
 
             <div class="activity-grid">
                 <a class="activity-card" href="https://github.com/gfenderio" target="_blank" rel="noopener">
@@ -246,11 +415,23 @@
                     </div>
                     <span class="link-arrow">View GitHub</span>
                 </a>
-                <div class="activity-card impact-card">
-                    <div class="impact-content">
-                        <span class="impact-number" id="impact-num"></span>
-                        <span class="impact-label" id="impact-label"></span>
-                    </div>
+                <div class="activity-card private-card">
+                    <h3 class="private-title" data-i18n="act.private_title">What the graph doesn&rsquo;t show</h3>
+                    <p class="private-body" data-i18n="act.private_body">
+                        Most of what I build sits in private company repositories: an Android app the warehouse floor
+                        runs on, a Go and React platform, a Windows desktop client, and the service that ties them
+                        together. Four codebases, four languages, all in production — and none of them turn this
+                        calendar green.
+                    </p>
+                    <ul class="private-stack">
+                        <li>Kotlin</li>
+                        <li>Go</li>
+                        <li>TypeScript</li>
+                        <li>SQL</li>
+                        <li>Android</li>
+                        <li>Electron</li>
+                        <li>Docker</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -265,18 +446,20 @@
                 <li class="tl-item">
                     <span class="tl-date">2026 — <span data-i18n="exp.present">Present</span></span>
                     <div class="tl-body">
-                        <h3 data-i18n="exp.kyou.role">Operations Automation Engineer</h3>
+                        <h3 data-i18n="exp.kyou.role">Full Stack Developer</h3>
                         <p class="tl-org"><a href="https://kyou.id" target="_blank" rel="noopener">Kyou</a></p>
-                        <p class="tl-desc" data-i18n="exp.kyou.desc">Map and automate warehouse, logistics, and
-                            e-commerce workflows, integrating AI tooling and modern frameworks to remove manual
-                            bottlenecks. Built an internal app the operations team now uses every day — it replaced a
-                            heavily manual process and made their work noticeably faster and more accurate.</p>
+                        <p class="tl-desc" data-i18n="exp.kyou.desc">Build and maintain the internal platform the
+                            company runs on — Go services, a React front end, and the Postgres schema underneath — plus
+                            the Android app used on the warehouse floor and a Windows client for goods-in. Top
+                            contributor on the platform with 1,012 commits, and 63% of the Android app. Most of the
+                            work is migration: taking processes off spreadsheets and a legacy admin panel and
+                            rebuilding them as systems people can trust.</p>
                     </div>
                 </li>
                 <li class="tl-item">
                     <span class="tl-date">2025 — <span data-i18n="exp.present">Present</span></span>
                     <div class="tl-body">
-                        <h3 data-i18n="exp.indie.role">Freelance Developer &amp; Builder</h3>
+                        <h3 data-i18n="exp.indie.role">Freelance Full-Stack Developer</h3>
                         <p class="tl-org"><a href="https://fenderio.com" target="_blank" rel="noopener">Fenderio</a></p>
                         <p class="tl-desc" data-i18n="exp.indie.desc">My own practice — I design and ship web apps,
                             mobile apps, and automation for clients, and I take on new builds end to end. Self-initiated
@@ -308,25 +491,14 @@
                     </div>
                 </li>
                 <li class="tl-item">
-                    <span class="tl-date">2023 — 2024</span>
+                    <span class="tl-date">2019 — 2024</span>
                     <div class="tl-body">
-                        <h3 data-i18n="exp.foodhall.role">Staff — Operations &amp; Reporting</h3>
-                        <p class="tl-org"><a href="https://www.mapclub.com/shop/foodhall" target="_blank"
-                                rel="noopener">The Foodhall</a></p>
-                        <p class="tl-desc" data-i18n="exp.foodhall.desc">Built operational reports with advanced Excel
-                            (pivot tables, complex formulas) and tracked sales, returns, and inventory in SAP to support
-                            store decisions.</p>
-                    </div>
-                </li>
-                <li class="tl-item">
-                    <span class="tl-date">2019 — 2022</span>
-                    <div class="tl-body">
-                        <h3 data-i18n="exp.indomaret.role">Junior Store Leader</h3>
-                        <p class="tl-org"><a href="https://www.indomaret.co.id" target="_blank"
-                                rel="noopener">Indomaret Group</a></p>
-                        <p class="tl-desc" data-i18n="exp.indomaret.desc">Led daily store operations and the team, and
-                            hit sales targets on several occasions through strong product display and attentive
-                            customer service.</p>
+                        <h3 data-i18n="exp.earlier.role">Earlier — retail operations</h3>
+                        <p class="tl-org">The Foodhall · Indomaret Group</p>
+                        <p class="tl-desc" data-i18n="exp.earlier.desc">Operations and reporting at The Foodhall
+                            (2023–2024): built reports in advanced Excel and tracked sales, returns, and inventory in
+                            SAP. Junior Store Leader at Indomaret Group (2019–2022): led daily store operations and the
+                            team, and hit sales targets on several occasions.</p>
                     </div>
                 </li>
             </ol>
@@ -339,7 +511,7 @@
                 <h2 class="section-title" data-i18n="contact.title">Let&rsquo;s talk.</h2>
             </div>
             <p class="contact-lead" data-i18n="contact.lead">
-                Have a role, a workflow worth automating, or a product to build? Send a message — I read everything.
+                Have a role, a system worth rebuilding, or a product to ship? Send a message — I read everything.
             </p>
 
             <form action="https://formspree.io/f/xwvnqjjl" method="POST" class="contact-form">

@@ -1170,72 +1170,127 @@ button.project-visual {
     padding-bottom: 2px;
 }
 
-/* ---------- Impact Metric Card ---------- */
-.impact-card {
+/* ---------- Private-work card ---------- */
+/* Sits beside the contribution calendar. The calendar under-reports the
+   day job, which lives in private repos — this card says so plainly
+   instead of dressing a number up as an achievement. */
+.private-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
+    gap: 0.9rem;
     background: var(--canvas);
     border: 1px solid var(--hairline);
     border-radius: 12px;
-    padding: 2.5rem 1.5rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
     cursor: default;
     height: 100%;
 }
-.impact-card:hover {
+
+.private-card:hover {
     box-shadow: var(--shadow-2);
     transform: none;
 }
-.impact-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-}
-.impact-number {
-    font-size: clamp(3rem, 5vw, 4rem);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    background: linear-gradient(135deg, var(--ink) 0%, #666 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: var(--font-sans);
-}
-.impact-label {
-    font-size: 0.95rem;
+
+.private-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     color: var(--mute);
-    line-height: 1.4;
-    max-width: 220px;
-    margin: 0 auto;
 }
 
-/* Rotating impact metric — elegant crossfade with a soft slide + blur */
-.impact-number,
-.impact-label {
-    transition: opacity 0.32s ease, transform 0.32s ease, filter 0.32s ease;
-    will-change: opacity, transform, filter;
+.private-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--body);
 }
 
-.impact-number.swap-out,
-.impact-label.swap-out {
-    opacity: 0;
-    transform: translateY(-10px);
-    filter: blur(5px);
+.private-stack {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.4rem;
 }
 
-.impact-number.swap-in,
-.impact-label.swap-in {
-    animation: impact-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+.private-stack li {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--body);
+    background: var(--inset);
+    border: 1px solid var(--hairline);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
 }
 
-@keyframes impact-in {
-    from { opacity: 0; transform: translateY(12px); filter: blur(6px); }
-    to   { opacity: 1; transform: none; filter: blur(0); }
+/* ---------- Work tiers ---------- */
+/* Two groups of projects: production systems first, own products second.
+   Each tier is its own .projects container so the left/right image
+   alternation restarts inside it. */
+.tier-head {
+    margin-bottom: 2rem;
 }
 
-@media (max-width: 540px) {
-    .impact-card {
-        padding: 1.8rem 1rem;
-    }
+.projects + .tier-head {
+    margin-top: clamp(3.5rem, 9vw, 6rem);
+    padding-top: clamp(2rem, 5vw, 3rem);
+    border-top: 1px solid var(--hairline);
+}
+
+.tier-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+}
+
+.tier-note {
+    max-width: 62ch;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--mute);
+}
+
+/* Contribution figure — sits between the project name and its description. */
+.project-metric {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--mute);
+    margin-bottom: 0.7rem;
+}
+
+.project-tag.prod {
+    color: #0a5ad4;
+    border-color: #d3e4ff;
+    background: #f3f8ff;
+}
+
+/* Placeholder shown until a project's screenshots exist. Muted on purpose:
+   it should read as "not yet", not as a broken image. */
+.project-visual.no-img {
+    border-style: dashed;
+    box-shadow: none;
+}
+
+.project-visual.no-img:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+.project-visual.no-img .project-visual-fallback {
+    padding: 0 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-align: center;
+    text-wrap: balance;
+    color: var(--mute);
+}
+
+.project.portrait .project-visual.no-img {
+    border-style: solid;
 }
