@@ -1310,3 +1310,23 @@ button.project-visual {
 .project.no-visual .project-body {
     max-width: 72ch;
 }
+
+/* ---------- Interactive backdrop ---------- */
+/* Canvas dot grid that responds to the cursor. Sits behind everything and
+   never intercepts a click. Script bails out on reduced-motion, touch
+   pointers, and narrow screens, so the canvas simply never appears there. */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* The page content needs to sit above the canvas. Both are in normal flow
+   under body, so a stacking context on the wrappers is enough. */
+.nav,
+main,
+.footer {
+    position: relative;
+    z-index: 1;
+}
