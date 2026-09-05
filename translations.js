@@ -64,6 +64,10 @@ const translations = {
         "work.kasirin.desc": "A checkout system for busy minimarkets with tens of thousands of products. The till keeps working when the internet drops, stock updates on every screen the moment something sells, and two cashiers can never sell the same last item twice. It also learns what runs out quickly and flags it before the shelf is empty.",
         "work.itungin.desc": "A personal money app for Android. It tracks what comes in and goes out on a live chart, tells you whether your debts are getting heavy, warns you before a spending category runs over budget, and reminds you when a bill is due.",
 
+        "work.sias.name": "A School Portal",
+        "work.sias.desc": "An academic portal for a primary school, not a brochure site. Teachers enter marks, admin manages pupil records and school fees, and parents see their own child’s progress and what is still owed. Sign in as any of the three roles and look around: the demo is read-only, so nothing you do changes what the next visitor sees, and every pupil in it is invented.",
+        "work.sias.live": "Try the demo",
+
         "work.agency.name": "A Digital Agency Website",
         "work.agency.desc": "A company website for a digital agency: eleven pages covering services, past work, the team, and how to get in touch, with a WhatsApp shortcut for people who would rather not fill in a form. Built so that whatever a prospective client wants to know is never more than three clicks from the front page. This is the shape of website I build for clients, ready to be rebranded for one.",
 
@@ -153,6 +157,10 @@ const translations = {
         "work.stzn.live": "Buka situsnya",
         "work.kasirin.desc": "Sistem kasir untuk minimarket ramai dengan puluhan ribu jenis barang. Kasir tetap jalan waktu internet putus. Stok berubah di semua layar begitu ada yang terjual. Dua kasir tidak mungkin menjual barang terakhir yang sama. Barang yang cepat habis ditandai sebelum raknya kosong.",
         "work.itungin.desc": "Aplikasi keuangan pribadi untuk Android. Uang masuk dan keluar tercatat lewat grafik yang langsung bergerak. Kesehatan utang kamu dinilai otomatis. Anggaran tiap kategori diingatkan sebelum kebobolan. Tagihan rutin ditagih tepat waktu.",
+
+        "work.sias.name": "Portal Sekolah",
+        "work.sias.desc": "Portal akademik untuk sekolah dasar, bukan sekadar situs profil. Guru mengisi nilai. Admin mengelola data siswa dan SPP. Wali murid melihat perkembangan anaknya sendiri, berikut tagihan yang belum lunas. Kamu bisa masuk sebagai salah satu dari tiga peran dan lihat-lihat sendiri. Demonya hanya bisa dibaca, jadi tidak ada yang berubah untuk pengunjung berikutnya, dan semua siswa di dalamnya fiktif.",
+        "work.sias.live": "Coba demonya",
 
         "work.agency.name": "Situs Agensi Digital",
         "work.agency.desc": "Situs company profile untuk agensi digital. Sebelas halaman: layanan, karya, profil tim, dan cara menghubungi. Ada jalur pintas lewat WhatsApp buat yang malas mengisi form. Apa pun yang ingin diketahui calon klien tidak pernah lebih dari tiga klik dari halaman depan. Beginilah bentuk situs yang saya buat untuk klien.",
