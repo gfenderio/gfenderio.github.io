@@ -1298,3 +1298,15 @@ button.project-visual {
 .project.portrait .project-visual.no-img {
     border-style: solid;
 }
+
+/* A project with no screenshot yet: drop the two-column split so the text
+   runs full width, rather than leaving an empty box that reads as a broken
+   image. */
+.project.no-visual {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+}
+
+.project.no-visual .project-body {
+    max-width: 72ch;
+}
