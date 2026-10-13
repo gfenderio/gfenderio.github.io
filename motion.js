@@ -7,9 +7,9 @@
 // which is what makes a page feel templated. Here each child
 // arrives on its own beat, over a longer, slower settle.
 //
-// Everything is off under prefers-reduced-motion, and the
-// smoothing is off on touch, where the platform's own scroll
-// is already good and hijacking it only causes trouble.
+// Everything is off under prefers-reduced-motion. On touch the
+// smoothing is lighter: a phone already has momentum, so Lenis
+// only adds a short, soft settle on top of the finger's flick.
 // ---------------------------------------------------------
 (function () {
     "use strict";
@@ -31,7 +31,7 @@
     // Native wheel scrolling steps in ~100px jumps. Smoothing it is what
     // makes the rest of the motion read as deliberate rather than jittery.
     var lenis = null;
-    if (!reduce && !coarse && typeof window.Lenis === "function") {
+    if (!reduce && typeof window.Lenis === "function") {
         lenis = new window.Lenis({
             duration: 1.05,
             // Expo-out: quick to start, long to settle. The settle is the part
@@ -39,7 +39,12 @@
             easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
             smoothWheel: true,
             wheelMultiplier: 0.9,
-            touchMultiplier: 1.6
+            // Touch: Lenis follows the finger, then eases out the flick.
+            // syncTouchLerp is the settle; lower is longer. Kept close to
+            // native so a fast swipe never feels like it is dragging.
+            syncTouch: coarse,
+            syncTouchLerp: 0.085,
+            touchMultiplier: 1.1
         });
 
         // Exposed so the lightbox can pause scrolling while it is open.
