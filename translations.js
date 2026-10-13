@@ -78,7 +78,7 @@ const translations = {
         "work.itungin.desc": "A personal money app for Android. It tracks what comes in and goes out on a live chart, tells you whether your debts are getting heavy, warns you before a spending category runs over budget, and reminds you when a bill is due.",
 
         "work.sias.name": "A School Portal",
-        "work.sias.desc": "An academic portal for a primary school, not a brochure site. Teachers enter marks, admin manages pupil records and school fees, and parents see their own child&rsquo;s progress and what is still owed. Sign in as any of the three roles and look around: the demo is read-only, so nothing you do changes what the next visitor sees, and every pupil in it is invented.",
+        "work.sias.desc": "An academic portal for a primary school. Teachers enter marks, admin manages pupil records and school fees, and parents see their own child&rsquo;s progress and what is still owed. Sign in as any of the three roles and look around: the demo is read-only, so nothing you do changes what the next visitor sees, and every pupil in it is invented.",
         "work.sias.live": "Try the demo",
 
         "work.agency.name": "A Digital Agency Website",
@@ -86,14 +86,14 @@ const translations = {
         "work.agency.live": "Visit live site",
 
         "about.title": "About.",
-        "about.p1": "I build software people rely on to get through their working day. At Kyou that covers the whole path of an order: the marketplace price and promo tools, payments and reports, the Android app on the warehouse floor, the label printer for goods coming in, and the bot that ties them together. The pattern is nearly always the same. Find the job someone still does by hand, then replace it with something that holds up on a busy day.",
-        "about.p2": "Before any of this I spent years on shop floors, running stores and departments, chasing sales targets, keeping stock and prices straight. That wasn&rsquo;t a detour. It&rsquo;s the reason the software works. I already knew where a business quietly loses hours, which numbers people have stopped trusting, and why a screen that is technically correct can still be useless at seven in the morning with a queue building.",
+        "about.p1": "I build software people use to get their work done. At Kyou that covers an order from the moment it comes in to the moment it ships: the marketplace price and promo tools, payments and reports, the Android app on the warehouse floor, the label printer for goods coming in, and the bot that ties them together. The pattern is nearly always the same. Find the job someone still does by hand, then replace it with something that doesn&rsquo;t fall over when it gets busy.",
+        "about.p2": "Before any of this I spent years on shop floors, running stores and departments, chasing sales targets, keeping stock and prices straight. So I already knew where a business loses hours, which numbers people have stopped trusting, and why a screen that is technically correct can still be useless at seven in the morning with a queue building.",
         "about.p3": "I&rsquo;m an Information Systems student, and I learn by building things that get used. If you want someone who understands the shop floor as well as the code, let&rsquo;s talk.",
         "about.skills_title": "What I work with",
         "about.skill_ai": "AI engineering &amp; automation",
         "about.skill_qa": "Testing &amp; quality",
         "about.edu_title": "Education &amp; credentials",
-        "about.edu_degree": "B.Tech, Management Information Systems · 2023–2027",
+        "about.edu_degree": "Bachelor of Computer Science (S.Kom), Information Systems · 2023–2027",
 
         "act.title": "Code &amp; activity.",
         "act.intro": "My public GitHub activity over the last six months, and what the company code on GitLab adds up to.",
@@ -110,7 +110,7 @@ const translations = {
         "exp.title": "Experience.",
         "exp.present": "Present",
         "exp.kyou.role": "Software Engineer",
-        "exp.kyou.desc": "I build Kyou&rsquo;s e-commerce and fulfilment systems: the marketplace tools, payments and reports, the platform the office runs on, and the Android app on the warehouse floor. Most of the work is moving things across, taking a process off a spreadsheet or the old PHP admin and rebuilding it as something people can rely on. I hold maintainer access and ship my own changes to production.",
+        "exp.kyou.desc": "I build Kyou&rsquo;s e-commerce and fulfilment systems: the marketplace tools, payments and reports, the platform the office runs on, and the Android app on the warehouse floor. Most of the work is moving things across, taking a process off a spreadsheet or the old PHP admin and rebuilding it on the new platform. I hold maintainer access and ship my own changes to production.",
         "exp.indie.role": "Freelance Developer",
         "exp.indie.desc": "My own practice. I design and build websites, mobile apps, and automation for clients, and I take a project from the first conversation to the finished thing. My own products so far are Kasirin and Itungin. Available for new work.",
         "exp.informa.role": "Assistant Product Specialist",
@@ -159,7 +159,7 @@ const translations = {
 
         "work.data.name": "Satu Harga, di Semua Layar",
         "work.data.metric": "Model harga marketplace di data warehouse",
-        "work.data.desc": "Dulu angka di Kyou diambil langsung dari log mentah. Tiap layar menghitungnya dengan cara sendiri, jadi hasilnya sering beda. Tim lalu membangun data warehouse yang secara terjadwal menyusun ulang tabel yang sudah dibersihkan dan dicek. Bagian saya: tabel yang menentukan harga jual tiap barang di marketplace. Setelah itu saya pindahkan alat-alatnya ke data warehouse, supaya tidak menghitung sendiri lagi. Yang sudah pindah: layar harga toko, aplikasi gudang, papan harian, dan riwayat stok. Kalau riwayatnya belum lengkap, layar sekarang bilang terus terang, bukan menebak.",
+        "work.data.desc": "Dulu angka di Kyou diambil langsung dari log mentah. Tiap layar menghitungnya dengan cara sendiri, jadi hasilnya sering beda. Tim lalu membangun data warehouse yang secara terjadwal menyusun ulang tabel yang sudah dibersihkan dan dicek. Bagian saya: tabel yang menentukan harga jual tiap barang di marketplace. Setelah itu saya pindahkan tools-nya ke data warehouse, supaya tidak menghitung sendiri lagi. Yang sudah pindah: layar harga toko, aplikasi gudang, papan harian, dan riwayat stok. Kalau riwayatnya belum lengkap, layar sekarang bilang terus terang, bukan menebak.",
 
         "work.platform.name": "Platform Kerja Perusahaan",
         "work.platform.metric": "Kontributor kode terbanyak kedua",
@@ -196,12 +196,12 @@ const translations = {
         "about.title": "Profil.",
         "about.p1": "Saya membuat software yang dipakai orang untuk kerja sehari-hari. Di Kyou, cakupannya dari pesanan masuk sampai barang dikirim. Mulai dari tools harga dan promo marketplace, pembayaran, dan laporan. Lalu aplikasi Android di gudang, pencetak label barang datang, dan bot yang menyambungkan semuanya. Polanya hampir selalu sama. Cari kerjaan yang masih dikerjakan manual, lalu ganti dengan sistem yang tidak tumbang saat sedang ramai.",
         "about.p2": "Sebelum menulis kode, saya bertahun-tahun bekerja di toko. Saya memimpin toko dan departemen, mengejar target penjualan, dan menjaga stok serta harga tetap akurat. Justru pengalaman itu yang bikin software saya benar-benar terpakai. Saya tahu di mana waktu kerja banyak terbuang, dan angka mana yang sudah tidak dipercaya orang. Saya juga paham kenapa layar yang benar secara teknis bisa tetap tidak berguna. Apalagi jam tujuh pagi, saat antrean mulai panjang.",
-        "about.p3": "Saya mahasiswa Sistem Informasi, dan saya belajar dengan membangun hal yang benar-benar dipakai. Kalau kamu butuh orang yang paham lapangan sekaligus kodenya, ayo ngobrol.",
+        "about.p3": "Saya mahasiswa Sistem Informasi, dan saya belajar dengan membangun hal yang memang dipakai orang. Kalau kamu butuh orang yang paham lapangan sekaligus kodenya, ayo ngobrol.",
         "about.skills_title": "Teknologi yang saya pakai",
         "about.skill_ai": "AI engineering &amp; otomasi",
         "about.skill_qa": "Testing &amp; quality",
         "about.edu_title": "Pendidikan &amp; sertifikat",
-        "about.edu_degree": "S.Tr Sistem Informasi Manajemen · 2023–2027",
+        "about.edu_degree": "S1 Sistem Informasi (S.Kom) · 2023–2027",
 
         "act.title": "Kode &amp; aktivitas.",
         "act.intro": "Aktivitas GitHub publik saya enam bulan terakhir, plus ringkasan kerja saya di GitLab perusahaan.",
@@ -218,7 +218,7 @@ const translations = {
         "exp.title": "Pengalaman.",
         "exp.present": "Sekarang",
         "exp.kyou.role": "Software Engineer",
-        "exp.kyou.desc": "Saya membangun sistem e-commerce dan fulfillment Kyou. Cakupannya alat marketplace, pembayaran dan laporan, platform kantor, serta aplikasi Android di gudang. Sebagian besar kerjanya memindahkan proses dari spreadsheet atau admin PHP lama. Proses itu lalu saya bangun ulang jadi sistem yang bisa diandalkan. Saya pegang akses maintainer dan merilis perubahan saya sendiri ke production.",
+        "exp.kyou.desc": "Saya membangun sistem e-commerce dan fulfillment Kyou. Cakupannya tools marketplace, pembayaran dan laporan, platform kantor, serta aplikasi Android di gudang. Sebagian besar kerjanya memindahkan proses dari spreadsheet atau admin PHP lama. Proses itu lalu saya bangun ulang di platform baru. Saya pegang akses maintainer dan merilis perubahan saya sendiri ke production.",
         "exp.indie.role": "Developer Lepas",
         "exp.indie.desc": "Di luar kantor, saya menerima proyek sendiri. Saya merancang dan membangun website, aplikasi mobile, dan otomasi untuk klien. Proyeknya saya pegang dari obrolan pertama sampai jadi. Produk saya sendiri sejauh ini adalah Kasirin dan Itungin. Saat ini terbuka untuk proyek baru.",
         "exp.informa.role": "Assistant Product Specialist",
