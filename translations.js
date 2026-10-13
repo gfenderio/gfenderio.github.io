@@ -47,7 +47,7 @@ const translations = {
 
         "work.ecom.name": "Marketplace &amp; Online Store Tools",
         "work.ecom.metric": "Shopee, Tokopedia and TikTok Shop, run from one place",
-        "work.ecom.desc": "Selling on three marketplaces means three sets of prices, promos and reports that rarely agree. I built the tools the e-commerce team uses to keep them straight. Store prices and discount quotas are set from one screen, and each marketplace&rsquo;s discount list is imported as a file instead of typed in. The monthly report breaks net revenue down by channel and splits cancellations by cause. On the payment side, every order shows its voucher and net price, and bulk checkouts no longer drift by a rounding error when the total is split. There is also a Chrome extension that puts Kyou&rsquo;s own controls straight into the Shopee seller page.",
+        "work.ecom.desc": "Selling on three marketplaces means three sets of prices, promos and reports that rarely agree. I built the tools the e-commerce team uses to keep them straight. Store prices and discount quotas are set from one screen, and each marketplace&rsquo;s discount list is imported as a file instead of typed in. The monthly report breaks net revenue down by channel and splits cancellations by cause. There is also a Chrome extension that puts Kyou&rsquo;s own controls straight into the Shopee seller page.",
 
         "work.data.name": "One Price, Everywhere",
         "work.data.metric": "The marketplace price model in the data warehouse",
@@ -155,7 +155,7 @@ const translations = {
 
         "work.ecom.name": "Alat Marketplace &amp; Toko Online",
         "work.ecom.metric": "Shopee, Tokopedia, dan TikTok Shop dari satu tempat",
-        "work.ecom.desc": "Jualan di tiga marketplace berarti tiga set harga, promo, dan laporan yang jarang cocok. Saya membangun alat yang dipakai tim e-commerce untuk merapikannya. Harga toko dan kuota diskon diatur dari satu layar. Daftar diskon tiap marketplace cukup diunggah, tidak perlu diketik ulang. Laporan bulanan memecah pendapatan bersih per kanal, dan memisahkan pembatalan menurut penyebabnya. Di sisi pembayaran, voucher dan harga bersih kelihatan di tiap pesanan. Checkout borongan juga tidak lagi selisih karena pembulatan. Ada pula extension Chrome yang menaruh tombol Kyou langsung di halaman seller Shopee.",
+        "work.ecom.desc": "Jualan di tiga marketplace berarti tiga set harga, promo, dan laporan yang jarang cocok. Saya membangun alat yang dipakai tim e-commerce untuk merapikannya. Harga toko dan kuota diskon diatur dari satu layar. Daftar diskon tiap marketplace cukup diunggah, tidak perlu diketik ulang. Laporan bulanan memecah pendapatan bersih per kanal, dan memisahkan pembatalan menurut penyebabnya. Ada pula extension Chrome yang menaruh tombol Kyou langsung di halaman seller Shopee.",
 
         "work.data.name": "Satu Harga, di Semua Layar",
         "work.data.metric": "Model harga marketplace di data warehouse",
