@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
 
-    <title>Gilang Fenderio — Full Stack Developer</title>
+    <title>Gilang Fenderio — Software Engineer, E-commerce &amp; Fulfilment</title>
     <meta name="description"
-        content="Gilang Fenderio — Full Stack Developer. I build the software a company runs on: the app the warehouse carries all day, the platform the office works in, and the tools that quietly do the jobs people used to do by hand.">
+        content="Gilang Fenderio, software engineer at Kyou. I build the e-commerce and fulfilment systems an order passes through: marketplace price and promo tools, payments and reports, and the Android app the warehouse runs on.">
     <meta name="author" content="Gilang Fenderio Yusuf">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fenderio.com/">
-    <meta property="og:title" content="Gilang Fenderio — Full Stack Developer">
+    <meta property="og:title" content="Gilang Fenderio — Software Engineer, E-commerce &amp; Fulfilment">
     <meta property="og:description"
-        content="I build the software that runs the work — four systems in daily use, plus my own products.">
+        content="Marketplace tools, payments, reports and the warehouse app behind every Kyou order. Plus my own products.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,9 +42,9 @@
 
         <!-- Hero -->
         <section class="hero">
-            <p class="eyebrow" data-i18n="hero.status">Full Stack Developer @ Kyou — open to remote — Indonesia</p>
+            <p class="eyebrow" data-i18n="hero.status">Software Engineer @ Kyou · E-commerce &amp; fulfilment · Indonesia, open to remote</p>
             <h1 class="hero-title" data-i18n="hero.title">I build the software<br>that runs the work.</h1>
-            <p class="hero-lead" data-i18n="hero.lead">I&rsquo;m Gilang. I build the systems a company actually runs on — the app the warehouse staff carry all day, the platform the office works in, the tools that quietly do the jobs people used to do by hand. Four of them are in daily use right now.</p>
+            <p class="hero-lead" data-i18n="hero.lead">I&rsquo;m Gilang, a software engineer at Kyou, a hobby shop that sells through its own website, Shopee, Tokopedia and TikTok Shop. I build what an order passes through on its way out: the price and promo tools, payments and reports, and the Android app the warehouse uses to pick, pack and count stock.</p>
             <div class="hero-actions">
                 <a href="#work" class="btn btn-primary" data-i18n="hero.cta_work">See my work</a>
                 <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta_contact">Get in touch</a>
@@ -67,10 +67,47 @@
             <!-- Tier 1 — production systems at Kyou -->
             <div class="tier-head">
                 <h3 class="tier-title" data-i18n="work.tier1">Built at work · Kyou</h3>
-                <p class="tier-note" data-i18n="work.tier1_note">The warehouse, delivery, and online-store teams use these every day. I describe them by what they do — the internal names and the code stay private.</p>
+                <p class="tier-note" data-i18n="work.tier1_note">The online-store, warehouse and delivery teams use these every day. I describe them by what they do. The internal names and the code stay private.</p>
             </div>
 
             <div class="projects">
+
+                <!-- Marketplace & e-commerce tools -->
+                <article class="project no-visual">
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name" data-i18n="work.ecom.name">Marketplace &amp; Online Store Tools</span>
+                            <span class="project-tag prod" data-i18n="work.prod_tag">Used daily</span>
+                        </div>
+                        <p class="project-metric" data-i18n="work.ecom.metric">Shopee, Tokopedia and TikTok Shop, run from one place</p>
+                        <p class="project-desc" data-i18n="work.ecom.desc">Selling on three marketplaces means three sets of prices, promos and reports that rarely agree. I built the tools the e-commerce team uses to keep them straight. Store prices and discount quotas are set from one screen, and each marketplace&rsquo;s discount list is imported as a file instead of typed in. The monthly report breaks net revenue down by channel and splits cancellations by cause. On the payment side, every order shows its voucher and net price, and bulk checkouts no longer drift by a rounding error when the total is split. There is also a Chrome extension that puts Kyou&rsquo;s own controls straight into the Shopee seller page.</p>
+                        <ul class="project-stack">
+                            <li>Go</li>
+                            <li>PHP</li>
+                            <li>Laravel</li>
+                            <li>MySQL</li>
+                            <li>Chrome Extension</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Marketplace price model in the team data warehouse. The warehouse itself is a team build; the copy claims only the model and the migration. -->
+                <article class="project no-visual">
+                    <div class="project-body">
+                        <div class="project-meta">
+                            <span class="project-name" data-i18n="work.data.name">One Price, Everywhere</span>
+                            <span class="project-tag prod" data-i18n="work.prod_tag">Used daily</span>
+                        </div>
+                        <p class="project-metric" data-i18n="work.data.metric">The marketplace price model in the data warehouse</p>
+                        <p class="project-desc" data-i18n="work.data.desc">Kyou&rsquo;s numbers used to come straight from raw logs, and every screen worked them out a little differently. The team built a data warehouse that rebuilds clean, tested tables on a schedule. My part in it is the table that settles what each item sells for on the marketplaces. Then I moved the tools onto the data warehouse, so they stop doing their own sums: the store price screens, the warehouse app, the daily boards and the stock history. Where the history is incomplete, the screen now says so instead of guessing.</p>
+                        <ul class="project-stack">
+                            <li>SQL</li>
+                            <li>MySQL</li>
+                            <li>Go</li>
+                            <li>Data warehouse</li>
+                        </ul>
+                    </div>
+                </article>
 
                 <!-- Team Operations Platform -->
                 <article class="project no-visual">
@@ -79,13 +116,15 @@
                             <span class="project-name" data-i18n="work.platform.name">The Company&rsquo;s Working Platform</span>
                             <span class="project-tag prod" data-i18n="work.prod_tag">Used daily</span>
                         </div>
-                        <p class="project-metric" data-i18n="work.platform.metric">The largest share of the work, across a team of nine</p>
-                        <p class="project-desc" data-i18n="work.platform.desc">The company used to run on a pile of spreadsheets and one ageing admin page. I moved it into a single place, one piece at a time: stock, price changes, the stock rotation that used to live across three separate files, courier rates, payment confirmations. I build these end to end — the screens people use, the engine behind them, and the way the data is stored. I also built the sales dashboard the managers read every morning, a tool that turns an order number into a ready-to-print invoice, and the daily report the whole engineering team files into.</p>
+                        <p class="project-metric" data-i18n="work.platform.metric">Second-largest contributor to the codebase</p>
+                        <p class="project-desc" data-i18n="work.platform.desc">Kyou used to run on spreadsheets and a PHP admin panel written years ago. I&rsquo;m moving it into one platform, a process at a time: stock, price changes, stock rotation, courier rates, payment confirmations. I build each one end to end, from the screen to the API to the tables. The old system stays live while this happens, so I maintain it too and wire the two together. Payment confirmation, for one, can be pointed at the old system or the new one with a setting, without a redeploy. I also built the sales dashboard the managers read every morning.</p>
                         <ul class="project-stack">
                             <li>Go</li>
                             <li>React 19</li>
                             <li>PostgreSQL</li>
                             <li>Supabase</li>
+                            <li>PHP</li>
+                            <li>Laravel</li>
                             <li>Docker</li>
                         </ul>
                     </div>
@@ -107,8 +146,8 @@
                             <span class="project-name" data-i18n="work.pda.name">The Warehouse App</span>
                             <span class="project-tag prod" data-i18n="work.prod_tag">Used daily</span>
                         </div>
-                        <p class="project-metric" data-i18n="work.pda.metric">About two thirds of the app is mine</p>
-                        <p class="project-desc" data-i18n="work.pda.desc">An Android app the warehouse staff carry all day: counting stock, picking orders, packing them, and checking in new deliveries. I built the barcode scanning through the phone camera, a stock count that starts from the shelf and asks for a photo as proof, and a check-in several people can work on at the same time without overwriting each other. One screen keeps working with no signal at all, because there are corners of the warehouse where there simply isn&rsquo;t any. Cost prices are deliberately left out: the floor staff get everything they need and nothing they shouldn&rsquo;t see.</p>
+                        <p class="project-metric" data-i18n="work.pda.metric">About 70% of the app is mine, now on version 2.45</p>
+                        <p class="project-desc" data-i18n="work.pda.desc">An Android app the warehouse staff carry all day: counting stock, picking and packing orders, checking in deliveries, and ringing up sales at events. I built barcode scanning through the phone camera, a stock count that starts at the shelf and asks for a photo as proof, and a check-in several people can work on at once without overwriting each other. Online orders show when they were requested and turn red once they are a day late. One screen keeps working with no signal, because parts of the warehouse have none. Cost prices are left out on purpose: floor staff see what they need and nothing more.</p>
                         <ul class="project-stack">
                             <li>Kotlin</li>
                             <li>Jetpack Compose</li>
@@ -135,7 +174,7 @@
                             <span class="project-tag prod" data-i18n="work.prod_tag">Used daily</span>
                         </div>
                         <p class="project-metric" data-i18n="work.label.metric">25 releases, and it updates itself</p>
-                        <p class="project-desc" data-i18n="work.label.desc">When a delivery arrives, some of it belongs on the shop shelves and some of it has already been bought by a customer. Both turn up in the same box, and mixing them up means somebody loses the thing they paid for. This desktop app reads what came in and prints a small sticker for each item that keeps the two apart — anything already sold gets its own mark and the buyer&rsquo;s reference, so it can&rsquo;t end up on a shelf by mistake. It only ever reads: it cannot change stock or orders, by design.</p>
+                        <p class="project-desc" data-i18n="work.label.desc">When a delivery arrives, some of it belongs on the shop shelves and some of it has already been bought by a customer. Both turn up in the same box, and mixing them up means somebody loses the thing they paid for. This desktop app reads what came in and prints a small sticker for each item. Anything already sold gets its own mark and the buyer&rsquo;s reference, so it can&rsquo;t end up on a shelf by mistake. It only ever reads. It cannot change stock or orders, by design.</p>
                         <ul class="project-stack">
                             <li>Electron</li>
                             <li>React 19</li>
@@ -153,7 +192,7 @@
                             <span class="project-tag prod" data-i18n="work.prod_tag">Used daily</span>
                         </div>
                         <p class="project-metric" data-i18n="work.ops.metric">Running every day since May</p>
-                        <p class="project-desc" data-i18n="work.ops.desc">A bot that carries fulfilment between the warehouse and the people running it. Proof photos follow every order through picking, packing, and handover, and file themselves where they belong. Split shipments are worked out and sent to print without anyone chasing the paperwork. An order stuck halfway through picking is raised with whoever can unstick it, the moment it stalls. The recurring jobs run to schedule, without anyone having to remember them.</p>
+                        <p class="project-desc" data-i18n="work.ops.desc">A bot that connects the warehouse with the people running it. Proof photos follow every order through picking, packing and handover, and file themselves where they belong. Split shipments are worked out and sent to print without anyone chasing the paperwork. An order stuck halfway through picking is raised with whoever can unstick it, the moment it stalls. The recurring jobs run on schedule, without anyone having to remember them.</p>
                         <ul class="project-stack">
                             <li>Node.js</li>
                             <li>TypeScript</li>
@@ -184,11 +223,11 @@
                             <span class="project-name">The Syndicate</span>
                             <span class="project-tag live" data-i18n="work.live_tag">Live</span>
                         </div>
-                        <p class="project-desc" data-i18n="work.vault.desc"></p>
+                        <p class="project-desc" data-i18n="work.vault.desc">A gallery for my own Yu-Gi-Oh! card collection. Each card tilts under your cursor and the foil catches the light the way the real one does, with a different holo pattern for each rarity. Prices are looked up per rarity, so a rare printing never inflates the price of the common one.</p>
                         <ul class="project-stack">
                             <li>React 19</li>
                             <li>TypeScript</li>
-                            <li>Appwrite</li>
+                            <li>Supabase</li>
                             <li>CSS 3D</li>
                         </ul>
                         <a href="https://vault-two-wheat.vercel.app/" target="_blank" rel="noopener" class="link-arrow"
@@ -209,7 +248,7 @@
                             <span class="project-name">STZN</span>
                             <span class="project-tag live" data-i18n="work.live_tag">Live</span>
                         </div>
-                        <p class="project-desc" data-i18n="work.stzn.desc">An online streetwear shop I designed and built from scratch. It is open and complete — you can browse it, put things in a basket, and pay, including by QRIS.</p>
+                        <p class="project-desc" data-i18n="work.stzn.desc">An online streetwear shop I designed and built from scratch. It is open and complete: you can browse it, put things in a basket, and pay, including by QRIS.</p>
                         <ul class="project-stack">
                             <li>Next.js</li>
                             <li>React</li>
@@ -282,7 +321,7 @@
                             <span class="project-name" data-i18n="work.sias.name">A School Portal</span>
                             <span class="project-tag live" data-i18n="work.live_tag">Live</span>
                         </div>
-                        <p class="project-desc" data-i18n="work.sias.desc">An academic portal for a primary school, not a brochure site. Teachers enter marks, admin manages pupil records and school fees, and parents see their own child’s progress and what is still owed. Sign in as any of the three roles and look around: the demo is read-only, so nothing you do changes what the next visitor sees, and every pupil in it is invented.</p>
+                        <p class="project-desc" data-i18n="work.sias.desc">An academic portal for a primary school, not a brochure site. Teachers enter marks, admin manages pupil records and school fees, and parents see their own child&rsquo;s progress and what is still owed. Sign in as any of the three roles and look around: the demo is read-only, so nothing you do changes what the next visitor sees, and every pupil in it is invented.</p>
                         <ul class="project-stack">
                             <li>Next.js</li>
                             <li>TypeScript</li>
@@ -308,7 +347,7 @@
                             <span class="project-name" data-i18n="work.agency.name">A Digital Agency Website</span>
                             <span class="project-tag live" data-i18n="work.wip_tag">Live</span>
                         </div>
-                        <p class="project-desc" data-i18n="work.agency.desc">A company website for a digital agency: eleven pages covering services, past work, the team, and how to get in touch, with a WhatsApp shortcut for people who would rather not fill in a form. Built so that whatever a prospective client wants to know is never more than three clicks from the front page. This is the shape of website I build for clients, ready to be rebranded for one.</p>
+                        <p class="project-desc" data-i18n="work.agency.desc">A company website for a digital agency: eleven pages covering services, past work, the team, and how to get in touch, with a WhatsApp shortcut for people who would rather not fill in a form. Whatever a prospective client wants to know is never more than three clicks from the front page. This is the kind of website I build for clients, ready to be rebranded for one.</p>
                         <ul class="project-stack">
                             <li>Next.js</li>
                             <li>React</li>
@@ -331,8 +370,8 @@
             </div>
             <div class="about-grid">
                 <div class="about-text">
-                    <p data-i18n="about.p1">I build software other people depend on to get through their working day. At Kyou that means four different systems: the platform the office works in, the Android app the warehouse carries, a desktop tool for goods coming in, and the bot that ties them together. The pattern is nearly always the same — find the job someone is still doing by hand, and replace it with something that holds up on a busy day.</p>
-                    <p data-i18n="about.p2">Before any of this I spent years on shop floors, running stores and departments, chasing sales targets, keeping stock and prices straight. That is not a detour on the way here — it is the reason the software works. I already knew where a business quietly loses hours, which numbers people have stopped trusting, and why a screen that is technically correct can still be useless at seven in the morning with a queue building.</p>
+                    <p data-i18n="about.p1">I build software people rely on to get through their working day. At Kyou that covers the whole path of an order: the marketplace price and promo tools, payments and reports, the Android app on the warehouse floor, the label printer for goods coming in, and the bot that ties them together. The pattern is nearly always the same. Find the job someone still does by hand, then replace it with something that holds up on a busy day.</p>
+                    <p data-i18n="about.p2">Before any of this I spent years on shop floors, running stores and departments, chasing sales targets, keeping stock and prices straight. That wasn&rsquo;t a detour. It&rsquo;s the reason the software works. I already knew where a business quietly loses hours, which numbers people have stopped trusting, and why a screen that is technically correct can still be useless at seven in the morning with a queue building.</p>
                     <p data-i18n="about.p3">I&rsquo;m an Information Systems student, and I learn by building things that get used. If you want someone who understands the shop floor as well as the code, let&rsquo;s talk.</p>
                 </div>
                 <aside class="about-side">
@@ -341,7 +380,8 @@
                         <li>Kotlin · Go · SQL · TypeScript</li>
                         <li>Android · Jetpack Compose · Room · Hilt</li>
                         <li>Electron · Node.js</li>
-                        <li>PostgreSQL · Supabase</li>
+                        <li>PostgreSQL · MySQL · Supabase</li>
+                        <li>PHP · Laravel</li>
                         <li>Docker · Git · GitLab CI</li>
                         <li>React 19 · Next.js</li>
                         <li data-i18n="about.skill_ai">AI engineering &amp; automation</li>
@@ -367,7 +407,7 @@
                 <span class="section-no">03</span>
                 <h2 class="section-title" data-i18n="act.title">Code &amp; activity.</h2>
             </div>
-            <p class="section-intro" data-i18n="act.intro">My public GitHub activity over the last six months.</p>
+            <p class="section-intro" data-i18n="act.intro">My public GitHub activity over the last six months, and what the company code on GitLab adds up to.</p>
 
             <div class="activity-grid">
                 <a class="activity-card" href="https://github.com/gfenderio" target="_blank" rel="noopener">
@@ -396,11 +436,18 @@
                     <span class="link-arrow">View GitHub</span>
                 </a>
                 <div class="activity-card private-card">
-                    <h3 class="private-title" data-i18n="act.private_title">What this chart leaves out</h3>
-                    <p class="private-body" data-i18n="act.private_body">Most of what I build belongs to the company I work for, so it lives in private repositories and never shows up here: the warehouse Android app, the platform the office runs on, a desktop tool, and the bot that connects them. Four systems, in daily use, none of them green squares.</p>
+                    <h3 class="private-title" data-i18n="act.private_title">What the chart leaves out</h3>
+                    <p class="private-body" data-i18n="act.private_body">Most of what I build belongs to Kyou, so it lives in private GitLab repositories and never shows up as green squares. Since I joined in May 2026:</p>
+                    <dl class="gl-stats">
+                        <div><dt>2,300+</dt><dd data-i18n="act.gl_pushes">pushes to company repositories</dd></div>
+                        <div><dt>Maintainer</dt><dd data-i18n="act.gl_role">access to the company codebase</dd></div>
+                        <div><dt>~70%</dt><dd data-i18n="act.gl_pda">of the warehouse app&rsquo;s commits</dd></div>
+                        <div><dt>#2</dt><dd data-i18n="act.gl_platform">contributor to the main platform</dd></div>
+                    </dl>
                     <ul class="private-stack">
                         <li>Kotlin</li>
                         <li>Go</li>
+                        <li>PHP</li>
                         <li>TypeScript</li>
                         <li>SQL</li>
                         <li>Android</li>
@@ -421,9 +468,9 @@
                 <li class="tl-item">
                     <span class="tl-date">2026 — <span data-i18n="exp.present">Present</span></span>
                     <div class="tl-body">
-                        <h3 data-i18n="exp.kyou.role">Full Stack Developer</h3>
+                        <h3 data-i18n="exp.kyou.role">Software Engineer</h3>
                         <p class="tl-org"><a href="https://kyou.id" target="_blank" rel="noopener">Kyou</a></p>
-                        <p class="tl-desc" data-i18n="exp.kyou.desc">I build and look after the platform the company runs on, the Android app used across the warehouse floor, and a desktop tool for handling deliveries. I contribute the largest share of the platform&rsquo;s code among a team of nine. Most of the work is moving things across: taking a process off a spreadsheet or an old admin page and rebuilding it as something people can rely on.</p>
+                        <p class="tl-desc" data-i18n="exp.kyou.desc">I build Kyou&rsquo;s e-commerce and fulfilment systems: the marketplace tools, payments and reports, the platform the office runs on, and the Android app on the warehouse floor. Most of the work is moving things across, taking a process off a spreadsheet or the old PHP admin and rebuilding it as something people can rely on. I hold maintainer access and ship my own changes to production.</p>
                     </div>
                 </li>
                 <li class="tl-item">
@@ -440,7 +487,7 @@
                         <h3 data-i18n="exp.informa.role">Assistant Product Specialist</h3>
                         <p class="tl-org"><a href="https://www.informa.co.id" target="_blank" rel="noopener">Informa
                                 Furnishing</a></p>
-                        <p class="tl-desc" data-i18n="exp.informa.desc">Ran a department day to day — pricing accuracy, campaigns, stock, and how the floor was laid out — and hit every sales target in my first three months.</p>
+                        <p class="tl-desc" data-i18n="exp.informa.desc">Ran a department day to day: pricing accuracy, campaigns, stock, and how the floor was laid out. Hit every sales target in my first three months.</p>
                     </div>
                 </li>
                 <li class="tl-item">
@@ -455,7 +502,7 @@
                 <li class="tl-item">
                     <span class="tl-date">2019 — 2024</span>
                     <div class="tl-body">
-                        <h3 data-i18n="exp.earlier.role">Earlier — retail</h3>
+                        <h3 data-i18n="exp.earlier.role">Earlier · retail</h3>
                         <p class="tl-org">The Foodhall · Indomaret Group</p>
                         <p class="tl-desc" data-i18n="exp.earlier.desc">The Foodhall (2023–2024): built the reports the store used to make decisions, and tracked sales, returns, and stock. Indomaret Group (2019–2022): ran a store and its team day to day, and hit the sales target on several occasions.</p>
                     </div>
@@ -469,7 +516,7 @@
                 <span class="section-no">05</span>
                 <h2 class="section-title" data-i18n="contact.title">Let&rsquo;s talk.</h2>
             </div>
-            <p class="contact-lead" data-i18n="contact.lead">Got a job opening, a process that is eating your team&rsquo;s time, or something you want built? Send a message — I read every one.</p>
+            <p class="contact-lead" data-i18n="contact.lead">Got a job opening, a process that eats your team&rsquo;s time, or something you want built? Send a message. I read every one.</p>
 
             <form action="https://formspree.io/f/xwvnqjjl" method="POST" class="contact-form">
                 <div class="form-row">
