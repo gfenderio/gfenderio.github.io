@@ -42,7 +42,7 @@ const translations = {
         "work.prod_tag": "Used daily",
 
         "work.tier1": "Built at work · Kyou",
-        "work.tier1_note": "The online-store, warehouse and delivery teams use these every day. I describe them by what they do. The internal names and the code stay private.",
+        "work.tier1_note": "The online-store, warehouse and delivery teams use these every day. I describe them by what they do. The internal names and the code stay private, and every screenshot runs on made-up data.",
         "work.tier2": "My own products &amp; client work",
 
         "work.ecom.name": "Marketplace &amp; Online Store Tools",
@@ -150,7 +150,7 @@ const translations = {
         "work.prod_tag": "Dipakai tiap hari",
 
         "work.tier1": "Dibangun di Kyou",
-        "work.tier1_note": "Dipakai tim toko online, gudang, dan pengiriman setiap hari. Saya jelaskan dari fungsinya saja. Nama internal dan kodenya tetap rahasia.",
+        "work.tier1_note": "Dipakai tim toko online, gudang, dan pengiriman setiap hari. Saya jelaskan dari fungsinya saja. Nama internal dan kodenya tetap rahasia. Semua tangkapan layarnya memakai data karangan.",
         "work.tier2": "Produk sendiri &amp; proyek klien",
 
         "work.ecom.name": "Alat Marketplace &amp; Toko Online",
