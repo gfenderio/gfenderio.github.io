@@ -137,29 +137,29 @@ const translations = {
         "nav.contact": "Kontak",
 
         "hero.status": "Software Engineer @ Kyou · E-commerce &amp; fulfillment · Indonesia, bisa remote",
-        "hero.title": "Saya membangun software<br>yang dipakai kerja tiap hari.",
-        "hero.lead": "Saya Gilang, software engineer di Kyou, toko hobi yang berjualan lewat situs sendiri, Shopee, Tokopedia, dan TikTok Shop. Saya membangun sistem yang dilewati setiap pesanan. Mulai dari harga dan promo, pembayaran dan laporan, sampai aplikasi Android untuk pick, pack, dan hitung stok di gudang.",
+        "hero.title": "Saya membuat software<br>untuk kerja sehari-hari.",
+        "hero.lead": "Saya Gilang, software engineer di Kyou, toko hobi yang jualan lewat situs sendiri, Shopee, Tokopedia, dan TikTok Shop. Saya membangun sistem yang mengurus pesanan dari masuk sampai dikirim. Mulai dari harga dan promo, pembayaran dan laporan, sampai aplikasi Android untuk pick, pack, dan hitung stok di gudang.",
         "hero.cta_work": "Lihat karya",
         "hero.cta_contact": "Hubungi saya",
 
         "work.title": "Karya pilihan.",
-        "work.intro": "Software yang dipakai orang setiap hari, dan produk yang saya rancang dan rilis sendiri.",
+        "work.intro": "Software yang dipakai tiap hari, plus produk yang saya rancang dan rilis sendiri.",
         "work.gallery": "Lihat tampilan",
         "work.live_tag": "Live",
         "work.wip_tag": "Live",
         "work.prod_tag": "Dipakai tiap hari",
 
-        "work.tier1": "Dibangun di Kyou",
-        "work.tier1_note": "Dipakai tim toko online, gudang, dan pengiriman setiap hari. Saya jelaskan dari fungsinya saja. Nama internal dan kodenya tetap rahasia. Semua tangkapan layarnya memakai data karangan.",
+        "work.tier1": "Di Kyou",
+        "work.tier1_note": "Dipakai tim toko online, gudang, dan pengiriman setiap hari. Saya jelaskan dari fungsinya saja. Nama internal dan kodenya tetap rahasia. Semua screenshot di sini memakai data dummy.",
         "work.tier2": "Produk sendiri &amp; proyek klien",
 
-        "work.ecom.name": "Alat Marketplace &amp; Toko Online",
+        "work.ecom.name": "Kelola Marketplace &amp; Toko Online",
         "work.ecom.metric": "Shopee, Tokopedia, dan TikTok Shop dari satu tempat",
-        "work.ecom.desc": "Jualan di tiga marketplace berarti tiga set harga, promo, dan laporan yang jarang cocok. Saya membangun alat yang dipakai tim e-commerce untuk merapikannya. Harga toko dan kuota diskon diatur dari satu layar. Daftar diskon tiap marketplace cukup diunggah, tidak perlu diketik ulang. Laporan bulanan memecah pendapatan bersih per kanal, dan memisahkan pembatalan menurut penyebabnya. Ada pula extension Chrome yang menaruh tombol Kyou langsung di halaman seller Shopee.",
+        "work.ecom.desc": "Jualan di tiga marketplace artinya harga, promo, dan laporan tersebar di tiga tempat yang jarang cocok satu sama lain. Saya membuat tools yang dipakai tim e-commerce supaya semuanya sinkron. Harga toko dan kuota diskon diatur dari satu layar. Daftar diskon tiap marketplace cukup diunggah, tidak perlu diketik ulang. Laporan bulanan memecah pendapatan bersih per marketplace, dan memisahkan pembatalan menurut penyebabnya. Ada juga extension Chrome yang menaruh tombol Kyou langsung di Seller Centre Shopee.",
 
         "work.data.name": "Satu Harga, di Semua Layar",
         "work.data.metric": "Model harga marketplace di data warehouse",
-        "work.data.desc": "Dulu angka di Kyou diambil langsung dari log mentah. Tiap layar menghitungnya dengan cara sendiri, jadi hasilnya sering beda. Tim lalu membangun data warehouse yang menyusun ulang tabel bersih dan teruji secara terjadwal. Bagian saya adalah tabel yang menetapkan harga jual tiap barang di marketplace. Setelah itu saya pindahkan alat-alatnya ke data warehouse, supaya tidak menghitung sendiri lagi. Yang sudah pindah: layar harga toko, aplikasi gudang, papan harian, dan riwayat stok. Kalau riwayatnya belum lengkap, layar sekarang bilang terus terang, bukan menebak.",
+        "work.data.desc": "Dulu angka di Kyou diambil langsung dari log mentah. Tiap layar menghitungnya dengan cara sendiri, jadi hasilnya sering beda. Tim lalu membangun data warehouse yang secara terjadwal menyusun ulang tabel yang sudah dibersihkan dan dicek. Bagian saya: tabel yang menentukan harga jual tiap barang di marketplace. Setelah itu saya pindahkan alat-alatnya ke data warehouse, supaya tidak menghitung sendiri lagi. Yang sudah pindah: layar harga toko, aplikasi gudang, papan harian, dan riwayat stok. Kalau riwayatnya belum lengkap, layar sekarang bilang terus terang, bukan menebak.",
 
         "work.platform.name": "Platform Kerja Perusahaan",
         "work.platform.metric": "Kontributor kode terbanyak kedua",
@@ -167,7 +167,7 @@ const translations = {
 
         "work.pda.name": "Aplikasi Gudang",
         "work.pda.metric": "Sekitar 70% kodenya saya tulis, sekarang versi 2.45",
-        "work.pda.desc": "Aplikasi Android yang dibawa staf gudang seharian. Dipakai untuk hitung stok, pick dan pack pesanan, cek barang datang, sampai jualan di event. Saya membangun scan barcode lewat kamera HP. Hitung stok dimulai dari rak dan wajib pakai foto bukti. Cek barang datang bisa dikerjakan beberapa orang sekaligus tanpa saling timpa. Pesanan online menampilkan tanggal permintaan, dan berubah merah kalau sudah telat sehari. Satu layar tetap jalan tanpa sinyal, karena ada sudut gudang yang memang tidak dapat sinyal. Harga modal sengaja disembunyikan. Staf lapangan cukup melihat yang mereka perlukan.",
+        "work.pda.desc": "Aplikasi Android yang dibawa staf gudang seharian. Dipakai untuk hitung stok, pick dan pack pesanan, cek barang datang, sampai jualan di event. Saya membangun scan barcode lewat kamera HP. Hitung stok dimulai dari rak dan wajib pakai foto bukti. Cek barang datang bisa dikerjakan beberapa orang sekaligus tanpa saling timpa. Pesanan online menampilkan tanggal permintaan, dan jadi merah kalau sudah telat sehari. Satu layar tetap jalan tanpa sinyal, karena ada sudut gudang yang memang tidak dapat sinyal. Harga modal sengaja disembunyikan. Staf lapangan cukup melihat yang mereka perlukan.",
 
         "work.label.name": "Pencetak Label Barang Datang",
         "work.label.metric": "Sudah 25 rilis, dan bisa update sendiri",
@@ -175,18 +175,18 @@ const translations = {
 
         "work.ops.name": "Bot Fulfillment",
         "work.ops.metric": "Jalan setiap hari sejak Mei",
-        "work.ops.desc": "Bot yang menghubungkan gudang dengan orang-orang yang menjalankannya. Foto bukti ikut di setiap tahap pesanan, dari pick, pack, sampai serah ke kurir. Fotonya tersimpan sendiri di tempat yang benar. Kiriman yang dipecah dihitung otomatis, lalu langsung dicetak. Pesanan yang macet di tengah pick langsung dilaporkan ke orang yang bisa membereskannya. Tugas rutin jalan sesuai jadwal, tanpa perlu ada yang mengingat.",
+        "work.ops.desc": "Bot yang menghubungkan sistem gudang dengan timnya. Foto bukti ikut di setiap tahap pesanan, dari pick, pack, sampai serah ke kurir. Fotonya tersimpan otomatis di tempat yang benar. Kiriman yang dipecah dihitung otomatis, lalu langsung dicetak. Pesanan yang macet di tengah pick langsung dilaporkan ke orang yang bisa membereskannya. Tugas rutin jalan sesuai jadwal, tanpa perlu diingatkan.",
 
         "work.vault.desc": "Galeri untuk koleksi kartu Yu-Gi-Oh! pribadi saya. Kartu miring mengikuti kursor, dan kilau foil-nya bergerak seperti kartu aslinya. Tiap tingkat kelangkaan punya pola hologram sendiri. Harga diambil per kelangkaan, jadi harga cetakan langka tidak ikut menaikkan harga versi biasa.",
         "work.vault.live": "Buka galerinya",
 
-        "work.stzn.desc": "Toko streetwear online yang saya rancang dan bangun dari nol. Situsnya sudah jalan penuh. Kamu bisa lihat katalog, isi keranjang, dan bayar, termasuk lewat QRIS.",
+        "work.stzn.desc": "Toko streetwear online yang saya rancang dan bangun dari nol. Situsnya sudah live dan lengkap. Kamu bisa lihat katalog, isi keranjang, dan bayar, termasuk lewat QRIS.",
         "work.stzn.live": "Buka situsnya",
         "work.kasirin.desc": "Sistem kasir untuk minimarket ramai dengan puluhan ribu jenis barang. Kasir tetap bisa dipakai saat internet putus. Stok di semua layar langsung berubah begitu ada penjualan. Dua kasir tidak mungkin menjual barang terakhir yang sama. Sistem juga mempelajari barang yang cepat habis, lalu menandainya sebelum raknya kosong.",
         "work.itungin.desc": "Aplikasi keuangan pribadi untuk Android. Pemasukan dan pengeluaran tampil di grafik yang terus diperbarui. Kamu diberi tahu kalau utang mulai terlalu berat. Ada peringatan sebelum anggaran satu kategori jebol. Pengingat muncul saat tagihan jatuh tempo.",
 
         "work.sias.name": "Portal Sekolah",
-        "work.sias.desc": "Portal akademik untuk sekolah dasar, bukan sekadar situs profil. Guru mengisi nilai, sementara admin mengurus data siswa dan SPP. Orang tua bisa melihat perkembangan anaknya dan sisa tagihannya. Coba masuk sebagai salah satu dari tiga peran itu. Demonya hanya bisa dibaca, jadi apa pun yang kamu lakukan tidak mengubah tampilan pengunjung berikutnya. Semua siswa di dalamnya fiktif.",
+        "work.sias.desc": "Portal akademik untuk sekolah dasar. Guru mengisi nilai, sementara admin mengurus data siswa dan SPP. Orang tua bisa melihat perkembangan anaknya dan sisa tagihannya. Coba masuk sebagai salah satu dari tiga peran itu. Demonya hanya bisa dibaca, jadi apa pun yang kamu lakukan tidak mengubah tampilan pengunjung berikutnya. Semua siswa di dalamnya fiktif.",
         "work.sias.live": "Coba demonya",
 
         "work.agency.name": "Situs Agensi Digital",
@@ -194,10 +194,10 @@ const translations = {
         "work.agency.live": "Buka situsnya",
 
         "about.title": "Profil.",
-        "about.p1": "Saya membangun software yang diandalkan orang untuk menyelesaikan kerjaan hariannya. Di Kyou, itu mencakup seluruh perjalanan sebuah pesanan. Mulai dari alat harga dan promo marketplace, pembayaran, dan laporan. Lalu aplikasi Android di gudang, pencetak label barang datang, dan bot yang menyambungkan semuanya. Polanya hampir selalu sama. Cari pekerjaan yang masih dikerjakan manual, lalu ganti dengan sistem yang tetap kuat di hari paling sibuk.",
-        "about.p2": "Sebelum menulis kode, saya bertahun-tahun bekerja di lantai toko. Saya memimpin toko dan departemen, mengejar target penjualan, dan menjaga stok serta harga tetap akurat. Pengalaman itu bukan jalan memutar. Justru itu alasan software saya benar-benar terpakai. Saya sudah tahu di mana bisnis diam-diam kehilangan waktu, dan angka mana yang sudah tidak dipercaya orang. Saya juga paham kenapa layar yang benar secara teknis bisa tetap tidak berguna. Apalagi jam tujuh pagi, saat antrean mulai panjang.",
+        "about.p1": "Saya membuat software yang dipakai orang untuk kerja sehari-hari. Di Kyou, cakupannya dari pesanan masuk sampai barang dikirim. Mulai dari tools harga dan promo marketplace, pembayaran, dan laporan. Lalu aplikasi Android di gudang, pencetak label barang datang, dan bot yang menyambungkan semuanya. Polanya hampir selalu sama. Cari kerjaan yang masih dikerjakan manual, lalu ganti dengan sistem yang tidak tumbang saat sedang ramai.",
+        "about.p2": "Sebelum menulis kode, saya bertahun-tahun bekerja di toko. Saya memimpin toko dan departemen, mengejar target penjualan, dan menjaga stok serta harga tetap akurat. Justru pengalaman itu yang bikin software saya benar-benar terpakai. Saya tahu di mana waktu kerja banyak terbuang, dan angka mana yang sudah tidak dipercaya orang. Saya juga paham kenapa layar yang benar secara teknis bisa tetap tidak berguna. Apalagi jam tujuh pagi, saat antrean mulai panjang.",
         "about.p3": "Saya mahasiswa Sistem Informasi, dan saya belajar dengan membangun hal yang benar-benar dipakai. Kalau kamu butuh orang yang paham lapangan sekaligus kodenya, ayo ngobrol.",
-        "about.skills_title": "Yang saya pakai",
+        "about.skills_title": "Teknologi yang saya pakai",
         "about.skill_ai": "AI engineering &amp; otomasi",
         "about.skill_qa": "Testing &amp; quality",
         "about.edu_title": "Pendidikan &amp; sertifikat",
@@ -220,7 +220,7 @@ const translations = {
         "exp.kyou.role": "Software Engineer",
         "exp.kyou.desc": "Saya membangun sistem e-commerce dan fulfillment Kyou. Cakupannya alat marketplace, pembayaran dan laporan, platform kantor, serta aplikasi Android di gudang. Sebagian besar kerjanya memindahkan proses dari spreadsheet atau admin PHP lama. Proses itu lalu saya bangun ulang jadi sistem yang bisa diandalkan. Saya pegang akses maintainer dan merilis perubahan saya sendiri ke production.",
         "exp.indie.role": "Developer Lepas",
-        "exp.indie.desc": "Praktik mandiri saya. Saya merancang dan membangun website, aplikasi mobile, dan otomasi untuk klien. Proyek saya pegang dari obrolan pertama sampai jadi. Produk saya sendiri sejauh ini adalah Kasirin dan Itungin. Saat ini terbuka untuk proyek baru.",
+        "exp.indie.desc": "Di luar kantor, saya menerima proyek sendiri. Saya merancang dan membangun website, aplikasi mobile, dan otomasi untuk klien. Proyeknya saya pegang dari obrolan pertama sampai jadi. Produk saya sendiri sejauh ini adalah Kasirin dan Itungin. Saat ini terbuka untuk proyek baru.",
         "exp.informa.role": "Assistant Product Specialist",
         "exp.informa.desc": "Menjalankan satu departemen setiap hari: akurasi harga, kampanye, stok, dan tata letak area jual. Semua target penjualan tercapai di tiga bulan pertama.",
         "exp.lion.role": "Game Tester &amp; Pengisi Suara Bahasa Indonesia",
