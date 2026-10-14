@@ -126,7 +126,11 @@
         render();
     }
 
+    // The button that opened the gallery, so focus can go back to it.
+    var opener = null;
+
     function open(name, shots, portrait) {
+        opener = document.activeElement;
         titleEl.textContent = name;
         box.classList.toggle("is-portrait", !!portrait);
         trackEl.innerHTML = "";
@@ -165,6 +169,8 @@
         box.classList.remove("open");
         document.body.style.overflow = "";
         if (window.__lenis) window.__lenis.start();
+        if (opener && opener.focus) opener.focus({ preventScroll: true });
+        opener = null;
     }
 
     triggers.forEach(function (t) {

@@ -64,7 +64,9 @@
                 var el = document.querySelector(id);
                 if (!el) return;
                 e.preventDefault();
-                lenis.scrollTo(el, { offset: -72, duration: 1.15 });
+                // No offset here: Lenis honours the section's scroll-margin-top,
+                // which already clears the sticky nav (see style.css).
+                lenis.scrollTo(el, { duration: 1.15 });
             });
         });
     }
