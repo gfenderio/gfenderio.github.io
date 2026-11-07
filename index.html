@@ -67,7 +67,7 @@
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style.css?v=20261107z">
+    <link rel="stylesheet" href="style.css?v=20261108b">
 </head>
 
 <body id="top">
@@ -91,7 +91,7 @@
         <section class="hero">
             <p class="eyebrow" data-i18n="hero.status">Indonesia · Open to remote work</p>
             <h1 class="hero-title" data-i18n="hero.title"><span class="hero-line">Software engineer.</span><span class="hero-line">I build the systems that get an order out the door.</span></h1>
-            <p class="hero-lead" data-i18n="hero.lead">At Kyou that means pricing, payments, reports and the warehouse app. Outside work I design small games for game jams.</p>
+            <p class="hero-lead" data-i18n="hero.lead">At Kyou I run the stock side: the warehouse, the web and marketplaces, the stores and the events. Outside work I design small games for game jams.</p>
             <div class="hero-actions">
                 <a href="#work" class="btn btn-primary" data-i18n="hero.cta_work">See the work</a>
                 <a href="#play" class="btn btn-secondary" data-i18n="hero.cta_play">Play my games</a>
@@ -109,88 +109,62 @@
             <div class="section-head">
                 <span class="section-no">01</span>
                 <h2 class="section-title" data-i18n="work.title">What I build at work.</h2>
-                <p class="section-intro" data-i18n="work.intro">I work at Kyou, a hobby shop that sells through its own website, Shopee, Tokopedia and TikTok Shop. Below is the trip one item takes there, from the loading dock to the courier, and the software I built for each step. The code and internal names stay private.</p>
+                <p class="section-intro" data-i18n="work.intro">I work at Kyou, a hobby shop that sells through its own website, Shopee, Tokopedia and TikTok Shop, in its own stores and at events. I look after its stock from the moment it arrives until it is sold, wherever it is sold. The code and internal names stay private.</p>
             </div>
 
             <div class="flow">
                 <div class="flow-rail" aria-hidden="true"><span class="flow-fill"></span><span class="flow-dot"></span></div>
-                <ol class="flow-steps" aria-label="The trip one item takes at Kyou" data-i18n-aria="work.flow_label">
+                <ol class="flow-steps" aria-label="Where Kyou&rsquo;s stock goes" data-i18n-aria="work.flow_label">
                     <li class="flow-step">
                         <span class="flow-node" aria-hidden="true"></span>
                         <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">01</span> <span data-i18n="work.label.stage">Stock arrives</span></p>
-                            <p class="flow-stat" data-i18n="work.label.stat">25</p>
-                            <p class="flow-cap" data-i18n="work.label.cap">releases, and it updates itself</p>
+                            <p class="flow-stage"><span class="flow-no">01</span> <span data-i18n="work.wh.stage">In the warehouse</span></p>
+                            <p class="flow-stat" data-i18n="work.wh.stat">8</p>
+                            <p class="flow-cap" data-i18n="work.wh.cap">stock locations, every move between them on record</p>
                         </div>
                         <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.label.name">Label app for incoming stock</h3>
-                            <p class="flow-desc" data-i18n="work.label.desc">Prints a label for every item that arrives. Items customers have already paid for get their own mark, so they never go on a shelf. It only reads data, so it can never change stock or orders.</p>
-                            <p class="flow-meta">Desktop&nbsp;· Electron&nbsp;· React&nbsp;· TypeScript</p>
+                            <h3 class="flow-name" data-i18n="work.wh.name">Warehouse system</h3>
+                            <p class="flow-desc" data-i18n="work.wh.desc">I designed Kyou&rsquo;s warehouse system and orchestrate how its parts work together. Stock is checked in, counted and reconciled until every gap has a reason. Pre-order stock nobody collected goes back on sale. Every move between locations is recorded and can be traced.</p>
+                            <p class="flow-meta">Web&nbsp;· Android&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL&nbsp;· Kotlin</p>
                         </div>
                     </li>
                     <li class="flow-step">
                         <span class="flow-node" aria-hidden="true"></span>
                         <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">02</span> <span data-i18n="work.data.stage">The price is set</span></p>
-                            <p class="flow-stat" data-i18n="work.data.stat">1</p>
-                            <p class="flow-cap" data-i18n="work.data.cap">selling price per item, on every screen</p>
+                            <p class="flow-stage"><span class="flow-no">02</span> <span data-i18n="work.web.stage">Sold online</span></p>
+                            <p class="flow-stat" data-i18n="work.web.stat">4</p>
+                            <p class="flow-cap" data-i18n="work.web.cap">storefronts, one system keeping them in line</p>
                         </div>
                         <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.data.name">Selling-price table</h3>
-                            <p class="flow-desc" data-i18n="work.data.desc">Different screens used to work out prices their own way, so one item could show two prices. I built one table in the team&rsquo;s data warehouse that sets each item&rsquo;s selling price on every marketplace, and moved the existing tools onto it.</p>
-                            <p class="flow-meta">Data warehouse</p>
+                            <h3 class="flow-name" data-i18n="work.web.name">Web &amp; marketplace integration</h3>
+                            <p class="flow-desc" data-i18n="work.web.desc">kyou.id and the three marketplaces each keep their own stock, prices and discounts. I built the system that keeps them in line with what is really on the shelves, down to each Tokopedia warehouse. A monthly report follows sales to the money that reaches the bank.</p>
+                            <p class="flow-meta">Web&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL</p>
                         </div>
                     </li>
                     <li class="flow-step">
                         <span class="flow-node" aria-hidden="true"></span>
                         <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">03</span> <span data-i18n="work.ecom.stage">It goes on sale</span></p>
-                            <p class="flow-stat" data-i18n="work.ecom.stat">3</p>
-                            <p class="flow-cap" data-i18n="work.ecom.cap">marketplaces, run from one place</p>
+                            <p class="flow-stage"><span class="flow-no">03</span> <span data-i18n="work.stores.stage">Moved between stores</span></p>
+                            <p class="flow-stat" data-i18n="work.stores.stat">1</p>
+                            <p class="flow-cap" data-i18n="work.stores.cap">shared list for stores and warehouses, where three spreadsheets used to be</p>
                         </div>
                         <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.ecom.name">Marketplace &amp; online store tools</h3>
-                            <p class="flow-desc" data-i18n="work.ecom.desc">Prices, discount limits and promos for three marketplaces, set once instead of copied by hand. The monthly report follows sales to the money that reaches the bank, after platform fees and shipping.</p>
-                            <p class="flow-meta">Web&nbsp;· Go&nbsp;· Laravel&nbsp;· MySQL</p>
+                            <h3 class="flow-name" data-i18n="work.stores.name">Stock rotation between stores</h3>
+                            <p class="flow-desc" data-i18n="work.stores.desc">Kyou&rsquo;s stores restock from the warehouses. That used to run on three spreadsheets: slow to open, easy to get wrong and hard to check. Now one screen ranks the items, sets quantities from what is on the racks and sends the shipment. Stores and warehouses work from the same list, and each store checks what arrived against what was sent.</p>
+                            <p class="flow-meta">Web&nbsp;· Go&nbsp;· React</p>
                         </div>
                     </li>
                     <li class="flow-step">
                         <span class="flow-node" aria-hidden="true"></span>
                         <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">04</span> <span data-i18n="work.platform.stage">Someone buys it</span></p>
-                            <p class="flow-stat" data-i18n="work.platform.stat">2</p>
-                            <p class="flow-cap" data-i18n="work.platform.cap">systems kept in sync while the old one retires</p>
+                            <p class="flow-stage"><span class="flow-no">04</span> <span data-i18n="work.events.stage">Taken to events</span></p>
+                            <p class="flow-stat" data-i18n="work.events.stat">4</p>
+                            <p class="flow-cap" data-i18n="work.events.cap">stages tracked, from packing to the trip home</p>
                         </div>
                         <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.platform.name">Kyou&rsquo;s new internal system</h3>
-                            <p class="flow-desc" data-i18n="work.platform.desc">Moving Kyou&rsquo;s daily work off spreadsheets and an old PHP admin panel. I build stock, price changes, courier rates and payment confirmations, from the screen down to the database. While the old panel is still in use, I keep the two in sync.</p>
-                            <p class="flow-meta">Web&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL&nbsp;· Laravel</p>
-                        </div>
-                    </li>
-                    <li class="flow-step">
-                        <span class="flow-node" aria-hidden="true"></span>
-                        <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">05</span> <span data-i18n="work.pda.stage">It is picked and packed</span></p>
-                            <p class="flow-stat" data-i18n="work.pda.stat">4</p>
-                            <p class="flow-cap" data-i18n="work.pda.cap">warehouse jobs in one app</p>
-                        </div>
-                        <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.pda.name">Warehouse app</h3>
-                            <p class="flow-desc" data-i18n="work.pda.desc">The warehouse team carries it all day to find items, count stock, pick and pack orders, and check in deliveries. The phone camera is the barcode scanner. One screen still works in the corners of the warehouse with no signal.</p>
-                            <p class="flow-meta">Android&nbsp;· Kotlin&nbsp;· Jetpack Compose&nbsp;· Room</p>
-                        </div>
-                    </li>
-                    <li class="flow-step">
-                        <span class="flow-node" aria-hidden="true"></span>
-                        <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">06</span> <span data-i18n="work.ops.stage">It ships</span></p>
-                            <p class="flow-stat" data-i18n="work.ops.stat">Daily</p>
-                            <p class="flow-cap" data-i18n="work.ops.cap">on duty since May 2026</p>
-                        </div>
-                        <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.ops.name">Fulfilment bot</h3>
-                            <p class="flow-desc" data-i18n="work.ops.desc">Takes care of the small jobs around each order. It files proof photos under the right order, splits orders that ship in several boxes and sends the paperwork to the printer. Orders stuck in picking get flagged straight away.</p>
-                            <p class="flow-meta">Bot&nbsp;· Node.js&nbsp;· TypeScript&nbsp;· Docker</p>
+                            <h3 class="flow-name" data-i18n="work.events.name">Event stock</h3>
+                            <p class="flow-desc" data-i18n="work.events.desc">Events are where stock records drift the most. Goods leave in boxes, sell at the booth, get restocked during the show and come back. A mismatch there is hard to spot and harder to trace. The system follows every box from packing to the trip home, so the stock on the shelf and the stock on record still agree afterwards.</p>
+                            <p class="flow-meta">Android&nbsp;· Web&nbsp;· Go&nbsp;· Kotlin</p>
                         </div>
                     </li>
                 </ol>
@@ -316,9 +290,9 @@
                     <p data-i18n="about.p3">I study Information Systems at Universitas Terbuka and expect to graduate in 2027. I am open to remote work.</p>
                 </div>
                 <dl class="facts">
-                    <div><dt data-i18n="about.f1n">2,300+</dt><dd data-i18n="about.f1">pushes to Kyou&rsquo;s code since May 2026</dd></div>
-                    <div><dt>~70%</dt><dd data-i18n="about.f2">of the warehouse app&rsquo;s commits are mine</dd></div>
-                    <div><dt>#2</dt><dd data-i18n="about.f3">largest contributor to Kyou&rsquo;s new internal system</dd></div>
+                    <div><dt>Top 3</dt><dd data-i18n="about.f1">contributor to Kyou&rsquo;s new internal system</dd></div>
+                    <div><dt>650+</dt><dd data-i18n="about.f2">commits in three months</dd></div>
+                    <div><dt>60+</dt><dd data-i18n="about.f3">tickets closed a week</dd></div>
                     <div><dt>C2</dt><dd data-i18n="about.f4">English level, EF SET score 77/100</dd></div>
                 </dl>
             </div>
@@ -336,7 +310,7 @@
                     <span class="tl-date">2026–<span data-i18n="exp.present">now</span></span>
                     <div class="tl-body">
                         <h3><span data-i18n="exp.kyou.role">Software Engineer</span> <span class="tl-org">·&nbsp;<a href="https://kyou.id" target="_blank" rel="noopener">Kyou</a></span></h3>
-                        <p data-i18n="exp.kyou.desc">Building Kyou&rsquo;s online sales and warehouse systems, with maintainer access to release changes to the live system.</p>
+                        <p data-i18n="exp.kyou.desc">Building the systems behind Kyou&rsquo;s stock, from the warehouse to the web, the stores and events, with maintainer access to release changes to the live system.</p>
                     </div>
                 </li>
                 <li class="tl-item">
@@ -407,11 +381,11 @@
         <a href="#top" data-i18n="footer.top">Back to top ↑</a>
     </footer>
 
-    <script src="vendor/lenis.min.js?v=20261107z" defer></script>
-    <script src="backdrop.js?v=20261107z" defer></script>
-    <script src="translations.js?v=20261107z"></script>
-    <script src="script.js?v=20261107z"></script>
-    <script src="motion.js?v=20261107z" defer></script>
+    <script src="vendor/lenis.min.js?v=20261108b" defer></script>
+    <script src="backdrop.js?v=20261108b" defer></script>
+    <script src="translations.js?v=20261108b"></script>
+    <script src="script.js?v=20261108b"></script>
+    <script src="motion.js?v=20261108b" defer></script>
 </body>
 
 </html>
