@@ -67,7 +67,7 @@
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style.css?v=20261108b">
+    <link rel="stylesheet" href="style.css?v=20261108d">
 </head>
 
 <body id="top">
@@ -349,28 +349,49 @@
             <div class="section-head">
                 <span class="section-no">06</span>
                 <h2 class="section-title" data-i18n="contact.title">Let&rsquo;s talk.</h2>
-                <p class="section-intro" data-i18n="contact.lead">If you are hiring, or your shop still handles prices, stock or marketplace reports by hand, tell me about it. I read every message.</p>
+                <p class="section-intro" data-i18n="contact.lead">If you are hiring, or your shop still handles prices, stock or marketplace reports by hand, tell me about it.</p>
             </div>
 
             <div class="contact">
                 <form action="https://formspree.io/f/xwvnqjjl" method="POST" class="contact-form">
                     <div class="form-row">
-                        <input type="text" name="name" autocomplete="name" aria-label="Name" placeholder="Name" data-i18n-placeholder="contact.name" required>
-                        <input type="email" name="email" autocomplete="email" aria-label="Email" placeholder="Email" data-i18n-placeholder="contact.email" required>
+                        <label class="field">
+                            <span class="field-label" data-i18n="contact.name">Name</span>
+                            <input type="text" name="name" autocomplete="name" required>
+                        </label>
+                        <label class="field">
+                            <span class="field-label" data-i18n="contact.email">Email</span>
+                            <input type="email" name="email" autocomplete="email" required>
+                        </label>
                     </div>
-                    <textarea name="message" rows="5" aria-label="What would you like to talk about?" placeholder="What would you like to talk about?" data-i18n-placeholder="contact.message" required></textarea>
+                    <label class="field">
+                        <span class="field-label" data-i18n="contact.message_label">Message</span>
+                        <textarea name="message" rows="5" placeholder="A role, a project, or a process your team still does by hand." data-i18n-placeholder="contact.message" required></textarea>
+                    </label>
                     <!-- Honeypot: hidden from people, filled in by bots; Formspree drops those. -->
-                    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-                    <button type="submit" class="btn btn-primary" data-i18n="contact.send">Send message</button>
+                    <div class="hp" aria-hidden="true">
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" data-i18n="contact.send">Send message</button>
+                        <span class="form-note" data-i18n="contact.note">I read every message.</span>
+                    </div>
                     <p class="form-status" role="status" aria-live="polite"></p>
                 </form>
 
-                <ul class="contact-direct">
-                    <li><a href="mailto:gilang@fenderio.com">gilang@fenderio.com</a></li>
-                    <li><a href="https://fenderio.itch.io" target="_blank" rel="noopener">fenderio.itch.io</a></li>
-                    <li><a href="https://github.com/gfenderio" target="_blank" rel="noopener">github.com/gfenderio</a></li>
-                    <li><a href="https://linkedin.com/in/gilangfenderio" target="_blank" rel="noopener">linkedin.com/in/gilangfenderio</a></li>
-                </ul>
+                <aside class="contact-card">
+                    <p class="contact-kicker" data-i18n="contact.direct">Prefer email?</p>
+                    <div class="contact-email-row">
+                        <a class="contact-email" href="mailto:gilang@fenderio.com">gilang@fenderio.com</a>
+                        <button type="button" class="contact-copy" data-copy="gilang@fenderio.com" data-i18n="contact.copy">Copy</button>
+                    </div>
+                    <ul class="contact-links">
+                        <li><a href="https://linkedin.com/in/gilangfenderio" target="_blank" rel="noopener"><span>LinkedIn</span><span class="cl-handle">gilangfenderio</span></a></li>
+                        <li><a href="https://github.com/gfenderio" target="_blank" rel="noopener"><span>GitHub</span><span class="cl-handle">gfenderio</span></a></li>
+                        <li><a href="https://fenderio.itch.io" target="_blank" rel="noopener"><span>itch.io</span><span class="cl-handle">fenderio</span></a></li>
+                    </ul>
+                    <p class="contact-status" data-i18n="hero.status">Indonesia · Open to remote work</p>
+                </aside>
             </div>
         </section>
 
@@ -381,11 +402,11 @@
         <a href="#top" data-i18n="footer.top">Back to top ↑</a>
     </footer>
 
-    <script src="vendor/lenis.min.js?v=20261108b" defer></script>
-    <script src="backdrop.js?v=20261108b" defer></script>
-    <script src="translations.js?v=20261108b"></script>
-    <script src="script.js?v=20261108b"></script>
-    <script src="motion.js?v=20261108b" defer></script>
+    <script src="vendor/lenis.min.js?v=20261108d" defer></script>
+    <script src="backdrop.js?v=20261108d" defer></script>
+    <script src="translations.js?v=20261108d"></script>
+    <script src="script.js?v=20261108d"></script>
+    <script src="motion.js?v=20261108d" defer></script>
 </body>
 
 </html>

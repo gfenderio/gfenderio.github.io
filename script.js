@@ -29,7 +29,9 @@
             var val = dict[el.getAttribute("data-i18n-placeholder")];
             if (val == null) return;
             el.placeholder = val;
-            el.setAttribute("aria-label", val);
+            // A field inside a <label> is already named by it; the hint
+            // must not replace that name for screen readers.
+            if (!el.closest("label")) el.setAttribute("aria-label", val);
         });
 
         document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
@@ -313,5 +315,57 @@
         }).then(function () {
             if (button) button.disabled = false;
         });
+    });
+})();
+
+// ---------------------------------------------------------
+// Copy the email address, with a short "Copied" in place.
+// Uses the clipboard API, and falls back to a hidden selection
+// where the API is missing or refuses.
+// ---------------------------------------------------------
+(function () {
+    "use strict";
+
+    var btn = document.querySelector(".contact-copy");
+    if (!btn) return;
+    var timer = null;
+
+    function words() {
+        return (typeof translations !== "undefined" && translations[document.documentElement.lang]) || {};
+    }
+
+    function fallback(text) {
+        var area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { }
+        document.body.removeChild(area);
+        return ok;
+    }
+
+    function done() {
+        btn.textContent = words()["contact.copied"] || "Copied";
+        btn.classList.add("is-copied");
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            btn.textContent = words()["contact.copy"] || "Copy";
+            btn.classList.remove("is-copied");
+        }, 1800);
+    }
+
+    btn.addEventListener("click", function () {
+        var text = btn.getAttribute("data-copy");
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, function () {
+                if (fallback(text)) done();
+            });
+        } else if (fallback(text)) {
+            done();
+        }
     });
 })();

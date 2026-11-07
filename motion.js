@@ -92,7 +92,7 @@
         var kids = section.querySelectorAll(
             ".section-head, .flow-side, .flow-main, .game-visual, .game-body, .itch-card, .card, " +
             ".about-text > p, .facts, .tools, .tl-item, " +
-            ".contact-form, .contact-direct"
+            ".contact-form, .contact-card"
         );
         return kids.length ? Array.prototype.slice.call(kids) : [section];
     }
