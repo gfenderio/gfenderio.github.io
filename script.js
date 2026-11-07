@@ -1,6 +1,7 @@
 // ---------------------------------------------------------
 // Gilang Fenderio — portfolio interactions
-// Language toggle (EN/ID) + scroll reveal. Kept intentionally small.
+// Language toggle (EN/ID) and the screenshot viewer. Scroll motion
+// lives in motion.js.
 // ---------------------------------------------------------
 
 (function () {
@@ -11,7 +12,9 @@
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // ---- Language ----
-    function applyLanguage(lang) {
+    // persist = false for a language that came from the link (?lang=), so a
+    // shared link never overwrites the visitor's own saved choice.
+    function applyLanguage(lang, persist) {
         if (typeof translations === "undefined" || !translations[lang]) return;
         var dict = translations[lang];
 
@@ -24,21 +27,19 @@
 
         document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
             var val = dict[el.getAttribute("data-i18n-placeholder")];
-            if (val != null) el.placeholder = val;
+            if (val == null) return;
+            el.placeholder = val;
+            el.setAttribute("aria-label", val);
         });
 
+        if (dict["doc.title"]) document.title = dict["doc.title"];
         document.documentElement.lang = lang;
-        try { localStorage.setItem("lang", lang); } catch (e) { }
+        if (persist !== false) {
+            try { localStorage.setItem("lang", lang); } catch (e) { }
+        }
         updateLangButton(lang);
 
-        document.querySelectorAll("[data-i18n-gh]").forEach(function (el) {
-            var n = el.getAttribute("data-gh-total");
-            if (!n) return;
-            var enStr = n + " contributions in the last 6 months";
-            var idStr = n + " kontribusi dalam 6 bulan terakhir";
-            el.textContent = lang === "id" ? idStr : enStr;
-        });
-
+        document.documentElement.classList.remove("lang-pending");
         document.dispatchEvent(new CustomEvent("langToggled", { detail: lang }));
     }
 
@@ -48,17 +49,29 @@
         var enCls = lang === "en" ? "on" : "off";
         var idCls = lang === "id" ? "on" : "off";
         btn.innerHTML = '<span class="' + enCls + '">EN</span> / <span class="' + idCls + '">ID</span>';
+        // Screen readers hear the current language and what the button does.
+        btn.setAttribute("aria-label", lang === "id"
+            ? "Bahasa: Indonesia. Ganti ke English"
+            : "Language: English. Switch to Indonesian");
     }
 
+    // ?lang=id in the link wins, so an Indonesian version can be shared.
     var saved = "en";
     try { saved = localStorage.getItem("lang") || "en"; } catch (e) { }
-    applyLanguage(saved);
+    var asked = (location.search.match(/[?&]lang=(en|id)(?![a-z])/) || [])[1];
+    applyLanguage(asked || saved, !asked);
 
     var langBtn = document.getElementById("lang-btn");
     if (langBtn) {
         langBtn.addEventListener("click", function () {
             var next = (document.documentElement.lang === "id") ? "en" : "id";
             applyLanguage(next);
+            // A manual choice wins over the link: drop ?lang= so a reload keeps it.
+            if (asked && window.history && history.replaceState) {
+                var q = location.search.replace(/([?&])lang=(en|id)(?![a-z])&?/, "$1").replace(/[?&]$/, "");
+                history.replaceState(null, "", location.pathname + q + location.hash);
+                asked = null;
+            }
         });
     }
 
@@ -80,9 +93,9 @@
     box.className = "lightbox";
     box.innerHTML =
         '<div class="lightbox-backdrop" data-close></div>' +
-        '<div class="lightbox-inner" role="dialog" aria-modal="true">' +
+        '<div class="lightbox-inner" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="lightbox-title">' +
         '<button class="lightbox-close" type="button" aria-label="Close" data-close>&times;</button>' +
-        '<p class="lightbox-title"></p>' +
+        '<p class="lightbox-title" id="lightbox-title"></p>' +
         '<div class="lightbox-carousel">' +
         '<button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous screenshot">' +
         '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>' +
@@ -93,7 +106,7 @@
         '</button>' +
         '</div>' +
         '<div class="lightbox-meta">' +
-        '<div class="lightbox-dots" role="tablist"></div>' +
+        '<div class="lightbox-dots"></div>' +
         '<span class="lightbox-counter" aria-live="polite"></span>' +
         '</div>' +
         '</div>';
@@ -110,12 +123,23 @@
     var index = 0;
     var total = 0;
 
+    // The viewer's own labels follow the page language.
+    var WORDS = {
+        en: { close: "Close", prev: "Previous screenshot", next: "Next screenshot", shot: "screenshot", go: "Go to screenshot" },
+        id: { close: "Tutup", prev: "Screenshot sebelumnya", next: "Screenshot berikutnya", shot: "screenshot", go: "Ke screenshot" }
+    };
+
+    function words() {
+        return WORDS[document.documentElement.lang] || WORDS.en;
+    }
+
     function render() {
         trackEl.style.transform = "translateX(-" + (index * 100) + "%)";
         var dots = dotsEl.children;
         for (var i = 0; i < dots.length; i++) {
             dots[i].classList.toggle("is-active", i === index);
-            dots[i].setAttribute("aria-selected", i === index ? "true" : "false");
+            if (i === index) dots[i].setAttribute("aria-current", "true");
+            else dots[i].removeAttribute("aria-current");
         }
         if (counterEl) counterEl.textContent = total ? (index + 1) + " / " + total : "";
     }
@@ -130,8 +154,14 @@
     var opener = null;
 
     function open(name, shots, portrait) {
+        var w = words();
         opener = document.activeElement;
         titleEl.textContent = name;
+        box.querySelector(".lightbox-close").setAttribute("aria-label", w.close);
+        prevBtn.setAttribute("aria-label", w.prev);
+        nextBtn.setAttribute("aria-label", w.next);
+        // A wide shot that pans on phones always starts at its left edge.
+        viewportEl.scrollLeft = 0;
         box.classList.toggle("is-portrait", !!portrait);
         trackEl.innerHTML = "";
         dotsEl.innerHTML = "";
@@ -143,7 +173,7 @@
             slide.className = "lightbox-slide";
             var img = document.createElement("img");
             img.src = src.trim();
-            img.alt = name + " screenshot " + (i + 1);
+            img.alt = name + " " + w.shot + " " + (i + 1);
             img.loading = i === 0 ? "eager" : "lazy";
             slide.appendChild(img);
             trackEl.appendChild(slide);
@@ -151,8 +181,7 @@
             var dot = document.createElement("button");
             dot.type = "button";
             dot.className = "lightbox-dot";
-            dot.setAttribute("role", "tab");
-            dot.setAttribute("aria-label", "Go to screenshot " + (i + 1));
+            dot.setAttribute("aria-label", w.go + " " + (i + 1));
             (function (j) { dot.addEventListener("click", function () { goTo(j); }); })(i);
             dotsEl.appendChild(dot);
         });
@@ -161,13 +190,31 @@
         render();
         box.classList.add("open");
         document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
         // Momentum scrolling ignores body overflow, so it has to be told.
         if (window.__lenis) window.__lenis.stop();
+        // Keyboard users start inside the dialog, on its close button.
+        var closeBtn = box.querySelector(".lightbox-close");
+        if (closeBtn) closeBtn.focus({ preventScroll: true });
+    }
+
+    // Tab and Shift+Tab cycle through the dialog's own buttons only.
+    function trapFocus(e) {
+        var items = Array.prototype.filter.call(
+            box.querySelectorAll("button"),
+            function (b) { return b.offsetParent !== null && !b.disabled; }
+        );
+        if (!items.length) return;
+        var first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        else if (!box.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
     }
 
     function close() {
         box.classList.remove("open");
         document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
         if (window.__lenis) window.__lenis.start();
         if (opener && opener.focus) opener.focus({ preventScroll: true });
         opener = null;
@@ -177,7 +224,9 @@
         t.addEventListener("click", function () {
             var shots = (t.getAttribute("data-shots") || "").split(",").filter(Boolean);
             if (!shots.length) return;
-            open(t.getAttribute("data-name") || "", shots, t.hasAttribute("data-portrait"));
+            var lang = document.documentElement.lang;
+            var name = t.getAttribute("data-name-" + lang) || t.getAttribute("data-name") || "";
+            open(name, shots, t.hasAttribute("data-portrait"));
         });
     });
 
@@ -190,6 +239,7 @@
     document.addEventListener("keydown", function (e) {
         if (!box.classList.contains("open")) return;
         if (e.key === "Escape") close();
+        else if (e.key === "Tab") trapFocus(e);
         else if (e.key === "ArrowLeft") goTo(index - 1);
         else if (e.key === "ArrowRight") goTo(index + 1);
     });
@@ -215,67 +265,48 @@
 })();
 
 // ---------------------------------------------------------
-// Real GitHub contribution calendar (public API, no token)
-// Source: github-contributions-api.jogruber.de (CORS enabled)
+// Contact form: sent in place, with the result shown under the
+// button, instead of leaving the site for Formspree's own page.
+// Without script the form still posts the normal way.
 // ---------------------------------------------------------
 (function () {
     "use strict";
-    var cal = document.getElementById("gh-cal");
-    if (!cal) return;
-    var totalEl = document.getElementById("gh-total");
-    var shades = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
 
-    function cell(level) {
-        var s = document.createElement("span");
-        s.style.background = shades[level] || shades[0];
-        return s;
+    var form = document.querySelector(".contact-form");
+    if (!form || !form.getAttribute("action") || !window.fetch || !window.FormData) return;
+
+    var status = form.querySelector(".form-status");
+    var button = form.querySelector('button[type="submit"]');
+
+    function say(key, state) {
+        var dict = (typeof translations !== "undefined" && translations[document.documentElement.lang]) || {};
+        var fallback = { "contact.sending": "Sending…", "contact.sent": "Thanks, your message is on its way.", "contact.failed": "The message did not go through. Please email gilang@fenderio.com." };
+        if (status) {
+            status.textContent = dict[key] || fallback[key];
+            status.setAttribute("data-state", state);
+        }
     }
 
-    function fill(levels) {
-        var frag = document.createDocumentFragment();
-        levels.forEach(function (lvl) { frag.appendChild(cell(lvl)); });
-        cal.innerHTML = "";
-        cal.appendChild(frag);
-    }
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // A bot filled the hidden field: act as if it worked, send nothing.
+        var trap = form.querySelector('input[name="_gotcha"]');
+        if (trap && trap.value) { form.reset(); say("contact.sent", "ok"); return; }
 
-    function setTotal(n) {
-        if (!totalEl || n == null) return;
-        totalEl.setAttribute("data-gh-total", n);
-        totalEl.setAttribute("data-i18n-gh", "true");
-        var lang = document.documentElement.lang || "en";
-        var enStr = n + " contributions in the last 6 months";
-        var idStr = n + " kontribusi dalam 6 bulan terakhir";
-        totalEl.textContent = lang === "id" ? idStr : enStr;
-    }
-
-    fetch("https://github-contributions-api.jogruber.de/v4/gfenderio?y=last")
-        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-        .then(function (d) {
-            var c = d.contributions || [];
-            var half = c.slice(-182);
-            fill(half.map(function (x) { return x.level; }));
-            var halfTotal = half.reduce(function(sum, x) { return sum + (x.count || 0); }, 0);
-            setTotal(halfTotal);
-        })
-        .catch(function () {
-            // The API is down, rate-limited, or blocked. Draw an empty grid and
-            // say so.
-            //
-            // This previously filled the calendar with Math.random() levels so
-            // the panel "never looks broken" — which meant a visitor could be
-            // shown invented activity presented as a real GitHub history. A
-            // blank week is honest; a fabricated one is not.
-            var empty = [];
-            for (var i = 0; i < 182; i++) empty.push(0);
-            fill(empty);
-
-            if (totalEl) {
-                var lang = document.documentElement.lang || "en";
-                totalEl.removeAttribute("data-gh-total");
-                totalEl.textContent = lang === "id"
-                    ? "Data kontribusi tidak bisa dimuat"
-                    : "Contribution data unavailable";
-            }
+        if (button) button.disabled = true;
+        say("contact.sending", "busy");
+        fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" }
+        }).then(function (res) {
+            if (!res.ok) throw new Error(String(res.status));
+            form.reset();
+            say("contact.sent", "ok");
+        }).catch(function () {
+            say("contact.failed", "error");
+        }).then(function () {
+            if (button) button.disabled = false;
         });
+    });
 })();
-

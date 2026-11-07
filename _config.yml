@@ -1,0 +1,7 @@
+# GitHub Pages builds this site with Jekyll. Keep the writing guide, the
+# copy checker and the asset notes out of the published site.
+exclude:
+  - skills.md
+  - tools/
+  - assets/README.md
+  - README.md
