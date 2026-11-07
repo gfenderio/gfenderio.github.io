@@ -90,7 +90,7 @@
 
     function blocks(section) {
         var kids = section.querySelectorAll(
-            ".section-head, .wl-item, .game-visual, .game-body, .itch-card, .card, " +
+            ".section-head, .flow-side, .flow-main, .game-visual, .game-body, .itch-card, .card, " +
             ".about-text > p, .facts, .tools, .tl-item, " +
             ".contact-form, .contact-direct"
         );
@@ -232,7 +232,7 @@
         return c === " " ? "&nbsp;" : c.replace(/&/g, "&amp;").replace(/</g, "&lt;");
     };
     var splitFigures = function () {
-        document.querySelectorAll(".facts dt").forEach(function (dt, f) {
+        document.querySelectorAll(".facts dt, .flow-stat").forEach(function (dt, f) {
             // Already split, and not rewritten by the language switch.
             if (dt.querySelector(".roll")) return;
             var text = dt.textContent.replace(/\s+/g, " ").trim();
@@ -241,7 +241,7 @@
             for (var i = 0; i < text.length; i++) {
                 digits += '<span class="dg" style="--d:' + i + '"><span>' + esc(text[i]) + "</span></span>";
             }
-            dt.style.setProperty("--f", f);
+            if (dt.tagName === "DT") dt.style.setProperty("--f", f);
             dt.innerHTML = '<span class="sr-only">' + esc(text) + "</span>" +
                 '<span class="roll" aria-hidden="true">' + digits + "</span>";
         });
@@ -263,6 +263,62 @@
         }, { threshold: 0.6 }).observe(factsBox);
     }
 
+    // ---- The work flow's rail ------------------------------------------
+    // A line 60% of the way down the screen is "now". The rail fills down to
+    // it, the dot (the item on its trip) sits on it, and every step whose
+    // node it has passed is lit. All of it follows the scroll both ways.
+    var flow = document.querySelector(".flow");
+    var flowGeo = null;
+    var flowFill = flow && flow.querySelector(".flow-fill");
+    var flowDot = flow && flow.querySelector(".flow-dot");
+    var flowSteps = flow ? Array.prototype.slice.call(flow.querySelectorAll(".flow-step")) : [];
+    var flowOn = [];
+
+    function pageTop(el) {
+        var top = 0;
+        while (el) { top += el.offsetTop; el = el.offsetParent; }
+        return top;
+    }
+
+    function measureFlow() {
+        if (!flow) return;
+        var rail = flow.querySelector(".flow-rail");
+        flowGeo = {
+            top: pageTop(rail),
+            h: rail.offsetHeight,
+            nodes: flowSteps.map(function (s) {
+                var n = s.querySelector(".flow-node");
+                return pageTop(n) + n.offsetHeight / 2;
+            })
+        };
+    }
+
+    function updateFlow(y) {
+        if (!flowGeo) return;
+        var now = y + window.innerHeight * 0.6;
+        var p = reduce ? 1 : Math.max(0, Math.min(1, (now - flowGeo.top) / flowGeo.h));
+        flowFill.style.transform = "scaleY(" + p.toFixed(4) + ")";
+        flowDot.style.transform = "translateY(" + (p * flowGeo.h).toFixed(1) + "px)";
+        flowSteps.forEach(function (s, i) {
+            var on = reduce || now >= flowGeo.nodes[i];
+            if (on !== flowOn[i]) {
+                flowOn[i] = on;
+                s.classList.toggle("is-on", on);
+            }
+        });
+    }
+
+    if (flow) {
+        measureFlow();
+        var remeasure = function () {
+            measureFlow();
+            updateFlow(window.scrollY || window.pageYOffset || 0);
+        };
+        window.addEventListener("load", remeasure);
+        window.addEventListener("resize", remeasure);
+        if ("ResizeObserver" in window) new ResizeObserver(remeasure).observe(flow);
+    }
+
     // ---- Scroll-linked effects -----------------------------------------
     var hero = document.querySelector(".hero");
     var nav = document.querySelector(".nav");
@@ -273,6 +329,8 @@
         bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, y / h) : 0) + ")";
 
         if (nav) nav.classList.toggle("is-scrolled", y > 12);
+
+        updateFlow(y);
 
         // The hero panel eases back and fades as it leaves, so the page has
         // depth rather than one flat plane sliding past. Not on phones: the

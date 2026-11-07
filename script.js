@@ -32,6 +32,11 @@
             el.setAttribute("aria-label", val);
         });
 
+        document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+            var val = dict[el.getAttribute("data-i18n-aria")];
+            if (val != null) el.setAttribute("aria-label", val);
+        });
+
         if (dict["doc.title"]) document.title = dict["doc.title"];
         document.documentElement.lang = lang;
         if (persist !== false) {

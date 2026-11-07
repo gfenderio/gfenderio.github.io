@@ -67,7 +67,7 @@
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style.css?v=20261107x">
+    <link rel="stylesheet" href="style.css?v=20261107z">
 </head>
 
 <body id="top">
@@ -109,41 +109,92 @@
             <div class="section-head">
                 <span class="section-no">01</span>
                 <h2 class="section-title" data-i18n="work.title">What I build at work.</h2>
-                <p class="section-intro" data-i18n="work.intro">I work at Kyou, a hobby shop that sells through its own website and three big Indonesian marketplaces: Shopee, Tokopedia and TikTok Shop. I build the software its teams use every day. The code and internal names stay private.</p>
+                <p class="section-intro" data-i18n="work.intro">I work at Kyou, a hobby shop that sells through its own website, Shopee, Tokopedia and TikTok Shop. Below is the trip one item takes there, from the loading dock to the courier, and the software I built for each step. The code and internal names stay private.</p>
             </div>
 
-            <ul class="work-list">
-                <li class="wl-item">
-                    <h3 class="wl-name" data-i18n="work.pda.name">Warehouse app</h3>
-                    <p class="wl-desc" data-i18n="work.pda.desc">The warehouse team carries it all day to find items, count stock, pick and pack orders, and check in deliveries. The phone camera is the barcode scanner. One screen still works in the corners of the warehouse with no signal.</p>
-                    <p class="wl-meta">Android&nbsp;· Kotlin&nbsp;· Jetpack Compose&nbsp;· Room</p>
-                </li>
-                <li class="wl-item">
-                    <h3 class="wl-name" data-i18n="work.ecom.name">Marketplace &amp; online store tools</h3>
-                    <p class="wl-desc" data-i18n="work.ecom.desc">Prices, discount limits and promos for three marketplaces, set once instead of copied by hand. The monthly report follows sales to the money that reaches the bank, after platform fees and shipping.</p>
-                    <p class="wl-meta">Web&nbsp;· Go&nbsp;· Laravel&nbsp;· MySQL</p>
-                </li>
-                <li class="wl-item">
-                    <h3 class="wl-name" data-i18n="work.label.name">Label app for incoming stock</h3>
-                    <p class="wl-desc" data-i18n="work.label.desc">Prints a label for every item that arrives. Items customers have already paid for get their own mark, so they never go on a shelf. It only reads data, so it can never change stock or orders. 25 releases so far, and it updates itself.</p>
-                    <p class="wl-meta">Desktop&nbsp;· Electron&nbsp;· React&nbsp;· TypeScript</p>
-                </li>
-                <li class="wl-item">
-                    <h3 class="wl-name" data-i18n="work.platform.name">Kyou&rsquo;s new internal system</h3>
-                    <p class="wl-desc" data-i18n="work.platform.desc">Moving Kyou&rsquo;s daily work off spreadsheets and an old PHP admin panel. I build stock, price changes, courier rates and payment confirmations, from the screen down to the database. While the old panel is still in use, I keep the two in sync.</p>
-                    <p class="wl-meta">Web&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL&nbsp;· Laravel</p>
-                </li>
-                <li class="wl-item">
-                    <h3 class="wl-name" data-i18n="work.data.name">Selling-price table</h3>
-                    <p class="wl-desc" data-i18n="work.data.desc">Different screens used to work out prices their own way, so one item could show two prices. I built one table in the team&rsquo;s data warehouse that sets each item&rsquo;s selling price on every marketplace, and moved the existing tools onto it.</p>
-                    <p class="wl-meta">Data warehouse</p>
-                </li>
-                <li class="wl-item">
-                    <h3 class="wl-name" data-i18n="work.ops.name">Fulfilment bot</h3>
-                    <p class="wl-desc" data-i18n="work.ops.desc">Takes care of the small jobs around each order. It files proof photos under the right order, splits orders that ship in several boxes and sends the paperwork to the printer. Orders stuck in picking get flagged straight away. Running every day since May.</p>
-                    <p class="wl-meta">Bot&nbsp;· Node.js&nbsp;· TypeScript&nbsp;· Docker</p>
-                </li>
-            </ul>
+            <div class="flow">
+                <div class="flow-rail" aria-hidden="true"><span class="flow-fill"></span><span class="flow-dot"></span></div>
+                <ol class="flow-steps" aria-label="The trip one item takes at Kyou" data-i18n-aria="work.flow_label">
+                    <li class="flow-step">
+                        <span class="flow-node" aria-hidden="true"></span>
+                        <div class="flow-side">
+                            <p class="flow-stage"><span class="flow-no">01</span> <span data-i18n="work.label.stage">Stock arrives</span></p>
+                            <p class="flow-stat" data-i18n="work.label.stat">25</p>
+                            <p class="flow-cap" data-i18n="work.label.cap">releases, and it updates itself</p>
+                        </div>
+                        <div class="flow-main">
+                            <h3 class="flow-name" data-i18n="work.label.name">Label app for incoming stock</h3>
+                            <p class="flow-desc" data-i18n="work.label.desc">Prints a label for every item that arrives. Items customers have already paid for get their own mark, so they never go on a shelf. It only reads data, so it can never change stock or orders.</p>
+                            <p class="flow-meta">Desktop&nbsp;· Electron&nbsp;· React&nbsp;· TypeScript</p>
+                        </div>
+                    </li>
+                    <li class="flow-step">
+                        <span class="flow-node" aria-hidden="true"></span>
+                        <div class="flow-side">
+                            <p class="flow-stage"><span class="flow-no">02</span> <span data-i18n="work.data.stage">The price is set</span></p>
+                            <p class="flow-stat" data-i18n="work.data.stat">1</p>
+                            <p class="flow-cap" data-i18n="work.data.cap">selling price per item, on every screen</p>
+                        </div>
+                        <div class="flow-main">
+                            <h3 class="flow-name" data-i18n="work.data.name">Selling-price table</h3>
+                            <p class="flow-desc" data-i18n="work.data.desc">Different screens used to work out prices their own way, so one item could show two prices. I built one table in the team&rsquo;s data warehouse that sets each item&rsquo;s selling price on every marketplace, and moved the existing tools onto it.</p>
+                            <p class="flow-meta">Data warehouse</p>
+                        </div>
+                    </li>
+                    <li class="flow-step">
+                        <span class="flow-node" aria-hidden="true"></span>
+                        <div class="flow-side">
+                            <p class="flow-stage"><span class="flow-no">03</span> <span data-i18n="work.ecom.stage">It goes on sale</span></p>
+                            <p class="flow-stat" data-i18n="work.ecom.stat">3</p>
+                            <p class="flow-cap" data-i18n="work.ecom.cap">marketplaces, run from one place</p>
+                        </div>
+                        <div class="flow-main">
+                            <h3 class="flow-name" data-i18n="work.ecom.name">Marketplace &amp; online store tools</h3>
+                            <p class="flow-desc" data-i18n="work.ecom.desc">Prices, discount limits and promos for three marketplaces, set once instead of copied by hand. The monthly report follows sales to the money that reaches the bank, after platform fees and shipping.</p>
+                            <p class="flow-meta">Web&nbsp;· Go&nbsp;· Laravel&nbsp;· MySQL</p>
+                        </div>
+                    </li>
+                    <li class="flow-step">
+                        <span class="flow-node" aria-hidden="true"></span>
+                        <div class="flow-side">
+                            <p class="flow-stage"><span class="flow-no">04</span> <span data-i18n="work.platform.stage">Someone buys it</span></p>
+                            <p class="flow-stat" data-i18n="work.platform.stat">2</p>
+                            <p class="flow-cap" data-i18n="work.platform.cap">systems kept in sync while the old one retires</p>
+                        </div>
+                        <div class="flow-main">
+                            <h3 class="flow-name" data-i18n="work.platform.name">Kyou&rsquo;s new internal system</h3>
+                            <p class="flow-desc" data-i18n="work.platform.desc">Moving Kyou&rsquo;s daily work off spreadsheets and an old PHP admin panel. I build stock, price changes, courier rates and payment confirmations, from the screen down to the database. While the old panel is still in use, I keep the two in sync.</p>
+                            <p class="flow-meta">Web&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL&nbsp;· Laravel</p>
+                        </div>
+                    </li>
+                    <li class="flow-step">
+                        <span class="flow-node" aria-hidden="true"></span>
+                        <div class="flow-side">
+                            <p class="flow-stage"><span class="flow-no">05</span> <span data-i18n="work.pda.stage">It is picked and packed</span></p>
+                            <p class="flow-stat" data-i18n="work.pda.stat">4</p>
+                            <p class="flow-cap" data-i18n="work.pda.cap">warehouse jobs in one app</p>
+                        </div>
+                        <div class="flow-main">
+                            <h3 class="flow-name" data-i18n="work.pda.name">Warehouse app</h3>
+                            <p class="flow-desc" data-i18n="work.pda.desc">The warehouse team carries it all day to find items, count stock, pick and pack orders, and check in deliveries. The phone camera is the barcode scanner. One screen still works in the corners of the warehouse with no signal.</p>
+                            <p class="flow-meta">Android&nbsp;· Kotlin&nbsp;· Jetpack Compose&nbsp;· Room</p>
+                        </div>
+                    </li>
+                    <li class="flow-step">
+                        <span class="flow-node" aria-hidden="true"></span>
+                        <div class="flow-side">
+                            <p class="flow-stage"><span class="flow-no">06</span> <span data-i18n="work.ops.stage">It ships</span></p>
+                            <p class="flow-stat" data-i18n="work.ops.stat">Daily</p>
+                            <p class="flow-cap" data-i18n="work.ops.cap">on duty since May 2026</p>
+                        </div>
+                        <div class="flow-main">
+                            <h3 class="flow-name" data-i18n="work.ops.name">Fulfilment bot</h3>
+                            <p class="flow-desc" data-i18n="work.ops.desc">Takes care of the small jobs around each order. It files proof photos under the right order, splits orders that ship in several boxes and sends the paperwork to the printer. Orders stuck in picking get flagged straight away.</p>
+                            <p class="flow-meta">Bot&nbsp;· Node.js&nbsp;· TypeScript&nbsp;· Docker</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
         </section>
 
         <!-- Play -->
@@ -299,21 +350,21 @@
                     <span class="tl-date">2025–2026</span>
                     <div class="tl-body">
                         <h3><span data-i18n="exp.informa.role">Assistant Product Specialist</span> <span class="tl-org">·&nbsp;<a href="https://www.informa.co.id" target="_blank" rel="noopener">Informa</a></span></h3>
-                        <p data-i18n="exp.informa.desc">Ran a department day to day: prices, campaigns, stock and floor layout. Hit every sales target in my first three months.</p>
+                        <p data-i18n="exp.informa.desc">Ran a department day to day: prices, campaigns, stock and floor layout. Nine months out of twelve, my department hit its sales target.</p>
                     </div>
                 </li>
                 <li class="tl-item">
                     <span class="tl-date">2024</span>
                     <div class="tl-body">
-                        <h3><span data-i18n="exp.lion.role">Game Tester &amp; Indonesian Voice Talent</span> <span class="tl-org">·&nbsp;<a href="https://www.lionbridge.com" target="_blank" rel="noopener">Lionbridge Games</a></span></h3>
-                        <p data-i18n="exp.lion.desc">Tested Gems of War and reported the bugs and interface problems I found. Recorded Indonesian voice lines for another project.</p>
+                        <h3><span data-i18n="exp.lion.role">Game Tester &amp; Indonesian AI Trainer</span> <span class="tl-org">·&nbsp;<a href="https://www.lionbridge.com" target="_blank" rel="noopener">Lionbridge Games</a></span></h3>
+                        <p data-i18n="exp.lion.desc">Tested Gems of War and reported the bugs and interface problems I found. On a separate project, recorded Indonesian speech used to train an AI model.</p>
                     </div>
                 </li>
                 <li class="tl-item">
                     <span class="tl-date">2019–2024</span>
                     <div class="tl-body">
                         <h3><span data-i18n="exp.earlier.role">Retail</span> <span class="tl-org">·&nbsp;The Foodhall, Indomaret</span></h3>
-                        <p data-i18n="exp.earlier.desc">The Foodhall (2023–2024): built the reports the store used to make decisions. Indomaret (2019–2022): ran a store and its team, and hit the sales target several times.</p>
+                        <p data-i18n="exp.earlier.desc">The Foodhall (2023–2024): built the reports the store used to make decisions. Indomaret (2019–2022): ran a store and its team, and took it past its sales target on a number of occasions.</p>
                     </div>
                 </li>
             </ol>
@@ -356,11 +407,11 @@
         <a href="#top" data-i18n="footer.top">Back to top ↑</a>
     </footer>
 
-    <script src="vendor/lenis.min.js?v=20261107x" defer></script>
-    <script src="backdrop.js?v=20261107x" defer></script>
-    <script src="translations.js?v=20261107x"></script>
-    <script src="script.js?v=20261107x"></script>
-    <script src="motion.js?v=20261107x" defer></script>
+    <script src="vendor/lenis.min.js?v=20261107z" defer></script>
+    <script src="backdrop.js?v=20261107z" defer></script>
+    <script src="translations.js?v=20261107z"></script>
+    <script src="script.js?v=20261107z"></script>
+    <script src="motion.js?v=20261107z" defer></script>
 </body>
 
 </html>

@@ -593,48 +593,154 @@ main {
     transform: translateX(-50%) translateY(0);
 }
 
-/* ---------- Work: one compact list ----------
-   Name on the left, what it does on the right, the platform and stack
-   underneath in mono. No pictures: the work is internal. */
-/* The section head already draws the line above the first item. */
-.work-list {
+/* ---------- Work: the trip one item takes ----------
+   Six steps on a rail. As the page scrolls, the rail fills and a dot (the
+   item) travels down it; each step lights up as the dot reaches it and its
+   figure rolls up. Scrolling back reverses all of it. motion.js drives the
+   rail and the .is-on class; everything here is the look. */
+.flow {
+    --rail-x: 6px;
+    --flow-pad: 3rem;
+    position: relative;
+    padding-left: var(--flow-pad);
+}
+
+.flow-rail {
+    position: absolute;
+    left: var(--rail-x);
+    top: 2.9rem;
+    bottom: 3rem;
+    width: 1px;
+    background: var(--hairline);
+}
+
+.flow-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+}
+
+.flow-dot {
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ink);
+    box-shadow: 0 0 0 5px rgba(17, 17, 17, 0.08);
+}
+
+.flow-steps {
     list-style: none;
 }
 
-.wl-item {
+.flow-step {
+    position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    grid-template-areas: "name desc" "meta desc";
-    grid-template-rows: auto 1fr;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
     column-gap: clamp(1.5rem, 5vw, 4rem);
-    row-gap: 0.45rem;
-    padding: 1.5rem 0;
+    padding: 2.2rem 0;
     border-bottom: 1px solid var(--hairline);
 }
 
-.wl-name {
-    grid-area: name;
-    color: var(--ink);
-    font-weight: 600;
-    font-size: 1.1rem;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
+.flow-step:last-child {
+    border-bottom: 0;
 }
 
-.wl-desc {
-    grid-area: desc;
+.flow-node {
+    position: absolute;
+    left: calc(var(--rail-x) - var(--flow-pad) - 6px);
+    top: 2.45rem;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--canvas-soft);
+    border: 1.5px solid var(--hairline-strong);
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.flow-step.is-on .flow-node {
+    background: var(--ink);
+    border-color: var(--ink);
+    box-shadow: 0 0 0 5px rgba(17, 17, 17, 0.07);
+}
+
+.flow-stage {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: var(--mute);
+    transition: color 0.35s ease;
+}
+
+.flow-no {
+    color: var(--hairline-strong);
+    margin-right: 0.35rem;
+}
+
+.flow-step.is-on .flow-stage {
+    color: var(--ink);
+}
+
+.flow-stat {
+    margin: 0.75rem 0 0.4rem;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+}
+
+.flow-cap {
+    max-width: 26ch;
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--hairline-strong);
+    transition: color 0.35s ease;
+}
+
+.flow-step.is-on .flow-cap {
+    color: var(--mute);
+}
+
+.flow-name {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+}
+
+.flow-desc {
     max-width: 62ch;
     font-size: 15px;
     line-height: 1.6;
     color: var(--body);
+    margin-bottom: 0.8rem;
 }
 
-.wl-meta {
-    grid-area: meta;
+.flow-meta {
     font-family: var(--font-mono);
     font-size: 12px;
     line-height: 1.5;
     color: var(--mute);
+}
+
+/* The figure rolls up as the dot arrives and back down if you scroll back,
+   so it never snaps while on screen. */
+.flow-stat .dg > span {
+    translate: 0 110%;
+    transition: translate 0.35s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.flow-step.is-on .flow-stat .dg > span {
+    translate: 0 0;
+    transition: translate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--d, 0) * 60ms);
 }
 
 /* ---------- Play ---------- */
@@ -1048,7 +1154,8 @@ button:hover .link-arrow,
    Headings balance their lines; paragraphs avoid a lone last word.
    Browsers without support simply ignore these. */
 .section-title,
-.wl-name,
+.flow-name,
+.flow-cap,
 .game-pitch,
 .itch-text,
 .card-name {
@@ -1064,7 +1171,7 @@ button:hover .link-arrow,
     text-wrap: balance;
 }
 
-.wl-desc,
+.flow-desc,
 .game-desc,
 .about-text p {
     text-wrap: pretty;
@@ -1288,16 +1395,27 @@ button:hover .link-arrow,
         grid-column: 1;
     }
 
-    .wl-item {
-        grid-template-columns: 1fr;
-        grid-template-areas: "name" "desc" "meta";
-        grid-template-rows: auto;
-        row-gap: 0.4rem;
-        padding: 1.25rem 0;
+    .flow {
+        --flow-pad: 1.9rem;
     }
 
-    .wl-meta {
-        margin-top: 0.15rem;
+    .flow-rail {
+        top: 2.2rem;
+    }
+
+    .flow-step {
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+        padding: 1.8rem 0;
+    }
+
+    .flow-node {
+        top: 1.85rem;
+    }
+
+    .flow-stat {
+        font-size: 2.3rem;
+        margin-top: 0.6rem;
     }
 
     .tl-item {
