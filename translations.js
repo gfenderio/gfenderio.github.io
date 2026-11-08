@@ -125,8 +125,8 @@ const translations = {
 
     id: {
         "doc.title": "Gilang Fenderio · Full-stack engineer",
-        "skip": "Langsung ke karya",
-        "nav.work": "Karya",
+        "skip": "Langsung ke konten",
+        "nav.work": "Kerja",
         "nav.play": "Game",
         "nav.side": "Proyek",
         "nav.about": "Tentang",
@@ -135,7 +135,7 @@ const translations = {
         "hero.status": "Indonesia · Terbuka untuk kerja remote",
         "hero.title": "<span class=\"hero-line\">Full-stack engineer.</span><span class=\"hero-line\">Saya membangun sistem yang memproses pesanan sampai dikirim.</span>",
         "hero.lead": "Di Kyou, saya mengurus sisi stok: gudang, web dan marketplace, toko, sampai event. Di luar kantor, saya merancang game kecil untuk game jam.",
-        "hero.cta_work": "Lihat karya",
+        "hero.cta_work": "Lihat hasil kerja",
         "hero.cta_play": "Main game saya",
         "hero.scroll": "Scroll",
 
