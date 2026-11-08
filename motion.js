@@ -106,7 +106,7 @@
 
     function blocks(section) {
         var kids = section.querySelectorAll(
-            ".section-head, .flow-side, .flow-main, .game-visual, .game-body, .itch-card, .card, " +
+            ".section-head, .flow-side, .flow-main, .game-visual, .game-body, .card, " +
             ".about-text > p, .facts, .tools, .tl-item, " +
             ".contact-form, .contact-card"
         );
@@ -529,12 +529,69 @@
         }
     }
 
+    // ---- Nav: where you are ---------------------------------------------
+    // Each link covers a stretch of the page (Play also covers the side
+    // projects; About also covers experience). The pill sits on the link
+    // whose stretch holds a line a third of the way down the screen, and its
+    // line fills as that stretch is read. Hidden over the hero.
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+    var navPill = document.querySelector(".nav-pill");
+    var navGroups = { "#work": ["#work"], "#play": ["#play", "#side"], "#about": ["#about", "#experience"], "#contact": ["#contact"] };
+    var navGeo = null, navCur = -2;
+
+    function measureNavPill() {
+        if (!navPill) return;
+        navGeo = navLinks.map(function (a) {
+            var els = (navGroups[a.getAttribute("href")] || []).map(function (q) { return document.querySelector(q); }).filter(Boolean);
+            var first = els[0], last = els[els.length - 1];
+            return {
+                top: first ? pageTop(first) : Infinity,
+                bottom: last ? pageTop(last) + last.offsetHeight : Infinity,
+                x: a.offsetLeft,
+                w: a.offsetWidth
+            };
+        });
+        navCur = -2;
+    }
+
+    function updateNavPill(y) {
+        if (!navGeo) return;
+        var vh = window.innerHeight;
+        var line = y + vh * 0.35, cur = -1;
+        navGeo.forEach(function (g, i) { if (line >= g.top) cur = i; });
+        if (y + vh >= document.documentElement.scrollHeight - 4) cur = navGeo.length - 1;
+        if (cur !== navCur) {
+            navCur = cur;
+            navLinks.forEach(function (a, i) {
+                a.classList.toggle("is-active", i === cur);
+                if (i === cur) a.setAttribute("aria-current", "location");
+                else a.removeAttribute("aria-current");
+            });
+            if (cur < 0) {
+                navPill.classList.remove("is-on");
+            } else {
+                var g = navGeo[cur];
+                navPill.style.setProperty("--px", (g.x - 12) + "px");
+                navPill.style.setProperty("--pw", (g.w + 24) + "px");
+                navPill.classList.add("is-on");
+            }
+        }
+        if (cur >= 0) {
+            var c = navGeo[cur];
+            var p = Math.max(0, Math.min(1, (line - c.top) / Math.max(1, c.bottom - c.top)));
+            if (y + vh >= document.documentElement.scrollHeight - 4) p = 1;
+            navPill.style.setProperty("--pp", p.toFixed(3));
+        }
+    }
+
     function measureMore() {
         measureHs();
         measureExp();
+        measureNavPill();
         var y = window.scrollY || window.pageYOffset || 0;
         updateHs(y);
         updateExp();
+        updateNavPill(y);
     }
     measureMore();
     window.addEventListener("load", measureMore);
@@ -567,6 +624,7 @@
         updateFlow(y);
         updateHs(y);
         updateExp();
+        updateNavPill(y);
     }
 
     function request(y) {

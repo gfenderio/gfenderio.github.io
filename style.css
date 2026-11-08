@@ -395,6 +395,56 @@ main,
     color: var(--ink);
 }
 
+/* The pill marks the part of the page you are in, and its blue line fills
+   as you read through that part. motion.js sets its place and progress. */
+.nav-links {
+    position: relative;
+}
+
+.nav-links a {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-links a.is-active {
+    color: var(--ink);
+}
+
+.nav-pill {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 30px;
+    margin-top: -15px;
+    width: var(--pw, 0px);
+    transform: translateX(var(--px, 0px));
+    border-radius: 999px;
+    background: var(--canvas);
+    border: 1px solid var(--hairline);
+    box-shadow: var(--shadow-2);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), width 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.nav-pill.is-on {
+    opacity: 1;
+}
+
+.nav-pill::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 4px;
+    height: 1.5px;
+    border-radius: 1px;
+    background: var(--link);
+    transform-origin: 0 50%;
+    transform: scaleX(var(--pp, 0));
+}
+
 .lang-btn {
     font-family: var(--font-mono);
     font-size: 12px;
@@ -1072,9 +1122,10 @@ main {
 }
 
 .flow.is-pinned .flow-stat {
-    margin: 1rem 0 0.8rem;
+    margin: 0.7rem 0 0.6rem;
     font-size: clamp(4.5rem, min(11vw, 17vh), 9rem);
-    line-height: 0.9;
+    /* Below ~1.05 the clipped box of each digit cuts the top of the glyph. */
+    line-height: 1.08;
     letter-spacing: -0.06em;
 }
 
@@ -1201,37 +1252,71 @@ main {
     grid-area: stack;
 }
 
+/* The itch.io bar sits under the section title and stays pinned under the
+   nav while the Games section scrolls past, so the way to every game is
+   always one tap away there. It lets go when the section ends. */
 .itch-card {
-    display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: 0.6rem clamp(1.5rem, 5vw, 4rem);
-    align-items: baseline;
-    margin-top: clamp(2.5rem, 6vw, 4rem);
-    padding: 1.4rem 1.5rem;
-    background: var(--canvas);
+    position: sticky;
+    top: calc(var(--nav-h, 64px) + 12px);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+    padding: 0.6rem 0.6rem 0.6rem 1.1rem;
+    background: rgba(255, 255, 255, 0.84);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
     border: 1px solid var(--hairline);
-    border-radius: 12px;
-    box-shadow: var(--shadow-2);
+    border-radius: 14px;
+    box-shadow: var(--shadow-3);
     color: inherit;
-    transition: box-shadow 0.2s, transform 0.2s;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .itch-card:hover {
-    box-shadow: var(--shadow-4);
-    transform: translateY(-3px);
     color: inherit;
+    border-color: var(--hairline-strong);
+    box-shadow: var(--shadow-4);
+}
+
+.itch-kicker {
+    flex: none;
 }
 
 .itch-text {
+    flex: 1;
+    min-width: 0;
     color: var(--ink);
     font-weight: 500;
-    font-size: 1.15rem;
-    letter-spacing: -0.02em;
-    line-height: 1.3;
+    font-size: 15px;
+    letter-spacing: -0.015em;
+    line-height: 1.35;
 }
 
 .itch-card .link-arrow {
-    grid-column: 2;
+    flex: none;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--on-primary);
+    font-size: 13.5px;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+
+.itch-card:hover .link-arrow {
+    background: #000;
+}
+
+@media (max-width: 620px) {
+    .itch-text {
+        display: none;
+    }
+
+    .itch-card {
+        justify-content: space-between;
+    }
 }
 
 /* ---------- Side projects: a grid of small cards ---------- */
@@ -1261,6 +1346,49 @@ main {
     transform: none;
     box-shadow: none;
     color: inherit;
+}
+
+/* The picture and the words open the screenshots; the link under them, when
+   there is one, goes to the live site. */
+.card-open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    width: 100%;
+    flex: 1;
+    padding: 0;
+    text-align: left;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: zoom-in;
+}
+
+.card-visual {
+    position: relative;
+}
+
+.card-open:hover .card-visual,
+.card-open:focus-visible .card-visual {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+}
+
+.card-open:hover .visual-hint,
+.card-open:focus-visible .visual-hint {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.card-open .link-arrow {
+    margin-top: auto;
+    padding-top: 0.15rem;
+    color: var(--link);
+}
+
+.card .card-link {
+    align-self: flex-start;
 }
 
 .card-visual {
@@ -2101,17 +2229,12 @@ html:not(.js) .contact-copy {
 
     .game-body,
     .about,
-    .contact,
-    .itch-card {
+    .contact {
         grid-template-columns: 1fr;
     }
 
     .game-body {
         grid-template-areas: "head" "pitch" "desc" "actions" "stack";
-    }
-
-    .itch-card .link-arrow {
-        grid-column: 1;
     }
 
     .flow {
@@ -2705,8 +2828,10 @@ html:not(.js) .contact-copy {
 .dg {
     display: inline-block;
     overflow: hidden;
-    padding-bottom: 0.14em;
-    margin-bottom: -0.14em;
+    /* Tight letter-spacing makes each box narrower than its glyph; the side
+       padding (cancelled by the margin) keeps the edges of a big 8 inside. */
+    padding: 0 0.08em 0.14em;
+    margin: 0 -0.08em -0.14em;
 }
 
 .dg > span {

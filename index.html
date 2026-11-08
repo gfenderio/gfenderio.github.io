@@ -67,7 +67,7 @@
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style.css?v=20261108h">
+    <link rel="stylesheet" href="style.css?v=20261108l">
 </head>
 
 <body id="top">
@@ -90,6 +90,7 @@
     <header class="nav">
         <a href="#top" class="brand">Gilang Fenderio<span class="brand-dot">.</span></a>
         <nav class="nav-links">
+            <span class="nav-pill" aria-hidden="true"></span>
             <a href="#work" data-i18n="nav.work">Work</a>
             <a href="#play" data-i18n="nav.play">Play</a>
             <a href="#about" data-i18n="nav.about">About</a>
@@ -198,6 +199,13 @@
                 <p class="section-intro" data-i18n="play.intro">Small games I design after work, mostly for game jams.</p>
             </div>
 
+            <!-- Stays under the nav while the Games section is on screen. -->
+            <a class="itch-card" href="https://fenderio.itch.io" target="_blank" rel="noopener">
+                <span class="itch-kicker">fenderio.itch.io</span>
+                <span class="itch-text" data-i18n="play.itch_text">My jam games, and whatever I make next, go up here first.</span>
+                <span class="link-arrow" data-i18n="play.itch_link">Visit my itch.io page</span>
+            </a>
+
             <article class="game">
                 <button type="button" class="project-visual game-visual" data-name="PUTUS!"
                     data-shots="assets/putus-cover.png,assets/putus-1.png,assets/putus-2.png,assets/putus-3.png,assets/putus-4.png">
@@ -224,11 +232,6 @@
                 </div>
             </article>
 
-            <a class="itch-card" href="https://fenderio.itch.io" target="_blank" rel="noopener">
-                <span class="itch-kicker">fenderio.itch.io</span>
-                <span class="itch-text" data-i18n="play.itch_text">My jam games, and whatever I make next, go up here first.</span>
-                <span class="link-arrow" data-i18n="play.itch_link">Visit my itch.io page</span>
-            </a>
         </section>
 
         <!-- Side projects -->
@@ -241,61 +244,73 @@
 
             <div class="hscroll">
                 <div class="hscroll-pin">
-                <div class="grid">
-                    <a class="card" href="https://stzn-green.vercel.app/" target="_blank" rel="noopener">
-                        <span class="card-visual"><img src="assets/stzn-card.jpg" alt="STZN streetwear store" loading="lazy"></span>
-                        <span class="card-tag" data-i18n="side.stzn.tag">Online store</span>
-                        <span class="card-name">STZN</span>
-                        <span class="card-line" data-i18n="side.stzn">A clothing store with a cart and a complete checkout, including QRIS, Indonesia&rsquo;s QR code payment.</span>
-                        <span class="link-arrow" data-i18n="side.visit">Visit</span>
-                    </a>
+                    <div class="grid">
+                        <article class="card">
+                            <button type="button" class="card-open" data-name="STZN"
+                                data-shots="assets/stzn-1.jpg,assets/stzn-2.jpg,assets/stzn-3.jpg,assets/stzn-4.jpg">
+                                <span class="card-visual"><img src="assets/stzn-card.jpg" alt="STZN streetwear store" loading="lazy"><span class="visual-hint" data-i18n="work.gallery">Screenshots</span></span>
+                                <span class="card-tag" data-i18n="side.stzn.tag">Online store</span>
+                                <span class="card-name">STZN</span>
+                                <span class="card-line" data-i18n="side.stzn">A clothing store with a cart and a complete checkout, including QRIS, Indonesia&rsquo;s QR code payment.</span>
+                            </button>
+                            <a class="link-arrow card-link" href="https://stzn-green.vercel.app/" target="_blank" rel="noopener" data-i18n="side.visit">Visit</a>
+                        </article>
 
-                    <a class="card" href="https://abdulmanap-nurmagomedov.vercel.app/login?demo=admin" target="_blank" rel="noopener">
-                        <span class="card-visual"><img src="assets/sias-card.jpg" alt="School portal dashboard" loading="lazy"></span>
-                        <span class="card-tag" data-i18n="side.sias.tag">Web app</span>
-                        <span class="card-name" data-i18n="side.sias.name">School portal</span>
-                        <span class="card-line" data-i18n="side.sias">Teachers enter grades, and parents follow progress and fees. The demo is read-only and the pupils are made up.</span>
-                        <span class="link-arrow" data-i18n="side.demo">Try the demo</span>
-                    </a>
+                        <article class="card">
+                            <button type="button" class="card-open" data-name="School portal" data-name-id="Portal sekolah"
+                                data-shots="assets/sias-1.jpg,assets/sias-2.jpg,assets/sias-3.jpg,assets/sias-4.jpg">
+                                <span class="card-visual"><img src="assets/sias-card.jpg" alt="School portal dashboard" loading="lazy"><span class="visual-hint" data-i18n="work.gallery">Screenshots</span></span>
+                                <span class="card-tag" data-i18n="side.sias.tag">Web app</span>
+                                <span class="card-name" data-i18n="side.sias.name">School portal</span>
+                                <span class="card-line" data-i18n="side.sias">Teachers enter grades, and parents follow progress and fees. The demo is read-only and the pupils are made up.</span>
+                            </button>
+                            <a class="link-arrow card-link" href="https://abdulmanap-nurmagomedov.vercel.app/login?demo=admin" target="_blank" rel="noopener" data-i18n="side.demo">Try the demo</a>
+                        </article>
 
-                    <button type="button" class="card project-visual" data-name="Kasirin"
-                        data-shots="assets/kasirin-1-web.jpg,assets/kasirin-2-web.jpg,assets/kasirin-3-web.jpg">
-                        <span class="card-visual"><img src="assets/kasirin-card.jpg" alt="Kasirin POS terminal" loading="lazy"></span>
-                        <span class="card-tag" data-i18n="side.kasirin.tag">Point of sale</span>
-                        <span class="card-name">Kasirin</span>
-                        <span class="card-line" data-i18n="side.kasirin">A cashier system for busy minimarkets. It keeps working when the internet goes down.</span>
-                        <span class="link-arrow link-arrow-js" data-i18n="work.gallery">Screenshots</span>
-                    </button>
+                        <article class="card">
+                            <button type="button" class="card-open" data-name="Kasirin"
+                                data-shots="assets/kasirin-1-web.jpg,assets/kasirin-2-web.jpg,assets/kasirin-3-web.jpg">
+                                <span class="card-visual"><img src="assets/kasirin-card.jpg" alt="Kasirin POS terminal" loading="lazy"><span class="visual-hint" data-i18n="work.gallery">Screenshots</span></span>
+                                <span class="card-tag" data-i18n="side.kasirin.tag">Point of sale</span>
+                                <span class="card-name">Kasirin</span>
+                                <span class="card-line" data-i18n="side.kasirin">A cashier system for busy minimarkets. It keeps working when the internet goes down.</span>
+                                <span class="link-arrow link-arrow-js" data-i18n="work.gallery">Screenshots</span>
+                            </button>
+                        </article>
 
-                    <a class="card" href="https://red-hot-chilli-pepper.vercel.app/" target="_blank" rel="noopener">
-                        <span class="card-visual"><img src="assets/agency-card.jpg" alt="Agency homepage" loading="lazy"></span>
-                        <span class="card-tag" data-i18n="side.agency.tag">Company website</span>
-                        <span class="card-name" data-i18n="side.agency.name">Digital agency website</span>
-                        <span class="card-line" data-i18n="side.agency">A concept website for a digital agency: eleven pages, with a WhatsApp button for enquiries.</span>
-                        <span class="link-arrow" data-i18n="side.visit">Visit</span>
-                    </a>
+                        <article class="card">
+                            <button type="button" class="card-open" data-name="Digital agency website" data-name-id="Website agensi digital"
+                                data-shots="assets/agency-1.jpg,assets/agency-2.jpg,assets/agency-3.jpg,assets/agency-4.jpg">
+                                <span class="card-visual"><img src="assets/agency-card.jpg" alt="Agency homepage" loading="lazy"><span class="visual-hint" data-i18n="work.gallery">Screenshots</span></span>
+                                <span class="card-tag" data-i18n="side.agency.tag">Company website</span>
+                                <span class="card-name" data-i18n="side.agency.name">Digital agency website</span>
+                                <span class="card-line" data-i18n="side.agency">A concept website for a digital agency: eleven pages, with a WhatsApp button for enquiries.</span>
+                            </button>
+                            <a class="link-arrow card-link" href="https://red-hot-chilli-pepper.vercel.app/" target="_blank" rel="noopener" data-i18n="side.visit">Visit</a>
+                        </article>
 
-                    <a class="card" href="https://vault-two-wheat.vercel.app/" target="_blank" rel="noopener">
-                        <span class="card-visual"><img src="assets/vault-card.jpg" alt="The Syndicate card gallery" loading="lazy"></span>
-                        <span class="card-tag" data-i18n="side.vault.tag">Interactive gallery</span>
-                        <span class="card-name">The Syndicate</span>
-                        <span class="card-line" data-i18n="side.vault">A gallery of my Yu-Gi-Oh! cards. The foil catches the light as your cursor moves.</span>
-                        <span class="link-arrow" data-i18n="side.visit">Visit</span>
-                    </a>
+                        <article class="card">
+                            <button type="button" class="card-open" data-name="The Syndicate"
+                                data-shots="assets/vault-card.jpg">
+                                <span class="card-visual"><img src="assets/vault-card.jpg" alt="The Syndicate card gallery" loading="lazy"><span class="visual-hint" data-i18n="work.gallery">Screenshots</span></span>
+                                <span class="card-tag" data-i18n="side.vault.tag">Interactive gallery</span>
+                                <span class="card-name">The Syndicate</span>
+                                <span class="card-line" data-i18n="side.vault">A gallery of my Yu-Gi-Oh! cards. The foil catches the light as your cursor moves.</span>
+                            </button>
+                            <a class="link-arrow card-link" href="https://vault-two-wheat.vercel.app/" target="_blank" rel="noopener" data-i18n="side.visit">Visit</a>
+                        </article>
 
-                    <button type="button" class="card project-visual" data-name="Itungin" data-portrait="1"
-                        data-shots="assets/itungin-1.jpg,assets/itungin-2.jpg,assets/itungin-3.jpg">
-                        <span class="card-visual card-visual-duo">
-                            <span class="phone"><img src="assets/itungin-card.jpg" alt="Itungin home screen with balance and spending" width="400" height="866" loading="lazy"></span>
-                            <span class="phone"><img src="assets/itungin-card-2.jpg" alt="" width="400" height="866" loading="lazy"></span>
-                        </span>
-                        <span class="card-tag" data-i18n="side.itungin.tag">Android app</span>
-                        <span class="card-name">Itungin</span>
-                        <span class="card-line" data-i18n="side.itungin">An Android app for tracking your own spending. It warns you before you go over budget.</span>
-                        <span class="link-arrow link-arrow-js" data-i18n="work.gallery">Screenshots</span>
-                    </button>
-
-                </div>
+                        <article class="card">
+                            <button type="button" class="card-open" data-name="Itungin" data-portrait="1"
+                                data-shots="assets/itungin-1.jpg,assets/itungin-2.jpg,assets/itungin-3.jpg">
+                                <span class="card-visual card-visual-duo"><span class="phone"><img src="assets/itungin-card.jpg" alt="Itungin home screen with balance and spending" width="400" height="866" loading="lazy"></span><span class="phone"><img src="assets/itungin-card-2.jpg" alt="" width="400" height="866" loading="lazy"></span><span class="visual-hint" data-i18n="work.gallery">Screenshots</span></span>
+                                <span class="card-tag" data-i18n="side.itungin.tag">Android app</span>
+                                <span class="card-name">Itungin</span>
+                                <span class="card-line" data-i18n="side.itungin">An Android app for tracking your own spending. It warns you before you go over budget.</span>
+                                <span class="link-arrow link-arrow-js" data-i18n="work.gallery">Screenshots</span>
+                            </button>
+                        </article>
+                    </div>
                     <div class="hscroll-meta" aria-hidden="true">
                         <span class="hscroll-count"><span class="hscroll-now">01</span> / 06</span>
                         <span class="hscroll-bar"><span></span></span>
@@ -457,10 +472,10 @@
         <a href="#top" data-i18n="footer.top">Back to top ↑</a>
     </footer>
 
-    <script src="vendor/lenis.min.js?v=20261108h" defer></script>
-    <script src="translations.js?v=20261108h"></script>
-    <script src="script.js?v=20261108h"></script>
-    <script src="motion.js?v=20261108h" defer></script>
+    <script src="vendor/lenis.min.js?v=20261108l" defer></script>
+    <script src="translations.js?v=20261108l"></script>
+    <script src="script.js?v=20261108l"></script>
+    <script src="motion.js?v=20261108l" defer></script>
 </body>
 
 </html>

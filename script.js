@@ -93,7 +93,7 @@
 (function () {
     "use strict";
 
-    var triggers = document.querySelectorAll(".project-visual[data-shots]");
+    var triggers = document.querySelectorAll(".project-visual[data-shots], .card-open[data-shots]");
     if (!triggers.length) return;
 
     var box = document.createElement("div");
