@@ -1036,6 +1036,8 @@ main {
 }
 
 .flow.is-pinned {
+    /* Room for the node's 6px ring: each step clips its overflow. */
+    --rail-x: 12px;
     padding-left: 0;
 }
 
@@ -2430,7 +2432,9 @@ html:not(.js) .contact-copy {
 
 /* landscape: a single wide screenshot, capped height */
 .lightbox:not(.is-portrait) .lightbox-slide img {
-    width: 100%;
+    /* As wide as the height cap allows for this shape: no letterbox bars. */
+    width: min(100%, calc(72vh * var(--shot-ratio, 1960 / 1225)));
+    width: min(100%, calc(72svh * var(--shot-ratio, 1960 / 1225)));
     max-width: 980px;
     max-height: 72vh;
     max-height: 72svh;
@@ -2454,6 +2458,42 @@ html:not(.js) .contact-copy {
 /* Reveal animation on the active slide */
 .lightbox.open .lightbox-track > .lightbox-slide img {
     animation: lb-shot-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Skeleton: while a shot loads, its frame holds the final shape and a soft
+   light sweeps across it. On load the class drops and the shot slides in. */
+.lightbox-slide.is-loading img {
+    aspect-ratio: var(--shot-ratio, 1960 / 1225);
+    color: transparent;
+    /* A half-downloaded shot paints from the top; keep it out of the frame. */
+    object-position: -300vw 0;
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    background-image: linear-gradient(100deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.09) 50%,
+        transparent 65%);
+    background-size: 250% 100%;
+    background-repeat: no-repeat;
+    animation: lb-skeleton 1.5s ease-in-out infinite;
+}
+
+.lightbox.is-portrait .lightbox-slide.is-loading img {
+    height: min(72vh, 620px);
+    height: min(72svh, 620px);
+}
+
+@keyframes lb-skeleton {
+    from { background-position: 120% 0; }
+    to   { background-position: -20% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lightbox-slide.is-loading img {
+        animation: none;
+        background-image: none;
+    }
 }
 
 @keyframes lb-shot-in {
@@ -2601,6 +2641,8 @@ html:not(.js) .contact-copy {
     }
 
     .lightbox:not(.is-portrait) .lightbox-slide img {
+        width: min(100%, calc(60vh * var(--shot-ratio, 1960 / 1225)));
+        width: min(100%, calc(60svh * var(--shot-ratio, 1960 / 1225)));
         max-height: 60vh;
         max-height: 60svh;
     }

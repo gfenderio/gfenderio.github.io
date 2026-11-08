@@ -160,8 +160,10 @@
     // The button that opened the gallery, so focus can go back to it.
     var opener = null;
 
-    function open(name, shots, portrait) {
+    function open(name, shots, portrait, ratio) {
         var w = words();
+        // The skeleton takes the shots' shape, so nothing jumps when they land.
+        box.style.setProperty("--shot-ratio", ratio || (portrait ? "780 / 1688" : "1960 / 1225"));
         opener = document.activeElement;
         titleEl.textContent = name;
         box.querySelector(".lightbox-close").setAttribute("aria-label", w.close);
@@ -182,6 +184,14 @@
             img.src = src.trim();
             img.alt = name + " " + w.shot + " " + (i + 1);
             img.loading = i === 0 ? "eager" : "lazy";
+            img.decoding = "async";
+            // A shimmering placeholder stands in until the shot has loaded.
+            if (!(img.complete && img.naturalWidth)) {
+                slide.classList.add("is-loading");
+                var done = function () { slide.classList.remove("is-loading"); };
+                img.addEventListener("load", done, { once: true });
+                img.addEventListener("error", done, { once: true });
+            }
             slide.appendChild(img);
             trackEl.appendChild(slide);
 
@@ -233,7 +243,7 @@
             if (!shots.length) return;
             var lang = document.documentElement.lang;
             var name = t.getAttribute("data-name-" + lang) || t.getAttribute("data-name") || "";
-            open(name, shots, t.hasAttribute("data-portrait"));
+            open(name, shots, t.hasAttribute("data-portrait"), t.getAttribute("data-ratio"));
         });
     });
 
