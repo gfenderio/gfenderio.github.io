@@ -56,7 +56,7 @@ const translations = {
         "play.putus.itch": "Play on itch.io",
         "play.putus.wavedash": "Play on Wavedash",
         "play.putus.trailer": "Watch the trailer",
-        "play.itch_text": "My jam games, and whatever I make next, go up here first.",
+        "play.itch_text": "All my game projects are here, ready to play.",
         "play.itch_link": "Visit my itch.io page",
 
         "side.title": "Websites &amp; apps.",
@@ -167,7 +167,7 @@ const translations = {
         "play.putus.itch": "Main di itch.io",
         "play.putus.wavedash": "Main di Wavedash",
         "play.putus.trailer": "Tonton trailer",
-        "play.itch_text": "Semua game jam saya, juga game berikutnya, rilis di sini lebih dulu.",
+        "play.itch_text": "Semua proyek game saya ada di sini, bisa langsung dimainkan.",
         "play.itch_link": "Buka halaman itch.io saya",
 
         "side.title": "Website &amp; aplikasi.",
