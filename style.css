@@ -4,8 +4,9 @@
    stacked subtle shadows, pill CTAs, blue links only).
    Ref: awesome-design-md / vercel
 
-   Layout: work as one compact list; a games section; a grid of side projects. Motion lives in
-   motion.js and backdrop.js; this file is the resting state.
+   Layout: the work as four stages of Kyou's stock; a games section; side
+   projects; experience as a journey of cards. Motion lives in motion.js;
+   this file is the resting state.
    ========================================================= */
 
 :root {
@@ -52,6 +53,7 @@ html {
 }
 
 body {
+    overflow-x: clip;
     background: var(--canvas-soft);
     color: var(--body);
     font-family: var(--font-sans);
@@ -144,12 +146,196 @@ main:focus {
     text-transform: uppercase;
 }
 
-/* ---------- Backdrop (backdrop.js) ---------- */
+/* ---------- Backdrop: soft shapes ----------
+   A few large, very faint shapes behind the page: three tints, a ring with
+   a dot circling it, a rounded square, a pill and some crosshairs. Where
+   the browser supports scroll timelines they drift at different speeds as
+   the page scrolls, so the surface has depth. Colour stays low enough that
+   text on top reads as if the page were plain. */
 .backdrop {
     position: fixed;
     inset: 0;
     z-index: 0;
+    overflow: hidden;
     pointer-events: none;
+}
+
+.bd {
+    position: absolute;
+    display: block;
+}
+
+.bd-orb {
+    border-radius: 50%;
+}
+
+.bd-orb-a {
+    width: 70vmax;
+    height: 70vmax;
+    left: -24vmax;
+    top: -26vmax;
+    background: radial-gradient(closest-side, rgba(0, 112, 243, 0.12), rgba(0, 112, 243, 0.04) 55%, rgba(0, 112, 243, 0));
+}
+
+.bd-orb-b {
+    width: 58vmax;
+    height: 58vmax;
+    right: -26vmax;
+    top: 34vh;
+    background: radial-gradient(closest-side, rgba(124, 92, 255, 0.085), rgba(124, 92, 255, 0));
+}
+
+.bd-orb-c {
+    width: 50vmax;
+    height: 50vmax;
+    left: 12vw;
+    bottom: -34vmax;
+    background: radial-gradient(closest-side, rgba(255, 138, 76, 0.075), rgba(255, 138, 76, 0));
+}
+
+.bd-ring {
+    width: min(58vw, 600px);
+    aspect-ratio: 1;
+    right: max(-14vw, -160px);
+    top: 9vh;
+    border: 1px solid rgba(23, 23, 23, 0.085);
+    border-radius: 50%;
+}
+
+.bd-ring::before {
+    content: "";
+    position: absolute;
+    inset: 14%;
+    border: 1px dashed rgba(23, 23, 23, 0.07);
+    border-radius: 50%;
+}
+
+/* The dot that circles the ring. */
+.bd-sat {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+}
+
+.bd-sat::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 9px;
+    height: 9px;
+    margin-left: -4.5px;
+    border-radius: 50%;
+    background: var(--link);
+    box-shadow: 0 0 0 5px rgba(0, 112, 243, 0.1);
+}
+
+.bd-square {
+    width: clamp(120px, 16vw, 220px);
+    aspect-ratio: 1;
+    left: 3vw;
+    top: 66vh;
+    border: 1px solid rgba(23, 23, 23, 0.08);
+    border-radius: 28%;
+    rotate: -14deg;
+}
+
+.bd-pill {
+    width: clamp(90px, 11vw, 150px);
+    height: clamp(34px, 4vw, 52px);
+    right: 14vw;
+    bottom: 12vh;
+    border-radius: 999px;
+    background: rgba(0, 112, 243, 0.06);
+    rotate: 24deg;
+}
+
+.bd-plus {
+    width: 15px;
+    height: 15px;
+    background:
+        linear-gradient(rgba(23, 23, 23, 0.26), rgba(23, 23, 23, 0.26)) center / 100% 1px no-repeat,
+        linear-gradient(rgba(23, 23, 23, 0.26), rgba(23, 23, 23, 0.26)) center / 1px 100% no-repeat;
+}
+
+.bd-plus-a { left: 46vw; top: 18vh; }
+.bd-plus-b { left: 9vw; top: 40vh; }
+.bd-plus-c { right: 32vw; top: 84vh; }
+
+@media (max-width: 760px) {
+    .bd-ring {
+        width: 78vw;
+        right: -34vw;
+        top: 6vh;
+    }
+
+    .bd-square {
+        left: -10vw;
+        top: 72vh;
+    }
+
+    .bd-plus-a { left: 70vw; top: 46vh; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .bd-sat {
+        animation: bd-orbit 48s linear infinite;
+    }
+
+    .bd-orb {
+        animation: bd-breathe 16s ease-in-out infinite alternate;
+    }
+
+    .bd-orb-b { animation-duration: 21s; }
+    .bd-orb-c { animation-duration: 18s; animation-delay: -6s; }
+}
+
+@keyframes bd-orbit {
+    to { rotate: 360deg; }
+}
+
+@keyframes bd-breathe {
+    to { scale: 1.12; }
+}
+
+/* Drift with the scroll. Each shape has its own distance, so near and far
+   shapes separate as you go down. Runs off the main thread. */
+@supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .backdrop {
+            --dy: 0;
+        }
+
+        .bd-ring,
+        .bd-square,
+        .bd-pill,
+        .bd-plus {
+            animation: bd-drift linear both;
+            animation-timeline: scroll(root);
+        }
+
+        .bd-orb {
+            animation: bd-breathe 16s ease-in-out infinite alternate, bd-drift linear both;
+            animation-timeline: auto, scroll(root);
+        }
+
+        .bd-orb-b { animation-duration: 21s, auto; }
+        .bd-orb-c { animation-duration: 18s, auto; animation-delay: -6s, 0s; }
+
+        .bd-orb-a { --dy: -38vh; }
+        .bd-orb-b { --dy: -70vh; }
+        .bd-orb-c { --dy: -52vh; }
+        .bd-ring { --dy: -46vh; --dr: 40deg; }
+        .bd-square { --dy: -120vh; --dr: 70deg; }
+        .bd-pill { --dy: -90vh; --dr: -40deg; }
+        .bd-plus-a { --dy: -150vh; }
+        .bd-plus-b { --dy: -95vh; }
+        .bd-plus-c { --dy: -170vh; }
+    }
+}
+
+@keyframes bd-drift {
+    to { transform: translate3d(0, var(--dy, 0), 0) rotate(var(--dr, 0deg)); }
 }
 
 /* Page content sits above the canvas. The nav is left out on purpose: it is
@@ -252,96 +438,142 @@ main {
     }
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero ----------
+   A full screen of large type. Where scroll timelines exist, the hero holds
+   in place for a short stretch and recedes (it eases up, shrinks a little
+   and fades) before the work arrives, so the first scroll reads as the page
+   changing scene rather than sliding. --nav-h comes from motion.js. */
 .hero {
     position: relative;
-    padding-top: clamp(4.5rem, 12vw, 8rem);
-    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
 
-/* The hero panel: a mesh of very low-opacity tints, a fine grid that echoes
-   the backdrop, and crosshairs at the corners. Under the text, no clicks. */
-.hero::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: clamp(2rem, 6vw, 4rem) 0 clamp(1rem, 4vw, 2.5rem);
-    border-radius: 28px;
-    border: 1px solid var(--hairline);
-    background:
-        radial-gradient(80% 60% at 12% 8%, rgba(0, 112, 243, 0.055) 0%, rgba(0, 112, 243, 0) 60%),
-        radial-gradient(70% 70% at 88% 20%, rgba(255, 138, 76, 0.038) 0%, rgba(255, 138, 76, 0) 62%),
-        radial-gradient(90% 80% at 70% 100%, rgba(120, 90, 220, 0.035) 0%, rgba(120, 90, 220, 0) 60%),
-        repeating-linear-gradient(to right, rgba(23, 23, 23, 0.028) 0 1px, transparent 1px 44px),
-        repeating-linear-gradient(to bottom, rgba(23, 23, 23, 0.028) 0 1px, transparent 1px 44px),
-        linear-gradient(155deg, #ffffff 0%, #fbfbfc 45%, #f7f8fa 100%);
-    box-shadow: var(--shadow-3);
-    pointer-events: none;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: clamp(2rem, 6vw, 4rem) 0 clamp(1rem, 4vw, 2.5rem);
-    margin: 14px;
-    pointer-events: none;
-    --mark: rgba(23, 23, 23, 0.22);
-    --len: 11px;
-    --thick: 1px;
-    background-image:
-        linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
-        linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
-        linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark)),
-        linear-gradient(var(--mark), var(--mark)), linear-gradient(var(--mark), var(--mark));
-    background-size:
-        var(--len) var(--thick), var(--thick) var(--len),
-        var(--len) var(--thick), var(--thick) var(--len),
-        var(--len) var(--thick), var(--thick) var(--len),
-        var(--len) var(--thick), var(--thick) var(--len);
-    background-position:
-        left top, left top,
-        right top, right top,
-        left bottom, left bottom,
-        right bottom, right bottom;
-    background-repeat: no-repeat;
-}
-
-@media (min-width: 1200px) {
-    .hero::before,
-    .hero::after {
-        inset: clamp(2rem, 6vw, 4rem) calc(var(--gutter) * -0.6) clamp(1rem, 4vw, 2.5rem);
-    }
-}
-
-/* --hero-out runs 0 to 1 across the first viewport of scrolling. */
-.hero::before,
-.hero::after {
-    transform: translateY(calc(var(--hero-out, 0) * -26px))
-               scale(calc(1 - var(--hero-out, 0) * 0.018));
-    opacity: calc(1 - var(--hero-out, 0) * 0.55);
-    transform-origin: 50% 0;
-}
-
-.hero > * {
-    padding-left: clamp(1.25rem, 4vw, 3rem);
-    padding-right: clamp(1.25rem, 4vw, 3rem);
+.hero-inner {
+    position: relative;
+    min-height: calc(100vh - var(--nav-h, 64px));
+    min-height: calc(100svh - var(--nav-h, 64px));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2.5rem, 7vh, 5rem) 0 clamp(4.5rem, 12vh, 7rem);
+    transform-origin: 50% 30%;
 }
 
 /* The hero rises in from the very first paint (no script, so no flash). */
 @media (prefers-reduced-motion: no-preference) {
-    .hero > * {
-        animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    .hero-inner > :not(.hero-title) {
+        animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
-    .hero > :nth-child(2) { animation-delay: 70ms; }
-    .hero > :nth-child(3) { animation-delay: 140ms; }
-    .hero > :nth-child(n + 4) { animation-delay: 210ms; }
+    .hero-inner > :nth-child(3) { animation-delay: 320ms; }
+    .hero-inner > :nth-child(4) { animation-delay: 400ms; }
+    .hero-inner > :nth-child(n + 5) { animation-delay: 480ms; }
+
+    .hero-line {
+        animation: hero-line 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: 60ms;
+    }
+
+    .hero-line + .hero-line {
+        animation-delay: 180ms;
+    }
 }
 
 @keyframes hero-rise {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: none; }
+}
+
+@keyframes hero-line {
+    from { opacity: 0; transform: translateY(0.45em); filter: blur(10px); }
+    to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* "Scroll", with a line that keeps running down: the page continues. */
+.hero-cue {
+    position: absolute;
+    left: 0;
+    bottom: clamp(1.2rem, 4vh, 2.2rem);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mute);
+}
+
+.hero-cue::before {
+    content: "";
+    width: 1px;
+    height: 34px;
+    background: linear-gradient(var(--ink), var(--ink)) 0 0 / 1px 40% no-repeat, var(--hairline);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-inner > .hero-cue {
+        animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+    }
+
+    .hero-cue::before {
+        animation: hero-cue 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+}
+
+@keyframes hero-cue {
+    from { background-position: 0 -14px, 0 0; }
+    to { background-position: 0 34px, 0 0; }
+}
+
+@supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .hero {
+            --hold: 45vh;
+            height: calc(100vh - var(--nav-h, 64px) + var(--hold));
+            height: calc(100svh - var(--nav-h, 64px) + var(--hold));
+        }
+
+        .hero-inner {
+            position: sticky;
+            top: var(--nav-h, 64px);
+            animation: hero-out linear both;
+            animation-timeline: scroll(root);
+            animation-range: 0 calc(var(--hold) + 12vh);
+        }
+
+        .hero-title {
+            animation: hero-title-out linear both;
+            animation-timeline: scroll(root);
+            animation-range: 0 calc(var(--hold) + 12vh);
+        }
+
+        .hero-inner > .hero-cue {
+            animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both, hero-cue-out linear both;
+            animation-timeline: auto, scroll(root);
+            animation-range: normal, 0 14vh;
+        }
+    }
+
+    @media (prefers-reduced-motion: no-preference) and (max-width: 760px) {
+        .hero {
+            --hold: 30vh;
+        }
+    }
+}
+
+/* The type stays solid for the first part of the hold, then fades. */
+@keyframes hero-out {
+    35% { opacity: 1; }
+    to { opacity: 0; transform: translateY(-7vh) scale(0.93); }
+}
+
+@keyframes hero-title-out {
+    to { transform: translateY(-5vh); }
+}
+
+@keyframes hero-cue-out {
+    to { opacity: 0; visibility: hidden; }
 }
 
 .eyebrow {
@@ -370,12 +602,12 @@ main {
 .hero-title {
     color: var(--ink);
     font-weight: 600;
-    font-size: clamp(2.05rem, 6.2vw, 4rem);
-    line-height: 1.05;
-    letter-spacing: -0.045em;
-    max-width: 22ch;
-    text-wrap: balance;
-    margin-bottom: 1.4rem;
+    /* Big, but never so big that the buttons drop below a short laptop screen. */
+    font-size: clamp(2.35rem, min(6.4vw, 9.2vh), 5.1rem);
+    line-height: 1.02;
+    letter-spacing: -0.052em;
+    max-width: 17ch;
+    margin-bottom: clamp(1.2rem, 3.5vh, 2rem);
 }
 
 .hero-title .hero-line {
@@ -384,8 +616,8 @@ main {
 }
 
 .hero-lead {
-    max-width: 54ch;
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    max-width: 52ch;
+    font-size: clamp(1.05rem, 1.9vw, 1.22rem);
     line-height: 1.55;
     color: var(--body);
     margin-bottom: 2.2rem;
@@ -593,8 +825,8 @@ main {
     transform: translateX(-50%) translateY(0);
 }
 
-/* ---------- Work: the trip one item takes ----------
-   Six steps on a rail. As the page scrolls, the rail fills and a dot (the
+/* ---------- Work: where Kyou's stock goes ----------
+   Four stages on a rail. As the page scrolls, the rail fills and a dot (the
    item) travels down it; each step lights up as the dot reaches it and its
    figure rolls up. Scrolling back reverses all of it. motion.js drives the
    rail and the .is-on class; everything here is the look. */
@@ -741,6 +973,167 @@ main {
 .flow-step.is-on .flow-stat .dg > span {
     translate: 0 0;
     transition: translate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) calc(var(--d, 0) * 60ms);
+}
+
+/* ---------- Work, pinned ----------
+   With motion allowed and room on screen, motion.js adds .is-pinned: the
+   flow holds still under the nav while you scroll, and the four stages take
+   turns in the same place. Each one rises in, holds, and leaves upward; going
+   back runs it in reverse. The rail on the left keeps the item's progress.
+   Without .is-pinned it is the list above. */
+.flow-count {
+    display: none;
+}
+
+.flow.is-pinned {
+    padding-left: 0;
+}
+
+.flow.is-pinned .flow-pin {
+    position: sticky;
+    top: var(--nav-h, 64px);
+    height: var(--pin-h, 80vh);
+}
+
+.flow.is-pinned .flow-rail {
+    top: 16%;
+    bottom: 16%;
+}
+
+.flow.is-pinned .flow-count {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 16%;
+    margin-top: -6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--mute);
+}
+
+.flow-count-now {
+    color: var(--ink);
+}
+
+.flow.is-pinned .flow-steps {
+    position: absolute;
+    inset: 0;
+}
+
+.flow.is-pinned .flow-step {
+    position: absolute;
+    inset: 0;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+    align-content: center;
+    padding: 0 0 0 var(--flow-pad);
+    border: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.flow.is-pinned .flow-step.is-current {
+    pointer-events: auto;
+}
+
+/* The nodes spread down the rail; all four stay visible. */
+.flow.is-pinned .flow-node {
+    left: calc(var(--rail-x) - 6px);
+    top: calc(16% + var(--i, 0) * (68% / 3) - 6.5px);
+}
+
+.flow.is-pinned .flow-step.is-current .flow-node {
+    box-shadow: 0 0 0 6px rgba(17, 17, 17, 0.09);
+}
+
+.flow.is-pinned .flow-side,
+.flow.is-pinned .flow-main {
+    animation: none !important;
+    opacity: 0;
+    transform: translateY(64px);
+    transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.flow.is-pinned .flow-step.is-past .flow-side,
+.flow.is-pinned .flow-step.is-past .flow-main {
+    transform: translateY(-64px);
+}
+
+.flow.is-pinned .flow-step.is-current .flow-side,
+.flow.is-pinned .flow-step.is-current .flow-main {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s ease 0.14s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.flow.is-pinned .flow-step.is-current .flow-main {
+    transition-delay: 0.24s, 0.2s;
+}
+
+.flow.is-pinned .flow-stat {
+    margin: 1rem 0 0.8rem;
+    font-size: clamp(4.5rem, min(11vw, 17vh), 9rem);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+}
+
+.flow.is-pinned .flow-cap {
+    max-width: 24ch;
+    font-size: 15px;
+}
+
+.flow.is-pinned .flow-name {
+    font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+    letter-spacing: -0.035em;
+    margin-bottom: 0.8rem;
+}
+
+.flow.is-pinned .flow-desc {
+    font-size: clamp(15px, 1.35vw, 17px);
+    max-width: 54ch;
+    margin-bottom: 1rem;
+}
+
+/* The figure rolls up each time its stage comes on, down when it leaves. */
+.flow.is-pinned .flow-step:not(.is-current) .flow-stat .dg > span {
+    translate: 0 110%;
+    transition: translate 0.35s cubic-bezier(0.4, 0, 1, 1);
+}
+
+@media (max-width: 760px) {
+    .flow.is-pinned .flow-rail {
+        top: 10%;
+        bottom: 10%;
+    }
+
+    .flow.is-pinned .flow-count {
+        top: 0.4rem;
+    }
+
+    .flow.is-pinned .flow-step {
+        grid-template-columns: 1fr;
+        row-gap: 1.1rem;
+    }
+
+    .flow.is-pinned .flow-node {
+        top: calc(10% + var(--i, 0) * (80% / 3) - 6.5px);
+    }
+
+    .flow.is-pinned .flow-stat {
+        font-size: clamp(3.4rem, 17vw, 4.6rem);
+        margin: 0.7rem 0 0.5rem;
+    }
+
+    .flow.is-pinned .flow-side,
+    .flow.is-pinned .flow-main {
+        transform: translateY(40px);
+    }
+
+    .flow.is-pinned .flow-step.is-past .flow-side,
+    .flow.is-pinned .flow-step.is-past .flow-main {
+        transform: translateY(-40px);
+    }
 }
 
 /* ---------- Play ---------- */
@@ -1023,6 +1416,105 @@ button:hover .link-arrow,
     color: var(--mute);
 }
 
+/* ---------- Websites & apps: sideways gallery ----------
+   With motion allowed, motion.js adds .is-pinned: the row of projects holds
+   under the nav, full width, and scrolling down slides it sideways. Where
+   scroll timelines exist the slide runs off the main thread (the numbers it
+   needs come from motion.js); elsewhere motion.js moves it. Without
+   .is-pinned it is the grid above. */
+.hscroll-meta {
+    display: none;
+}
+
+.hscroll.is-pinned .hscroll-pin {
+    position: sticky;
+    top: var(--nav-h, 64px);
+    height: var(--pin-h, 80vh);
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(1.4rem, 4vh, 2.4rem);
+}
+
+.hscroll.is-pinned .grid {
+    --edge: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));
+    display: flex;
+    width: max-content;
+    gap: clamp(1.2rem, 2.6vw, 2rem);
+    padding: 0.5rem var(--edge);
+    will-change: transform;
+}
+
+.hscroll.is-pinned .card {
+    width: clamp(300px, min(40vw, 72vh), 540px);
+    flex: none;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.hscroll.is-pinned .hscroll-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--mute);
+}
+
+.hscroll-now {
+    color: var(--ink);
+}
+
+.hscroll-bar {
+    position: relative;
+    flex: 1;
+    max-width: 260px;
+    height: 1px;
+    background: var(--hairline);
+}
+
+.hscroll-bar > span {
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+}
+
+@supports (animation-timeline: scroll()) {
+    .hscroll.is-pinned .grid {
+        animation: hs-move linear both !important;
+        animation-timeline: scroll(root) !important;
+        animation-range: var(--hs-start) var(--hs-end) !important;
+    }
+
+    .hscroll.is-pinned .hscroll-bar > span {
+        animation: hs-bar linear both;
+        animation-timeline: scroll(root);
+        animation-range: var(--hs-start) var(--hs-end);
+    }
+}
+
+@keyframes hs-move {
+    to { transform: translate3d(var(--hs-dist, 0px), 0, 0); }
+}
+
+@keyframes hs-bar {
+    to { transform: scaleX(1); }
+}
+
+@media (max-width: 760px) {
+    .hscroll.is-pinned .card {
+        width: 76vw;
+    }
+}
+
 /* ---------- Experience ---------- */
 .timeline {
     list-style: none;
@@ -1065,6 +1557,127 @@ button:hover .link-arrow,
 .tl-body p {
     font-size: 14.5px;
     color: var(--body);
+}
+
+/* ---------- Experience: a journey of cards ----------
+   Oldest first. Each stop is a card; the role line shows a promotion as
+   "from → to". With motion allowed, motion.js adds .is-stack: the cards pin
+   under the nav one after another, each new one sliding up over the last,
+   which steps back and dims, so the deck builds as the story goes. */
+.tl-head {
+    display: flex;
+    align-self: start;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.tl-step {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--hairline-strong);
+}
+
+.tl-arrow {
+    color: var(--hairline-strong);
+    font-weight: 500;
+    margin: 0 0.15em;
+}
+
+.exp.is-stack .timeline {
+    padding-bottom: 18vh;
+}
+
+.exp.is-stack .tl-item {
+    position: sticky;
+    top: calc(var(--nav-h, 64px) + 4vh + var(--i, 0) * 16px);
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    align-items: start;
+    gap: 1rem clamp(1.5rem, 5vw, 4rem);
+    min-height: min(300px, 40vh);
+    margin-bottom: 26vh;
+    padding: clamp(1.5rem, 4vw, 2.8rem);
+    background: var(--canvas);
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+    box-shadow: var(--shadow-4);
+    transform-origin: 50% 0;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+
+.exp.is-stack .tl-item:last-child {
+    margin-bottom: 0;
+}
+
+.exp.is-stack .tl-item > * {
+    transition: opacity 0.5s ease;
+}
+
+.exp.is-stack .tl-item.is-under {
+    transform: scale(0.95);
+    box-shadow: var(--shadow-2);
+}
+
+.exp.is-stack .tl-item.is-under > * {
+    opacity: 0.3;
+}
+
+.exp.is-stack .tl-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.exp.is-stack .tl-date {
+    padding: 0;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+    text-transform: none;
+}
+
+.exp.is-stack .tl-body h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.7rem;
+}
+
+.exp.is-stack .tl-body p {
+    font-size: clamp(15px, 1.3vw, 16.5px);
+    line-height: 1.6;
+}
+
+/* The reveal must not fight the card's own motion. */
+.exp.is-stack .tl-item.sr,
+.exp.is-stack .tl-item.rv {
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+@media (max-width: 760px) {
+    .exp.is-stack .tl-item {
+        grid-template-columns: 1fr;
+        top: calc(var(--nav-h, 64px) + 2vh + var(--i, 0) * 10px);
+        min-height: min(340px, 52vh);
+        margin-bottom: 20vh;
+        padding: 1.4rem 1.3rem 1.6rem;
+        border-radius: 16px;
+    }
+
+    .exp.is-stack .tl-head {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: baseline;
+    }
+
+    .exp.is-stack .tl-date {
+        font-size: 2.1rem;
+    }
 }
 
 /* ---------- Contact ---------- */
@@ -1448,9 +2061,7 @@ html:not(.js) .contact-copy {
     /* Only the decorative motion is pinned; the lightbox still needs its
        transform to move between screenshots. */
     .rv,
-    .rv > img,
-    .hero::before,
-    .hero::after {
+    .rv > img {
         opacity: 1 !important;
         transform: none !important;
         translate: none !important;
@@ -1465,8 +2076,12 @@ html:not(.js) .contact-copy {
 
 /* Hero text starts where the section titles start (desktop). */
 @media (min-width: 761px) {
-    .hero > * {
+    .hero-inner {
         padding-left: calc(3.5rem + 0.75rem);
+    }
+
+    .hero-cue {
+        left: calc(3.5rem + 0.75rem);
     }
 }
 
@@ -1478,19 +2093,6 @@ html:not(.js) .contact-copy {
 }
 
 @media (max-width: 760px) {
-    .hero::before,
-    .hero::after {
-        inset: clamp(1rem, 4vw, 2rem) 0 1rem;
-    }
-
-    .hero::before {
-        border-radius: 20px;
-    }
-
-    .hero::after {
-        display: none;
-    }
-
     .section-head {
         grid-template-columns: 1fr;
         grid-template-areas: "no" "title" "intro";

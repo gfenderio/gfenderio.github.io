@@ -20,6 +20,16 @@
 
     var root = document.documentElement;
 
+    // The nav's height, for everything that pins under it. On phones the nav
+    // wraps to two rows, so it is measured rather than assumed.
+    var navEl = document.querySelector(".nav");
+    var navH = 64;
+    function measureNav() {
+        navH = navEl ? navEl.offsetHeight : 64;
+        root.style.setProperty("--nav-h", navH + "px");
+    }
+    measureNav();
+
     // ---- Progress bar -------------------------------------------------
     var bar = document.createElement("div");
     bar.className = "scroll-progress";
@@ -88,13 +98,22 @@
     var MAX_STEPS = 4;  // so the fifth card in a row does not wait half a second
     var SETTLE = 1500;  // the longest transition (the game picture), plus a margin
 
+    // With motion allowed, the work flow pins (if the screen has room for it,
+    // checked below once laid out). Its stages then animate themselves, so
+    // they are left out of the reveals.
+    var flowBox = document.querySelector(".flow");
+    var pinWanted = !!flowBox && !reduce;
+
     function blocks(section) {
         var kids = section.querySelectorAll(
             ".section-head, .flow-side, .flow-main, .game-visual, .game-body, .itch-card, .card, " +
             ".about-text > p, .facts, .tools, .tl-item, " +
             ".contact-form, .contact-card"
         );
-        return kids.length ? Array.prototype.slice.call(kids) : [section];
+        kids = Array.prototype.filter.call(kids, function (el) {
+            return !(pinWanted && el.closest(".flow, .hscroll, .exp"));
+        });
+        return kids.length ? kids : [section];
     }
 
     // The hero is animated in CSS (style.css), so it never flashes before
@@ -263,16 +282,25 @@
         }, { threshold: 0.6 }).observe(factsBox);
     }
 
-    // ---- The work flow's rail ------------------------------------------
-    // A line 60% of the way down the screen is "now". The rail fills down to
-    // it, the dot (the item on its trip) sits on it, and every step whose
-    // node it has passed is lit. All of it follows the scroll both ways.
-    var flow = document.querySelector(".flow");
+    // ---- The work flow ---------------------------------------------------
+    // Two modes. Pinned: the flow holds under the nav for a run of scroll,
+    // one stretch per stage; the stage whose stretch you are in is current,
+    // earlier ones have left upward, later ones wait below. Listed (reduced
+    // motion, short screens, or a stage too long to fit): a line 60% of the
+    // way down the screen is "now", and every step it has passed is lit.
+    // In both, the rail fills and the dot moves with the scroll, both ways.
+    var flow = flowBox;
     var flowGeo = null;
+    var flowPin = flow && flow.querySelector(".flow-pin");
     var flowFill = flow && flow.querySelector(".flow-fill");
     var flowDot = flow && flow.querySelector(".flow-dot");
+    var flowNow = flow && flow.querySelector(".flow-count-now");
     var flowSteps = flow ? Array.prototype.slice.call(flow.querySelectorAll(".flow-step")) : [];
-    var flowOn = [];
+    var flowState = [];
+    var pinned = false;
+    var lastW = 0, lastH = 0;
+
+    flowSteps.forEach(function (s, i) { s.style.setProperty("--i", i); });
 
     function pageTop(el) {
         var top = 0;
@@ -280,32 +308,85 @@
         return top;
     }
 
+    function setPinned(on) {
+        pinned = on;
+        flow.classList.toggle("is-pinned", on);
+        if (!on) {
+            flow.style.height = "";
+            flow.style.removeProperty("--pin-h");
+        }
+        flowState = [];
+    }
+
     function measureFlow() {
         if (!flow) return;
+        measureNav();
+        var vh = window.innerHeight;
+        if (pinWanted) {
+            setPinned(vh >= 560);
+            if (pinned) {
+                var pinH = vh - navH;
+                var stepLen = Math.round(vh * (window.innerWidth <= 760 ? 0.6 : 0.72));
+                flow.style.setProperty("--pin-h", pinH + "px");
+                flow.style.height = (pinH + stepLen * flowSteps.length) + "px";
+                // A stage that does not fit the screen would be cut off:
+                // list them instead.
+                // Layout boxes, not transformed ones: waiting stages sit
+                // shifted down, which must not count as overflow.
+                var tooTall = flowSteps.some(function (s) {
+                    var side = s.querySelector(".flow-side");
+                    var main = s.querySelector(".flow-main");
+                    var top = Math.min(side.offsetTop, main.offsetTop);
+                    var bottom = Math.max(side.offsetTop + side.offsetHeight, main.offsetTop + main.offsetHeight);
+                    return top < 8 || bottom > s.clientHeight - 8;
+                });
+                if (tooTall) setPinned(false);
+            }
+        }
         var rail = flow.querySelector(".flow-rail");
         flowGeo = {
-            top: pageTop(rail),
+            top: pageTop(flow),
+            railTop: pageTop(rail),
             h: rail.offsetHeight,
+            run: pinned ? flow.offsetHeight - flowPin.offsetHeight : 0,
             nodes: flowSteps.map(function (s) {
                 var n = s.querySelector(".flow-node");
                 return pageTop(n) + n.offsetHeight / 2;
             })
         };
+        lastW = window.innerWidth;
+        lastH = vh;
+    }
+
+    function setStep(s, i, state) {
+        if (flowState[i] === state) return;
+        flowState[i] = state;
+        s.classList.toggle("is-on", state !== "after");
+        s.classList.toggle("is-current", state === "current");
+        s.classList.toggle("is-past", state === "past");
     }
 
     function updateFlow(y) {
         if (!flowGeo) return;
-        var now = y + window.innerHeight * 0.6;
-        var p = reduce ? 1 : Math.max(0, Math.min(1, (now - flowGeo.top) / flowGeo.h));
+        var n = flowSteps.length, p;
+        if (pinned) {
+            var t = Math.max(0, Math.min(1, (y + navH - flowGeo.top) / flowGeo.run));
+            var cur = Math.min(n - 1, Math.floor(t * n));
+            // The dot reaches each node halfway through that stage's stretch.
+            p = Math.max(0, Math.min(1, (t * n - 0.5) / (n - 1)));
+            flowSteps.forEach(function (s, i) {
+                setStep(s, i, i < cur ? "past" : i === cur ? "current" : "after");
+            });
+            if (flowNow) flowNow.textContent = "0" + (cur + 1);
+        } else {
+            var now = y + window.innerHeight * 0.6;
+            p = reduce ? 1 : Math.max(0, Math.min(1, (now - flowGeo.railTop) / flowGeo.h));
+            flowSteps.forEach(function (s, i) {
+                setStep(s, i, reduce || now >= flowGeo.nodes[i] ? "on" : "after");
+            });
+        }
         flowFill.style.transform = "scaleY(" + p.toFixed(4) + ")";
         flowDot.style.transform = "translateY(" + (p * flowGeo.h).toFixed(1) + "px)";
-        flowSteps.forEach(function (s, i) {
-            var on = reduce || now >= flowGeo.nodes[i];
-            if (on !== flowOn[i]) {
-                flowOn[i] = on;
-                s.classList.toggle("is-on", on);
-            }
-        });
     }
 
     if (flow) {
@@ -315,13 +396,166 @@
             updateFlow(window.scrollY || window.pageYOffset || 0);
         };
         window.addEventListener("load", remeasure);
-        window.addEventListener("resize", remeasure);
-        if ("ResizeObserver" in window) new ResizeObserver(remeasure).observe(flow);
+        // A phone's toolbar sliding away resizes the window by a little;
+        // re-pinning then would shift the page under the thumb.
+        window.addEventListener("resize", function () {
+            if (coarse && window.innerWidth === lastW && Math.abs(window.innerHeight - lastH) < 140) return;
+            remeasure();
+        });
+        // The language switch changes how long each stage is.
+        document.addEventListener("langToggled", function () {
+            requestAnimationFrame(remeasure);
+        });
+        if ("ResizeObserver" in window) {
+            var lastFlowW = 0;
+            new ResizeObserver(function () {
+                // Only width changes matter; setting the height ourselves
+                // must not trigger another measure.
+                if (flow.offsetWidth === lastFlowW) return;
+                lastFlowW = flow.offsetWidth;
+                remeasure();
+            }).observe(flow);
+        }
+    }
+
+    // ---- Websites & apps: sideways gallery -------------------------------
+    // Pinned, the row of projects slides left as the page scrolls down, one
+    // pixel across for each pixel down. With scroll timelines the CSS does
+    // the moving from the numbers set here; otherwise it is moved here.
+    var hs = document.querySelector(".hscroll");
+    var hsPin = hs && hs.querySelector(".hscroll-pin");
+    var hsTrack = hs && hs.querySelector(".grid");
+    var hsBar = hs && hs.querySelector(".hscroll-bar > span");
+    var hsNow = hs && hs.querySelector(".hscroll-now");
+    var hsCards = hsTrack ? Array.prototype.slice.call(hsTrack.querySelectorAll(".card")) : [];
+    var hsGeo = null, hsCur = -1;
+    var timelines = !!(window.CSS && CSS.supports && CSS.supports("animation-timeline: scroll()"));
+
+    function unpinHs() {
+        hs.classList.remove("is-pinned");
+        hs.style.height = "";
+        hsTrack.style.transform = "";
+        hsGeo = null;
+    }
+
+    function measureHs() {
+        if (!hs) return;
+        if (!pinWanted || window.innerHeight < 520) { unpinHs(); return; }
+        hs.classList.add("is-pinned");
+        var pinH = window.innerHeight - navH;
+        hs.style.setProperty("--pin-h", pinH + "px");
+        var pinW = hsPin.clientWidth;
+        var dist = Math.max(0, hsTrack.offsetWidth - pinW);
+        var meta = hs.querySelector(".hscroll-meta").offsetHeight;
+        // Nothing to slide, or the cards would not fit the screen: a grid.
+        if (dist < 40 || hsTrack.offsetHeight + meta + 32 > pinH) { unpinHs(); return; }
+        hs.style.height = (pinH + dist) + "px";
+        var start = pageTop(hs) - navH;
+        hs.style.setProperty("--hs-dist", -dist + "px");
+        hs.style.setProperty("--hs-start", start + "px");
+        hs.style.setProperty("--hs-end", (start + dist) + "px");
+        hsGeo = {
+            start: start,
+            dist: dist,
+            pinW: pinW,
+            xs: hsCards.map(function (c) { return c.offsetLeft + c.offsetWidth / 2; })
+        };
+        hsCur = -1;
+    }
+
+    // Tabbing to a card that is still off to the side: scroll the page to
+    // where that card sits in view, or the focus ring lands out of sight.
+    if (hs) {
+        hsTrack.addEventListener("focusin", function (e) {
+            if (!hsGeo) return;
+            var card = e.target.closest(".card");
+            if (!card) return;
+            var x = card.offsetLeft - (hsGeo.pinW - card.offsetWidth) / 2;
+            x = Math.max(0, Math.min(hsGeo.dist, x));
+            var y = hsGeo.start + x;
+            if (window.__lenis) window.__lenis.scrollTo(y, { immediate: true });
+            else window.scrollTo(0, y);
+        });
+    }
+
+    function updateHs(y) {
+        if (!hsGeo) return;
+        var x = Math.max(0, Math.min(hsGeo.dist, y - hsGeo.start));
+        if (!timelines) {
+            hsTrack.style.transform = "translate3d(" + (-x).toFixed(1) + "px,0,0)";
+            hsBar.style.transform = "scaleX(" + (x / hsGeo.dist).toFixed(4) + ")";
+        }
+        // The counter names the card nearest the middle; at the end, the last.
+        var mid = x + hsGeo.pinW / 2, cur = 0, best = Infinity;
+        hsGeo.xs.forEach(function (cx, i) {
+            var d = Math.abs(cx - mid);
+            if (d < best) { best = d; cur = i; }
+        });
+        if (x >= hsGeo.dist - 2) cur = hsCards.length - 1;
+        if (x <= 2) cur = 0;
+        if (cur !== hsCur) {
+            hsCur = cur;
+            hsNow.textContent = "0" + (cur + 1);
+        }
+    }
+
+    // ---- Experience: stacking cards -------------------------------------
+    // The cards pin under the nav (CSS sticky, each a little lower than the
+    // one before). A card counts as covered once the next one has reached
+    // its own pinned place; covered cards step back and dim.
+    var exp = document.querySelector(".exp");
+    var expItems = exp ? Array.prototype.slice.call(exp.querySelectorAll(".tl-item")) : [];
+    var expStuck = [], expUnder = [];
+    if (exp && !reduce) {
+        exp.classList.add("is-stack");
+        expItems.forEach(function (it, i) { it.style.setProperty("--i", i); });
+    }
+
+    function measureExp() {
+        if (!exp || reduce) return;
+        expStuck = expItems.map(function (it) { return parseFloat(getComputedStyle(it).top) || 0; });
+        expUnder = [];
+    }
+
+    function updateExp() {
+        if (!exp || reduce || !expStuck.length) return;
+        for (var i = 0; i < expItems.length; i++) {
+            var next = expItems[i + 1];
+            var under = !!next && next.getBoundingClientRect().top <= expStuck[i + 1] + 1;
+            if (under !== expUnder[i]) {
+                expUnder[i] = under;
+                expItems[i].classList.toggle("is-under", under);
+            }
+        }
+    }
+
+    function measureMore() {
+        measureHs();
+        measureExp();
+        var y = window.scrollY || window.pageYOffset || 0;
+        updateHs(y);
+        updateExp();
+    }
+    measureMore();
+    window.addEventListener("load", measureMore);
+    window.addEventListener("resize", function () {
+        if (coarse && window.innerWidth === lastW && Math.abs(window.innerHeight - lastH) < 140) return;
+        measureMore();
+    });
+    document.addEventListener("langToggled", function () { requestAnimationFrame(measureMore); });
+    if ("ResizeObserver" in window) {
+        // Pictures and fonts arriving move what comes after them. Measuring
+        // again sets the same heights, so this settles after one pass.
+        var moreQueued = false;
+        new ResizeObserver(function () {
+            if (moreQueued) return;
+            moreQueued = true;
+            requestAnimationFrame(function () { moreQueued = false; measureMore(); });
+        }).observe(document.body);
     }
 
     // ---- Scroll-linked effects -----------------------------------------
-    var hero = document.querySelector(".hero");
-    var nav = document.querySelector(".nav");
+    var nav = navEl;
     var ticking = false;
 
     function onScroll(y) {
@@ -331,17 +565,8 @@
         if (nav) nav.classList.toggle("is-scrolled", y > 12);
 
         updateFlow(y);
-
-        // The hero panel eases back and fades as it leaves, so the page has
-        // depth rather than one flat plane sliding past. Not on phones: the
-        // page scrolls on its own thread there, and a panel restyled from
-        // script on every frame trails behind it and looks jerky.
-        if (hero && !reduce && !coarse) {
-            var vh = window.innerHeight || 1;
-            var p = Math.min(1, y / vh);
-            // Set on the hero only, so each frame restyles the hero, not the page.
-            hero.style.setProperty("--hero-out", p.toFixed(3));
-        }
+        updateHs(y);
+        updateExp();
     }
 
     function request(y) {

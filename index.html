@@ -23,21 +23,21 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-AFcLaAlU6Uj8C6OToeU0WBioFazx88UoA6naEhITKGI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 
-    <title>Gilang Fenderio · Software engineer</title>
+    <title>Gilang Fenderio · Full-stack engineer</title>
     <meta name="description"
-        content="Gilang Fenderio is a software engineer in Indonesia. He builds the e-commerce and warehouse systems at Kyou, and designs small games for game jams.">
+        content="Gilang Fenderio, full-stack engineer in Indonesia. The warehouse and e-commerce systems at Kyou, side projects, and small games for game jams.">
     <meta name="author" content="Gilang Fenderio Yusuf">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fenderio.com/">
-    <meta property="og:title" content="Gilang Fenderio · Software engineer">
+    <meta property="og:title" content="Gilang Fenderio · Full-stack engineer">
     <meta property="og:description"
         content="E-commerce and warehouse systems at Kyou, side projects, and PUTUS!, a kite-fighting game.">
 
     <meta property="og:image" content="https://fenderio.com/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Gilang Fenderio. Software engineer. I build the systems that get an order out the door.">
+    <meta property="og:image:alt" content="Gilang Fenderio. Full-stack engineer. I build the systems that get an order out the door.">
     <meta name="twitter:card" content="summary_large_image">
 
     <script type="application/ld+json">
@@ -47,7 +47,7 @@
         "name": "Gilang Fenderio Yusuf",
         "alternateName": "Gilang Fenderio",
         "url": "https://fenderio.com/",
-        "jobTitle": "Software Engineer",
+        "jobTitle": "Full-stack Engineer",
         "worksFor": { "@type": "Organization", "name": "Kyou", "url": "https://kyou.id" },
         "address": { "@type": "PostalAddress", "addressCountry": "ID" },
         "sameAs": [
@@ -67,10 +67,23 @@
     <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style.css?v=20261108d">
+    <link rel="stylesheet" href="style.css?v=20261108h">
 </head>
 
 <body id="top">
+
+    <!-- Background shapes: decoration only, they drift as the page scrolls. -->
+    <div class="backdrop" aria-hidden="true">
+        <span class="bd bd-orb bd-orb-a"></span>
+        <span class="bd bd-orb bd-orb-b"></span>
+        <span class="bd bd-orb bd-orb-c"></span>
+        <span class="bd bd-ring"><span class="bd-sat"></span></span>
+        <span class="bd bd-square"></span>
+        <span class="bd bd-pill"></span>
+        <span class="bd bd-plus bd-plus-a"></span>
+        <span class="bd bd-plus bd-plus-b"></span>
+        <span class="bd bd-plus bd-plus-c"></span>
+    </div>
 
     <a class="skip-link" href="#work" data-i18n="skip">Skip to the work</a>
 
@@ -89,19 +102,22 @@
 
         <!-- Hero -->
         <section class="hero">
-            <p class="eyebrow" data-i18n="hero.status">Indonesia · Open to remote work</p>
-            <h1 class="hero-title" data-i18n="hero.title"><span class="hero-line">Software engineer.</span><span class="hero-line">I build the systems that get an order out the door.</span></h1>
-            <p class="hero-lead" data-i18n="hero.lead">At Kyou I run the stock side: the warehouse, the web and marketplaces, the stores and the events. Outside work I design small games for game jams.</p>
-            <div class="hero-actions">
-                <a href="#work" class="btn btn-primary" data-i18n="hero.cta_work">See the work</a>
-                <a href="#play" class="btn btn-secondary" data-i18n="hero.cta_play">Play my games</a>
+            <div class="hero-inner">
+                <p class="eyebrow" data-i18n="hero.status">Indonesia · Open to remote work</p>
+                <h1 class="hero-title" data-i18n="hero.title"><span class="hero-line">Full-stack engineer.</span><span class="hero-line">I build the systems that get an order out the door.</span></h1>
+                <p class="hero-lead" data-i18n="hero.lead">At Kyou I run the stock side: the warehouse, the web and marketplaces, the stores and the events. Outside work I design small games for game jams.</p>
+                <div class="hero-actions">
+                    <a href="#work" class="btn btn-primary" data-i18n="hero.cta_work">See the work</a>
+                    <a href="#play" class="btn btn-secondary" data-i18n="hero.cta_play">Play my games</a>
+                </div>
+                <ul class="hero-socials">
+                    <li><a href="https://linkedin.com/in/gilangfenderio" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://github.com/gfenderio" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="mailto:gilang@fenderio.com">Email</a></li>
+                    <li><a href="https://fenderio.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+                </ul>
+                <p class="hero-cue" aria-hidden="true"><span data-i18n="hero.scroll">Scroll</span></p>
             </div>
-            <ul class="hero-socials">
-                <li><a href="https://linkedin.com/in/gilangfenderio" target="_blank" rel="noopener">LinkedIn</a></li>
-                <li><a href="https://github.com/gfenderio" target="_blank" rel="noopener">GitHub</a></li>
-                <li><a href="mailto:gilang@fenderio.com">Email</a></li>
-                <li><a href="https://fenderio.itch.io" target="_blank" rel="noopener">itch.io</a></li>
-            </ul>
         </section>
 
         <!-- Work -->
@@ -113,61 +129,64 @@
             </div>
 
             <div class="flow">
-                <div class="flow-rail" aria-hidden="true"><span class="flow-fill"></span><span class="flow-dot"></span></div>
-                <ol class="flow-steps" aria-label="Where Kyou&rsquo;s stock goes" data-i18n-aria="work.flow_label">
-                    <li class="flow-step">
-                        <span class="flow-node" aria-hidden="true"></span>
-                        <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">01</span> <span data-i18n="work.wh.stage">In the warehouse</span></p>
-                            <p class="flow-stat" data-i18n="work.wh.stat">8</p>
-                            <p class="flow-cap" data-i18n="work.wh.cap">stock locations, every move between them on record</p>
-                        </div>
-                        <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.wh.name">Warehouse system</h3>
-                            <p class="flow-desc" data-i18n="work.wh.desc">I designed Kyou&rsquo;s warehouse system and orchestrate how its parts work together. Stock is checked in, counted and reconciled until every gap has a reason. Pre-order stock nobody collected goes back on sale. Every move between locations is recorded and can be traced.</p>
-                            <p class="flow-meta">Web&nbsp;· Android&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL&nbsp;· Kotlin</p>
-                        </div>
-                    </li>
-                    <li class="flow-step">
-                        <span class="flow-node" aria-hidden="true"></span>
-                        <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">02</span> <span data-i18n="work.web.stage">Sold online</span></p>
-                            <p class="flow-stat" data-i18n="work.web.stat">4</p>
-                            <p class="flow-cap" data-i18n="work.web.cap">storefronts, one system keeping them in line</p>
-                        </div>
-                        <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.web.name">Web &amp; marketplace integration</h3>
-                            <p class="flow-desc" data-i18n="work.web.desc">kyou.id and the three marketplaces each keep their own stock, prices and discounts. I built the system that keeps them in line with what is really on the shelves, down to each Tokopedia warehouse. A monthly report follows sales to the money that reaches the bank.</p>
-                            <p class="flow-meta">Web&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL</p>
-                        </div>
-                    </li>
-                    <li class="flow-step">
-                        <span class="flow-node" aria-hidden="true"></span>
-                        <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">03</span> <span data-i18n="work.stores.stage">Moved between stores</span></p>
-                            <p class="flow-stat" data-i18n="work.stores.stat">1</p>
-                            <p class="flow-cap" data-i18n="work.stores.cap">shared list for stores and warehouses, where three spreadsheets used to be</p>
-                        </div>
-                        <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.stores.name">Stock rotation between stores</h3>
-                            <p class="flow-desc" data-i18n="work.stores.desc">Kyou&rsquo;s stores restock from the warehouses. That used to run on three spreadsheets: slow to open, easy to get wrong and hard to check. Now one screen ranks the items, sets quantities from what is on the racks and sends the shipment. Stores and warehouses work from the same list, and each store checks what arrived against what was sent.</p>
-                            <p class="flow-meta">Web&nbsp;· Go&nbsp;· React</p>
-                        </div>
-                    </li>
-                    <li class="flow-step">
-                        <span class="flow-node" aria-hidden="true"></span>
-                        <div class="flow-side">
-                            <p class="flow-stage"><span class="flow-no">04</span> <span data-i18n="work.events.stage">Taken to events</span></p>
-                            <p class="flow-stat" data-i18n="work.events.stat">4</p>
-                            <p class="flow-cap" data-i18n="work.events.cap">stages tracked, from packing to the trip home</p>
-                        </div>
-                        <div class="flow-main">
-                            <h3 class="flow-name" data-i18n="work.events.name">Event stock</h3>
-                            <p class="flow-desc" data-i18n="work.events.desc">Events are where stock records drift the most. Goods leave in boxes, sell at the booth, get restocked during the show and come back. A mismatch there is hard to spot and harder to trace. The system follows every box from packing to the trip home, so the stock on the shelf and the stock on record still agree afterwards.</p>
-                            <p class="flow-meta">Android&nbsp;· Web&nbsp;· Go&nbsp;· Kotlin</p>
-                        </div>
-                    </li>
-                </ol>
+                <div class="flow-pin">
+                    <div class="flow-rail" aria-hidden="true"><span class="flow-fill"></span><span class="flow-dot"></span></div>
+                    <p class="flow-count" aria-hidden="true"><span class="flow-count-now">01</span> / 04</p>
+                    <ol class="flow-steps" aria-label="Where Kyou&rsquo;s stock goes" data-i18n-aria="work.flow_label">
+                        <li class="flow-step">
+                            <span class="flow-node" aria-hidden="true"></span>
+                            <div class="flow-side">
+                                <p class="flow-stage"><span class="flow-no">01</span> <span data-i18n="work.wh.stage">In the warehouse</span></p>
+                                <p class="flow-stat" data-i18n="work.wh.stat">8</p>
+                                <p class="flow-cap" data-i18n="work.wh.cap">stock locations, every move between them on record</p>
+                            </div>
+                            <div class="flow-main">
+                                <h3 class="flow-name" data-i18n="work.wh.name">Warehouse system</h3>
+                                <p class="flow-desc" data-i18n="work.wh.desc">I designed Kyou&rsquo;s warehouse system and orchestrate how its parts work together. Stock is checked in, counted and reconciled until every gap has a reason. Pre-order stock nobody collected goes back on sale. Every move between locations is recorded and can be traced.</p>
+                                <p class="flow-meta">Web&nbsp;· Android&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL&nbsp;· Kotlin</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <span class="flow-node" aria-hidden="true"></span>
+                            <div class="flow-side">
+                                <p class="flow-stage"><span class="flow-no">02</span> <span data-i18n="work.web.stage">Sold online</span></p>
+                                <p class="flow-stat" data-i18n="work.web.stat">4</p>
+                                <p class="flow-cap" data-i18n="work.web.cap">storefronts, one system keeping them in line</p>
+                            </div>
+                            <div class="flow-main">
+                                <h3 class="flow-name" data-i18n="work.web.name">Web &amp; marketplace integration</h3>
+                                <p class="flow-desc" data-i18n="work.web.desc">kyou.id and three marketplaces each keep their own stock, prices and discounts. I built the system that keeps them matched to the shelves, down to each Tokopedia warehouse. I also built the pricing model: every item gets Shopee and TikTok Shop prices that keep their target margin after fees. A monthly report traces sales to the money in the bank.</p>
+                                <p class="flow-meta">Web&nbsp;· Go&nbsp;· React&nbsp;· PostgreSQL</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <span class="flow-node" aria-hidden="true"></span>
+                            <div class="flow-side">
+                                <p class="flow-stage"><span class="flow-no">03</span> <span data-i18n="work.stores.stage">Moved between stores</span></p>
+                                <p class="flow-stat" data-i18n="work.stores.stat">1</p>
+                                <p class="flow-cap" data-i18n="work.stores.cap">shared list for stores and warehouses, where three spreadsheets used to be</p>
+                            </div>
+                            <div class="flow-main">
+                                <h3 class="flow-name" data-i18n="work.stores.name">Stock rotation between stores</h3>
+                                <p class="flow-desc" data-i18n="work.stores.desc">Kyou&rsquo;s stores restock from the warehouses. That used to run on three spreadsheets: slow to open, easy to get wrong and hard to check. Now one screen ranks the items, sets quantities from what is on the racks and sends the shipment. Stores and warehouses work from the same list, and each store checks what arrived against what was sent.</p>
+                                <p class="flow-meta">Web&nbsp;· Go&nbsp;· React</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <span class="flow-node" aria-hidden="true"></span>
+                            <div class="flow-side">
+                                <p class="flow-stage"><span class="flow-no">04</span> <span data-i18n="work.events.stage">Taken to events</span></p>
+                                <p class="flow-stat" data-i18n="work.events.stat">4</p>
+                                <p class="flow-cap" data-i18n="work.events.cap">stages tracked, from packing to the trip home</p>
+                            </div>
+                            <div class="flow-main">
+                                <h3 class="flow-name" data-i18n="work.events.name">Event stock</h3>
+                                <p class="flow-desc" data-i18n="work.events.desc">Events are where stock records drift the most. Goods leave in boxes, sell at the booth, get restocked during the show and come back. A mismatch there is hard to spot and harder to trace. The system follows every box from packing to the trip home, so the stock on the shelf and the stock on record still agree afterwards.</p>
+                                <p class="flow-meta">Android&nbsp;· Web&nbsp;· Go&nbsp;· Kotlin</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
             </div>
         </section>
 
@@ -220,60 +239,68 @@
                 <p class="section-intro" data-i18n="side.intro">A few things I have built on my own. If it runs in a browser or on a phone, I can build it. Most of these are live, so you can try them.</p>
             </div>
 
-            <div class="grid">
-                <a class="card" href="https://stzn-green.vercel.app/" target="_blank" rel="noopener">
-                    <span class="card-visual"><img src="assets/stzn-card.jpg" alt="STZN streetwear store" loading="lazy"></span>
-                    <span class="card-tag" data-i18n="side.stzn.tag">Online store</span>
-                    <span class="card-name">STZN</span>
-                    <span class="card-line" data-i18n="side.stzn">A clothing store with a cart and a complete checkout, including QRIS, Indonesia&rsquo;s QR code payment.</span>
-                    <span class="link-arrow" data-i18n="side.visit">Visit</span>
-                </a>
+            <div class="hscroll">
+                <div class="hscroll-pin">
+                <div class="grid">
+                    <a class="card" href="https://stzn-green.vercel.app/" target="_blank" rel="noopener">
+                        <span class="card-visual"><img src="assets/stzn-card.jpg" alt="STZN streetwear store" loading="lazy"></span>
+                        <span class="card-tag" data-i18n="side.stzn.tag">Online store</span>
+                        <span class="card-name">STZN</span>
+                        <span class="card-line" data-i18n="side.stzn">A clothing store with a cart and a complete checkout, including QRIS, Indonesia&rsquo;s QR code payment.</span>
+                        <span class="link-arrow" data-i18n="side.visit">Visit</span>
+                    </a>
 
-                <a class="card" href="https://abdulmanap-nurmagomedov.vercel.app/login?demo=admin" target="_blank" rel="noopener">
-                    <span class="card-visual"><img src="assets/sias-card.jpg" alt="School portal dashboard" loading="lazy"></span>
-                    <span class="card-tag" data-i18n="side.sias.tag">Web app</span>
-                    <span class="card-name" data-i18n="side.sias.name">School portal</span>
-                    <span class="card-line" data-i18n="side.sias">Teachers enter grades, and parents follow progress and fees. The demo is read-only and the pupils are made up.</span>
-                    <span class="link-arrow" data-i18n="side.demo">Try the demo</span>
-                </a>
+                    <a class="card" href="https://abdulmanap-nurmagomedov.vercel.app/login?demo=admin" target="_blank" rel="noopener">
+                        <span class="card-visual"><img src="assets/sias-card.jpg" alt="School portal dashboard" loading="lazy"></span>
+                        <span class="card-tag" data-i18n="side.sias.tag">Web app</span>
+                        <span class="card-name" data-i18n="side.sias.name">School portal</span>
+                        <span class="card-line" data-i18n="side.sias">Teachers enter grades, and parents follow progress and fees. The demo is read-only and the pupils are made up.</span>
+                        <span class="link-arrow" data-i18n="side.demo">Try the demo</span>
+                    </a>
 
-                <button type="button" class="card project-visual" data-name="Kasirin"
-                    data-shots="assets/kasirin-1-web.jpg,assets/kasirin-2-web.jpg,assets/kasirin-3-web.jpg">
-                    <span class="card-visual"><img src="assets/kasirin-card.jpg" alt="Kasirin POS terminal" loading="lazy"></span>
-                    <span class="card-tag" data-i18n="side.kasirin.tag">Point of sale</span>
-                    <span class="card-name">Kasirin</span>
-                    <span class="card-line" data-i18n="side.kasirin">A cashier system for busy minimarkets. It keeps working when the internet goes down.</span>
-                    <span class="link-arrow link-arrow-js" data-i18n="work.gallery">Screenshots</span>
-                </button>
+                    <button type="button" class="card project-visual" data-name="Kasirin"
+                        data-shots="assets/kasirin-1-web.jpg,assets/kasirin-2-web.jpg,assets/kasirin-3-web.jpg">
+                        <span class="card-visual"><img src="assets/kasirin-card.jpg" alt="Kasirin POS terminal" loading="lazy"></span>
+                        <span class="card-tag" data-i18n="side.kasirin.tag">Point of sale</span>
+                        <span class="card-name">Kasirin</span>
+                        <span class="card-line" data-i18n="side.kasirin">A cashier system for busy minimarkets. It keeps working when the internet goes down.</span>
+                        <span class="link-arrow link-arrow-js" data-i18n="work.gallery">Screenshots</span>
+                    </button>
 
-                <a class="card" href="https://red-hot-chilli-pepper.vercel.app/" target="_blank" rel="noopener">
-                    <span class="card-visual"><img src="assets/agency-card.jpg" alt="Agency homepage" loading="lazy"></span>
-                    <span class="card-tag" data-i18n="side.agency.tag">Company website</span>
-                    <span class="card-name" data-i18n="side.agency.name">Digital agency website</span>
-                    <span class="card-line" data-i18n="side.agency">A concept website for a digital agency: eleven pages, with a WhatsApp button for enquiries.</span>
-                    <span class="link-arrow" data-i18n="side.visit">Visit</span>
-                </a>
+                    <a class="card" href="https://red-hot-chilli-pepper.vercel.app/" target="_blank" rel="noopener">
+                        <span class="card-visual"><img src="assets/agency-card.jpg" alt="Agency homepage" loading="lazy"></span>
+                        <span class="card-tag" data-i18n="side.agency.tag">Company website</span>
+                        <span class="card-name" data-i18n="side.agency.name">Digital agency website</span>
+                        <span class="card-line" data-i18n="side.agency">A concept website for a digital agency: eleven pages, with a WhatsApp button for enquiries.</span>
+                        <span class="link-arrow" data-i18n="side.visit">Visit</span>
+                    </a>
 
-                <a class="card" href="https://vault-two-wheat.vercel.app/" target="_blank" rel="noopener">
-                    <span class="card-visual"><img src="assets/vault-card.jpg" alt="The Syndicate card gallery" loading="lazy"></span>
-                    <span class="card-tag" data-i18n="side.vault.tag">Interactive gallery</span>
-                    <span class="card-name">The Syndicate</span>
-                    <span class="card-line" data-i18n="side.vault">A gallery of my Yu-Gi-Oh! cards. The foil catches the light as your cursor moves.</span>
-                    <span class="link-arrow" data-i18n="side.visit">Visit</span>
-                </a>
+                    <a class="card" href="https://vault-two-wheat.vercel.app/" target="_blank" rel="noopener">
+                        <span class="card-visual"><img src="assets/vault-card.jpg" alt="The Syndicate card gallery" loading="lazy"></span>
+                        <span class="card-tag" data-i18n="side.vault.tag">Interactive gallery</span>
+                        <span class="card-name">The Syndicate</span>
+                        <span class="card-line" data-i18n="side.vault">A gallery of my Yu-Gi-Oh! cards. The foil catches the light as your cursor moves.</span>
+                        <span class="link-arrow" data-i18n="side.visit">Visit</span>
+                    </a>
 
-                <button type="button" class="card project-visual" data-name="Itungin" data-portrait="1"
-                    data-shots="assets/itungin-1.jpg,assets/itungin-2.jpg,assets/itungin-3.jpg">
-                    <span class="card-visual card-visual-duo">
-                        <span class="phone"><img src="assets/itungin-card.jpg" alt="Itungin home screen with balance and spending" width="400" height="866" loading="lazy"></span>
-                        <span class="phone"><img src="assets/itungin-card-2.jpg" alt="" width="400" height="866" loading="lazy"></span>
-                    </span>
-                    <span class="card-tag" data-i18n="side.itungin.tag">Android app</span>
-                    <span class="card-name">Itungin</span>
-                    <span class="card-line" data-i18n="side.itungin">An Android app for tracking your own spending. It warns you before you go over budget.</span>
-                    <span class="link-arrow link-arrow-js" data-i18n="work.gallery">Screenshots</span>
-                </button>
+                    <button type="button" class="card project-visual" data-name="Itungin" data-portrait="1"
+                        data-shots="assets/itungin-1.jpg,assets/itungin-2.jpg,assets/itungin-3.jpg">
+                        <span class="card-visual card-visual-duo">
+                            <span class="phone"><img src="assets/itungin-card.jpg" alt="Itungin home screen with balance and spending" width="400" height="866" loading="lazy"></span>
+                            <span class="phone"><img src="assets/itungin-card-2.jpg" alt="" width="400" height="866" loading="lazy"></span>
+                        </span>
+                        <span class="card-tag" data-i18n="side.itungin.tag">Android app</span>
+                        <span class="card-name">Itungin</span>
+                        <span class="card-line" data-i18n="side.itungin">An Android app for tracking your own spending. It warns you before you go over budget.</span>
+                        <span class="link-arrow link-arrow-js" data-i18n="work.gallery">Screenshots</span>
+                    </button>
 
+                </div>
+                    <div class="hscroll-meta" aria-hidden="true">
+                        <span class="hscroll-count"><span class="hscroll-now">01</span> / 06</span>
+                        <span class="hscroll-bar"><span></span></span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -285,9 +312,9 @@
             </div>
             <div class="about">
                 <div class="about-text">
-                    <p data-i18n="about.p1">I build the tools a shop&rsquo;s staff use all day. Before I wrote code for a living, I spent years in retail. I ran stores, managed stock and chased sales targets. That is how I learned where a business wastes time, and which numbers people have stopped trusting.</p>
+                    <p data-i18n="about.p1">I build the tools a shop&rsquo;s staff use all day. Before I wrote code for a living, I spent years in retail. I ran a store, managed stock and chased sales targets. That is how I learned where a business wastes time, and which numbers people have stopped trusting.</p>
                     <p data-i18n="about.p2">Game jams are where I practise finishing: the theme is set and the deadline does not move.</p>
-                    <p data-i18n="about.p3">I study Information Systems at Universitas Terbuka and expect to graduate in 2027. I am open to remote work.</p>
+                    <p data-i18n="about.p3">I study Information Systems at Universitas Terbuka and expect to graduate in 2027.</p>
                 </div>
                 <dl class="facts">
                     <div><dt>Top 3</dt><dd data-i18n="about.f1">contributor to Kyou&rsquo;s new internal system</dd></div>
@@ -299,49 +326,77 @@
             <p class="tools" data-i18n="about.tools">Kotlin&nbsp;· Go&nbsp;· TypeScript&nbsp;· SQL&nbsp;· Android&nbsp;· React&nbsp;· Next.js&nbsp;· Electron&nbsp;· PostgreSQL&nbsp;· MySQL&nbsp;· Supabase&nbsp;· Laravel&nbsp;· Docker&nbsp;· LittleJS</p>
         </section>
 
-        <!-- Experience -->
+        <!-- Experience: oldest first, the way it happened -->
         <section id="experience" class="section">
             <div class="section-head">
                 <span class="section-no">05</span>
                 <h2 class="section-title" data-i18n="exp.title">Experience.</h2>
+                <p class="section-intro" data-i18n="exp.intro">From the shop floor to the systems behind it.</p>
             </div>
-            <ol class="timeline">
-                <li class="tl-item">
-                    <span class="tl-date">2026–<span data-i18n="exp.present">now</span></span>
-                    <div class="tl-body">
-                        <h3><span data-i18n="exp.kyou.role">Software Engineer</span> <span class="tl-org">·&nbsp;<a href="https://kyou.id" target="_blank" rel="noopener">Kyou</a></span></h3>
-                        <p data-i18n="exp.kyou.desc">Building the systems behind Kyou&rsquo;s stock, from the warehouse to the web, the stores and events, with maintainer access to release changes to the live system.</p>
-                    </div>
-                </li>
-                <li class="tl-item">
-                    <span class="tl-date">2025–<span data-i18n="exp.present">now</span></span>
-                    <div class="tl-body">
-                        <h3><span data-i18n="exp.indie.role">Independent Developer</span> <span class="tl-org">·&nbsp;Fenderio</span></h3>
-                        <p data-i18n="exp.indie.desc">My own websites, web apps, mobile apps and bots, from idea to launch. Several are live under Websites &amp; apps above.</p>
-                    </div>
-                </li>
-                <li class="tl-item">
-                    <span class="tl-date">2025–2026</span>
-                    <div class="tl-body">
-                        <h3><span data-i18n="exp.informa.role">Assistant Product Specialist</span> <span class="tl-org">·&nbsp;<a href="https://www.informa.co.id" target="_blank" rel="noopener">Informa</a></span></h3>
-                        <p data-i18n="exp.informa.desc">Ran a department day to day: prices, campaigns, stock and floor layout. Nine months out of twelve, my department hit its sales target.</p>
-                    </div>
-                </li>
-                <li class="tl-item">
-                    <span class="tl-date">2024</span>
-                    <div class="tl-body">
-                        <h3><span data-i18n="exp.lion.role">Game Tester &amp; Indonesian AI Trainer</span> <span class="tl-org">·&nbsp;<a href="https://www.lionbridge.com" target="_blank" rel="noopener">Lionbridge Games</a></span></h3>
-                        <p data-i18n="exp.lion.desc">Tested Gems of War and reported the bugs and interface problems I found. On a separate project, recorded Indonesian speech used to train an AI model.</p>
-                    </div>
-                </li>
-                <li class="tl-item">
-                    <span class="tl-date">2019–2024</span>
-                    <div class="tl-body">
-                        <h3><span data-i18n="exp.earlier.role">Retail</span> <span class="tl-org">·&nbsp;The Foodhall, Indomaret</span></h3>
-                        <p data-i18n="exp.earlier.desc">The Foodhall (2023–2024): built the reports the store used to make decisions. Indomaret (2019–2022): ran a store and its team, and took it past its sales target on a number of occasions.</p>
-                    </div>
-                </li>
-            </ol>
+            <div class="exp">
+                <ol class="timeline">
+                    <li class="tl-item">
+                        <div class="tl-head">
+                            <span class="tl-step" aria-hidden="true">01</span>
+                            <span class="tl-date">2019–2022</span>
+                        </div>
+                        <div class="tl-body">
+                            <h3>Store Clerk <span class="tl-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">, then</span> Junior Store Leader <span class="tl-org">·&nbsp;Indomaret</span></h3>
+                            <p data-i18n="exp.indomaret.desc">Started at the till and on the shelves. Promoted to run the store and its team, and took it past its sales target on a number of occasions.</p>
+                        </div>
+                    </li>
+                    <li class="tl-item">
+                        <div class="tl-head">
+                            <span class="tl-step" aria-hidden="true">02</span>
+                            <span class="tl-date">2023–2024</span>
+                        </div>
+                        <div class="tl-body">
+                            <h3>Food Staff <span class="tl-org">·&nbsp;The Foodhall</span></h3>
+                            <p data-i18n="exp.foodhall.desc">Built the reports the store used to make decisions, from daily sales, returns and stock in SAP and Excel.</p>
+                        </div>
+                    </li>
+                    <li class="tl-item">
+                        <div class="tl-head">
+                            <span class="tl-step" aria-hidden="true">03</span>
+                            <span class="tl-date">2024</span>
+                        </div>
+                        <div class="tl-body">
+                            <h3><span data-i18n="exp.lion.role">Game Tester &amp; Indonesian AI Trainer</span> <span class="tl-org">·&nbsp;<a href="https://www.lionbridge.com" target="_blank" rel="noopener">Lionbridge Games</a></span></h3>
+                            <p data-i18n="exp.lion.desc">Tested Gems of War and reported the bugs and interface problems I found. On a separate project, recorded Indonesian speech used to train an AI model.</p>
+                        </div>
+                    </li>
+                    <li class="tl-item">
+                        <div class="tl-head">
+                            <span class="tl-step" aria-hidden="true">04</span>
+                            <span class="tl-date">2025–2026</span>
+                        </div>
+                        <div class="tl-body">
+                            <h3>Sales Executive <span class="tl-arrow" aria-hidden="true">&rarr;</span><span class="sr-only">, then</span> <span data-i18n="exp.informa.role">Assistant Product Specialist</span> <span class="tl-org">·&nbsp;<a href="https://www.informa.co.id" target="_blank" rel="noopener">Informa</a></span></h3>
+                            <p data-i18n="exp.informa.desc">Promoted from the sales floor to run a department day to day: prices, campaigns, stock and floor layout. Nine months out of twelve, my department hit its sales target.</p>
+                        </div>
+                    </li>
+                    <li class="tl-item">
+                        <div class="tl-head">
+                            <span class="tl-step" aria-hidden="true">05</span>
+                            <span class="tl-date">2025–<span data-i18n="exp.present">now</span></span>
+                        </div>
+                        <div class="tl-body">
+                            <h3><span data-i18n="exp.indie.role">Independent Developer</span> <span class="tl-org">·&nbsp;Fenderio</span></h3>
+                            <p data-i18n="exp.indie.desc">My own websites, web apps, mobile apps and bots, from idea to launch. Several are live under Websites &amp; apps above.</p>
+                        </div>
+                    </li>
+                    <li class="tl-item">
+                        <div class="tl-head">
+                            <span class="tl-step" aria-hidden="true">06</span>
+                            <span class="tl-date">2026–<span data-i18n="exp.present">now</span></span>
+                        </div>
+                        <div class="tl-body">
+                            <h3><span data-i18n="exp.kyou.role">Full-stack Engineer</span> <span class="tl-org">·&nbsp;<a href="https://kyou.id" target="_blank" rel="noopener">Kyou</a></span></h3>
+                            <p data-i18n="exp.kyou.desc">Building the systems behind Kyou&rsquo;s stock, from the warehouse to the web, the stores and events. I have maintainer access, so I release my own changes to the live system.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
         </section>
 
         <!-- Contact -->
@@ -402,11 +457,10 @@
         <a href="#top" data-i18n="footer.top">Back to top ↑</a>
     </footer>
 
-    <script src="vendor/lenis.min.js?v=20261108d" defer></script>
-    <script src="backdrop.js?v=20261108d" defer></script>
-    <script src="translations.js?v=20261108d"></script>
-    <script src="script.js?v=20261108d"></script>
-    <script src="motion.js?v=20261108d" defer></script>
+    <script src="vendor/lenis.min.js?v=20261108h" defer></script>
+    <script src="translations.js?v=20261108h"></script>
+    <script src="script.js?v=20261108h"></script>
+    <script src="motion.js?v=20261108h" defer></script>
 </body>
 
 </html>
