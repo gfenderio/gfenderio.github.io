@@ -14,6 +14,7 @@ const translations = {
         "skip": "Skip to the work",
         "nav.work": "Work",
         "nav.play": "Play",
+        "nav.side": "Projects",
         "nav.about": "About",
         "nav.contact": "Contact",
 
@@ -125,6 +126,7 @@ const translations = {
         "skip": "Langsung ke karya",
         "nav.work": "Karya",
         "nav.play": "Game",
+        "nav.side": "Proyek",
         "nav.about": "Tentang",
         "nav.contact": "Kontak",
 

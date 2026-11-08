@@ -530,13 +530,12 @@
     }
 
     // ---- Nav: where you are ---------------------------------------------
-    // Each link covers a stretch of the page (Play also covers the side
-    // projects; About also covers experience). The pill sits on the link
+    // Each link covers a stretch of the page (About also covers experience). The pill sits on the link
     // whose stretch holds a line a third of the way down the screen, and its
     // line fills as that stretch is read. Hidden over the hero.
     var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
     var navPill = document.querySelector(".nav-pill");
-    var navGroups = { "#work": ["#work"], "#play": ["#play", "#side"], "#about": ["#about", "#experience"], "#contact": ["#contact"] };
+    var navGroups = { "#work": ["#work"], "#play": ["#play"], "#side": ["#side"], "#about": ["#about", "#experience"], "#contact": ["#contact"] };
     var navGeo = null, navCur = -2;
 
     function measureNavPill() {
