@@ -20,7 +20,7 @@ const translations = {
 
         "hero.status": "Indonesia · Open to remote work",
         "hero.title": "<span class=\"hero-line\">Full-stack engineer.</span><span class=\"hero-line\">I build the systems that get an order out the door.</span>",
-        "hero.lead": "At Kyou I run the stock side: the warehouse, the web and marketplaces, the stores and the events. Outside work I design small games for game jams.",
+        "hero.lead": "At Kyou I build the systems for the stock side: the warehouse, the web and marketplaces, the stores and the events. I also train the warehouse team to use them. Outside work I design small games for game jams.",
         "hero.cta_work": "See the work",
         "hero.cta_play": "Play my games",
         "hero.scroll": "Scroll",
@@ -80,7 +80,7 @@ const translations = {
         "side.demo": "Try the demo",
 
         "about.title": "About.",
-        "about.p1": "I build the tools a shop&rsquo;s staff use all day. Before I wrote code for a living, I spent years in retail. I ran a store, managed stock and chased sales targets. That is how I learned where a business wastes time, and which numbers people have stopped trusting.",
+        "about.p1": "I build the tools a shop&rsquo;s staff use all day. Before I wrote code for a living, I spent years in retail. I worked the till, ran store shifts, managed stock and chased sales targets. That is how I learned where a business wastes time, and which numbers people have stopped trusting.",
         "about.p2": "Game jams are where I practise finishing: the theme is set and the deadline does not move.",
         "about.p3": "I study Information Systems at Universitas Terbuka and expect to graduate in 2027.",
         "about.f1": "contributor to Kyou&rsquo;s new internal system",
@@ -92,7 +92,7 @@ const translations = {
         "exp.title": "Experience.",
         "exp.intro": "From the shop floor to the systems behind it.",
         "exp.present": "now",
-        "exp.kyou.role": "Full-stack Engineer",
+        "exp.kyou.role": "Tech Engineer (Full Stack)",
         "exp.kyou.desc": "Building the systems behind Kyou&rsquo;s stock, from the warehouse to the web, the stores and events. I take each change from the first draft to its release on the live system.",
         "exp.indie.role": "Independent Developer",
         "exp.indie.desc": "My own websites, web apps, mobile apps and bots, from idea to launch. Several are live under Projects above.",
@@ -103,7 +103,7 @@ const translations = {
         "exp.ai.role": "Indonesian AI Trainer",
         "exp.ai.desc": "Trained an AI model for Meta in Indonesian, recording speech with the tone and clarity each line called for.",
         "exp.foodhall.desc": "Built the reports the store used to make decisions, from daily sales, returns and stock in SAP and Excel.",
-        "exp.indomaret.desc": "Started at the till and on the shelves. Promoted to run the store and its team, and took it past its sales target on a number of occasions.",
+        "exp.indomaret.desc": "Started at the till and on the shelves. Promoted to junior store leader, running daily operations and the shift team, and hit the store&rsquo;s sales target on a number of occasions.",
 
         "contact.title": "Let&rsquo;s talk.",
         "contact.lead": "If you are hiring, or your shop still handles prices, stock or marketplace reports by hand, tell me about it.",
@@ -134,7 +134,7 @@ const translations = {
 
         "hero.status": "Indonesia · Terbuka untuk kerja remote",
         "hero.title": "<span class=\"hero-line\">Full-stack engineer.</span><span class=\"hero-line\">Saya membangun sistem yang memproses pesanan sampai dikirim.</span>",
-        "hero.lead": "Di Kyou, saya mengurus sisi stok: gudang, web dan marketplace, toko, sampai event. Di luar kantor, saya merancang game kecil untuk game jam.",
+        "hero.lead": "Di Kyou, saya membangun sistem untuk sisi stok: gudang, web dan marketplace, toko, sampai event. Saya juga melatih tim gudang memakainya. Di luar kantor, saya merancang game kecil untuk game jam.",
         "hero.cta_work": "Lihat hasil kerja",
         "hero.cta_play": "Main game saya",
         "hero.scroll": "Scroll",
@@ -194,7 +194,7 @@ const translations = {
         "side.demo": "Coba demonya",
 
         "about.title": "Tentang.",
-        "about.p1": "Saya membuat tools yang dipakai staf toko seharian. Sebelum jadi programmer, saya <span class=\"nw\">bertahun-tahun</span> kerja di ritel. Di sana saya memimpin toko, mengurus stok, dan mengejar target penjualan. Dari situ saya tahu bagian mana yang paling makan waktu, dan data mana yang sering tidak sesuai kenyataan.",
+        "about.p1": "Saya membuat tools yang dipakai staf toko seharian. Sebelum jadi programmer, saya <span class=\"nw\">bertahun-tahun</span> kerja di ritel. Di sana saya jaga kasir, memimpin shift toko, mengurus stok, dan mengejar target penjualan. Dari situ saya tahu bagian mana yang paling makan waktu, dan data mana yang sering tidak sesuai kenyataan.",
         "about.p2": "Game jam itu tempat saya berlatih menyelesaikan proyek: temanya sudah ditentukan, dan <span class=\"nw\">deadline-nya</span> tidak bisa ditawar.",
         "about.p3": "Saat ini saya kuliah Sistem Informasi di Universitas Terbuka dan menargetkan lulus tahun 2027.",
         "about.f1": "kontributor sistem internal baru Kyou",
@@ -206,7 +206,7 @@ const translations = {
         "exp.title": "Pengalaman.",
         "exp.intro": "Dari lantai toko ke sistem di baliknya.",
         "exp.present": "sekarang",
-        "exp.kyou.role": "Full-stack Engineer",
+        "exp.kyou.role": "Tech Engineer (Full Stack)",
         "exp.kyou.desc": "Membangun sistem di balik stok Kyou, dari gudang sampai web, toko, dan event. Tiap perubahan saya kerjakan dari awal sampai rilis ke sistem live.",
         "exp.indie.role": "Independent Developer",
         "exp.indie.desc": "Website, web app, aplikasi mobile, dan bot milik saya sendiri, dari ide sampai rilis. Beberapa bisa langsung dicoba di bagian Proyek.",
@@ -217,7 +217,7 @@ const translations = {
         "exp.ai.role": "Indonesian AI Trainer",
         "exp.ai.desc": "Melatih model AI milik Meta dalam bahasa Indonesia, dengan merekam suara sesuai nada dan kejelasan yang diminta tiap kalimat.",
         "exp.foodhall.desc": "Membuat laporan yang dipakai toko untuk mengambil keputusan, dari data penjualan harian, retur, dan stok di SAP dan Excel.",
-        "exp.indomaret.desc": "Awalnya jadi kasir dan mengisi rak. Lalu dipromosikan untuk memimpin toko beserta timnya, dan beberapa kali membawanya tembus target penjualan.",
+        "exp.indomaret.desc": "Awalnya jadi kasir dan mengisi rak. Lalu dipromosikan jadi junior store leader, mengurus operasional harian dan tim shift. Beberapa kali tembus target penjualan toko.",
 
         "contact.title": "Ayo ngobrol.",
         "contact.lead": "Kalau kamu sedang cari developer, atau tokomu masih mengurus harga, stok, atau laporan marketplace secara manual, ceritakan saja.",
