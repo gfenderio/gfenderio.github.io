@@ -4,14 +4,15 @@
 //   gian  - Gian (PUTUS!) sprints in and headbutts the F
 //   bajaj - an orange bajaj (NUSAPURA DRIVE) zooms past and its wind lifts the letters
 // hold: true never closes: it stays on the finished logo, still animating (stars, shine, Gian), as on fenderio.com.
+// poke(i, big) makes letter i hop (big: a click, rippling to its neighbours); letterAt(x, y, w, h) finds it.
 // Drop-in: createSplash(), then each frame splash.update(dt) and splash.render(ctx, w, h)
 // with a Canvas 2D context, and splash.tap() on any click, touch or key.
 // Browsers only allow sound after the first input, so it waits on "TAP TO START"
 // unless audio is already running.
 import { Sound, audioIsRunning } from './littlejs-shim.js'; // site copy: silent stand-in for LittleJS (the page's CSP allows no import map)
-import { PAL, LETTERS, WORD_W, BIG_W, BIG_H, drawBig, drawSmall, logoPixels, BAYER } from './logo.js';
-import { GIAN_SHEET, GIAN_W, GIAN_H, GF, GIAN_RUN } from './gian-sheet.js';
-import { drawBajaj, BAJAJ_W } from './bajaj.js';
+import { PAL, LETTERS, WORD_W, BIG_W, BIG_H, drawBig, drawSmall, logoPixels, BAYER } from './logo.js?v=20261116e';
+import { GIAN_SHEET, GIAN_W, GIAN_H, GF, GIAN_RUN } from './gian-sheet.js?v=20261116e';
+import { drawBajaj, BAJAJ_W } from './bajaj.js?v=20261116e';
 
 export const VARIANTS = ['gian', 'bajaj'];
 
@@ -136,9 +137,42 @@ export function createSplash({ onDone, reducedMotion, autoStart = true, variant,
   }
 
   // hop phase of letter i: box offsets for squash and stretch
+  // Letters the visitor pokes (fenderio.com): a hover gives a small hop, a click a big one that ripples to
+  // its neighbours, with the same crouch, stretch and land squash as the splash's own hops.
+  const poked = LETTERS.map(() => ({ at: -9, h: 0 }));
+  function poke(i, big = false) {
+    const L = LETTERS[i], p = poked[i];
+    if (reduced || !L || t - p.at < (big ? .1 : .35)) return;
+    p.at = t; p.h = big ? 7 : 2;
+    if (!big) { sfx.tick.play(undefined, .6, semi(i * 2)); return; }
+    sfx.hop.play(undefined, 1, semi(i + 2)); sfx.pew.play(undefined, .5, semi(i));
+    rings.push({ x: L.x + 2.5, y: 3.5, born: t, life: T.pop, r0: 3, r1: 11, n: 16, c: PAL.light });
+    for (let k = 0; k < 7; k++)
+      bits.push({ x: L.x + rand(0, BIG_W), y: -1, vx: rand(-25, 25), vy: rand(-60, -25), g: 140, life: rand(.3, .45), c: PAL.sparks[k % PAL.sparks.length] });
+    for (const d of [-2, -1, 1, 2]) { // the ripple: neighbours hop a beat later, smaller
+      const q = poked[i + d];
+      if (q && t - q.at > .3) { q.at = t + Math.abs(d) * .07; q.h = Math.abs(d) === 1 ? 3 : 2; }
+    }
+  }
+  // Which letter is under canvas point (x, y) on a w x h canvas, or -1.
+  function letterAt(x, y, w, h) {
+    const { s, ox, oy } = layout(w, h, variant), lx = (x - ox) / s, ly = (y - oy) / s;
+    return LETTERS.findIndex(L => lx >= L.x - 1 && lx < L.x + BIG_W + 1 && ly >= -4 && ly < BIG_H + 2);
+  }
+
   function letterBox(i) {
     const L = LETTERS[i], box = { x: L.x, y: 0, w: BIG_W, h: BIG_H };
     if (reduced) return box;
+    const p = poked[i], pt = t - p.at, pa = T.air * (p.h > 3 ? 1.5 : 1);
+    if (pt >= 0 && pt < T.crouch + pa + T.land) {
+      if (pt < T.crouch || pt >= T.crouch + pa) { box.x -= 1; box.w += 2; box.h -= 1; box.y += 1; }
+      else {
+        const u = (pt - T.crouch) / pa;
+        box.y = -Math.round(p.h * 4 * u * (1 - u));
+        if (u < .35) { box.h += 1; box.y -= 1; }
+      }
+      return box;
+    }
     const s0 = hopAt(i, variant), a = s0 + T.crouch, b = a + T.air, c = b + T.land;
     if (G && i === 0 && t >= s0 && t < a) {                // the F takes the hit: shoved right and squashed hard
       box.x += 1; box.w += 1; box.h -= 2; box.y += 2;
@@ -327,7 +361,7 @@ export function createSplash({ onDone, reducedMotion, autoStart = true, variant,
       if (t < at) return;
       const b = letterBox(i);
       const hit = G && !reduced && i === 0 && t >= T.push && t < T.push + .05;
-      drawBig(px, L.rows, b.x, b.y, b.w, b.h, hit || !reduced && t - at < T.flash);
+      drawBig(px, L.rows, b.x, b.y, b.w, b.h, hit || !reduced && (t - at < T.flash || poked[i].h > 3 && t - poked[i].at >= 0 && t - poked[i].at < T.flash));
     });
 
     ox0 = ox / s; sw0 = w / s;
@@ -399,7 +433,7 @@ export function createSplash({ onDone, reducedMotion, autoStart = true, variant,
   let frozen = false;
   function seek(time) { start(); frozen = false; while (t < time && state === 'play') update(1 / 60); frozen = true; }
 
-  return { tap, render, start, seek, variant,
+  return { tap, render, start, seek, variant, poke, letterAt,
     update: dt => { if (!frozen) update(dt); else clock += dt; },
     unfreeze() { frozen = false; },
     get done() { return state === 'done'; }, get state() { return state; } };

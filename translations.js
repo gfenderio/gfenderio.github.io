@@ -51,7 +51,7 @@ const translations = {
         "work.gallery": "Screenshots",
 
         "play.title": "Fenderio Games.",
-        "play.intro": "Small games I make after work as Fenderio Games, mostly for game jams. Gian, the bear from PUTUS!, is the studio mascot.",
+        "play.intro": "Small games I make after work as Fenderio Games, mostly for game jams.",
         "play.putus.pitch": "Kite fights on Jakarta rooftops. Cut their line before they cut yours.",
         "play.putus.desc": "An arcade game made for the third LittleJS Game Jam, where the theme was ZIGZAG. You fly a fighting kite and zigzag across rival lines to cut them. Beat the boss kites, then trade the marbles you win for new kites and cards at the Marble Shop. It is free to play in the browser.<br><br>I designed the game and directed how it looks. The code, and the scripts that draw every sprite pixel by pixel, were written with Claude Code.",
         "play.putus.itch": "Play on itch.io",
@@ -169,7 +169,7 @@ const translations = {
         "work.gallery": "Screenshot",
 
         "play.title": "Fenderio Games.",
-        "play.intro": "Game kecil yang saya buat di luar jam kerja dengan nama Fenderio Games, kebanyakan untuk game jam. Maskot studionya Gian, beruang dari PUTUS!.",
+        "play.intro": "Game kecil yang saya buat di luar jam kerja dengan nama Fenderio Games, kebanyakan untuk game jam.",
         "play.putus.pitch": "Adu layangan di atas atap Jakarta. Putuskan benang lawan sebelum benangmu yang putus.",
         "play.putus.desc": "Game arcade untuk LittleJS Game Jam <span class=\"nw\">ke-3</span> yang bertema ZIGZAG. Terbangkan layangan aduan, lalu zigzag melintasi benang lawan sampai putus. Kalahkan layangan bos, kumpulkan kelereng, lalu tukar dengan layangan dan kartu baru di Marble Shop. Bisa dimainkan gratis di browser.<br><br>Saya yang merancang game dan mengarahkan visualnya. Kodenya, termasuk script yang menggambar tiap sprite piksel demi piksel, ditulis dengan Claude Code.",
         "play.putus.itch": "Main di itch.io",
