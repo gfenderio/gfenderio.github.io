@@ -196,9 +196,13 @@
         <section id="play" class="section">
             <div class="section-head">
                 <span class="section-no">02</span>
-                <h2 class="section-title" data-i18n="play.title">Games.</h2>
-                <p class="section-intro" data-i18n="play.intro">Small games I design after work, mostly for game jams.</p>
+                <h2 class="section-title" data-i18n="play.title">Fenderio Games.</h2>
+                <p class="section-intro" data-i18n="play.intro">Small games I make after work as Fenderio Games, mostly for game jams. Gian, the bear from PUTUS!, is the studio mascot.</p>
             </div>
+
+            <!-- The studio splash plays here the first time the section comes on screen (games.js),
+                 then the whole page goes dark until the section scrolls away. -->
+            <div class="studio-stage" aria-hidden="true"><canvas width="400" height="150"></canvas></div>
 
             <!-- Stays under the nav while the Games section is on screen. -->
             <a class="itch-card" href="https://fenderio.itch.io" target="_blank" rel="noopener">
@@ -211,12 +215,14 @@
                 <button type="button" class="project-visual game-visual" data-name="PUTUS!" data-ratio="16 / 9"
                     data-shots="assets/putus-cover.png,assets/putus-1.png,assets/putus-2.png,assets/putus-3.png,assets/putus-4.png">
                     <img src="assets/putus-cover.png" alt="PUTUS! cover: a bear flies a kite over Jakarta rooftops at sunset" loading="lazy">
+                    <video class="game-clip" src="assets/putus-preview.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                     <span class="visual-hint" data-i18n="work.gallery">Screenshots</span>
                 </button>
                 <div class="game-body">
                     <div class="game-head">
                         <h3 class="game-name">PUTUS!</h3>
                         <span class="game-tag">LittleJS Jam 3 · 2026</span>
+                        <a class="game-award" href="https://x.com/KilledByAPixel/status/2122118537363730781" target="_blank" rel="noopener" data-i18n="play.putus.award">Innovation, 1st place</a>
                     </div>
                     <p class="game-pitch" data-i18n="play.putus.pitch">Kite fights on Jakarta rooftops. Cut their line before they cut yours.</p>
                     <p class="game-desc" data-i18n="play.putus.desc">An arcade game made for the third LittleJS Game Jam, where the theme was ZIGZAG. You fly a fighting kite and zigzag across rival lines to cut them. Beat the boss kites, then trade the marbles you win for new kites and cards at the Marble Shop. It is free to play in the browser.<br><br>I designed the game and directed how it looks. The code, and the scripts that draw every sprite pixel by pixel, were written with Claude Code.</p>
@@ -228,6 +234,31 @@
                     <ul class="stack">
                         <li>LittleJS</li>
                         <li>JavaScript</li>
+                        <li>Claude Code</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="game">
+                <button type="button" class="project-visual game-visual game-visual-3d" data-name="NUSAPURA DRIVE" data-ratio="16 / 9"
+                    data-shots="assets/nusapura-cover.jpg,assets/nusapura-1.jpg,assets/nusapura-2.jpg,assets/nusapura-3.jpg">
+                    <img src="assets/nusapura-cover.jpg" alt="NUSAPURA DRIVE title card: an orange bajaj on a city street at dusk" loading="lazy">
+                    <video class="game-clip" src="assets/nusapura-preview.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+                    <span class="visual-hint" data-i18n="work.gallery">Screenshots</span>
+                </button>
+                <div class="game-body">
+                    <div class="game-head">
+                        <h3 class="game-name">NUSAPURA DRIVE</h3>
+                        <span class="game-tag">Epic AI MegaJam · 2026</span>
+                    </div>
+                    <p class="game-pitch" data-i18n="play.nusapura.pitch">Drive the bajaj. Keep the boss paid.</p>
+                    <p class="game-desc" data-i18n="play.nusapura.desc">An arcade taxi game in Unreal Engine, made for the 2026 Epic AI MegaJam. Drive an orange bajaj around Nusapura, a made-up Southeast Asian port city, take orders on a ride app and get your passengers there fast. Features cut during the jam come back as film reels you buy with your fares.</p>
+                    <div class="game-actions">
+                        <a href="https://fenderio.itch.io/nusapura-drive" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="play.nusapura.itch">Download on itch.io</a>
+                        <a href="https://www.youtube.com/watch?v=ysYyWJx3NZE" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="play.putus.trailer">Watch the trailer</a>
+                    </div>
+                    <ul class="stack">
+                        <li>Unreal Engine</li>
                         <li>Claude Code</li>
                     </ul>
                 </div>
@@ -487,6 +518,7 @@
     <script src="translations.js?v=20261108u"></script>
     <script src="script.js?v=20261108u"></script>
     <script src="motion.js?v=20261108u" defer></script>
+    <script type="module" src="games.js?v=20261116d"></script>
 </body>
 
 </html>

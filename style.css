@@ -2927,3 +2927,136 @@ html:not(.js) .contact-copy {
     opacity: 0.6;
     cursor: progress;
 }
+
+/* ---------- Games: the studio splash and the dark page ----------
+   The Games section is Fenderio Games' own corner of the site. The first
+   time it comes on screen the studio splash plays in the stage under the
+   title (games.js), and while the section is on screen the whole page turns
+   to the splash's night colour; it fades back to white when the section
+   scrolls away. Everything else on the site keeps the white theme. */
+html.games-dark {
+    --canvas-soft: #14141f;
+    --canvas: #1c1d2b;
+    --inset: #22233a;
+    --hairline: #2c2e45;
+    --hairline-strong: #5a5d82;
+    --ink: #f2efe8;
+    --body: #b9bad3;
+    --mute: #8c8eae;
+    --on-primary: #14141f;
+    --link: #f9c74f;
+    --link-deep: #ffd27a;
+    color-scheme: dark;
+}
+
+body {
+    transition: background 0.6s ease, color 0.6s ease, border-color 0.15s, transform 0.15s;
+}
+
+.game-award {
+    transition: color 0.6s ease, border-color 0.6s ease;
+}
+
+html.games-dark .nav.is-scrolled {
+    background: rgba(20, 20, 31, 0.72);
+}
+
+html.games-dark .itch-card {
+    background: rgba(28, 29, 43, 0.84);
+}
+
+html.games-dark .btn-primary:hover,
+html.games-dark .itch-card:hover .link-arrow {
+    background: #fff;
+    color: #14141f;
+}
+
+.backdrop {
+    transition: opacity 0.6s ease;
+}
+
+html.games-dark .backdrop {
+    opacity: 0.15;
+}
+
+/* The splash's own stage: its canvas is drawn at 400x150 (logo pixels at 2x) and scaled up in
+   whole pixels' worth of crispness. Before the splash runs it is just the
+   night colour, so nothing jumps when it starts. */
+.studio-stage {
+    max-width: 760px;
+    margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
+    aspect-ratio: 8 / 3;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #14141f;
+}
+
+.studio-stage canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Award line under the game's name, linked to the announcement. */
+.game-award {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.game-award::before {
+    content: "🏆";
+}
+
+.game-award:hover {
+    color: var(--ink);
+    border-color: var(--hairline-strong);
+}
+
+.game-head .game-tag {
+    display: block;
+}
+
+/* Hover (or, on touch screens, scrolling it into view) plays a 10 second
+   silent clip of the game over its cover. */
+.game-clip {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.game-visual.is-playing .game-clip {
+    opacity: 1;
+}
+
+.game-visual-3d img {
+    image-rendering: auto;
+}
+
+.game + .game {
+    margin-top: clamp(3rem, 8vw, 5.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body,
+    .game-award,
+    .backdrop,
+    .game-clip {
+        transition: none;
+    }
+}
