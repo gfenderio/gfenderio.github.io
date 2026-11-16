@@ -18,6 +18,7 @@ const canvas = section && section.querySelector('.studio-stage canvas');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarse = matchMedia('(pointer: coarse)').matches;
 const SEEN = 'fenderio_site_splash'; // per visit (sessionStorage)
+const DARK_PAGE = false; // the owner switched the dark page off for now (17 Nov 2026); true brings it back
 
 const seen = () => { try { return sessionStorage.getItem(SEEN) === '1'; } catch (e) { return false; } };
 const markSeen = () => { try { sessionStorage.setItem(SEEN, '1'); } catch (e) {} };
@@ -48,7 +49,7 @@ if (section && canvas) {
   // One fade at a time; when it ends the state is checked again, so fast scrolling always lands right.
   let fading = null;
   const setDark = () => {
-    if (fading) return;
+    if (!DARK_PAGE || fading) return;
     const want = () => inSection && ready, flip = () => root.classList.toggle('games-dark', want());
     if (root.classList.contains('games-dark') === want()) return;
     if (!document.startViewTransition || reduce || document.hidden) { flip(); return; }
