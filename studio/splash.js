@@ -10,9 +10,9 @@
 // Browsers only allow sound after the first input, so it waits on "TAP TO START"
 // unless audio is already running.
 import { Sound, audioIsRunning } from './littlejs-shim.js'; // site copy: silent stand-in for LittleJS (the page's CSP allows no import map)
-import { PAL, LETTERS, WORD_W, BIG_W, BIG_H, drawBig, drawSmall, logoPixels, BAYER } from './logo.js?v=20261116e';
-import { GIAN_SHEET, GIAN_W, GIAN_H, GF, GIAN_RUN } from './gian-sheet.js?v=20261116e';
-import { drawBajaj, BAJAJ_W } from './bajaj.js?v=20261116e';
+import { PAL, LETTERS, WORD_W, BIG_W, BIG_H, drawBig, drawSmall, logoPixels, BAYER } from './logo.js?v=20261117a';
+import { GIAN_SHEET, GIAN_W, GIAN_H, GF, GIAN_RUN } from './gian-sheet.js?v=20261117a';
+import { drawBajaj, BAJAJ_W } from './bajaj.js?v=20261117a';
 
 export const VARIANTS = ['gian', 'bajaj'];
 

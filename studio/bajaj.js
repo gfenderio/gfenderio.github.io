@@ -5,7 +5,7 @@
 // upright windshield, orange tub with a white beltline, headlamp on the front panel, a flower
 // sticker on the side, small front and rear wheels.
 // Same rules as the characters: ink outline, light from the upper left, shade right and bottom.
-import { PAL } from './logo.js?v=20261116e';
+import { PAL } from './logo.js?v=20261117a';
 
 const C = {
   K: PAL.ink, O: PAL.orange, L: PAL.orangeL, D: PAL.orangeD, G: PAL.glass, g: PAL.glassD,

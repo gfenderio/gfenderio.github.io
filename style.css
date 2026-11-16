@@ -2949,8 +2949,11 @@ html.games-dark {
     color-scheme: dark;
 }
 
-body {
-    transition: background 0.6s ease, color 0.6s ease, border-color 0.15s, transform 0.15s;
+/* The light/dark switch is one cross-fade of the whole page (games.js). */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.55s;
+    animation-timing-function: ease;
 }
 
 .game-award {
@@ -3053,7 +3056,6 @@ html.games-dark .backdrop {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    body,
     .game-award,
     .backdrop,
     .game-clip {

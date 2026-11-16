@@ -9,8 +9,8 @@
 // 3. The stage is playable: letters hop under the cursor, a click bounces one, a click elsewhere replays
 //    the splash with the next game's cameo.
 // 4. Each game's cover plays a 10 second silent clip on hover, or on touch screens while it is in view.
-import { createSplash, layout, T, VARIANTS } from './studio/splash.js?v=20261116e';
-import { PAL, drawSmall } from './studio/logo.js?v=20261116e';
+import { createSplash, layout, T, VARIANTS } from './studio/splash.js?v=20261117a';
+import { PAL, drawSmall } from './studio/logo.js?v=20261117a';
 
 const root = document.documentElement;
 const section = document.getElementById('play');
@@ -43,7 +43,18 @@ if (section && canvas) {
     if (w && h && (canvas.width !== w || canvas.height !== h)) { canvas.width = w; canvas.height = h; if (splash) draw(); }
   };
   fit(); addEventListener('resize', fit);
-  const setDark = () => root.classList.toggle('games-dark', inSection && ready);
+  // The whole page cross-fades between light and dark in one go (View Transitions), so cards, lines,
+  // buttons and the nav change together instead of each at its own speed. Without support it just switches.
+  // One fade at a time; when it ends the state is checked again, so fast scrolling always lands right.
+  let fading = null;
+  const setDark = () => {
+    if (fading) return;
+    const want = () => inSection && ready, flip = () => root.classList.toggle('games-dark', want());
+    if (root.classList.contains('games-dark') === want()) return;
+    if (!document.startViewTransition || reduce || document.hidden) { flip(); return; }
+    fading = document.startViewTransition(flip);
+    fading.finished.finally(() => { fading = null; setDark(); });
+  };
 
   // hold: the splash never closes; once its logo is together it keeps living (stars, shine, Gian waving).
   // It only animates while the stage is on screen.
